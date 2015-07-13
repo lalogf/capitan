@@ -1,0 +1,16 @@
+<%= simple_form_for @course, :html => { :multipart => true, :class => "form-horizontal course" },  
+    wrapper: :horizontal_form,
+    wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  } do |f| %>
+  <%= f.input :name, :class => "short" %>
+  <%= f.input :description %>
+  <%= f.input :color %>
+  <%= f.input :avatar %>
+  <%= f.input :background_image %>
+  <%= f.button :submit, :class => 'btn btn-success' %>
+  <%= link_to 'Cancelar', courses_path, :class => 'btn btn-danger' %>
+<% end %>
