@@ -18,6 +18,10 @@
 #  provider               :string(255)
 #  uid                    :string(255)
 #  admin                  :boolean          default(FALSE)
+#  name                   :string(255)      not null
+#  code                   :string(255)      not null
+#  branch_id              :integer
+#  dni                    :string(255)
 #
 
 require 'test_helper'

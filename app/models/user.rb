@@ -18,21 +18,38 @@
 #  provider               :string(255)
 #  uid                    :string(255)
 #  admin                  :boolean          default(FALSE)
+#  name                   :string(255)      not null
+#  code                   :string(255)      not null
+#  branch_id              :integer
+#  dni                    :string(255)
 #
 
 class User < ActiveRecord::Base
+  
+  has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
+  belongs_to :branch
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:github]
-         
-  def self.from_omniauth(auth)  
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-    end
-  end
+  devise :database_authenticatable, 
+         :registerable,
+         :recoverable, 
+         :rememberable, 
+         :trackable, 
+         :validatable, 
+         :omniauthable, 
+         :omniauth_providers => [:github,:facebook]
   
+  
+  def self.create_from_omniauth(params)
+    attributes = {
+      name: params['info']['name'],
+      email: params['info']['email'],
+      password: Devise.friendly_token
+    }
+
+    create(attributes)
+  end
+
+
 end

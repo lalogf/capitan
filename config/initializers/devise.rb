@@ -31,7 +31,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [:email]
+  config.authentication_keys = [:dni]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -263,4 +263,5 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :github, 'dfc1b560422a9a5e42c2', '72728709b32c5b5fe71ebff2125ce457d0fff9c5', :scope => 'user:email'
+  config.omniauth :facebook, '648776228595741', 'b995b71ab1decff71ac421579bf4b10a', :scope => 'user.email'
 end

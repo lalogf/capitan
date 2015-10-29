@@ -7,6 +7,30 @@
   = require_self
 */
 
+.header {
+  background: #3C3C3B;
+}
+
+.logo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    color: white;
+    line-height: 60px;
+}
+
+.logo img {
+    height: 60px;
+    float: left;
+}
+
+.logo h1 {
+  margin: 0px;
+  line-height: 60px;
+  font-size: 2em;
+}
+
+
 .well {
 
 }

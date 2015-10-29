@@ -12,8 +12,10 @@ class ApplicationController < ActionController::Base
   def select_layout_on_user_type
     if current_user.try(:admin?)
       "admin"
-    else
+    elsif current_user
       "application"
+    else
+      "devise"
     end
   end
   

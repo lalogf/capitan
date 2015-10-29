@@ -1,33 +1,22 @@
 <div class="cell">
   <div class="center">
-    <h1 class="home-title thin">Regístrate</h1>
+    <h3 class="home-title thin mb-20">Lo primero que debes hacer es completar el formulario a continuación:</h3>
   </div>
-  
   <div class="form form-session">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
     
-      <div class="form-group">
-        <%= f.label :email,'Correo electrónico:', :class => 'control-label' %>
-        <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
+      <div class="form-inputs">
+        <%= f.input :name, label: false, required: true, autofocus: true, placeholder: "Nombre y apellido" %>
+        <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %>
+        <%= f.input :password,label: false, required: true, placeholder: "Contraseña" %>
+        <%= f.input :password_confirmation,label: false, required: true, placeholder: "Confirmar contraseña" %>
+        <%= f.association :branch, prompt: "Selecciona una sede", collection: Branch.all, label:false  %>
       </div>
     
-      <div class="form-group">
-        <%= f.label :password,'Contraseña:', :class => 'control-label' %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
+      <div class="form-actions">
+        <%= f.button :submit, "Registrarte", :class => "btn btn-primary" %>
       </div>
-    
-      <div class="form-group">
-        <%= f.label :password_confirmation,'Confirmar contraseña:', :class => 'control-label' %>
-        <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control' %>
-      </div>
-    
-      <div class="actions">
-        <%= f.submit "Registrarte", :class => 'btn btn-primary' %>
-      </div>
-    <% end %>
+    <% end %>    
   </div>
 </div>
