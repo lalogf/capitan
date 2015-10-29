@@ -7,11 +7,19 @@
       <%= f.error_notification %>
     
       <div class="form-inputs">
-        <%= f.input :name, label: false, required: true, autofocus: true, placeholder: "Nombre y apellido" %>
+        <%= f.input :name, label: false, required: true, autofocus: true, placeholder: "Nombre" %>
+        <%= f.input :lastname1, label: false, required: true, placeholder: "Primer apellido" %>
+        <%= f.input :lastname2, label: false, required: true, placeholder: "Segundo apellido" %>
         <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %>
+        <%= f.association :branch, prompt: "Selecciona una sede", collection: Branch.all, label:false  %>
+        <%= f.input :district, label: false, required: true, placeholder: "Distrito" %>
+        <%= f.input :age, label: false, required: true, placeholder: "Edad" %>
+        <%= f.input :facebook_username, label: false, required: true, placeholder: "Facebook User" %>
+        <%= f.input :phone1, label: false, required: true, placeholder: "Teléfono" %>
+        <%= f.input :phone2, label: false, required: true, placeholder: "Otro teléfono" %>
         <%= f.input :password,label: false, required: true, placeholder: "Contraseña" %>
         <%= f.input :password_confirmation,label: false, required: true, placeholder: "Confirmar contraseña" %>
-        <%= f.association :branch, prompt: "Selecciona una sede", collection: Branch.all, label:false  %>
+        
       </div>
     
       <div class="form-actions">
