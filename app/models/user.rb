@@ -26,6 +26,9 @@
 
 class User < ActiveRecord::Base
   
+  before_create :generate_code  
+  
+  
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :branch
   
@@ -50,6 +53,15 @@ class User < ActiveRecord::Base
 
     create(attributes)
   end
+  
+protected
+
+  def generate_code
+    self.token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless ModelName.exists?(token: random_token)
+    end
+  end  
 
 
 end

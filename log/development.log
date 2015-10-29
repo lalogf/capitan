@@ -10921,3 +10921,1474 @@ Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 12
 
 Started GET "/assets/favicon-c5a7d38344afd0ea721183b0384fcbd1e7e3af4ce3d4e3a7568e750c02c4b1e3.ico" for 190.236.100.159 at 2015-10-29 17:14:45 +0000
 Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/users/sign_up" for 190.236.100.159 at 2015-10-29 17:17:18 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mBranch Load (0.4ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (184.6ms)
+  Rendered shared/_login_header.html.erb (2.6ms)
+Completed 200 OK in 461ms (Views: 458.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.self-e08aebab1405811dae3774a7365eb2aa258e15030f3d610323ee9e41a140fe14.css?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.self-77d963462a71b85aa6c39f0110994006fed4301154d937da52eb3884ff813853.css?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/login.self-d33631a436528079d6c2c82f28161820cc8bf831225ba32d1d91795ee6ffaed4.css?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap-social.self-3bf18f1e36da1af659676c9ecfb3290f05014393fa1c146e217b65168ba8b691.css?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/font-awesome.self-2d17540bab3759939e910ca38a695f014e0c777ded3ad7a01c4658b9d3fc980d.css?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/transition.self-db278e3a8fa6249c16796b113ebd29e11ef4e2cd021618ed84895d524a4511e0.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/alert.self-ebce91ec66c71bcee451ea7da9128fd1bf8faa02c6d22ea04c598423431e4c08.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/modal.self-ab1767545e27c0dbd36971e656ae4927171f673e3d932cdec2cbef39e991952b.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:19 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.self-8bb9309b6c24a4ba6b94026a049d25b13bdc0553b6fe83255c14a715ba624cc4.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.self-bd0c6724cdc75302fe98dfeff923112b76c1673cf4a0752a7050b7feea15594c.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tab.self-7e3ee4a243bb416b5f0111a0be08f8547c5d72ba71fe4afe4a4a007f5cb4e10e.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.self-d7f9330825307d053f68da11bb9ddc9b070df72deef3d115f2f3d55f66b17457.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/popover.self-cd672ecad3b549e1dbd89bfd044e5812d6fdade56f42d48e3acee0c3f4614526.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/button.self-ceb562de883e04359bb2c06f07bdf6ecf065cc8a5027e2e58857c5e91b0b68e3.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/collapse.self-a87553101c955a01e2e8c81fad69a16582ddbf58fe95d5eb335dde5567af7647.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/carousel.self-5d09995e01b647168888180d40e271f9a6759d68ae7ac029d7026af58813d376.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/affix.self-14e04bbe71282aa039322ab93e3a3a886ddede5f59a2f365f7c861f697bbeb21.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/metisMenu.min.self-0db38256c73148671fb4a78e415b3cc67983c7ee20fdb697fcf4505c673c567d.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sb-admin.self-56bd6a6e5b0d37d83b0261b8de91fb454a750a4641c24bdc62f1bc5d860acb39.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/logo-82ab8af69273b0b8c71f6681126ede3c19bbc71245973dbb21f8aad1f4876676.png" for 190.236.100.159 at 2015-10-29 17:17:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/favicon-c5a7d38344afd0ea721183b0384fcbd1e7e3af4ce3d4e3a7568e750c02c4b1e3.ico" for 190.236.100.159 at 2015-10-29 17:17:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mBranch Load (0.3ms)[0m  SELECT  `branches`.* FROM `branches` WHERE `branches`.`name` = 'Lima' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO `branches` (`name`, `created_at`, `updated_at`) VALUES ('Lima', '2015-10-29 17:18:05', '2015-10-29 17:18:05')
+  [1m[36m (3.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mBranch Load (0.4ms)[0m  SELECT  `branches`.* FROM `branches` WHERE `branches`.`name` = 'México' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `branches` (`name`, `created_at`, `updated_at`) VALUES ('México', '2015-10-29 17:18:05', '2015-10-29 17:18:05')
+  [1m[36m (4.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mBranch Load (0.3ms)[0m  SELECT  `branches`.* FROM `branches` WHERE `branches`.`name` = 'Chile' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO `branches` (`name`, `created_at`, `updated_at`) VALUES ('Chile', '2015-10-29 17:18:05', '2015-10-29 17:18:05')
+  [1m[36m (3.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mBranch Load (0.3ms)[0m  SELECT  `branches`.* FROM `branches` WHERE `branches`.`name` = 'Arequipa' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO `branches` (`name`, `created_at`, `updated_at`) VALUES ('Arequipa', '2015-10-29 17:18:05', '2015-10-29 17:18:05')
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/users/sign_up" for 190.236.100.159 at 2015-10-29 17:18:15 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mBranch Load (0.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (187.1ms)
+  Rendered shared/_login_header.html.erb (1.7ms)
+Completed 200 OK in 377ms (Views: 374.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.self-77d963462a71b85aa6c39f0110994006fed4301154d937da52eb3884ff813853.css?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/font-awesome.self-2d17540bab3759939e910ca38a695f014e0c777ded3ad7a01c4658b9d3fc980d.css?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.self-e08aebab1405811dae3774a7365eb2aa258e15030f3d610323ee9e41a140fe14.css?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap-social.self-3bf18f1e36da1af659676c9ecfb3290f05014393fa1c146e217b65168ba8b691.css?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/login.self-d33631a436528079d6c2c82f28161820cc8bf831225ba32d1d91795ee6ffaed4.css?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/transition.self-db278e3a8fa6249c16796b113ebd29e11ef4e2cd021618ed84895d524a4511e0.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/alert.self-ebce91ec66c71bcee451ea7da9128fd1bf8faa02c6d22ea04c598423431e4c08.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/modal.self-ab1767545e27c0dbd36971e656ae4927171f673e3d932cdec2cbef39e991952b.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.self-8bb9309b6c24a4ba6b94026a049d25b13bdc0553b6fe83255c14a715ba624cc4.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.self-bd0c6724cdc75302fe98dfeff923112b76c1673cf4a0752a7050b7feea15594c.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tab.self-7e3ee4a243bb416b5f0111a0be08f8547c5d72ba71fe4afe4a4a007f5cb4e10e.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.self-d7f9330825307d053f68da11bb9ddc9b070df72deef3d115f2f3d55f66b17457.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/popover.self-cd672ecad3b549e1dbd89bfd044e5812d6fdade56f42d48e3acee0c3f4614526.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/button.self-ceb562de883e04359bb2c06f07bdf6ecf065cc8a5027e2e58857c5e91b0b68e3.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/collapse.self-a87553101c955a01e2e8c81fad69a16582ddbf58fe95d5eb335dde5567af7647.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/carousel.self-5d09995e01b647168888180d40e271f9a6759d68ae7ac029d7026af58813d376.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/affix.self-14e04bbe71282aa039322ab93e3a3a886ddede5f59a2f365f7c861f697bbeb21.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/metisMenu.min.self-0db38256c73148671fb4a78e415b3cc67983c7ee20fdb697fcf4505c673c567d.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sb-admin.self-56bd6a6e5b0d37d83b0261b8de91fb454a750a4641c24bdc62f1bc5d860acb39.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/logo-82ab8af69273b0b8c71f6681126ede3c19bbc71245973dbb21f8aad1f4876676.png" for 190.236.100.159 at 2015-10-29 17:18:17 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/favicon-c5a7d38344afd0ea721183b0384fcbd1e7e3af4ce3d4e3a7568e750c02c4b1e3.ico" for 190.236.100.159 at 2015-10-29 17:18:18 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started POST "/users" for 190.236.100.159 at 2015-10-29 17:19:32 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ih/2rE4C6kixCpUw9ajx5lwbfErU7k+upXFCMLQ5VYoE4FdxrhzqnViC1810oHu7VsL6/gQFZ3l7VnubxlOkcQ==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mBranch Load (0.4ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (189.6ms)
+  Rendered shared/_login_header.html.erb (2.4ms)
+Completed 200 OK in 503ms (Views: 413.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 190.236.100.159 at 2015-10-29 17:28:36 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ih/2rE4C6kixCpUw9ajx5lwbfErU7k+upXFCMLQ5VYoE4FdxrhzqnViC1810oHu7VsL6/gQFZ3l7VnubxlOkcQ==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mBranch Load (0.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (168.4ms)
+  Rendered shared/_login_header.html.erb (2.8ms)
+Completed 200 OK in 547ms (Views: 456.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.self-77d963462a71b85aa6c39f0110994006fed4301154d937da52eb3884ff813853.css?body=1" for 190.236.100.159 at 2015-10-29 17:28:37 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/login.self-d33631a436528079d6c2c82f28161820cc8bf831225ba32d1d91795ee6ffaed4.css?body=1" for 190.236.100.159 at 2015-10-29 17:28:37 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.self-e08aebab1405811dae3774a7365eb2aa258e15030f3d610323ee9e41a140fe14.css?body=1" for 190.236.100.159 at 2015-10-29 17:28:37 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/font-awesome.self-2d17540bab3759939e910ca38a695f014e0c777ded3ad7a01c4658b9d3fc980d.css?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap-social.self-3bf18f1e36da1af659676c9ecfb3290f05014393fa1c146e217b65168ba8b691.css?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/alert.self-ebce91ec66c71bcee451ea7da9128fd1bf8faa02c6d22ea04c598423431e4c08.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/transition.self-db278e3a8fa6249c16796b113ebd29e11ef4e2cd021618ed84895d524a4511e0.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/modal.self-ab1767545e27c0dbd36971e656ae4927171f673e3d932cdec2cbef39e991952b.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.self-8bb9309b6c24a4ba6b94026a049d25b13bdc0553b6fe83255c14a715ba624cc4.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.self-bd0c6724cdc75302fe98dfeff923112b76c1673cf4a0752a7050b7feea15594c.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tab.self-7e3ee4a243bb416b5f0111a0be08f8547c5d72ba71fe4afe4a4a007f5cb4e10e.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.self-d7f9330825307d053f68da11bb9ddc9b070df72deef3d115f2f3d55f66b17457.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/popover.self-cd672ecad3b549e1dbd89bfd044e5812d6fdade56f42d48e3acee0c3f4614526.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/button.self-ceb562de883e04359bb2c06f07bdf6ecf065cc8a5027e2e58857c5e91b0b68e3.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/collapse.self-a87553101c955a01e2e8c81fad69a16582ddbf58fe95d5eb335dde5567af7647.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/carousel.self-5d09995e01b647168888180d40e271f9a6759d68ae7ac029d7026af58813d376.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/affix.self-14e04bbe71282aa039322ab93e3a3a886ddede5f59a2f365f7c861f697bbeb21.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/metisMenu.min.self-0db38256c73148671fb4a78e415b3cc67983c7ee20fdb697fcf4505c673c567d.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sb-admin.self-56bd6a6e5b0d37d83b0261b8de91fb454a750a4641c24bdc62f1bc5d860acb39.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/logo-82ab8af69273b0b8c71f6681126ede3c19bbc71245973dbb21f8aad1f4876676.png" for 190.236.100.159 at 2015-10-29 17:28:38 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/favicon-c5a7d38344afd0ea721183b0384fcbd1e7e3af4ce3d4e3a7568e750c02c4b1e3.ico" for 190.236.100.159 at 2015-10-29 17:28:39 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started POST "/users" for 190.236.100.159 at 2015-10-29 17:36:50 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ih/2rE4C6kixCpUw9ajx5lwbfErU7k+upXFCMLQ5VYoE4FdxrhzqnViC1810oHu7VsL6/gQFZ3l7VnubxlOkcQ==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mBranch Load (0.5ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (224.0ms)
+  Rendered shared/_login_header.html.erb (2.9ms)
+Completed 200 OK in 662ms (Views: 564.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/font-awesome.self-2d17540bab3759939e910ca38a695f014e0c777ded3ad7a01c4658b9d3fc980d.css?body=1" for 190.236.100.159 at 2015-10-29 17:36:51 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.self-77d963462a71b85aa6c39f0110994006fed4301154d937da52eb3884ff813853.css?body=1" for 190.236.100.159 at 2015-10-29 17:36:51 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:51 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/login.self-d33631a436528079d6c2c82f28161820cc8bf831225ba32d1d91795ee6ffaed4.css?body=1" for 190.236.100.159 at 2015-10-29 17:36:51 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap-social.self-3bf18f1e36da1af659676c9ecfb3290f05014393fa1c146e217b65168ba8b691.css?body=1" for 190.236.100.159 at 2015-10-29 17:36:51 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.self-e08aebab1405811dae3774a7365eb2aa258e15030f3d610323ee9e41a140fe14.css?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/transition.self-db278e3a8fa6249c16796b113ebd29e11ef4e2cd021618ed84895d524a4511e0.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/alert.self-ebce91ec66c71bcee451ea7da9128fd1bf8faa02c6d22ea04c598423431e4c08.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/modal.self-ab1767545e27c0dbd36971e656ae4927171f673e3d932cdec2cbef39e991952b.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.self-8bb9309b6c24a4ba6b94026a049d25b13bdc0553b6fe83255c14a715ba624cc4.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.self-bd0c6724cdc75302fe98dfeff923112b76c1673cf4a0752a7050b7feea15594c.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tab.self-7e3ee4a243bb416b5f0111a0be08f8547c5d72ba71fe4afe4a4a007f5cb4e10e.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.self-d7f9330825307d053f68da11bb9ddc9b070df72deef3d115f2f3d55f66b17457.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/popover.self-cd672ecad3b549e1dbd89bfd044e5812d6fdade56f42d48e3acee0c3f4614526.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/button.self-ceb562de883e04359bb2c06f07bdf6ecf065cc8a5027e2e58857c5e91b0b68e3.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/collapse.self-a87553101c955a01e2e8c81fad69a16582ddbf58fe95d5eb335dde5567af7647.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/carousel.self-5d09995e01b647168888180d40e271f9a6759d68ae7ac029d7026af58813d376.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/affix.self-14e04bbe71282aa039322ab93e3a3a886ddede5f59a2f365f7c861f697bbeb21.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/metisMenu.min.self-0db38256c73148671fb4a78e415b3cc67983c7ee20fdb697fcf4505c673c567d.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sb-admin.self-56bd6a6e5b0d37d83b0261b8de91fb454a750a4641c24bdc62f1bc5d860acb39.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/logo-82ab8af69273b0b8c71f6681126ede3c19bbc71245973dbb21f8aad1f4876676.png" for 190.236.100.159 at 2015-10-29 17:36:52 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/favicon-c5a7d38344afd0ea721183b0384fcbd1e7e3af4ce3d4e3a7568e750c02c4b1e3.ico" for 190.236.100.159 at 2015-10-29 17:36:53 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/users/sign_up" for 190.236.100.159 at 2015-10-29 17:37:53 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mBranch Load (2.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (574.6ms)
+  Rendered shared/_login_header.html.erb (3.0ms)
+Completed 200 OK in 1276ms (Views: 1207.1ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/users" for 190.236.100.159 at 2015-10-29 17:40:08 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RRHdZxAH4O4WrQUgXnrFoKbYHVMV8Xq9XGqb1S0SyanL7ny68BngO/8lR93fck/9rAGb58UaUmqCTaJ+X3g4Ug==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mBranch Load (0.4ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (318.6ms)
+  Rendered shared/_login_header.html.erb (1.5ms)
+Completed 200 OK in 618ms (Views: 527.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 190.236.100.159 at 2015-10-29 17:43:45 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RRHdZxAH4O4WrQUgXnrFoKbYHVMV8Xq9XGqb1S0SyanL7ny68BngO/8lR93fck/9rAGb58UaUmqCTaJ+X3g4Ug==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mBranch Load (0.5ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (200.4ms)
+  Rendered shared/_login_header.html.erb (1.7ms)
+Completed 200 OK in 565ms (Views: 385.0ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.self-77d963462a71b85aa6c39f0110994006fed4301154d937da52eb3884ff813853.css?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.self-e08aebab1405811dae3774a7365eb2aa258e15030f3d610323ee9e41a140fe14.css?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/font-awesome.self-2d17540bab3759939e910ca38a695f014e0c777ded3ad7a01c4658b9d3fc980d.css?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap-social.self-3bf18f1e36da1af659676c9ecfb3290f05014393fa1c146e217b65168ba8b691.css?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/login.self-d33631a436528079d6c2c82f28161820cc8bf831225ba32d1d91795ee6ffaed4.css?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/transition.self-db278e3a8fa6249c16796b113ebd29e11ef4e2cd021618ed84895d524a4511e0.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/modal.self-ab1767545e27c0dbd36971e656ae4927171f673e3d932cdec2cbef39e991952b.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/alert.self-ebce91ec66c71bcee451ea7da9128fd1bf8faa02c6d22ea04c598423431e4c08.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.self-bd0c6724cdc75302fe98dfeff923112b76c1673cf4a0752a7050b7feea15594c.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.self-8bb9309b6c24a4ba6b94026a049d25b13bdc0553b6fe83255c14a715ba624cc4.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tab.self-7e3ee4a243bb416b5f0111a0be08f8547c5d72ba71fe4afe4a4a007f5cb4e10e.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.self-d7f9330825307d053f68da11bb9ddc9b070df72deef3d115f2f3d55f66b17457.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/popover.self-cd672ecad3b549e1dbd89bfd044e5812d6fdade56f42d48e3acee0c3f4614526.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/button.self-ceb562de883e04359bb2c06f07bdf6ecf065cc8a5027e2e58857c5e91b0b68e3.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/collapse.self-a87553101c955a01e2e8c81fad69a16582ddbf58fe95d5eb335dde5567af7647.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/carousel.self-5d09995e01b647168888180d40e271f9a6759d68ae7ac029d7026af58813d376.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:46 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/affix.self-14e04bbe71282aa039322ab93e3a3a886ddede5f59a2f365f7c861f697bbeb21.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:47 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:47 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:47 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:47 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sb-admin.self-56bd6a6e5b0d37d83b0261b8de91fb454a750a4641c24bdc62f1bc5d860acb39.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:47 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/metisMenu.min.self-0db38256c73148671fb4a78e415b3cc67983c7ee20fdb697fcf4505c673c567d.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:47 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 190.236.100.159 at 2015-10-29 17:43:47 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/logo-82ab8af69273b0b8c71f6681126ede3c19bbc71245973dbb21f8aad1f4876676.png" for 190.236.100.159 at 2015-10-29 17:43:47 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/favicon-c5a7d38344afd0ea721183b0384fcbd1e7e3af4ce3d4e3a7568e750c02c4b1e3.ico" for 190.236.100.159 at 2015-10-29 17:43:47 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started POST "/users" for 190.236.100.159 at 2015-10-29 17:48:20 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RRHdZxAH4O4WrQUgXnrFoKbYHVMV8Xq9XGqb1S0SyanL7ny68BngO/8lR93fck/9rAGb58UaUmqCTaJ+X3g4Ug==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mBranch Load (0.5ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (238.7ms)
+  Rendered shared/_login_header.html.erb (2.2ms)
+Completed 200 OK in 683ms (Views: 455.3ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/bootstrap-social.self-3bf18f1e36da1af659676c9ecfb3290f05014393fa1c146e217b65168ba8b691.css?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.self-77d963462a71b85aa6c39f0110994006fed4301154d937da52eb3884ff813853.css?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/login.self-d33631a436528079d6c2c82f28161820cc8bf831225ba32d1d91795ee6ffaed4.css?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/font-awesome.self-2d17540bab3759939e910ca38a695f014e0c777ded3ad7a01c4658b9d3fc980d.css?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.self-e08aebab1405811dae3774a7365eb2aa258e15030f3d610323ee9e41a140fe14.css?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/transition.self-db278e3a8fa6249c16796b113ebd29e11ef4e2cd021618ed84895d524a4511e0.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/alert.self-ebce91ec66c71bcee451ea7da9128fd1bf8faa02c6d22ea04c598423431e4c08.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/modal.self-ab1767545e27c0dbd36971e656ae4927171f673e3d932cdec2cbef39e991952b.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.self-8bb9309b6c24a4ba6b94026a049d25b13bdc0553b6fe83255c14a715ba624cc4.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tab.self-7e3ee4a243bb416b5f0111a0be08f8547c5d72ba71fe4afe4a4a007f5cb4e10e.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.self-bd0c6724cdc75302fe98dfeff923112b76c1673cf4a0752a7050b7feea15594c.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.self-d7f9330825307d053f68da11bb9ddc9b070df72deef3d115f2f3d55f66b17457.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/collapse.self-a87553101c955a01e2e8c81fad69a16582ddbf58fe95d5eb335dde5567af7647.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/button.self-ceb562de883e04359bb2c06f07bdf6ecf065cc8a5027e2e58857c5e91b0b68e3.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/popover.self-cd672ecad3b549e1dbd89bfd044e5812d6fdade56f42d48e3acee0c3f4614526.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/carousel.self-5d09995e01b647168888180d40e271f9a6759d68ae7ac029d7026af58813d376.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/affix.self-14e04bbe71282aa039322ab93e3a3a886ddede5f59a2f365f7c861f697bbeb21.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/metisMenu.min.self-0db38256c73148671fb4a78e415b3cc67983c7ee20fdb697fcf4505c673c567d.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sb-admin.self-56bd6a6e5b0d37d83b0261b8de91fb454a750a4641c24bdc62f1bc5d860acb39.js?body=1" for 190.236.100.159 at 2015-10-29 17:48:22 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/logo-82ab8af69273b0b8c71f6681126ede3c19bbc71245973dbb21f8aad1f4876676.png" for 190.236.100.159 at 2015-10-29 17:48:23 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/favicon-c5a7d38344afd0ea721183b0384fcbd1e7e3af4ce3d4e3a7568e750c02c4b1e3.ico" for 190.236.100.159 at 2015-10-29 17:48:23 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/users/sign_iup" for 190.236.100.159 at 2015-10-29 17:54:14 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_iup"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:31:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (59.6ms)
+
+
+Started GET "/users/sign_up" for 190.236.100.159 at 2015-10-29 17:54:21 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mBranch Load (0.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (229.3ms)
+  Rendered shared/_login_header.html.erb (1.7ms)
+Completed 200 OK in 509ms (Views: 472.6ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/users" for 190.236.100.159 at 2015-10-29 17:55:27 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"naxmumgN75w4LpyDooTXJHYpeCXYC0eDmV0eRd0WiP0TU8dniBPvSdGm3n4jjF15fPD+kQjgb1RHeifur3x5Bg==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mBranch Load (0.4ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (159.4ms)
+  Rendered shared/_login_header.html.erb (1.5ms)
+Completed 200 OK in 423ms (Views: 341.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_up" for 190.236.100.159 at 2015-10-29 18:07:16 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mBranch Load (0.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (195.8ms)
+  Rendered shared/_login_header.html.erb (2.3ms)
+Completed 200 OK in 460ms (Views: 433.8ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/users" for 190.236.100.159 at 2015-10-29 18:08:11 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tCG9JJPkGy7/TL75ieP5HdeWOhido+54sUCa9MzjoEQ63hz5c/ob+xbE/AQI63NA3U+8rE1Ixq9vZ6NfvolRvw==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mBranch Load (0.3ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (196.0ms)
+  Rendered shared/_login_header.html.erb (2.2ms)
+Completed 200 OK in 521ms (Views: 434.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_up" for 181.66.234.85 at 2015-10-29 18:13:12 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mBranch Load (0.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (490.6ms)
+  Rendered shared/_login_header.html.erb (4.1ms)
+Completed 200 OK in 1152ms (Views: 1097.8ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/users" for 181.66.234.85 at 2015-10-29 18:13:34 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ihJxvxewnQdupGbNAlola+otchT5UH8ByWB3BYpP6WAE7dBi966d0ocsJDCDUq824PT0oCm7V9YXR06u+CUYmw==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mBranch Load (0.4ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (325.7ms)
+  Rendered shared/_login_header.html.erb (2.4ms)
+Completed 200 OK in 630ms (Views: 536.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_up" for 181.66.234.85 at 2015-10-29 18:16:28 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mBranch Load (0.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (204.4ms)
+  Rendered shared/_login_header.html.erb (1.8ms)
+Completed 200 OK in 433ms (Views: 404.7ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/users/sign_up" for 181.66.234.85 at 2015-10-29 18:16:28 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mBranch Load (0.3ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (165.0ms)
+  Rendered shared/_login_header.html.erb (2.0ms)
+Completed 200 OK in 341ms (Views: 339.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 181.66.234.85 at 2015-10-29 18:17:58 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YemTcbcREcaFyKTAzrwwQpyL6JLmOM+i2IVW5phUVMfvFjKsVw8RE2xA5j1PtLofllJuJjbT53UGom9N6j6lPA==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameters: name, lastname1, lastname2, email, branch_id, district, age, facebook_username, phone1, phone2
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mBranch Load (0.5ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (165.5ms)
+  Rendered shared/_login_header.html.erb (2.5ms)
+Completed 200 OK in 504ms (Views: 420.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_up" for 181.66.234.85 at 2015-10-29 18:20:07 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Users::RegistrationsController#new as HTML
+  [1m[35mBranch Load (0.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (359.6ms)
+  Rendered shared/_login_header.html.erb (2.5ms)
+Completed 200 OK in 871ms (Views: 828.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/users/sign_up" for 181.66.234.85 at 2015-10-29 18:20:08 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#new as HTML
+  [1m[36mBranch Load (0.3ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (320.2ms)
+  Rendered shared/_login_header.html.erb (2.3ms)
+Completed 200 OK in 547ms (Views: 545.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 181.66.234.85 at 2015-10-29 18:20:31 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CP4hyIN4+53ihbncg97TzbK1mskDquJRGgntGWcxX8CGAYAVY2b7SAsN+yEC1lmQuGwcfdNByobELtSyFVuuOw==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (3.2ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'gian.corzo@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mBranch Load (0.4ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (192.4ms)
+  Rendered shared/_login_header.html.erb (1.9ms)
+Completed 200 OK in 503ms (Views: 382.2ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/users" for 181.66.234.85 at 2015-10-29 18:20:44 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j/y9GG6wDWziHrogDqC1h/BEUvv+w5OVSLv0wzbARlkBAxzFjq4NuQuW+N2PqD/a+p3UTy4ou0KWnM1oRKq3og==", "user"=>{"name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'gian.corzo@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO `users` (`name`, `lastname1`, `lastname2`, `branch_id`, `district`, `age`, `facebook_username`, `email`, `phone1`, `phone2`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('Giancarlo', 'Corzo', 'Vigil', 1, 'San Miguel', 34, 'giancarlo.corzo', 'gian.corzo@gmail.com', '997528963', '', '$2a$10$2.i5jcSe8W2MV9HaRyfFNubvcYBFrXcqZuhdYptRjHNp8xJZ0MpGC', '2015-10-29 18:20:44', '2015-10-29 18:20:44')
+Mysql2::Error: Field 'dni' doesn't have a default value: INSERT INTO `users` (`name`, `lastname1`, `lastname2`, `branch_id`, `district`, `age`, `facebook_username`, `email`, `phone1`, `phone2`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('Giancarlo', 'Corzo', 'Vigil', 1, 'San Miguel', 34, 'giancarlo.corzo', 'gian.corzo@gmail.com', '997528963', '', '$2a$10$2.i5jcSe8W2MV9HaRyfFNubvcYBFrXcqZuhdYptRjHNp8xJZ0MpGC', '2015-10-29 18:20:44', '2015-10-29 18:20:44')
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 2.6ms)
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Field 'dni' doesn't have a default value: INSERT INTO `users` (`name`, `lastname1`, `lastname2`, `branch_id`, `district`, `age`, `facebook_username`, `email`, `phone1`, `phone2`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('Giancarlo', 'Corzo', 'Vigil', 1, 'San Miguel', 34, 'giancarlo.corzo', 'gian.corzo@gmail.com', '997528963', '', '$2a$10$2.i5jcSe8W2MV9HaRyfFNubvcYBFrXcqZuhdYptRjHNp8xJZ0MpGC', '2015-10-29 18:20:44', '2015-10-29 18:20:44')):
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:299:in `query'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:299:in `block in execute'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_adapter.rb:473:in `block in log'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_adapter.rb:467:in `log'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:299:in `execute'
+  activerecord (4.2.1) lib/active_record/connection_adapters/mysql2_adapter.rb:231:in `execute'
+  activerecord (4.2.1) lib/active_record/connection_adapters/mysql2_adapter.rb:248:in `exec_insert'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:108:in `insert'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `insert'
+  activerecord (4.2.1) lib/active_record/relation.rb:64:in `insert'
+  activerecord (4.2.1) lib/active_record/persistence.rb:522:in `_create_record'
+  activerecord (4.2.1) lib/active_record/counter_cache.rb:139:in `_create_record'
+  activerecord (4.2.1) lib/active_record/locking/optimistic.rb:75:in `_create_record'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:131:in `_create_record'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:306:in `block in _create_record'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_create_callbacks'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:306:in `_create_record'
+  activerecord (4.2.1) lib/active_record/timestamp.rb:57:in `_create_record'
+  activerecord (4.2.1) lib/active_record/persistence.rb:502:in `create_or_update'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:302:in `block in create_or_update'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_save_callbacks'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:302:in `create_or_update'
+  activerecord (4.2.1) lib/active_record/persistence.rb:120:in `save'
+  activerecord (4.2.1) lib/active_record/validations.rb:37:in `save'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:21:in `save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block (2 levels) in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:347:in `block in with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/transaction.rb:188:in `within_new_transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:344:in `with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:301:in `rollback_active_record_state!'
+  activerecord (4.2.1) lib/active_record/transactions.rb:285:in `save'
+  devise (3.5.1) app/controllers/devise/registrations_controller.rb:17:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:31:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.7ms)
+
+
+Started GET "/users" for 181.66.234.85 at 2015-10-29 18:22:08 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:31:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (60.1ms)
+
+
+Started GET "/users/sign_up" for 181.66.234.85 at 2015-10-29 18:22:12 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#new as HTML
+  [1m[35mBranch Load (0.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (189.3ms)
+  Rendered shared/_login_header.html.erb (3.0ms)
+Completed 200 OK in 437ms (Views: 435.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_up" for 181.66.234.85 at 2015-10-29 18:22:13 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#new as HTML
+  [1m[36mBranch Load (0.4ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (203.6ms)
+  Rendered shared/_login_header.html.erb (2.2ms)
+Completed 200 OK in 414ms (Views: 410.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 181.66.234.85 at 2015-10-29 18:22:53 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sGUqlVFHXN1DmTSd15wZf4Ey7q+8fBTcBKIolQqE9WI+motIsVlcCKoRdmBWlJMii+toG2yXPAvahRE+eO4EmQ==", "user"=>{"dni"=>"40869098", "name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Vigil", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+Unpermitted parameter: dni
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'gian.corzo@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO `users` (`name`, `lastname1`, `lastname2`, `branch_id`, `district`, `age`, `facebook_username`, `email`, `phone1`, `phone2`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('Giancarlo', 'Corzo', 'Vigil', 1, 'San Miguel', 34, 'giancarlo.corzo', 'gian.corzo@gmail.com', '997528963', '', '$2a$10$EKUSKf8r7CjWNAu6rXlcFOxXwTVI0DwDc6ODWJIQVHoE5bSguPTou', '2015-10-29 18:22:53', '2015-10-29 18:22:53')
+Mysql2::Error: Field 'dni' doesn't have a default value: INSERT INTO `users` (`name`, `lastname1`, `lastname2`, `branch_id`, `district`, `age`, `facebook_username`, `email`, `phone1`, `phone2`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('Giancarlo', 'Corzo', 'Vigil', 1, 'San Miguel', 34, 'giancarlo.corzo', 'gian.corzo@gmail.com', '997528963', '', '$2a$10$EKUSKf8r7CjWNAu6rXlcFOxXwTVI0DwDc6ODWJIQVHoE5bSguPTou', '2015-10-29 18:22:53', '2015-10-29 18:22:53')
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 1.9ms)
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Field 'dni' doesn't have a default value: INSERT INTO `users` (`name`, `lastname1`, `lastname2`, `branch_id`, `district`, `age`, `facebook_username`, `email`, `phone1`, `phone2`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('Giancarlo', 'Corzo', 'Vigil', 1, 'San Miguel', 34, 'giancarlo.corzo', 'gian.corzo@gmail.com', '997528963', '', '$2a$10$EKUSKf8r7CjWNAu6rXlcFOxXwTVI0DwDc6ODWJIQVHoE5bSguPTou', '2015-10-29 18:22:53', '2015-10-29 18:22:53')):
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:299:in `query'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:299:in `block in execute'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_adapter.rb:473:in `block in log'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_adapter.rb:467:in `log'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:299:in `execute'
+  activerecord (4.2.1) lib/active_record/connection_adapters/mysql2_adapter.rb:231:in `execute'
+  activerecord (4.2.1) lib/active_record/connection_adapters/mysql2_adapter.rb:248:in `exec_insert'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:108:in `insert'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `insert'
+  activerecord (4.2.1) lib/active_record/relation.rb:64:in `insert'
+  activerecord (4.2.1) lib/active_record/persistence.rb:522:in `_create_record'
+  activerecord (4.2.1) lib/active_record/counter_cache.rb:139:in `_create_record'
+  activerecord (4.2.1) lib/active_record/locking/optimistic.rb:75:in `_create_record'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:131:in `_create_record'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:306:in `block in _create_record'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_create_callbacks'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:306:in `_create_record'
+  activerecord (4.2.1) lib/active_record/timestamp.rb:57:in `_create_record'
+  activerecord (4.2.1) lib/active_record/persistence.rb:502:in `create_or_update'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:302:in `block in create_or_update'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_save_callbacks'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:302:in `create_or_update'
+  activerecord (4.2.1) lib/active_record/persistence.rb:120:in `save'
+  activerecord (4.2.1) lib/active_record/validations.rb:37:in `save'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:21:in `save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block (2 levels) in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:347:in `block in with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/transaction.rb:188:in `within_new_transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:344:in `with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:301:in `rollback_active_record_state!'
+  activerecord (4.2.1) lib/active_record/transactions.rb:285:in `save'
+  devise (3.5.1) app/controllers/devise/registrations_controller.rb:17:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:31:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (68.4ms)
+
+
+Started GET "/users/sign_up" for 181.66.234.85 at 2015-10-29 18:23:22 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#new as HTML
+  [1m[35mBranch Load (0.4ms)[0m  SELECT `branches`.* FROM `branches`
+  Rendered devise/registrations/new.html.erb within layouts/devise (249.3ms)
+  Rendered shared/_login_header.html.erb (2.4ms)
+Completed 200 OK in 516ms (Views: 484.5ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/users/sign_up" for 181.66.234.85 at 2015-10-29 18:23:22 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#new as HTML
+  [1m[36mBranch Load (0.4ms)[0m  [1mSELECT `branches`.* FROM `branches`[0m
+  Rendered devise/registrations/new.html.erb within layouts/devise (253.4ms)
+  Rendered shared/_login_header.html.erb (2.1ms)
+Completed 200 OK in 539ms (Views: 536.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 181.66.234.85 at 2015-10-29 18:24:00 +0000
+Cannot render console from 181.66.234.85! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"I5EMmpzaOarxrWGzOSDDlZIuWEF5WODPwxiW+psf3lOtbq1HfMQ5fxglI064KEnImPfe9amzyBgdP69R6XUvqA==", "user"=>{"dni"=>"40869098", "name"=>"Giancarlo", "lastname1"=>"Corzo", "lastname2"=>"Corzo", "email"=>"gian.corzo@gmail.com", "branch_id"=>"1", "district"=>"San Miguel", "age"=>"34", "facebook_username"=>"giancarlo.corzo", "phone1"=>"997528963", "phone2"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Registrarte"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'gian.corzo@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO `users` (`dni`, `name`, `lastname1`, `lastname2`, `branch_id`, `district`, `age`, `facebook_username`, `email`, `phone1`, `phone2`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('40869098', 'Giancarlo', 'Corzo', 'Corzo', 1, 'San Miguel', 34, 'giancarlo.corzo', 'gian.corzo@gmail.com', '997528963', '', '$2a$10$ozbAyP6xcJOZxECd2hx.sOeXT8qigeloV9orptigQXVo8II29CAee', '2015-10-29 18:24:00', '2015-10-29 18:24:00')
+Mysql2::Error: Field 'code' doesn't have a default value: INSERT INTO `users` (`dni`, `name`, `lastname1`, `lastname2`, `branch_id`, `district`, `age`, `facebook_username`, `email`, `phone1`, `phone2`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('40869098', 'Giancarlo', 'Corzo', 'Corzo', 1, 'San Miguel', 34, 'giancarlo.corzo', 'gian.corzo@gmail.com', '997528963', '', '$2a$10$ozbAyP6xcJOZxECd2hx.sOeXT8qigeloV9orptigQXVo8II29CAee', '2015-10-29 18:24:00', '2015-10-29 18:24:00')
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 2.3ms)
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Field 'code' doesn't have a default value: INSERT INTO `users` (`dni`, `name`, `lastname1`, `lastname2`, `branch_id`, `district`, `age`, `facebook_username`, `email`, `phone1`, `phone2`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('40869098', 'Giancarlo', 'Corzo', 'Corzo', 1, 'San Miguel', 34, 'giancarlo.corzo', 'gian.corzo@gmail.com', '997528963', '', '$2a$10$ozbAyP6xcJOZxECd2hx.sOeXT8qigeloV9orptigQXVo8II29CAee', '2015-10-29 18:24:00', '2015-10-29 18:24:00')):
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:299:in `query'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:299:in `block in execute'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_adapter.rb:473:in `block in log'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_adapter.rb:467:in `log'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:299:in `execute'
+  activerecord (4.2.1) lib/active_record/connection_adapters/mysql2_adapter.rb:231:in `execute'
+  activerecord (4.2.1) lib/active_record/connection_adapters/mysql2_adapter.rb:248:in `exec_insert'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:108:in `insert'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `insert'
+  activerecord (4.2.1) lib/active_record/relation.rb:64:in `insert'
+  activerecord (4.2.1) lib/active_record/persistence.rb:522:in `_create_record'
+  activerecord (4.2.1) lib/active_record/counter_cache.rb:139:in `_create_record'
+  activerecord (4.2.1) lib/active_record/locking/optimistic.rb:75:in `_create_record'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:131:in `_create_record'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:306:in `block in _create_record'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_create_callbacks'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:306:in `_create_record'
+  activerecord (4.2.1) lib/active_record/timestamp.rb:57:in `_create_record'
+  activerecord (4.2.1) lib/active_record/persistence.rb:502:in `create_or_update'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:302:in `block in create_or_update'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_save_callbacks'
+  activerecord (4.2.1) lib/active_record/callbacks.rb:302:in `create_or_update'
+  activerecord (4.2.1) lib/active_record/persistence.rb:120:in `save'
+  activerecord (4.2.1) lib/active_record/validations.rb:37:in `save'
+  activerecord (4.2.1) lib/active_record/attribute_methods/dirty.rb:21:in `save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block (2 levels) in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:347:in `block in with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/transaction.rb:188:in `within_new_transaction'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:220:in `transaction'
+  activerecord (4.2.1) lib/active_record/transactions.rb:344:in `with_transaction_returning_status'
+  activerecord (4.2.1) lib/active_record/transactions.rb:286:in `block in save'
+  activerecord (4.2.1) lib/active_record/transactions.rb:301:in `rollback_active_record_state!'
+  activerecord (4.2.1) lib/active_record/transactions.rb:285:in `save'
+  devise (3.5.1) app/controllers/devise/registrations_controller.rb:17:in `create'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:31:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (54.7ms)
