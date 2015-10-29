@@ -9818,3 +9818,523 @@ Cannot render console from 190.234.105.147! Allowed networks: 127.0.0.1, ::1, 12
 
 Started GET "/assets/favicon-c5a7d38344afd0ea721183b0384fcbd1e7e3af4ce3d4e3a7568e750c02c4b1e3.ico" for 190.234.105.147 at 2015-10-29 14:43:13 +0000
 Cannot render console from 190.234.105.147! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to AddDniToUsers (20151029144159)
+  [1m[36m (33.4ms)[0m  [1mALTER TABLE `users` DROP `dni`[0m
+  [1m[35mSQL (6.1ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20151029144159'
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'authentication_providers'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `authentication_providers`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'branches'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `branches`[0m
+  [1m[35m (0.2ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'courses'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `courses`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'user_authentications'
+
+  [1m[36m (0.1ms)[0m  [1mSHOW CREATE TABLE `user_authentications`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'users'
+
+  [1m[36m (0.3ms)[0m  [1mSHOW CREATE TABLE `users`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.4ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateUserAuthentications (20151028211539)
+  [1m[36m (15.4ms)[0m  [1mDROP INDEX `index_user_authentications_on_user_id` ON `user_authentications`[0m
+  [1m[35m (14.4ms)[0m  DROP INDEX `index_user_authentications_on_authentication_provider_id` ON `user_authentications`
+  [1m[36m (6.8ms)[0m  [1mDROP TABLE `user_authentications`[0m
+  [1m[35mSQL (6.4ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20151028211539'
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'authentication_providers'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `authentication_providers`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'branches'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `branches`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'courses'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `courses`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'users'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `users`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateAuthenticationProviders (20151028211538)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO `authentication_providers` (`name`, `created_at`, `updated_at`) VALUES ('facebook', '2015-10-29 16:11:33', '2015-10-29 16:11:33')
+  [1m[36m (6.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (5.7ms)[0m  [1mINSERT INTO `authentication_providers` (`name`, `created_at`, `updated_at`) VALUES ('github', '2015-10-29 16:11:33', '2015-10-29 16:11:33')[0m
+  [1m[35m (4.0ms)[0m  COMMIT
+  [1m[36m (18.9ms)[0m  [1mDROP INDEX `index_name_on_authentication_providers` ON `authentication_providers`[0m
+  [1m[35m (7.0ms)[0m  DROP TABLE `authentication_providers`
+  [1m[36mSQL (5.2ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20151028211538'[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'branches'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `branches`
+  [1m[36m (0.5ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'courses'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `courses`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.3ms)[0m  SHOW CREATE TABLE `users`
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to AddBranchToUsers (20151028094606)
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.3ms)[0m  SHOW CREATE TABLE `users`
+  [1m[36m (34.8ms)[0m  [1mALTER TABLE `users` DROP FOREIGN KEY fk_rails_bda81e12f5[0m
+  [1m[35m (51.6ms)[0m  ALTER TABLE `users` DROP `branch_id`
+  [1m[36mSQL (5.2ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20151028094606'[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'branches'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `branches`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'courses'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `courses`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `users`
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateBranches (20151028092003)
+  [1m[36m (6.8ms)[0m  [1mDROP TABLE `branches`[0m
+  [1m[35mSQL (6.4ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20151028092003'
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'courses'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `courses`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'users'
+
+  [1m[36m (0.3ms)[0m  [1mSHOW CREATE TABLE `users`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to AddFieldsToUsers (20151028055627)
+  [1m[36m (40.1ms)[0m  [1mALTER TABLE `users` DROP `code`[0m
+  [1m[35m (32.1ms)[0m  ALTER TABLE `users` DROP `name`
+  [1m[36mSQL (5.7ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20151028055627'[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'courses'
+[0m
+  [1m[35m (0.3ms)[0m  SHOW CREATE TABLE `courses`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `users`
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddFieldsToUsers (20151028055627)
+  [1m[35m (42.4ms)[0m  ALTER TABLE `users` ADD `dni` varchar(255) NOT NULL
+  [1m[36m (35.9ms)[0m  [1mALTER TABLE `users` ADD `code` varchar(255) NOT NULL[0m
+  [1m[35m (39.9ms)[0m  ALTER TABLE `users` ADD `name` varchar(255) NOT NULL
+  [1m[36m (39.3ms)[0m  [1mALTER TABLE `users` ADD `lastname1` varchar(255) NOT NULL[0m
+  [1m[35m (34.4ms)[0m  ALTER TABLE `users` ADD `lastname2` varchar(255) NOT NULL
+  [1m[36m (24.9ms)[0m  [1mALTER TABLE `users` ADD `age` int(11) NOT NULL[0m
+  [1m[35m (37.3ms)[0m  ALTER TABLE `users` ADD `district` varchar(255) NOT NULL
+  [1m[36m (32.1ms)[0m  [1mALTER TABLE `users` ADD `facebook_username` varchar(255)[0m
+  [1m[35m (48.3ms)[0m  ALTER TABLE `users` ADD `phone1` varchar(255) NOT NULL
+  [1m[36m (38.3ms)[0m  [1mALTER TABLE `users` ADD `phone2` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151028055627')[0m
+  [1m[35m (5.5ms)[0m  COMMIT
+Migrating to CreateBranches (20151028092003)
+  [1m[36m (13.2ms)[0m  [1mCREATE TABLE `branches` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151028092003')[0m
+  [1m[35m (5.1ms)[0m  COMMIT
+Migrating to AddBranchToUsers (20151028094606)
+  [1m[36m (32.9ms)[0m  [1mALTER TABLE `users` ADD `branch_id` int(11)[0m
+  [1m[35m (17.2ms)[0m  CREATE  INDEX `index_users_on_branch_id`  ON `users` (`branch_id`) 
+  [1m[36m (31.9ms)[0m  [1mALTER TABLE `users` ADD CONSTRAINT `fk_rails_bda81e12f5`
+FOREIGN KEY (`branch_id`)
+  REFERENCES `branches` (`id`)
+[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151028094606')[0m
+  [1m[35m (4.5ms)[0m  COMMIT
+Migrating to CreateAuthenticationProviders (20151028211538)
+  [1m[36m (10.8ms)[0m  [1mCREATE TABLE `authentication_providers` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (21.8ms)[0m  CREATE  INDEX `index_name_on_authentication_providers`  ON `authentication_providers` (`name`) 
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO `authentication_providers` (`name`, `created_at`, `updated_at`) VALUES ('facebook', '2015-10-29 16:23:34', '2015-10-29 16:23:34')
+  [1m[36m (5.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO `authentication_providers` (`name`, `created_at`, `updated_at`) VALUES ('github', '2015-10-29 16:23:34', '2015-10-29 16:23:34')[0m
+  [1m[35m (3.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151028211538')
+  [1m[36m (4.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUserAuthentications (20151028211539)
+  [1m[35m (11.4ms)[0m  CREATE TABLE `user_authentications` (`id` int(11) auto_increment PRIMARY KEY, `user_id` int(11), `authentication_provider_id` int(11), `uid` varchar(255), `token` varchar(255), `token_expires_at` datetime, `params` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (21.7ms)[0m  [1mCREATE  INDEX `index_user_authentications_on_authentication_provider_id`  ON `user_authentications` (`authentication_provider_id`) [0m
+  [1m[35m (22.4ms)[0m  CREATE  INDEX `index_user_authentications_on_user_id`  ON `user_authentications` (`user_id`) 
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151028211539')
+  [1m[36m (5.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'authentication_providers'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `authentication_providers`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'branches'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `branches`
+  [1m[36m (0.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'courses'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `courses`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'user_authentications'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `user_authentications`
+  [1m[36m (0.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `users`
+
+
+Started GET "/users/sign_in" for 190.236.100.159 at 2015-10-29 16:27:31 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/devise (386.3ms)
+  Rendered shared/_login_header.html.erb (7.3ms)
+Completed 200 OK in 1454ms (Views: 1391.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.self-77d963462a71b85aa6c39f0110994006fed4301154d937da52eb3884ff813853.css?body=1" for 190.236.100.159 at 2015-10-29 16:27:33 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap-social.self-3bf18f1e36da1af659676c9ecfb3290f05014393fa1c146e217b65168ba8b691.css?body=1" for 190.236.100.159 at 2015-10-29 16:27:33 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/font-awesome.self-2d17540bab3759939e910ca38a695f014e0c777ded3ad7a01c4658b9d3fc980d.css?body=1" for 190.236.100.159 at 2015-10-29 16:27:33 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/login.self-d33631a436528079d6c2c82f28161820cc8bf831225ba32d1d91795ee6ffaed4.css?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.self-e08aebab1405811dae3774a7365eb2aa258e15030f3d610323ee9e41a140fe14.css?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/transition.self-db278e3a8fa6249c16796b113ebd29e11ef4e2cd021618ed84895d524a4511e0.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/alert.self-ebce91ec66c71bcee451ea7da9128fd1bf8faa02c6d22ea04c598423431e4c08.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/modal.self-ab1767545e27c0dbd36971e656ae4927171f673e3d932cdec2cbef39e991952b.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.self-8bb9309b6c24a4ba6b94026a049d25b13bdc0553b6fe83255c14a715ba624cc4.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.self-bd0c6724cdc75302fe98dfeff923112b76c1673cf4a0752a7050b7feea15594c.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tab.self-7e3ee4a243bb416b5f0111a0be08f8547c5d72ba71fe4afe4a4a007f5cb4e10e.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.self-d7f9330825307d053f68da11bb9ddc9b070df72deef3d115f2f3d55f66b17457.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/popover.self-cd672ecad3b549e1dbd89bfd044e5812d6fdade56f42d48e3acee0c3f4614526.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/button.self-ceb562de883e04359bb2c06f07bdf6ecf065cc8a5027e2e58857c5e91b0b68e3.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/collapse.self-a87553101c955a01e2e8c81fad69a16582ddbf58fe95d5eb335dde5567af7647.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/carousel.self-5d09995e01b647168888180d40e271f9a6759d68ae7ac029d7026af58813d376.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap/affix.self-14e04bbe71282aa039322ab93e3a3a886ddede5f59a2f365f7c861f697bbeb21.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/metisMenu.min.self-0db38256c73148671fb4a78e415b3cc67983c7ee20fdb697fcf4505c673c567d.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:34 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/sb-admin.self-56bd6a6e5b0d37d83b0261b8de91fb454a750a4641c24bdc62f1bc5d860acb39.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:35 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 190.236.100.159 at 2015-10-29 16:27:35 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/logo-82ab8af69273b0b8c71f6681126ede3c19bbc71245973dbb21f8aad1f4876676.png" for 190.236.100.159 at 2015-10-29 16:27:35 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/favicon-c5a7d38344afd0ea721183b0384fcbd1e7e3af4ce3d4e3a7568e750c02c4b1e3.ico" for 190.236.100.159 at 2015-10-29 16:27:35 +0000
+Cannot render console from 190.236.100.159! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to Element (20151029164251)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20151029164251')[0m
+  [1m[35m (4.6ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'authentication_providers'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `authentication_providers`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'branches'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `branches`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'courses'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `courses`[0m
+  [1m[35m (0.4ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'user_authentications'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `user_authentications`[0m
+  [1m[35m (0.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'capitan'
+  AND fk.table_name = 'users'
+
+  [1m[36m (0.2ms)[0m  [1mSHOW CREATE TABLE `users`[0m

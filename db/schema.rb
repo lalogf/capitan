@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029144159) do
+ActiveRecord::Schema.define(version: 20151029164251) do
 
   create_table "authentication_providers", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -73,10 +73,17 @@ ActiveRecord::Schema.define(version: 20151029144159) do
     t.string   "provider",               limit: 255
     t.string   "uid",                    limit: 255
     t.boolean  "admin",                  limit: 1,   default: false
-    t.string   "name",                   limit: 255,                 null: false
+    t.string   "dni",                    limit: 255,                 null: false
     t.string   "code",                   limit: 255,                 null: false
+    t.string   "name",                   limit: 255,                 null: false
+    t.string   "lastname1",              limit: 255,                 null: false
+    t.string   "lastname2",              limit: 255,                 null: false
+    t.integer  "age",                    limit: 4,                   null: false
+    t.string   "district",               limit: 255,                 null: false
+    t.string   "facebook_username",      limit: 255
+    t.string   "phone1",                 limit: 255,                 null: false
+    t.string   "phone2",                 limit: 255
     t.integer  "branch_id",              limit: 4
-    t.string   "dni",                    limit: 255
   end
 
   add_index "users", ["branch_id"], name: "index_users_on_branch_id", using: :btree
