@@ -18,19 +18,28 @@
 #  provider               :string(255)
 #  uid                    :string(255)
 #  admin                  :boolean          default(FALSE)
+#  dni                    :string(255)      not null
+#  code                   :string(255)
 #  name                   :string(255)      not null
-#  code                   :string(255)      not null
+#  lastname1              :string(255)      not null
+#  lastname2              :string(255)      not null
+#  age                    :integer          not null
+#  district               :string(255)      not null
+#  facebook_username      :string(255)
+#  phone1                 :string(255)      not null
+#  phone2                 :string(255)
 #  branch_id              :integer
-#  dni                    :string(255)
 #
 
 class User < ActiveRecord::Base
   
-  before_create :generate_code  
+  after_create :generate_code  
   
   
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :branch
+  has_many :answers
+  has_many :pages, through: :answers
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -57,10 +66,8 @@ class User < ActiveRecord::Base
 protected
 
   def generate_code
-    self.token = loop do
-      random_token = SecureRandom.urlsafe_base64(nil, false)
-      break random_token unless ModelName.exists?(token: random_token)
-    end
+    self.code = self.branch.code + self.id.to_s
+    self.save
   end  
 
 

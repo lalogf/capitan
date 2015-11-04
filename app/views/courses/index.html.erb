@@ -1,38 +1,26 @@
-<%- model_class = Course -%>
-<div class="page-header clearfix">
-    <h1 class="page-title">Cursos</h1>
-    <div class="button-nav">
-      <%= link_to "Crear Curso", new_course_path, :class => 'btn btn-primary' %>    
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="courses">
+        <% @courses.each_slice(2) do |courses| %>
+          <div class="row">
+            <% courses.each do |course| %>
+              <div class="col-md-6">
+                <article class="course card">
+                  <div class="content">
+                    <%= link_to course_path(course) do %>
+                      <h2 class="title"><%= course.name %></h2>
+                    <% end %>
+                    <p class="description"><%= course.description %></p>
+                  </div>
+                </article>
+              </div>
+            <% end %>
+          </div>
+        <% end %>  
+      </div>      
     </div>
+  </div>
 </div>
 
 
-<% @courses.each_slice(2) do |courses| %>
-  <div class="row">
-    <% courses.each do |course| %>
-      <div class="col-md-6">
-        <article class="course card">
-          <div class="course-avatar avatar">
-            <%= image_tag course.avatar.url(:thumb) %>
-          </div>
-          <div class="content">
-            <%= link_to course_path(course) do %>
-              <h2 class="title"><%= course.name %></h2>
-            <% end %>
-            <p class="description"><%= course.description %></p>
-          </div>
-          <div class="commands">
-            <%= link_to edit_course_path(course) do %>
-              <%= fa_icon "pencil" %>
-            <% end %>
-            <%= link_to course_path(course),
-                        :method => :delete,
-                        :data => { :confirm => '¿Estas seguro?' } do %>
-              <%= fa_icon "trash" %>
-            <%end%>            
-          </div>
-        </article>
-      </div>
-    <% end %>
-  </div>
-<% end %>

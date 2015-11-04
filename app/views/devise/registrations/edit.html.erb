@@ -1,27 +1,30 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+<div class="cell">
+  <div class="center">
+    <h3 class="home-title thin mb-20">
+      Hola <%= resource.name %>, antes de continuar por favor valida que todos tus datos son correctos:</h3>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <div class="form form-session">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+    
+      <div class="form-inputs">
+        <%= f.input :dni, label: "DNI", required: true, autofocus: true, placeholder: "DNI", disabled: true %>
+        <%= f.input :name, label: "Nombre", required: true, placeholder: "Nombre", disabled: true %>
+        <%= f.input :lastname1, label: "Primer Apellido", required: true, placeholder: "Primer apellido", disabled: true %>
+        <%= f.input :lastname2, label: "Segundo Apellido", required: true, placeholder: "Segundo apellido", disabled: true %>
+        <%= f.input :email,label: "Correo electrónico", required: true, placeholder: "Correo electrónico", disabled: true %>
+        <%= f.association :branch,label: "Sede", prompt: "Selecciona una sede", collection: Branch.all, disabled: true  %>
+        <%= f.input :district, label: "Distrito", required: true, placeholder: "Distrito" %>
+        <%= f.input :age, label: "Edad", required: true, placeholder: "Edad" %>
+        <%= f.input :facebook_username, label: "Usuario de Facebook", required: true, placeholder: "Facebook User" %>
+        <%= f.input :phone1, label: "Teléfono", required: true, placeholder: "Teléfono" %>
+        <%= f.input :phone2, label: "Otro teléfono", required: true, placeholder: "Otro teléfono" %>
+      </div>
+    
+      <div class="form-actions">
+        <%= f.button :submit, "Update", :class => "btn btn-primary" %>
+        <%= link_to "¿No eres tú?", :back, :class => "btn btn-default btn-danger" %>
+      </div>
+    <% end %>    
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

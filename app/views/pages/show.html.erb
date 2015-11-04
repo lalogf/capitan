@@ -1,0 +1,83 @@
+<% content_for :scripts do %>
+  <script>
+    $(document).ready(function() {
+      if ($(".instructions_container").val() != null) {
+        $(".instructions").html(converter.makeHtml($(".instructions_container").val()));
+      }
+      
+      $(".start-over").click(function(e) {
+        e.preventDefault();
+        editor.setValue("");
+        editor.clearHistory();
+      });
+      
+      $(".save").click(function(e) {
+        e.preventDefault();
+        
+        $.post("/saveAnswer",{
+          answer: editor.getValue(),
+          page_id: <%= @page.id %>
+        },function(result) {
+          if (result.status == "ok") {
+            window.location = '<%= course_unit_page_url(@course,@unit,@page.next_page) %>';
+          } else {
+            alert("Hubo un error al intentar grabar la respuesta, por favor vuelta a intentarlo");
+          }
+        });
+      });
+      
+    });
+  </script>
+<% end %>
+<div class="container">
+  <div class="wizzard-row">
+    <% @unit.pages.order(:sequence).each do |page| %>
+      <div class="column <%= page.id == @page.id ? "active": (!page.answers.empty? ? "viewed" : "") %>" 
+           title="<%= page.title %>">
+        <%= link_to '',course_unit_page_path(@course,@unit,page) if !page.answers.empty? %>
+      </div> 
+    <% end %>
+  </div>
+  <div class="row">
+    <h3 class="video-title"><%= @page.title %></h3>
+    <% if @page.page_type == 'video' %>
+      <div class="outer-container">
+          <div class="inner-container text-center">
+              <div class="video-overlay" style="display: none;">
+                <%= link_to 'Continuar', course_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-primary" %>
+                <br><br>
+                <a href="#" class="rewind-video">
+                  <i class="fa fa-undo fa-2x"></i> Ver de nuevo
+                </a>
+              </div>
+              <% if @page.videos.first != nil %>
+                <%= videojs_rails sources: { mp4: @page.videos.first.content.url } do %>
+                    Please enable <b>JavaScript</b> to see this content.
+                <% end %>
+              <% end %>
+          </div>
+      </div>
+    <% end %>
+    <% if @page.page_type == 'editor' %>
+      <div class="container">
+          <textarea style="display:none;" class="instructions_container"><%= @page.instructions %></textarea>
+          <div class="instructions row">
+          </div>
+          <div class="row">
+              <div class="col-sm-6">
+                  <textarea id="code" name="code" placeholder="Tu código va aquí..."></textarea>
+              </div>
+              <div class="col-sm-6">
+                  <iframe id="preview" class="preview"></iframe>
+              </div>
+          </div>
+          <div class="row">
+            <div class="pull-right">
+              <a href="#" class="start-over btn btn-primary">Empezar de nuevo</a>
+              <a href="#" class="save btn btn-primary">Guardar y Avanzar</a>
+            </div>
+          </div>
+      </div>    
+    <% end %>
+  </div>
+</div>

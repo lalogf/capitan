@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id           :integer          not null, primary key
+#  title        :string(255)
+#  unit_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  page_type    :string(255)
+#  sequence     :integer
+#  instructions :string(255)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  unit_id: 
+
+two:
+  title: MyString
+  unit_id: 

@@ -1,0 +1,15 @@
+<%= simple_form_for([@course,@unit,@page]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :page_type, :collection => [['video','video'],['editor','editor'],['multiple-option-single-choice','multiple-option-single-choice']] %>
+    <%= f.input :sequence %>
+    <%= f.association :unit %>
+    <%= f.input :instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

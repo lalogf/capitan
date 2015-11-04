@@ -1,0 +1,251 @@
+body { 
+    color: #393d40;
+	background: #f6f8f8;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    min-height: 100%;
+    position: relative;    
+}
+
+header {
+    box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+    height: 75px;
+}
+
+header .logo {
+    line-height:75px;
+    display: block;
+}
+
+header .logo img {
+    height: 60px;
+}
+
+header .list-item {
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.top-menu {
+    line-height: 75px;
+}
+
+.top-menu a {
+    padding: 0px 15px !important;
+}
+
+ul li {
+    list-style: none;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+::selection {
+    background: #9c4c9d;
+    color: #fff;
+}
+::-moz-selection {
+    background: #9c4c9d;
+    color: #fff;
+}
+
+.page-header {
+    margin: 0px;
+}
+
+.courses {
+    margin-top: 40px;
+} 
+
+.card {
+  border: 1px solid rgba(0,0,0,0.3);
+  background: #f7f7f7;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);  
+  padding: 1.25em;  
+}
+
+article.course {
+  margin-bottom: 1.25em;
+  min-height: 140px;
+  overflow: hidden;
+}
+
+.avatar {
+  background: #fff;
+  border-radius: 50%;
+  display: block;
+  height: 110px;
+  padding: 0.3125em;
+  position: relative;
+  width: 110px;
+}
+
+.course-avatar {
+  bottom: auto;
+  left: 5px;
+  position: absolute;
+  right: auto;
+  top: -2px;
+  z-index: 2;
+}
+
+article.course .content {
+  margin-top:0px;
+  padding-right: 1.25em;
+  position: relative;
+  z-index: 3;
+}
+
+article.course .content .title {
+  font-size: 115%;
+  margin-top: 0px;
+  margin-bottom: 0.3125em;
+  border: 0;
+  color: #585a5b;
+  padding-right: 0.3125em;  
+}
+
+article.course .content .description {
+  font-size: 85%;
+  margin-bottom: 0;
+}
+
+article.course .commands {
+  position:absolute;
+  right: 25px;
+  top: 5px;
+}
+
+article.course .commands a:hover {
+  text-decoration: none;  
+}
+
+.course-header {
+  border-top: 1px solid;
+  padding: 4em 50px;
+}
+
+.course-header .content {
+  color: white;
+  max-width: 75em;
+  position: relative;
+}
+
+.course-header .content h1 {
+  font-weight: bold;
+}
+
+.course-header .content img {
+  max-width: 100%;
+}
+
+.discuss {
+  min-height:80px;
+}
+
+.discuss a {
+  border-radius: 100px;
+  margin-top: 20px;
+}
+
+.unidades {
+  min-height: 100px;
+}
+
+.wizzard-row {
+  margin-top: 20px;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-flex;
+  display: -moz-flex;
+  table-layout: fixed;
+  margin-left: -15px;
+  margin-right: -15px;
+  white-space: nowrap;
+}
+
+.wizzard-row div {
+  -webkit-flex: 1 1 auto;
+  -moz-flex: 1 1 auto;
+  flex: 1 1 auto;
+  display: inline-block;
+}
+
+.column {
+  border: 1px solid grey;
+  margin: 0 1px 0px 0px;
+  text-align: center;
+  display: block;
+}
+
+.column a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.column.active {
+  background: grey;
+}
+
+
+.video-title {
+  margin-bottom: 40px;
+}
+
+.outer-container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.inner-container {
+    display: inline-block;
+    position: relative;
+    width:100%;
+}
+.video-overlay {
+    position:absolute;
+    float:left;
+    width:100%;
+    min-height:100%;
+    background-color:rgba(255,255,255,0.7);
+    z-index:300000;
+    padding-top: 30%;
+}
+video {
+    width: 100%;
+    height: 100%;
+}
+
+.CodeMirror { border: 1px solid silver; }
+.CodeMirror-empty { outline: 1px solid #c22; }
+.CodeMirror-empty.CodeMirror-focused { outline: none; }
+.CodeMirror pre.CodeMirror-placeholder { color: #999; }
+
+.preview {
+    width: 100%;
+    height: 300px;
+    background: white;
+    border: 1px solid;
+}
+
+.instructions {
+  margin-bottom:20px;
+}
+
+.viewed {
+  background-color: #A9A9A9;
+}

@@ -5,18 +5,4 @@ class ApplicationController < ActionController::Base
   
   before_action :authenticate_user!
   
-  layout :select_layout_on_user_type
-  
-  protected
-  
-  def select_layout_on_user_type
-    if current_user.try(:admin?)
-      "admin"
-    elsif current_user
-      "application"
-    else
-      "devise"
-    end
-  end
-  
 end

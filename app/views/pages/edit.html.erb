@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="row">
+        <h1>Editing Page</h1>
+        <%= render 'form' %>
+        
+        <%= link_to 'Show', [@course,@unit,@page] %> |
+        <%= link_to 'Back', course_unit_pages_path(@course,@unit) %>        
+    </div>
+</div>

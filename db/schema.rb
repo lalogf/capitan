@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029164251) do
+ActiveRecord::Schema.define(version: 20151103150134) do
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "page_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.string   "result",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "answers", ["page_id"], name: "index_answers_on_page_id", using: :btree
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
   create_table "authentication_providers", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -25,6 +36,7 @@ ActiveRecord::Schema.define(version: 20151029164251) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "code",       limit: 255
   end
 
   create_table "courses", force: :cascade do |t|
@@ -42,6 +54,43 @@ ActiveRecord::Schema.define(version: 20151029164251) do
     t.integer  "background_image_file_size",    limit: 4
     t.datetime "background_image_updated_at"
   end
+
+  create_table "elements", force: :cascade do |t|
+    t.integer  "course_id",   limit: 4
+    t.string   "title",       limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "elements", ["course_id"], name: "index_elements_on_course_id", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.integer  "unit_id",      limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "page_type",    limit: 255
+    t.integer  "sequence",     limit: 4
+    t.string   "instructions", limit: 255
+  end
+
+  add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree
+
+  create_table "pages_videos", id: false, force: :cascade do |t|
+    t.integer "page_id",  limit: 4, null: false
+    t.integer "video_id", limit: 4, null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.string   "description", limit: 255
+    t.integer  "course_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "units", ["course_id"], name: "index_units_on_course_id", using: :btree
 
   create_table "user_authentications", force: :cascade do |t|
     t.integer  "user_id",                    limit: 4
@@ -74,7 +123,7 @@ ActiveRecord::Schema.define(version: 20151029164251) do
     t.string   "uid",                    limit: 255
     t.boolean  "admin",                  limit: 1,   default: false
     t.string   "dni",                    limit: 255,                 null: false
-    t.string   "code",                   limit: 255,                 null: false
+    t.string   "code",                   limit: 255
     t.string   "name",                   limit: 255,                 null: false
     t.string   "lastname1",              limit: 255,                 null: false
     t.string   "lastname2",              limit: 255,                 null: false
@@ -90,5 +139,20 @@ ActiveRecord::Schema.define(version: 20151029164251) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "videos", force: :cascade do |t|
+    t.string   "title",                limit: 255
+    t.string   "content_file_name",    limit: 255
+    t.string   "content_content_type", limit: 255
+    t.integer  "content_file_size",    limit: 4
+    t.datetime "content_updated_at"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_foreign_key "answers", "pages"
+  add_foreign_key "answers", "users"
+  add_foreign_key "elements", "courses"
+  add_foreign_key "pages", "units"
+  add_foreign_key "units", "courses"
   add_foreign_key "users", "branches"
 end

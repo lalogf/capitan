@@ -34,4 +34,6 @@ class Course < ActiveRecord::Base
     validates_attachment_content_type :background_image, :content_type => /\Aimage\/.*\Z/
     
     validates :name, presence: true
+    
+    has_many :units
 end

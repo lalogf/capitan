@@ -1,41 +1,36 @@
-<%- model_class = Course -%>
-
-<div class="page-header clearfix">
-    <h1 class="page-title">Curso: <%= @course.name %></h1>
-    <div class="button-nav">
-        <%= link_to "Editar",
-              edit_course_path(@course), :class => 'btn btn-primary' %>
-        <%= link_to 'Eliminar', course_path(@course),
-                      :method => 'delete',
-                      :data => { :confirm => '¿Seguro?' },
-                      :class => 'btn btn-danger' %>              
-    </div>
-</div>
-
 <div class="course-header clearfix" style="background: <%= @course.color %> url('<%= @course.background_image.url(:big) %>')">
-    <div class="content clearfix">
-        <div class="col-xs-3">
-            <%= image_tag @course.avatar.url(:medium) %>
-        </div>
-        <div class="col-xs-9">
-            <h1><%= @course.name %></h1>
-            <p><%= @course.description %></p>
-            <a href="javascript:void(0);" class="btn btn-primary">
-                Comenzar ahora!
-            </a>
+    <div class="content container">
+        <div class="row">
+            <div class="col-xs-2">
+                <%= image_tag @course.avatar.url(:medium) %>
+            </div>
+            <div class="col-xs-10">
+                <h1><%= @course.name %></h1>
+            </div>            
         </div>
     </div>
 </div>
-<div class="row-fluid discuss">
+<div class="container">
+  <div class="row unidades">
     <div class="col-xs-12">
-        <a target="_blank" href="http://coordino.laboratoria.la" class="btn btn-default pull-right">Preguntas y Respuestas</a>
+      <h3>Descripción del curso</h3>
+      <p><%= @course.description %></p>
+      <h3>Contenido del curso</h3>
+      <div class="units">
+        <ol>
+        <% @course.units.each_with_index do |unit,index| %>
+        <li class="list-item">
+          <div class="bucket">
+            <h3>
+              <b>Unit <%= index + 1 %> | <%= unit.pages.count %> retos</b>
+              <%= link_to unit.title, course_unit_page_path(@course,unit,1)  %>
+            </h3>
+            <p><%= unit.description %></p>
+          </div>
+        </li>
+        <% end %>
+        </ol>
+      </div>
     </div>
-</div>
-<div class="row-fluid unidades">
-    <div class="col-xs-12 col-md-9 left">
-        <h3>Descripción del curso</h3>
-        <p><%= @course.description %></p>
-        <br>
-        
-    </div>
+  </div>
 </div>

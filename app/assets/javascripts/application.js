@@ -10,8 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery-2.1.4.min
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap
 //= require turbolinks
-//= require_tree .
+//= require codemirror
+//= require jquery.mousewheel-min
+//= require mode/xml
+//= require mode/javascript
+//= require mode/css
+//= require mode/htmlmixed
+//= require addons/placeholder
+//= require pagedown_bootstrap
+//= require pagedown_init
+//= require main
+//= require_self

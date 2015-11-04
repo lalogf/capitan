@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: answers
+#
+#  id         :integer          not null, primary key
+#  page_id    :integer
+#  user_id    :integer
+#  result     :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  page_id: 
+  user_id: 
+  result: MyString
+
+two:
+  page_id: 
+  user_id: 
+  result: MyString

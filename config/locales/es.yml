@@ -1,0 +1,22 @@
+es:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Ingresa un correo electrónico válido"
+              taken: "Este correo ya existe"
+              invalid: "Ingresa un correo electrónico válido"
+            password:
+              blank: "Ingresa una contraseña válida"
+              confirmation: "La contraseña no coincide"
+              too_short: "La contraseña es muy corta"
+            password_confirmation:
+              blank: "Por favor confirma la contraseña"
+            name:
+              blank: "Ingresa tu nombre"
+            lastname1:
+              blank: "Ingresa tu primer apellido"
+            lastname2:
+              blank: "Ingresa tu segundo apellido"

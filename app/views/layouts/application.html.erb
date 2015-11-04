@@ -5,36 +5,50 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>El capitán</title>
-    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track'=> true %>
-    <%= csrf_meta_tags %>
-    <%= favicon_link_tag 'favicon.ico' %>
+  <title>Recursos laboratoria</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" media="screen" rel="stylesheet" type="text/css">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=> true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
 </head>
 
 <body>
-  <div id="wrapper">
-    <%= render 'layout_header' %>
-    
-
-    <div id="page-wrapper">
-      <div class="container-fluid">
+  
+  <section id="container" >
+    <header class="header black-bg">
+      <div class="container">
         <div class="row">
-          <div class="col-lg-12">
-            <%= yield %>
+          <div class="col-sm-3">
+            <a href="/" class="logo">
+              <%= image_tag 'logo'%>
+            </a>            
+          </div>
+          <div class="col-sm-9">
+            <div class="top-menu">
+              <ul class="nav pull-right top-menu">
+                <li class="list-item nav-item">
+                  <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
+                </li>
+              </ul>
+            </div>            
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </header>
+      
+      <!--main content start-->
+      <%= yield %>
+  </section>  
   <%= javascript_include_tag 'application', 'data-turbolinks-track'=> true %>
+  <%= yield :scripts %>
 </body>
 
 </html>
