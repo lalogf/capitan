@@ -33,7 +33,7 @@
 
 class User < ActiveRecord::Base
   
-  after_create :generate_code  
+  #after_create :generate_code  
   
   
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
     }
 
     create(attributes)
+  end
+  
+  def full_name
+    return "#{name} #{lastname1} #{lastname2}"
   end
   
 protected

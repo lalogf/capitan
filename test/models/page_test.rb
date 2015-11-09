@@ -10,6 +10,7 @@
 #  page_type    :string(255)
 #  sequence     :integer
 #  instructions :string(255)
+#  html         :string(255)
 #
 
 require 'test_helper'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103150134) do
+ActiveRecord::Schema.define(version: 20151107192241) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -65,14 +65,25 @@ ActiveRecord::Schema.define(version: 20151103150134) do
 
   add_index "elements", ["course_id"], name: "index_elements_on_course_id", using: :btree
 
+  create_table "options", force: :cascade do |t|
+    t.string   "description", limit: 255
+    t.integer  "question_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.boolean  "correct",     limit: 1
+  end
+
+  add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
+
   create_table "pages", force: :cascade do |t|
     t.string   "title",        limit: 255
     t.integer  "unit_id",      limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "page_type",    limit: 255
     t.integer  "sequence",     limit: 4
     t.string   "instructions", limit: 255
+    t.text     "html",         limit: 65535
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree
@@ -80,6 +91,23 @@ ActiveRecord::Schema.define(version: 20151103150134) do
   create_table "pages_videos", id: false, force: :cascade do |t|
     t.integer "page_id",  limit: 4, null: false
     t.integer "video_id", limit: 4, null: false
+  end
+
+  create_table "question_groups", force: :cascade do |t|
+    t.integer  "page_id",     limit: 4
+    t.integer  "question_id", limit: 4
+    t.integer  "sequence",    limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "question_groups", ["page_id"], name: "index_question_groups_on_page_id", using: :btree
+  add_index "question_groups", ["question_id"], name: "index_question_groups_on_question_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "units", force: :cascade do |t|
@@ -140,19 +168,19 @@ ActiveRecord::Schema.define(version: 20151103150134) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|
-    t.string   "title",                limit: 255
-    t.string   "content_file_name",    limit: 255
-    t.string   "content_content_type", limit: 255
-    t.integer  "content_file_size",    limit: 4
-    t.datetime "content_updated_at"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "title",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "youtube",    limit: 255
   end
 
   add_foreign_key "answers", "pages"
   add_foreign_key "answers", "users"
   add_foreign_key "elements", "courses"
+  add_foreign_key "options", "questions"
   add_foreign_key "pages", "units"
+  add_foreign_key "question_groups", "pages"
+  add_foreign_key "question_groups", "questions"
   add_foreign_key "units", "courses"
   add_foreign_key "users", "branches"
 end

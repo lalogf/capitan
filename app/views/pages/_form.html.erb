@@ -1,14 +1,75 @@
-<%= simple_form_for([@course,@unit,@page]) do |f| %>
+<% content_for :scripts do %>
+  <script>
+  
+    var converter;
+    
+    $(document).ready(function() {
+      $("#page_page_type").change(function(select) {
+        var page_type = $("#page_page_type").val();
+        if (page_type === "video") {
+          $(".video_fields").show();
+          $(".editor_fields").hide();
+          $(".questions_fields").hide();
+          $(".closer_fields").hide();
+        } else if (page_type === "editor") {
+          $(".video_fields").hide();
+          $(".editor_fields").show();
+          $(".questions_fields").hide();
+          $(".closer_fields").hide();
+        } else if (page_type === "questions") {
+          $(".video_fields").hide();
+          $(".editor_fields").hide();
+          $(".questions_fields").show();
+          $(".closer_fields").hide();
+        } else if (page_type === "closer") {
+          $(".video_fields").hide();
+          $(".editor_fields").hide();
+          $(".questions_fields").hide();
+          $(".closer_fields").show();
+        }
+      });
+      
+      if (document.getElementById("page_html") !== null) {
+        editor = CodeMirror.fromTextArea(document.getElementById("page_html"), {
+          lineWrapping: true
+        });
+      }      
+    });
+  </script>
+<% end %>
+
+<%= simple_nested_form_for([@course,@unit,@page]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :page_type, :collection => [['video','video'],['editor','editor'],['multiple-option-single-choice','multiple-option-single-choice']] %>
-    <%= f.input :sequence %>
     <%= f.association :unit %>
-    <%= f.input :instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %>
+    <%= f.input :sequence %>
+    <%= f.input :title %>
+    <%= f.input :page_type, :collection => [['video','video'],['editor','editor'],['questions','questions'],['closer','closer']] %>
+    <div class="video_fields" style="<%= @page.page_type == "video" ? "": "display:none;"%>">
+      <%= f.association :videos, as: :check_boxes,label_method: :title  %>
+    </div>
+    <div class="editor_fields" style="<%= @page.page_type == "editor" ? "": "display:none;"%>">
+      <%= f.input :instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %>  
+    </div>
+    <div id="questions_fields" class="questions_fields" style="<%= @page.page_type == "questions" ? "": "display:none;"%>">
+      <table id="questions_field" style="width:60%">
+        <%= f.fields_for :question_groups, :wrapper => false do |qg|%>
+          <tr class="fields">
+            <td style="width: 5%;"><%= qg.input :sequence,label: false %></td>
+            <td><%= qg.select :question_id, Question.all.collect { |p| [p.description, p.id] } %></td>
+            <td><%= qg.link_to_remove "Eliminar" %></td>
+          </tr>
+        <% end %>
+      </table>
+      <%= f.link_to_add "Añadir pregunta", :question_groups, :data => { :target => "#questions_field" } %>
+    </div>
+    <div id="closer_fields" class="closer_fields" style="<%= @page.page_type == "closer" ? "": "display:none;"%>">
+      <br>
+      <%= f.input :html, as: :text %>
+    </div>
   </div>
-
+  <br>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

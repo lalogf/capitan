@@ -24,5 +24,6 @@
 //= require addons/placeholder
 //= require pagedown_bootstrap
 //= require pagedown_init
+//= require jquery_nested_form
 //= require main
 //= require_self

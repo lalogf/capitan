@@ -21,32 +21,12 @@
 </head>
 
 <body>
-  
-  <section id="container" >
-    <header class="header black-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3">
-            <a href="/" class="logo">
-              <%= image_tag 'logo'%>
-            </a>            
-          </div>
-          <div class="col-sm-9">
-            <div class="top-menu">
-              <ul class="nav pull-right top-menu">
-                <li class="list-item nav-item">
-                  <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
-                </li>
-              </ul>
-            </div>            
-          </div>
-        </div>
-      </div>
-    </header>
-      
-      <!--main content start-->
-      <%= yield %>
-  </section>  
+  <div class="wrapper">
+    <%= render "shared/header" %>
+    <%= bootstrap_flash %>
+    <%= yield %>
+    <%= render "shared/footer" %>
+  </div>
   <%= javascript_include_tag 'application', 'data-turbolinks-track'=> true %>
   <%= yield :scripts %>
 </body>

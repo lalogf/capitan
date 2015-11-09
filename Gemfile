@@ -33,6 +33,6 @@ gem 'simple_form'
 gem 'domp'
 gem 'omniauth-facebook'
 gem 'hirb'
-gem 'devise-i18n'
 gem 'videojs_rails'
 gem 'pagedown-bootstrap-rails'
+gem "nested_form"

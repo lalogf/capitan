@@ -16,7 +16,7 @@
       </thead>
     
       <tbody>
-        <% @pages.each do |page| %>
+        <% @pages.order(:sequence).each do |page| %>
           <tr>
             <td><%= page.title %></td>
             <td><%= page.page_type %></td>

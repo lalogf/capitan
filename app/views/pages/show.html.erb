@@ -1,32 +1,138 @@
 <% content_for :scripts do %>
   <script>
+    
+    var player;
+    var delay;
+    var editor;
+    var converter;    
+    
     $(document).ready(function() {
-      if ($(".instructions_container").val() != null) {
-        $(".instructions").html(converter.makeHtml($(".instructions_container").val()));
-      }
-      
-      $(".start-over").click(function(e) {
-        e.preventDefault();
-        editor.setValue("");
-        editor.clearHistory();
-      });
-      
-      $(".save").click(function(e) {
-        e.preventDefault();
+      <% if @page.page_type == 'editor' %>
+        if ($(".instructions_container").val() != null) {
+          $(".instructions").html(converter.makeHtml('<%= escape_javascript(@page.instructions)%>'));
+        }
         
-        $.post("/saveAnswer",{
-          answer: editor.getValue(),
-          page_id: <%= @page.id %>
-        },function(result) {
-          if (result.status == "ok") {
-            window.location = '<%= course_unit_page_url(@course,@unit,@page.next_page) %>';
+        if (document.getElementById("code") !== null) {
+          editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            lineNumbers: true,
+            lineWrapping: true
+          });
+          
+          editor.on("change", function() {
+            clearTimeout(delay);
+            delay = setTimeout(updatePreview, 300);
+          });
+          
+          setTimeout(updatePreview, 300);
+        }
+        
+        converter = new Markdown.Converter();        
+        
+      <% end %>
+      
+      <% if @page.page_type == 'video' %>
+        $(".rewind-video").click(function(e) {
+            e.preventDefault();
+            $(".video-overlay").hide();
+            player.seekTo(0,true);
+        });
+      <% end %>
+      
+      <% if @page.page_type == 'questions' %>
+        $(".save").click(function(e) {
+          e.preventDefault();
+          
+          $.post("/saveAnswer",{
+            answer: editor.getValue(),
+            page_id: <%= @page.id %>
+          },function(result) {
+            if (result.status == "ok") {
+              window.location = '<%= course_unit_page_url(@course,@unit,@next_page) %>';
+            } else {
+              alert("Hubo un error al intentar grabar la respuesta, por favor vuelta a intentarlo");
+            }
+          });
+        });
+        
+        $(".next-step").click(function(e) {
+          e.preventDefault();
+          
+          if ($('input[name=question-option]:checked').val() != null) {
+            $.post("/saveQuestion",{
+              option_id: $('input[name=question-option]:checked').val(),
+              page_id: <%= @page.id %>,
+              question_group_id: $('input[name=question-option]:checked').attr("data-question-id"),
+              sequence: parseInt($("#sequence").text())
+            }, function(result) {
+              if (result.status == "ok") {
+                if (result.sequence != "MAX") {
+                  $("#sequence").text(result.sequence);
+                  $(".question").hide();
+                  $("div[data-question-id="+result.questionGroupId+"]").show();
+                } else {
+                  $(".question-span").hide();
+                  $(".question-finished").show();
+                }
+              } else {
+                alert("Hubo un error al intentar grabar la respuesta, por favor vuelta a intentarlo");
+              }
+            });          
           } else {
-            alert("Hubo un error al intentar grabar la respuesta, por favor vuelta a intentarlo");
+            alert("Por favor seleccione una respuesta");
           }
         });
-      });
-      
+        
+        $(".next-step-finished").click(function(e) {
+          e.preventDefault();
+          window.location = '<%= course_unit_page_url(@course,@unit,@next_page) %>';
+        });        
+        
+      <% end %>
     });
+    
+    function updatePreview() {
+      var previewFrame = document.getElementById('preview');
+      var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+      preview.open();
+      preview.write(editor.getValue());
+      preview.close();
+    }    
+    
+    <% if @page.page_type == 'video' %>
+    
+      if (typeof youtube_api_init == 'undefined') {
+        var tag = document.createElement('script');
+        tag.src = "http://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      }     
+      
+      if (typeof youtube_api_init != 'undefined') {
+        onYouTubePlayerAPIReady();
+      }
+    
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('video-content', {
+          height: '390',
+          width: '640',
+          videoId: '<%= @page.videos.first.youtube if @page.videos.first != nil %>',
+          events: {
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+  
+      // when video ends
+      function onPlayerStateChange(event) {        
+          if(event.data === 0) {            
+              $(".video-overlay").show();
+          }
+      }
+      
+      var youtube_api_init = 1;
+    
+    <% end %>
+    
   </script>
 <% end %>
 <div class="container">
@@ -35,49 +141,95 @@
       <div class="column <%= page.id == @page.id ? "active": (!page.answers.empty? ? "viewed" : "") %>" 
            title="<%= page.title %>">
         <%= link_to '',course_unit_page_path(@course,@unit,page) if !page.answers.empty? %>
-      </div> 
+      </div>
     <% end %>
   </div>
   <div class="row">
     <h3 class="video-title"><%= @page.title %></h3>
     <% if @page.page_type == 'video' %>
       <div class="outer-container">
-          <div class="inner-container text-center">
-              <div class="video-overlay" style="display: none;">
-                <%= link_to 'Continuar', course_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-primary" %>
-                <br><br>
-                <a href="#" class="rewind-video">
-                  <i class="fa fa-undo fa-2x"></i> Ver de nuevo
-                </a>
-              </div>
-              <% if @page.videos.first != nil %>
-                <%= videojs_rails sources: { mp4: @page.videos.first.content.url } do %>
-                    Please enable <b>JavaScript</b> to see this content.
-                <% end %>
-              <% end %>
+        <div class="inner-container text-center">
+          <div class="video-overlay" style="display: none;">
+            <%= link_to 'Continuar', course_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-primary" %>
+            <br><br>
+            <a href="#" class="rewind-video">
+              <i class="fa fa-undo fa-2x"></i> Ver de nuevo
+            </a>
           </div>
+          <div id="video-content"></div>
+        </div>
       </div>
     <% end %>
     <% if @page.page_type == 'editor' %>
       <div class="container">
-          <textarea style="display:none;" class="instructions_container"><%= @page.instructions %></textarea>
-          <div class="instructions row">
-          </div>
-          <div class="row">
-              <div class="col-sm-6">
-                  <textarea id="code" name="code" placeholder="Tu código va aquí..."></textarea>
-              </div>
-              <div class="col-sm-6">
-                  <iframe id="preview" class="preview"></iframe>
-              </div>
-          </div>
-          <div class="row">
-            <div class="pull-right">
-              <a href="#" class="start-over btn btn-primary">Empezar de nuevo</a>
-              <a href="#" class="save btn btn-primary">Guardar y Avanzar</a>
+        <div class="instructions row">
+        </div>
+        <div class="row">
+            <div class="col-sm-6" style="padding-left:0px;">
+              <h3>Editor</h3>
+              <textarea id="code" name="code" placeholder="Tu código va aquí..."><%= @page.answers.first.result if !@page.answers.empty? != nil %></textarea>
             </div>
+            <div class="col-sm-6" style="padding-right:0px;">
+              <h3>Navegador</h3>
+              <iframe id="preview" class="preview"></iframe>
+            </div>
+        </div>
+        <div class="row">
+          <div class="pull-right">
+            <a href="#" class="start-over btn btn-primary">Empezar de nuevo</a>
+            <a href="#" class="save btn btn-primary">Guardar y Avanzar</a>
           </div>
+        </div>
       </div>    
+    <% end %>
+    <% if @page.page_type == 'questions' %>
+      <div class="container">
+        <div class="questions-slider row">
+          <% if @page.getCurrentQuestionGroupId != "MAX" %>
+          <div class="question-span">
+            <h3>Pregunta <span id="sequence"><%= @page.getCurrentSequence %></span> de <%= @page.question_groups.size %></h3>
+            <% @page.question_groups.order(:sequence).each do |question_group| %>
+              <div class="question" 
+                   style="<%= @page.getCurrentQuestionGroupId == question_group.id ? "" : "display:none;" %>"
+                   data-question-id="<%= question_group.id %>">
+                <h3><%= question_group.question.description %></h3>
+                <ul style="margin-bottom: 30px;">
+                  <% question_group.question.options.each do |option| %>
+                    <li>
+                      <table>
+                        <tr>
+                          <td style="width:2%;padding-right:10px;">
+                            <input type="radio" 
+                                   id="q-<%=option.id %>" 
+                                   name="question-option" 
+                                   value="<%= option.id %>" 
+                                   data-question-id="<%= question_group.id %>">
+                          </td>
+                          <td><label for="q-<%=option.id %>" style="cursor:pointer;font-weight:300;"><%= option.description %></label></td>
+                        </tr>
+                      </table>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>  
+            <a href="#" class="btn btn-primary next-step">Guardar y Continuar</a>
+          </div>
+          <% end %>
+          <div class="question-finished" style="<%= @page.getCurrentQuestionGroupId != "MAX" ? "display:none;" : "" %>">
+            <h2>Gracias por responder las preguntas</h2>
+            <p>Los cuestionarios sólo se pueden responder una vez</p>
+            <a href="#" class="btn btn-primary next-step-finished">Continuar</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if @page.page_type == 'closer' %>
+      <div class="container">
+        <div class="row">
+          <%= raw @page.html %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

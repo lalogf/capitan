@@ -28,7 +28,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
+        format.html { redirect_to videos_path, notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class VideosController < ApplicationController
     respond_to do |format|
       params[:video][:page_ids] ||= []
       if @video.update(video_params)
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
+        format.html { redirect_to videos_path, notice: 'Video was successfully updated.' }
         format.json { render :show, status: :ok, location: @video }
       else
         format.html { render :edit }
@@ -70,6 +70,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:title,:content, {:page_ids => []})
+      params.require(:video).permit(:title,:youtube, {:page_ids => []})
     end
 end

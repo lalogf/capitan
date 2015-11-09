@@ -10,9 +10,11 @@
   <script>try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
-<%= render "shared/login_header" %>
-<%= bootstrap_flash %>
-<%= yield %>
-
+  <div class="wrapper">
+    <%= render "shared/login_header" %>
+    <%= bootstrap_flash %>
+    <%= yield %>
+    <%= render "shared/footer" %>
+  </div>
 </body>
 </html>
