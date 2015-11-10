@@ -1,9 +1,8 @@
 <div class="container">
     <div class="row">
-        <h1>Editar Página</h1>
+        <div class="page-header">
+            <h1>Editar Página</h1>    
+        </div>
         <%= render 'form' %>
-        
-        <%= link_to 'Show', [@course,@unit,@page] %> |
-        <%= link_to 'Back', course_unit_pages_path(@course,@unit) %>        
     </div>
 </div>

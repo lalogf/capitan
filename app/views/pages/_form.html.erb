@@ -71,6 +71,7 @@
   </div>
   <br>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn btn-primary" %>
+    <%= link_to 'Cancelar', course_unit_pages_path(@course,@unit),:class => "btn btn-danger" %>  
   </div>
 <% end %>

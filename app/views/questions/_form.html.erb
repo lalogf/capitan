@@ -16,8 +16,9 @@
       </table>
     </div>
   </div>
-
+  <br>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn btn-primary" %>
+    <%= link_to "Cancelar", questions_path, :class => "btn btn-danger" %>
   </div>
 <% end %>

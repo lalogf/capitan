@@ -13,7 +13,7 @@
           <span class="icon-bar"></span>
         </button>        
         <a class="navbar-brand">
-        	<%= image_tag 'isotipo' %>
+        	<%= image_tag 'isotipo.png' %>
         	Recursos laboratoria
         </a>
       </div>
@@ -34,9 +34,6 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li>
-                <a href="#">Perfil</a>
-              </li>
               <li>
                 <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
               </li>

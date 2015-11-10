@@ -110,7 +110,11 @@ a, a:hover, a:focus {
 }
 
 .page-header {
-    margin: 0px;
+    margin: 0px 0px 20px 0px;
+}
+
+.btn-new {
+  margin-top: 20px;
 }
 
 .courses {

@@ -6,8 +6,9 @@
     <%= f.input :description %>
     <%= f.association :course %>
   </div>
-
+  <br>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn btn-primary" %>
+    <%= link_to 'Cancelar', course_units_path(@course), :class => "btn btn-danger" %>
   </div>
 <% end %>

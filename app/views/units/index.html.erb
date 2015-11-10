@@ -1,16 +1,18 @@
 <div class="container">
   <div class="row">
-    <p id="notice"><%= notice %></p>
-    
-    <h1>Unidades del curso</h1>
-    
-    <table>
+    <div class="page-header clearfix">
+      <h1 class="pull-left">Unidades</h1>  
+      <div class="pull-right">
+        <%= link_to 'Crear Unidad', new_course_unit_path(@course), :class => "btn btn-primary btn-new" %>
+      </div>
+    </div>
+    <table class="table table-striped table-hover">
       <thead>
         <tr>
           <th>Title</th>
           <th>Description</th>
           <th>Course</th>
-          <th colspan="3"></th>
+          <th></th>
         </tr>
       </thead>
     
@@ -20,16 +22,15 @@
             <td><%= unit.title %></td>
             <td><%= unit.description %></td>
             <td><%= unit.course.name %></td>
-            <td><%= link_to 'Show', course_unit_path(@course,unit) %></td>
-            <td><%= link_to 'Edit', edit_course_unit_path(@course,unit) %></td>
-            <td><%= link_to 'Destroy', [@course,unit], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>
+              <%= link_to 'Ver Unidad', course_unit_path(@course,unit) %>  |  
+              <%= link_to 'Editar', edit_course_unit_path(@course,unit) %>  |  
+              <%= link_to 'Eliminar', [@course,unit], method: :delete, data: { confirm: '¿Está seguro?' } %>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
     
-    <br>
-    
-    <%= link_to 'New Unit', new_course_unit_path(@course) %>    
   </div>
 </div>

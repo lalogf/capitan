@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @unit.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @unit.description %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @unit.course %>
-</p>
-
-<%= link_to 'Edit', edit_course_unit_path(@course,@unit) %> |
-<%= link_to 'Back', course_units_path(@course) %>
+<div class="container">
+  <div class="row">
+    <div class="page-header clearfix">
+      <h1>Detalle de la unidad</h1>
+    </div>
+    <div>
+      <p>
+        <strong>Title:</strong>
+        <%= @unit.title %>
+      </p>
+      
+      <p>
+        <strong>Description:</strong>
+        <%= @unit.description %>
+      </p>
+      
+      <p>
+        <strong>Course:</strong>
+        <%= @unit.course.name %>
+      </p>      
+    </div><br>
+    
+    <%= link_to 'Editar', edit_course_unit_path(@course,@unit), :class => "btn btn-primary" %>
+    <%= link_to 'Regresar', course_units_path(@course), :class => "btn btn-danger" %>
+  </div>
+</div>

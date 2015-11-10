@@ -1,9 +1,13 @@
 <%= simple_form_for @course do |f| %>
-  <%= f.input :name, :class => "short" %>
-  <%= f.input :description %>
-  <%= f.input :color %>
-  <%= f.input :avatar %>
-  <%= f.input :background_image %>
-  <%= f.button :submit, :class => 'btn btn-success' %>
-  <%= link_to 'Cancelar', courses_path, :class => 'btn btn-danger' %>
+  <div class="form-inputs">
+    <%= f.input :name, :class => "short" %><br>
+    <%= f.input :description %><br>
+    <%= f.input :color %><br>
+    <%= f.input :avatar %><br>
+    <%= f.input :background_image %>
+  </div><br>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+    <%= link_to 'Cancelar', courses_path, :class => 'btn btn-danger' %>    
+  </div>
 <% end %>
