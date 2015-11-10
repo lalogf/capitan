@@ -10,6 +10,8 @@
     $(document).ready(function() {
       <% if @page.page_type == 'editor' %>
         
+        converter = new Markdown.Converter();
+        
         $(".instructions").html(converter.makeHtml('<%= escape_javascript(@page.instructions)%>'));
         
         if (document.getElementById("code") !== null) {
@@ -25,8 +27,6 @@
           
           setTimeout(updatePreview, 300);
         }
-        
-        converter = new Markdown.Converter();
         
         $(".start-over").click(function(e) {
           e.preventDefault();
