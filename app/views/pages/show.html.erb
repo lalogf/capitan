@@ -227,7 +227,7 @@
               <h3>Editor</h3>
               <textarea id="solution" style="display:none"><%= @page.solution%></textarea>
               <textarea id="initial_state" style="display:none"><%= @page.initial_state %></textarea>
-              <textarea id="code" name="code" placeholder="Tu código va aquí..."><%= !@page.answers.empty? != nil || !@page.answers.first.result.blank? ? @page.answers.first.result : @page.initial_state  %></textarea>
+              <textarea id="code" name="code" placeholder="Tu código va aquí..."><%= !@page.answers.empty? && !@page.answers.first.result.blank? ? @page.answers.first.result : @page.initial_state  %></textarea>
             </div>
             <div class="col-sm-6" style="padding-right:0px;">
               <h3>Navegador</h3>
