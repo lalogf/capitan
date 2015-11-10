@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107192241) do
+ActiveRecord::Schema.define(version: 20151110151258) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20151107192241) do
     t.datetime "updated_at",                 null: false
     t.string   "page_type",    limit: 255
     t.integer  "sequence",     limit: 4
-    t.string   "instructions", limit: 255
+    t.text     "instructions", limit: 65535
     t.text     "html",         limit: 65535
   end
 
