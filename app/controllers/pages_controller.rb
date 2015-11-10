@@ -109,6 +109,6 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :page_type,:sequence, :unit_id, :html, :instructions,:video_ids => [],question_groups_attributes: [ :id,:sequence, :question_id, :_destroy])
+      params.require(:page).permit(:title, :page_type,:sequence, :unit_id, :html,:initial_state,:solution, :success_message, :instructions,:video_ids => [],question_groups_attributes: [ :id,:sequence, :question_id, :_destroy])
     end
 end

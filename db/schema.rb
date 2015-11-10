@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110151258) do
+ActiveRecord::Schema.define(version: 20151110205040) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20151110151258) do
     t.string   "background_image_content_type", limit: 255
     t.integer  "background_image_file_size",    limit: 4
     t.datetime "background_image_updated_at"
+    t.string   "code",                          limit: 255
   end
 
   create_table "elements", force: :cascade do |t|
@@ -76,14 +77,17 @@ ActiveRecord::Schema.define(version: 20151110151258) do
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
-    t.string   "title",        limit: 255
-    t.integer  "unit_id",      limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "page_type",    limit: 255
-    t.integer  "sequence",     limit: 4
-    t.text     "instructions", limit: 65535
-    t.text     "html",         limit: 65535
+    t.string   "title",           limit: 255
+    t.integer  "unit_id",         limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "page_type",       limit: 255
+    t.integer  "sequence",        limit: 4
+    t.text     "instructions",    limit: 65535
+    t.text     "html",            limit: 65535
+    t.text     "initial_state",   limit: 65535
+    t.text     "solution",        limit: 65535
+    t.string   "success_message", limit: 255
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree

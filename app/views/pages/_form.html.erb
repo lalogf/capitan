@@ -33,6 +33,20 @@
         editor = CodeMirror.fromTextArea(document.getElementById("page_html"), {
           lineWrapping: true
         });
+      }
+      
+      if (document.getElementById("page_initial_state") !== null) {
+        editor = CodeMirror.fromTextArea(document.getElementById("page_initial_state"), {
+          lineWrapping: true,
+          lineNumbers: true
+        });
+      }
+      
+      if (document.getElementById("page_solution") !== null) {
+        editor = CodeMirror.fromTextArea(document.getElementById("page_solution"), {
+          lineWrapping: true,
+          lineNumbers: true
+        });
       }      
     });
   </script>
@@ -50,7 +64,10 @@
       <%= f.association :videos, as: :check_boxes,label_method: :title  %>
     </div>
     <div class="editor_fields" style="<%= @page.page_type == "editor" ? "": "display:none;"%>">
-      <%= f.input :instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %>  
+      <%= f.input :instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %>
+      <%= f.input :success_message %><br>
+      <%= f.input :initial_state, as: :text %><br>
+      <%= f.input :solution, as: :text %>
     </div>
     <div id="questions_fields" class="questions_fields" style="<%= @page.page_type == "questions" ? "": "display:none;"%>">
       <table id="questions_field" style="width:60%">

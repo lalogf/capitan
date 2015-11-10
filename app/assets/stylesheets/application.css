@@ -5,5 +5,6 @@
   = require theme
   = require theme-responsive
   = require pagedown_bootstrap
+  = require sweetalert
   = require_self
 */

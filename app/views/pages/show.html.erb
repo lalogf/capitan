@@ -4,7 +4,8 @@
     var player;
     var delay;
     var editor;
-    var converter;    
+    var converter;
+    var numberAttempts = 0;
     
     $(document).ready(function() {
       <% if @page.page_type == 'editor' %>
@@ -26,7 +27,73 @@
           setTimeout(updatePreview, 300);
         }
         
-        converter = new Markdown.Converter();        
+        converter = new Markdown.Converter();
+        
+        $(".start-over").click(function(e) {
+          e.preventDefault();
+          editor.setValue($("#initial_state").val());
+        });
+        
+        $(".save").click(function(e) {
+          e.preventDefault();
+          
+          if (isValidCode(editor.getValue())) {
+            swal({
+              title: "<%= @page.success_message.split("|")[0] %>",   
+              text: "<%= @page.success_message.split("|")[1]%>",   
+              type: "success",
+              confirmButtonText: "Grabar mi respuesta",   
+              closeOnConfirm: false,   
+              showLoaderOnConfirm: true,
+              html: true
+            },function() {
+              $.post("/saveAnswer",{
+                answer: editor.getValue(),
+                page_id: <%= @page.id %>
+              },function(result) {
+                if (result.status == "ok") {
+                  swal({
+                    title: "Tu código se grabó con éxito",
+                    text: "Da click en continuar para seguir con las siguientes actividades",
+                    confirmButtonText: "Continuar",
+                    closeOnConfirm: false,
+                    showLoaderOnConfirm: true
+                  },function() {
+                    window.location = '<%= course_unit_page_url(@course,@unit,@next_page) %>';
+                  });
+                } else {
+                  swal({
+                    title: "¡Hubo un error al intentar grabar la respuesta!",
+                    text: "Por favor vuelta a intentarlo.",
+                    type: "error",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true
+                  });
+                }
+              });
+            });
+          } else {
+            numberAttempts = numberAttempts + 1;
+            if (numberAttempts < 3) {
+              swal({
+                title: "¡Ups! Parece que debes revisar tu código.",
+                text: "Inténtalo de nuevo y revisa que estés colocando el texto exacto, incluyendo los signos de puntuación",
+                type: "error",
+                confirmButtonText: "OK",
+              });
+            } else {
+              swal({
+                title: "¿Problemas?",
+                text: "Hemos notado que te estás quedando atascada con este ejercicio, mejor continua con los demás y de ahi regresas por este.",
+                confirmButtonText: "OK",
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true
+              },function() {
+                window.location = '<%= course_unit_page_url(@course,@unit,@next_page) %>';
+              });
+            }
+          }
+        });        
         
       <% end %>
       
@@ -39,21 +106,7 @@
       <% end %>
       
       <% if @page.page_type == 'questions' %>
-        $(".save").click(function(e) {
-          e.preventDefault();
-          
-          $.post("/saveAnswer",{
-            answer: editor.getValue(),
-            page_id: <%= @page.id %>
-          },function(result) {
-            if (result.status == "ok") {
-              window.location = '<%= course_unit_page_url(@course,@unit,@next_page) %>';
-            } else {
-              alert("Hubo un error al intentar grabar la respuesta, por favor vuelta a intentarlo");
-            }
-          });
-        });
-        
+
         $(".next-step").click(function(e) {
           e.preventDefault();
           
@@ -89,6 +142,12 @@
         
       <% end %>
     });
+    
+    function isValidCode(code) {
+      var cleanCode = code.replace(/\>\s+\</g,'');
+      var solution = $("#solution").val().replace(/\>\s+\</g,'');
+      return solution === cleanCode;
+    }
     
     function updatePreview() {
       var previewFrame = document.getElementById('preview');
@@ -167,7 +226,9 @@
         <div class="row">
             <div class="col-sm-6" style="padding-left:0px;">
               <h3>Editor</h3>
-              <textarea id="code" name="code" placeholder="Tu código va aquí..."><%= @page.answers.first.result if !@page.answers.empty? != nil %></textarea>
+              <textarea id="solution" style="display:none"><%= @page.solution%></textarea>
+              <textarea id="initial_state" style="display:none"><%= @page.initial_state %></textarea>
+              <textarea id="code" name="code" placeholder="Tu código va aquí..."><%= !@page.answers.empty? != nil || !@page.answers.first.result.blank? ? @page.answers.first.result : @page.initial_state  %></textarea>
             </div>
             <div class="col-sm-6" style="padding-right:0px;">
               <h3>Navegador</h3>

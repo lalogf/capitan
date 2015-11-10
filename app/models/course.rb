@@ -16,6 +16,7 @@
 #  background_image_content_type :string(255)
 #  background_image_file_size    :integer
 #  background_image_updated_at   :datetime
+#  code                          :string(255)
 #
 
 class Course < ActiveRecord::Base

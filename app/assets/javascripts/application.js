@@ -25,5 +25,6 @@
 //= require pagedown_bootstrap
 //= require pagedown_init
 //= require jquery_nested_form
+//= require sweetalert.min
 //= require main
 //= require_self
