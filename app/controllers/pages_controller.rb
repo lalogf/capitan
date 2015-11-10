@@ -82,9 +82,10 @@ class PagesController < ApplicationController
   
   def saveQuestion
     answer = Answer.find_by_page_id_and_user_id(params[:page_id],current_user.id)
+    page = Page.find(params[:page_id])
     if answer != nil
       
-      questionGroup = QuestionGroup.find_by_sequence(params[:sequence].to_i+1)
+      questionGroup = page.question_groups.find_by_sequence(params[:sequence].to_i+1)
       
       if answer.result == nil
         result = "#{questionGroup != nil ? questionGroup.id : "MAX"};#{params[:question_group_id]}|#{params[:option_id]}"
