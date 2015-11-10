@@ -9,9 +9,8 @@
     
     $(document).ready(function() {
       <% if @page.page_type == 'editor' %>
-        if ($(".instructions_container").val() != null) {
-          $(".instructions").html(converter.makeHtml('<%= escape_javascript(@page.instructions)%>'));
-        }
+        
+        $(".instructions").html(converter.makeHtml('<%= escape_javascript(@page.instructions)%>'));
         
         if (document.getElementById("code") !== null) {
           editor = CodeMirror.fromTextArea(document.getElementById("code"), {

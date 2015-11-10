@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :email, :phone1, :phone2, :password, :password_confirmation)
     end
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:dni, :name, :lastname1, :lastname2, :branch_id, :district, :age, :facebook_username,
+      u.permit(:dni,:code, :name, :lastname1, :lastname2, :branch_id, :district, :age, :facebook_username,
         :email, :phone1, :phone2, :password, :password_confirmation, :current_password)
     end
   end  
