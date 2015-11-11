@@ -31,11 +31,11 @@ class Page < ActiveRecord::Base
   
   accepts_nested_attributes_for :answers
 
-  def getCurrentQuestionGroupId
-    if (self.answers.first.result == nil)
+  def getCurrentQuestionGroupId(current_user)
+    if (self.answers.where(:user_id => current_user.id).first.result == nil)
       return self.question_groups.first.id
     else
-      answer_result = self.answers.first.result
+      answer_result = self.answers.where(:user_id => current_user.id).first.result
       s_result = answer_result.split(";")
       return s_result[0]
     end

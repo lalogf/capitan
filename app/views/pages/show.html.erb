@@ -245,12 +245,12 @@
     <% if @page.page_type == 'questions' %>
       <div class="container">
         <div class="questions-slider row">
-          <% if @page.getCurrentQuestionGroupId != "MAX" %>
+          <% if @page.getCurrentQuestionGroupId(current_user) != "MAX" %>
           <div class="question-span">
             <h3>Pregunta <span id="sequence"><%= @page.getCurrentSequence %></span> de <%= @page.question_groups.size %></h3>
             <% @page.question_groups.order(:sequence).each do |question_group| %>
               <div class="question" 
-                   style="<%= @page.getCurrentQuestionGroupId == question_group.id ? "" : "display:none;" %>"
+                   style="<%= @page.getCurrentQuestionGroupId(current_user) == question_group.id ? "" : "display:none;" %>"
                    data-question-id="<%= question_group.id %>">
                 <h3><%= question_group.question.description %></h3>
                 <ul style="margin-bottom: 30px;">
@@ -276,7 +276,7 @@
             <a href="#" class="btn btn-primary next-step">Guardar y Continuar</a>
           </div>
           <% end %>
-          <div class="question-finished" style="<%= @page.getCurrentQuestionGroupId != "MAX" ? "display:none;" : "" %>">
+          <div class="question-finished" style="<%= @page.getCurrentQuestionGroupId(current_user) != "MAX" ? "display:none;" : "" %>">
             <h2>Gracias por responder las preguntas</h2>
             <p>Los cuestionarios sólo se pueden responder una vez</p>
             <a href="#" class="btn btn-primary next-step-finished">Continuar</a>
