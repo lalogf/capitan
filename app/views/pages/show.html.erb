@@ -247,7 +247,7 @@
         <div class="questions-slider row">
           <% if @page.getCurrentQuestionGroupId(current_user) != "MAX" %>
           <div class="question-span">
-            <h3>Pregunta <span id="sequence"><%= @page.getCurrentSequence %></span> de <%= @page.question_groups.size %></h3>
+            <h3>Pregunta <span id="sequence"><%= @page.getCurrentSequence(current_user) %></span> de <%= @page.question_groups.size %></h3>
             <% @page.question_groups.order(:sequence).each do |question_group| %>
               <div class="question" 
                    style="<%= @page.getCurrentQuestionGroupId(current_user) == question_group.id ? "" : "display:none;" %>"

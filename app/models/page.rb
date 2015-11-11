@@ -41,8 +41,8 @@ class Page < ActiveRecord::Base
     end
   end
   
-  def getCurrentSequence
-    return self.question_groups.find(self.getCurrentQuestionGroupId).sequence if self.getCurrentQuestionGroupId != "MAX"
+  def getCurrentSequence(current_user)
+    return self.question_groups.find(self.getCurrentQuestionGroupId(current_user)).sequence if self.getCurrentQuestionGroupId(current_user) != "MAX"
   end
   
 end
