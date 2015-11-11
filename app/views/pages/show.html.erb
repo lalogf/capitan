@@ -143,8 +143,8 @@
     });
     
     function isValidCode(code) {
-      var cleanCode = code.replace(/\>\s+\</g,'');
-      var solution = $("#solution").val().replace(/\>\s+\</g,'');
+      var cleanCode = code.replace(/\>\s+\</g,'').replace(/ /g,'');
+      var solution = $("#solution").val().replace(/\>\s+\</g,'').replace(/ /g,'');
       return solution === cleanCode;
     }
     
