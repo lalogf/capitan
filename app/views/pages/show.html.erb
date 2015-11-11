@@ -196,9 +196,9 @@
 <div class="container">
   <div class="wizzard-row">
     <% @unit.pages.order(:sequence).each do |page| %>
-      <div class="column <%= page.id == @page.id ? "active": (!page.answers.empty? ? "viewed" : "") %>" 
+      <div class="column <%= page.id == @page.id ? "active": (!page.answers.where(:user_id => current_user.id).empty? ? "viewed" : "") %>" 
            title="<%= page.title %>">
-        <%= link_to '',course_unit_page_path(@course,@unit,page) if !page.answers.empty? %>
+        <%= link_to '',course_unit_page_path(@course,@unit,page) if !page.answers.where(:user_id => current_user.id).empty? %>
       </div>
     <% end %>
   </div>
@@ -227,7 +227,7 @@
               <h3>Editor</h3>
               <textarea id="solution" style="display:none"><%= @page.solution%></textarea>
               <textarea id="initial_state" style="display:none"><%= @page.initial_state %></textarea>
-              <textarea id="code" name="code" placeholder="Tu código va aquí..."><%= !@page.answers.empty? && !@page.answers.first.result.blank? ? @page.answers.first.result : @page.initial_state  %></textarea>
+              <textarea id="code" name="code" placeholder="Tu código va aquí..."><%= !@page.answers.where(:user_id => current_user.id).empty? && !@page.answers.where(:user_id => current_user.id).first.result.blank? ? @page.answers.where(:user_id => current_user.id).first.result : @page.initial_state  %></textarea>
             </div>
             <div class="col-sm-6" style="padding-right:0px;">
               <h3>Navegador</h3>
