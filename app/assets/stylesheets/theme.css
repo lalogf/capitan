@@ -311,6 +311,10 @@ video {
   margin-bottom:20px;
 }
 
+.instructions row {
+  margin-left: 22px;
+}
+
 .viewed {
   background-color: #A9A9A9;
 }
