@@ -84,7 +84,12 @@
               swal({
                 title: "¿Problemas?",
                 text: "Hemos notado que te estás quedando atascada con este ejercicio, mejor continua con los demás y de ahi regresas por este.",
-                confirmButtonText: "OK",
+                type: "warning",
+                showCancelButton: true,   
+                confirmButtonColor: "#5CB85C",   
+                closeOnConfirm: false,
+                confirmButtonText: "Siguiente lección",
+                cancelButtonText: "Seguir intentándolo",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
               },function() {

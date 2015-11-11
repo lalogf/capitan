@@ -311,7 +311,7 @@ video {
   margin-bottom:20px;
 }
 
-.instructions row {
+.instructions ol {
   margin-left: 22px;
 }
 
@@ -341,4 +341,3 @@ video {
 .questions_fields td {
   padding: 5px;
 }
-
