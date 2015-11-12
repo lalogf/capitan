@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110224150) do
+ActiveRecord::Schema.define(version: 20151112165444) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20151110224150) do
     t.text     "initial_state",   limit: 65535
     t.text     "solution",        limit: 65535
     t.string   "success_message", limit: 255
+    t.string   "videotip",        limit: 255
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree

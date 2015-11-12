@@ -97,7 +97,16 @@
               });
             }
           }
-        });        
+        });
+        
+        $(".check-video-again").click(function(e) {
+          e.preventDefault();
+          swal({
+            title: "Repacemos la lección",
+            text: '<iframe width="100%" height="315" src="https://www.youtube.com/embed/'+'<%= @page.videotip %>'+'" frameborder="0" allowfullscreen></iframe>',
+            html: true
+          });
+        });
         
       <% end %>
       
@@ -241,6 +250,7 @@
         </div>
         <div class="row">
           <div class="pull-right">
+            <a href="#" class="check-video-again btn btn-primary">Volver al video</a>
             <a href="#" class="start-over btn btn-primary">Empezar de nuevo</a>
             <a href="#" class="save btn btn-primary">Guardar y Continuar</a>
           </div>
