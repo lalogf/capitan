@@ -98,7 +98,7 @@ class PagesController < ApplicationController
         for i in 1..parts.length do
           option_id = parts[i].split("|")[1]
           if (Option.find(option_id).correct)
-            points = points + question_group_id.points
+            points = points + questionGroup.points
           end
         end
       end
