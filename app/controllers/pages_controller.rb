@@ -91,7 +91,7 @@ class PagesController < ApplicationController
       
       if answer.result == nil
         result = "#{questionGroup != nil ? questionGroup.id : "MAX"};#{params[:question_group_id]}|#{params[:option_id]}"
-        points = @page.points
+        points = page.points
       else
         parts = answer.result.split(";")
         result = "#{questionGroup != nil ? questionGroup.id : "MAX"};#{parts[1,parts.length].join(";")};#{params[:question_group_id]}|#{params[:option_id]}"
