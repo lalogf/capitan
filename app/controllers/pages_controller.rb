@@ -73,9 +73,10 @@ class PagesController < ApplicationController
   
   def saveAnswer
     answer = Answer.find_by_page_id_and_user_id(params[:page_id],current_user.id)
+    page = Page.find(params[:page_id])
     if answer != nil
       answer.result = params[:answer]
-      answer.points = @page.points
+      answer.points = page.points
       answer.save
       render :json => { :status => :ok, :message => "success" }
     end
