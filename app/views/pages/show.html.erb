@@ -103,8 +103,10 @@
           e.preventDefault();
           swal({
             title: "Repacemos la lección",
-            text: '<iframe width="100%" height="315" src="http://www.youtube.com/embed/'+'<%= @page.videotip %>'+'" frameborder="0" allowfullscreen></iframe>',
+            text: '<iframe id="videotip" width="100%" height="315" src="http://www.youtube.com/embed/'+'<%= @page.videotip %>'+'?enablejsapi=1" frameborder="0" allowfullscreen></iframe>',
             html: true
+          },function() {
+            $("#videotip").remove();
           });
         });
         

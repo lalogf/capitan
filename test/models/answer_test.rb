@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  page_id    :integer
 #  user_id    :integer
-#  result     :string(255)
+#  result     :text(65535)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

@@ -36,3 +36,8 @@ gem 'hirb'
 gem 'videojs_rails'
 gem 'pagedown-bootstrap-rails'
 gem "nested_form"
+
+gem 'rubyzip'
+gem 'spreadsheet'
+gem 'nokogiri'
+gem 'roo'

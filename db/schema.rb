@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112165444) do
+ActiveRecord::Schema.define(version: 20151113184325) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151112165444) do
     t.text     "result",     limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "points",     limit: 4
   end
 
   add_index "answers", ["page_id"], name: "index_answers_on_page_id", using: :btree
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 20151112165444) do
     t.text     "solution",        limit: 65535
     t.string   "success_message", limit: 255
     t.string   "videotip",        limit: 255
+    t.integer  "points",          limit: 4
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 20151112165444) do
     t.integer  "sequence",    limit: 4
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "points",      limit: 4
   end
 
   add_index "question_groups", ["page_id"], name: "index_question_groups_on_page_id", using: :btree
@@ -163,13 +166,12 @@ ActiveRecord::Schema.define(version: 20151112165444) do
     t.integer  "age",                    limit: 4,                   null: false
     t.string   "district",               limit: 255,                 null: false
     t.string   "facebook_username",      limit: 255
-    t.string   "phone1",                 limit: 255,                 null: false
+    t.string   "phone1",                 limit: 255
     t.string   "phone2",                 limit: 255
     t.integer  "branch_id",              limit: 4
   end
 
   add_index "users", ["branch_id"], name: "index_users_on_branch_id", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|

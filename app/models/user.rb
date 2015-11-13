@@ -1,3 +1,5 @@
+require 'roo'
+
 # == Schema Information
 #
 # Table name: users
@@ -48,7 +50,6 @@ class User < ActiveRecord::Base
          :recoverable, 
          :rememberable, 
          :trackable, 
-         :validatable, 
          :omniauthable, 
          :omniauth_providers => [:github,:facebook]
   
@@ -67,12 +68,22 @@ class User < ActiveRecord::Base
     return "#{name} #{lastname1} #{lastname2}"
   end
   
-protected
+def self.import(file)
+  spreadsheet = Roo::Spreadsheet.open(file)
+  header = spreadsheet.row(1)
+  (2..spreadsheet.last_row).each do |i|
+    row = Hash[[header, spreadsheet.row(i)].transpose]
+    user = User.find_or_initialize_by(code: row["code"])
+    if user.update(row.to_hash)
+      p "Usuario con codigo #{user.code} actualizado"
+    else
+      p "USER CODE #{user.code}: #{user.errors.full_messages}"
+    end
+  end
+end
 
-  def generate_code
-    self.code = self.branch.code + self.id.to_s
-    self.save
-  end  
-
+def email_required?
+  false
+end
 
 end

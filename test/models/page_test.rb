@@ -14,6 +14,7 @@
 #  initial_state   :text(65535)
 #  solution        :text(65535)
 #  success_message :string(255)
+#  videotip        :string(255)
 #
 
 require 'test_helper'
