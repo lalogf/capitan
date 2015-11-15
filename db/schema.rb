@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20151113184325) do
     t.string   "success_message", limit: 255
     t.string   "videotip",        limit: 255
     t.integer  "points",          limit: 4
+    t.integer  "question_points", limit: 4
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree
@@ -106,7 +107,6 @@ ActiveRecord::Schema.define(version: 20151113184325) do
     t.integer  "sequence",    limit: 4
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.integer  "points",      limit: 4
   end
 
   add_index "question_groups", ["page_id"], name: "index_question_groups_on_page_id", using: :btree

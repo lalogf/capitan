@@ -88,23 +88,15 @@ class PagesController < ApplicationController
     if answer != nil
       
       questionGroup = page.question_groups.find_by_sequence(params[:sequence].to_i+1)
-      
       if answer.result == nil
         result = "#{questionGroup != nil ? questionGroup.id : "MAX"};#{params[:question_group_id]}|#{params[:option_id]}"
-        points = page.points
       else
         parts = answer.result.split(";")
         result = "#{questionGroup != nil ? questionGroup.id : "MAX"};#{parts[1,parts.length].join(";")};#{params[:question_group_id]}|#{params[:option_id]}"
-        for i in 1..parts.length do
-          option_id = parts[i].split("|")[1]
-          if (Option.find(option_id).correct)
-            points = points + questionGroup.points
-          end
-        end
       end
       answer.result = result
+      answer.points = (answer.points != nil ? answer.points : 0) + (Option.find(params[:option_id]).correct? ? page.question_points : 0)
       answer.save
-      answer.points = points
       render :json => { :status => :ok, :questionGroupId => questionGroup != nil ? questionGroup.id : nil, :sequence => questionGroup != nil ? params[:sequence].to_i+1 : "MAX" }
     end
   end
@@ -120,6 +112,6 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :page_type,:sequence, :unit_id, :html,:initial_state,:solution,:videotip,:points, :success_message, :instructions,:video_ids => [],question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
+      params.require(:page).permit(:title, :page_type,:sequence, :unit_id, :html,:initial_state,:solution,:videotip,:points,:question_points, :success_message, :instructions,:video_ids => [],question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
     end
 end

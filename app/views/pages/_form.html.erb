@@ -73,12 +73,11 @@
     </div>
     <div id="questions_fields" class="questions_fields" style="<%= @page.page_type == "questions" ? "": "display:none;"%>">
       <table id="questions_field" style="width:70%">
+        <%= f.input :question_points %>
         <%= f.fields_for :question_groups, :wrapper => false do |qg|%>
           <tr class="fields">
             <td style="width: 5%;"><%= qg.input :sequence,label: false %></td>
             <td><%= qg.select :question_id, Question.all.collect { |p| [p.description, p.id] } %></td>
-            <td style="width: 5%;"><%= qg.input :points, label: false %></td>
-            <td> points</td>
             <td><%= qg.link_to_remove "Eliminar" %></td>
           </tr>
         <% end %>
