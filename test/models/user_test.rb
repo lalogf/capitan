@@ -26,7 +26,7 @@
 #  age                    :integer          not null
 #  district               :string(255)      not null
 #  facebook_username      :string(255)
-#  phone1                 :string(255)      not null
+#  phone1                 :string(255)
 #  phone2                 :string(255)
 #  branch_id              :integer
 #

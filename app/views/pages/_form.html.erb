@@ -72,8 +72,9 @@
       <%= f.input :solution, as: :text %>
     </div>
     <div id="questions_fields" class="questions_fields" style="<%= @page.page_type == "questions" ? "": "display:none;"%>">
+      <%= f.input :question_points %><br>
+      <%= f.input :selfLearning %><br>
       <table id="questions_field" style="width:70%">
-        <%= f.input :question_points %>
         <%= f.fields_for :question_groups, :wrapper => false do |qg|%>
           <tr class="fields">
             <td style="width: 5%;"><%= qg.input :sequence,label: false %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113184325) do
+ActiveRecord::Schema.define(version: 20151116231914) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -57,16 +57,6 @@ ActiveRecord::Schema.define(version: 20151113184325) do
     t.string   "code",                          limit: 255
   end
 
-  create_table "elements", force: :cascade do |t|
-    t.integer  "course_id",   limit: 4
-    t.string   "title",       limit: 255
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  add_index "elements", ["course_id"], name: "index_elements_on_course_id", using: :btree
-
   create_table "options", force: :cascade do |t|
     t.string   "description", limit: 255
     t.integer  "question_id", limit: 4
@@ -80,8 +70,8 @@ ActiveRecord::Schema.define(version: 20151113184325) do
   create_table "pages", force: :cascade do |t|
     t.string   "title",           limit: 255
     t.integer  "unit_id",         limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.string   "page_type",       limit: 255
     t.integer  "sequence",        limit: 4
     t.text     "instructions",    limit: 65535
@@ -92,6 +82,7 @@ ActiveRecord::Schema.define(version: 20151113184325) do
     t.string   "videotip",        limit: 255
     t.integer  "points",          limit: 4
     t.integer  "question_points", limit: 4
+    t.boolean  "selfLearning",    limit: 1,     default: false
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree
@@ -183,7 +174,6 @@ ActiveRecord::Schema.define(version: 20151113184325) do
 
   add_foreign_key "answers", "pages"
   add_foreign_key "answers", "users"
-  add_foreign_key "elements", "courses"
   add_foreign_key "options", "questions"
   add_foreign_key "pages", "units"
   add_foreign_key "question_groups", "pages"

@@ -15,6 +15,9 @@
 #  solution        :text(65535)
 #  success_message :string(255)
 #  videotip        :string(255)
+#  points          :integer
+#  question_points :integer
+#  selfLearning    :boolean          default(FALSE)
 #
 
 class Page < ActiveRecord::Base
