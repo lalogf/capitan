@@ -212,7 +212,8 @@
 <div class="container">
   <div class="wizzard-row">
     <% @unit.pages.order(:sequence).each do |page| %>
-      <div class="column <%= page.id == @page.id ? "active": (!page.answers.where(:user_id => current_user.id).empty? ? "viewed" : "") %>" 
+      <div class="column 
+            <%= page.id == @page.id ? "active": (!page.answers.where(:user_id => current_user.id).empty? ? ((page.page_type == 'editor' and page.answers.where(:user_id => current_user.id).first.result == nil) ? "red-viewed" : "viewed") : "") %>" 
            title="<%= page.title %>">
         <%= link_to '',course_unit_page_path(@course,@unit,page) if !page.answers.where(:user_id => current_user.id).empty? %>
       </div>
@@ -231,6 +232,9 @@
             </a>
           </div>
           <div id="video-content"></div>
+          <div class="text-center">
+            <%= link_to 'Saltar video', course_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-warning" %>
+          </div>
         </div>
       </div>
     <% end %>

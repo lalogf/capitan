@@ -71,7 +71,7 @@ body {
 }
 
 .dropdown-toggle, .dropdown-toggle:hover {
-  background-color: #F9A91A;
+  background-color: #F9A91A !important;
 }
 
 footer{
@@ -319,6 +319,10 @@ video {
   background-color: #A9A9A9;
 }
 
+.red-viewed {
+  background-color: #c0392b;
+}
+
 .form-group {
   margin-bottom: 0px;
 }
@@ -345,3 +349,14 @@ video {
 .page_question_groups_points {
   width: 60px;
 }
+
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus {
+    background-color: #F7B617;
+}
+
+.dropdown-menu>li>a:hover {
+  background-color: #F7B617;
+}
+
