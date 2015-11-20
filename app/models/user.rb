@@ -96,7 +96,9 @@ class User < ActiveRecord::Base
   def subtotal_points()
     points = 0
     self.answers.each do |answer|
-      points = points + answer.points if ["editor","questions"].include?(answer.page.page_type) and !answer.page.selfLearning?
+      if ["editor","questions"].include?(answer.page.page_type) and !answer.page.selfLearning?
+        points = points + (answer.points != nil ? answer.points : 0)
+      end
     end
     return points
   end
