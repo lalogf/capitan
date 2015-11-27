@@ -4,8 +4,8 @@ namespace :capitan do
       User.destroy_all
   end
   
-  task :import_users => :environment do
-      import_file = "#{Rails.root}/public/seed_data/import-data.xlsx"
+  task :import_users, [:file_name] => :environment do |t, args|
+      import_file = "#{Rails.root}/public/seed_data/#{args[:file_name]}"
       User.import(import_file)
   end
   

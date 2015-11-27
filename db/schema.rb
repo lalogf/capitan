@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116231914) do
+ActiveRecord::Schema.define(version: 20151127200355) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20151116231914) do
   add_index "user_authentications", ["user_id"], name: "index_user_authentications_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "email",                  limit: 255, default: ""
     t.string   "encrypted_password",     limit: 255, default: "",    null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
@@ -149,13 +149,13 @@ ActiveRecord::Schema.define(version: 20151116231914) do
     t.string   "provider",               limit: 255
     t.string   "uid",                    limit: 255
     t.boolean  "admin",                  limit: 1,   default: false
-    t.string   "dni",                    limit: 255,                 null: false
+    t.string   "dni",                    limit: 255
     t.string   "code",                   limit: 255
     t.string   "name",                   limit: 255,                 null: false
     t.string   "lastname1",              limit: 255,                 null: false
-    t.string   "lastname2",              limit: 255,                 null: false
-    t.integer  "age",                    limit: 4,                   null: false
-    t.string   "district",               limit: 255,                 null: false
+    t.string   "lastname2",              limit: 255
+    t.integer  "age",                    limit: 4
+    t.string   "district",               limit: 255
     t.string   "facebook_username",      limit: 255
     t.string   "phone1",                 limit: 255
     t.string   "phone2",                 limit: 255
