@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   
   get 'editor' => 'editor#video', :as => :video_editor
-  get 'ranking' => 'users#ranking', :as => :ranking
+  get 'ranking(/:branch_id)' => 'users#ranking', :as => :ranking
   get 'ranking_detail/:id' => 'users#ranking_detail', :as => :ranking_detail
   
   post 'saveAnswer' => 'pages#saveAnswer'
