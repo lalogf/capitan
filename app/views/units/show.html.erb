@@ -17,7 +17,11 @@
       <p>
         <strong>Course:</strong>
         <%= @unit.course.name %>
-      </p>      
+      </p>
+      <p>
+        <strong>Sequence:</strong>
+        <%= @unit.sequence %>
+      </p>       
     </div><br>
     
     <%= link_to 'Editar', edit_course_unit_path(@course,@unit), :class => "btn btn-primary" %>

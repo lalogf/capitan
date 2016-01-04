@@ -15,7 +15,16 @@ class PagesController < ApplicationController
     @page = @unit.pages.find(params[:id])
     @previous_page = @unit.pages.find_by_sequence(@page.sequence-1)
     @next_page = @unit.pages.find_by_sequence(@page.sequence+1)
+    if @next_page == nil
+      next_unit = Unit.find_by_sequence(@unit.sequence+1)
+      if next_unit != nil
+        @next_page = next_unit.pages.first
+      end
+    end
     @page.answers.find_or_create_by(page_id: @page.id,user_id: current_user.id)
+    if @page.load_from_previous
+      @page.initial_state = @previous_page.answers.first.result
+    end
   end
 
   # GET /pages/new
@@ -112,6 +121,6 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :page_type,:sequence, :unit_id, :html,:initial_state,:solution,:videotip,:points,:question_points,:selfLearning, :success_message, :instructions,:video_ids => [],question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
+      params.require(:page).permit(:title, :page_type,:sequence, :unit_id, :html,:initial_state,:solution,:videotip,:load_from_previous,:auto_corrector,:grade,:points,:question_points,:selfLearning, :success_message, :instructions,:video_ids => [],question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
     end
 end

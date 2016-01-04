@@ -37,4 +37,15 @@ class Course < ActiveRecord::Base
     validates :name, presence: true
     
     has_many :units
+    
+    def get_course_sum_points
+        points = 0
+        Page.get_editor_pages_for_course(self.id).each do |page|
+            points += page.points if page.points != nil
+        end
+        Page.get_question_pages_for_course(self.id).each do |page|
+             points += page.question_points * page.question_groups.count if page.question_points != nil
+        end
+        return points
+    end
 end

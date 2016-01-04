@@ -1,15 +1,16 @@
-<div class="container">
-  <div class="row">
-    <div class="page-header clearfix">
-      <h1 class="pull-left">Preguntas</h1>
+<div class="container-fluid p-20">
+  <div class="page-header clearfix">
+      <h1 class="pull-left">Banco de Preguntas</h1>
       <div class="pull-right">
         <%= link_to 'Crear Nueva Pregunta', new_question_path, :class => "btn btn-primary btn-new" %>
       </div>
     </div>
-    
-    <table class="table table-striped table-hover">
+  <table class="table table-striped table-hover">
       <thead>
         <tr>
+          <th>Curso</th>
+          <th>Unidad</th>
+          <th>Página asociada</th>
           <th>Descripción</th>
           <th></th>
         </tr>
@@ -18,6 +19,21 @@
       <tbody>
         <% @questions.each do |question| %>
           <tr>
+            <td>
+              <% question.question_groups.each do |qg| %>
+                <div><%= qg.page.unit.course.name %></div>
+              <% end %>              
+            </td>            
+            <td>
+              <% question.question_groups.each do |qg| %>
+                <div><%= qg.page.unit.title %></div>
+              <% end %>              
+            </td>
+            <td>
+              <% question.question_groups.each do |qg| %>
+                <div><%= qg.page.title %></div>
+              <% end %>
+            </td>
             <td><%= question.description %></td>
             <td>
               <%= link_to 'Editar', edit_question_path(question) %>  |  
@@ -27,5 +43,4 @@
         <% end %>
       </tbody>
     </table>
-  </div>
 </div>

@@ -5,7 +5,7 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.json
   def index
-    @units = @course.units
+    @units = @course.units.order(:sequence)
   end
 
   # GET /units/1
@@ -73,6 +73,6 @@ class UnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
-      params.require(:unit).permit(:title, :description, :course_id)
+      params.require(:unit).permit(:title, :description, :course_id, :sequence)
     end
 end

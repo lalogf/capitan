@@ -1,9 +1,34 @@
-  <div class="admin-nav">
-    <div class="container-fluid">
-        <ul>
-            <li><%= link_to "Cursos",courses_path %></li>
-            <li><%= link_to "Questions",questions_path %></li>
-            <li><%= link_to "Videos", videos_path %></li>
-        </ul>
-    </div>
+  <div class="navigation">
+    <ul>
+        <li>
+          <%= link_to dashboard_path do %>
+            <i class="fa fa-tachometer"></i>Dashboard
+          <% end %>
+        </li>
+        <li>
+          <%= link_to courses_admin_path do %>
+            <i class="fa fa-book"></i>Cursos
+          <% end %>
+        </li>
+        <li>
+          <%= link_to grades_path do %>
+            <i class="fa fa-table"></i>Notas
+          <% end %>
+        </li>
+        <li>
+          <%= link_to questions_path do %>
+            <i class="fa fa-question-circle"></i>Preguntas
+          <% end %>
+        </li>
+        <li>
+          <%= link_to videos_path do %>
+            <i class="fa fa-youtube"></i>Videos
+          <% end %>
+        </li>
+        <li>
+          <%= link_to users_path do %>
+          <i class="fa fa-users"></i>Usuarios
+          <% end %>
+        </li>
+    </ul>
   </div>

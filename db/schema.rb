@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127200355) do
+ActiveRecord::Schema.define(version: 20151229174505) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -68,21 +68,24 @@ ActiveRecord::Schema.define(version: 20151127200355) do
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
-    t.string   "title",           limit: 255
-    t.integer  "unit_id",         limit: 4
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.string   "page_type",       limit: 255
-    t.integer  "sequence",        limit: 4
-    t.text     "instructions",    limit: 65535
-    t.text     "html",            limit: 65535
-    t.text     "initial_state",   limit: 65535
-    t.text     "solution",        limit: 65535
-    t.string   "success_message", limit: 255
-    t.string   "videotip",        limit: 255
-    t.integer  "points",          limit: 4
-    t.integer  "question_points", limit: 4
-    t.boolean  "selfLearning",    limit: 1,     default: false
+    t.string   "title",              limit: 255
+    t.integer  "unit_id",            limit: 4
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "page_type",          limit: 255
+    t.integer  "sequence",           limit: 4
+    t.text     "instructions",       limit: 65535
+    t.text     "html",               limit: 65535
+    t.text     "initial_state",      limit: 65535
+    t.text     "solution",           limit: 65535
+    t.string   "success_message",    limit: 255
+    t.string   "videotip",           limit: 255
+    t.integer  "points",             limit: 4
+    t.integer  "question_points",    limit: 4
+    t.boolean  "selfLearning",       limit: 1,     default: false
+    t.boolean  "load_from_previous", limit: 1
+    t.boolean  "auto_corrector",     limit: 1,     default: false
+    t.integer  "grade",              limit: 4,     default: 0
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree
@@ -113,8 +116,9 @@ ActiveRecord::Schema.define(version: 20151127200355) do
     t.string   "title",       limit: 255
     t.string   "description", limit: 255
     t.integer  "course_id",   limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "sequence",    limit: 4,   default: 0
   end
 
   add_index "units", ["course_id"], name: "index_units_on_course_id", using: :btree

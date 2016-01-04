@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  email                  :string(255)      default(""), not null
+#  email                  :string(255)      default("")
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
@@ -18,13 +18,13 @@
 #  provider               :string(255)
 #  uid                    :string(255)
 #  admin                  :boolean          default(FALSE)
-#  dni                    :string(255)      not null
+#  dni                    :string(255)
 #  code                   :string(255)
 #  name                   :string(255)      not null
 #  lastname1              :string(255)      not null
-#  lastname2              :string(255)      not null
-#  age                    :integer          not null
-#  district               :string(255)      not null
+#  lastname2              :string(255)
+#  age                    :integer
+#  district               :string(255)
 #  facebook_username      :string(255)
 #  phone1                 :string(255)
 #  phone2                 :string(255)

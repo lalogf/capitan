@@ -2,6 +2,9 @@
   = require bootstrap_and_overrides
   = require video-js
   = require codemirror
+  = require codeMirror/foldgutter
+  = require codeMirror/fullscreen
+  = require codeMirror/simplescrollbars
   = require theme
   = require theme-responsive
   = require pagedown_bootstrap

@@ -2,22 +2,25 @@
 #
 # Table name: pages
 #
-#  id              :integer          not null, primary key
-#  title           :string(255)
-#  unit_id         :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  page_type       :string(255)
-#  sequence        :integer
-#  instructions    :text(65535)
-#  html            :text(65535)
-#  initial_state   :text(65535)
-#  solution        :text(65535)
-#  success_message :string(255)
-#  videotip        :string(255)
-#  points          :integer
-#  question_points :integer
-#  selfLearning    :boolean          default(FALSE)
+#  id                 :integer          not null, primary key
+#  title              :string(255)
+#  unit_id            :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  page_type          :string(255)
+#  sequence           :integer
+#  instructions       :text(65535)
+#  html               :text(65535)
+#  initial_state      :text(65535)
+#  solution           :text(65535)
+#  success_message    :string(255)
+#  videotip           :string(255)
+#  points             :integer
+#  question_points    :integer
+#  selfLearning       :boolean          default(FALSE)
+#  load_from_previous :boolean
+#  auto_corrector     :boolean          default(FALSE)
+#  grade              :integer          default(0)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

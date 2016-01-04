@@ -6,14 +6,15 @@
           <div class="row">
             <% courses.each do |course| %>
               <div class="col-md-6">
-                <article class="course card">
-                  <div class="content">
+                <div class="panel panel-default">
+                  <div class="panel-heading" style="<%= "background-color: #{course.color}" %>">
                     <%= link_to course_path(course) do %>
-                      <h2 class="title"><%= course.name %></h2>
+                      <i class="fa fa-book"></i>
+                      <%= course.name %>
                     <% end %>
-                    <p class="description"><%= course.description %></p>
                   </div>
-                </article>
+                  <div class="panel-body"><%= course.description %></div>
+                </div>
               </div>
             <% end %>
           </div>

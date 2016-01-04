@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end  
   
   def after_update_path_for(resource)
-    return course_unit_page_path(3,2,1)
+    return courses_url
   end
   
   def after_sign_up_path_for(resource)

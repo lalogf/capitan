@@ -4,6 +4,7 @@
     var converter;
     
     $(document).ready(function() {
+      
       $("#page_page_type").change(function(select) {
         var page_type = $("#page_page_type").val();
         if (page_type === "video") {
@@ -11,21 +12,33 @@
           $(".editor_fields").hide();
           $(".questions_fields").hide();
           $(".closer_fields").hide();
+          $(".opener_fields").hide();
+          $(".html_fields").hide();
         } else if (page_type === "editor") {
           $(".video_fields").hide();
           $(".editor_fields").show();
           $(".questions_fields").hide();
-          $(".closer_fields").hide();
+          $(".html_fields").hide();          
         } else if (page_type === "questions") {
           $(".video_fields").hide();
           $(".editor_fields").hide();
           $(".questions_fields").show();
-          $(".closer_fields").hide();
+          $(".html_fields").hide();          
         } else if (page_type === "closer") {
           $(".video_fields").hide();
           $(".editor_fields").hide();
           $(".questions_fields").hide();
-          $(".closer_fields").show();
+          $(".html_fields").show();          
+        } else if (page_type === "opener") {
+          $(".video_fields").hide();
+          $(".editor_fields").hide();
+          $(".questions_fields").hide();
+          $(".html_fields").show();
+        } else if (page_type === "html") {
+          $(".video_fields").hide();
+          $(".editor_fields").hide();
+          $(".questions_fields").hide();
+          $(".html_fields").show();     
         }
       });
       
@@ -47,7 +60,8 @@
           lineWrapping: true,
           lineNumbers: true
         });
-      }      
+      }
+      
     });
   </script>
 <% end %>
@@ -59,7 +73,7 @@
     <%= f.association :unit %>
     <%= f.input :sequence %>
     <%= f.input :title %>
-    <%= f.input :page_type, :collection => [['video','video'],['editor','editor'],['questions','questions'],['closer','closer']] %>
+    <%= f.input :page_type, :collection => [['video','video'],['editor','editor'],['questions','questions'],['closer','closer'],['opener','opener'],['html','html']] %>
     <div class="video_fields" style="<%= @page.page_type == "video" ? "": "display:none;"%>">
       <%= f.association :videos, as: :check_boxes,label_method: :title  %>
     </div>
@@ -68,8 +82,10 @@
       <%= f.input :success_message %><br>
       <%= f.input :points, label: "Editor points" %><br>
       <%= f.input :videotip %><br>
-      <%= f.input :initial_state, as: :text %><br>
-      <%= f.input :solution, as: :text %>
+      <%= f.input :initial_state, as: :text, input_html: { placeholder: "Estado inicial del editor" } %>
+      <%= f.input :load_from_previous, as: :boolean %><br>
+      <%= f.input :solution, as: :text, input_html: { placeholder: "Solución del problema" } %>
+      <%= f.input :auto_corrector, as: :boolean %>
     </div>
     <div id="questions_fields" class="questions_fields" style="<%= @page.page_type == "questions" ? "": "display:none;"%>">
       <%= f.input :question_points %><br>
@@ -85,10 +101,10 @@
       </table>
       <%= f.link_to_add "Añadir pregunta", :question_groups, :data => { :target => "#questions_field" } %>
     </div>
-    <div id="closer_fields" class="closer_fields" style="<%= @page.page_type == "closer" ? "": "display:none;"%>">
+    <div id="html_fields" class="html_fields" style="<%= (@page.page_type == "html" or @page.page_type == "opener" or @page.page_type == "closer") ? "": "display:none;"%>">
       <br>
       <%= f.input :html, as: :text %>
-    </div>
+    </div>    
   </div>
   <br>
   <div class="form-actions">
