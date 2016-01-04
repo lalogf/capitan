@@ -1,0 +1,52 @@
+<div class="container-fluid p-20">
+    <div class="page-header clearfix">
+        <h1 class="pull-left">Detalle de usuario</h1>
+    </div>
+    <div>
+      <p>
+        <strong>Código:</strong>
+        <%= @user.code %>
+      </p>
+      <p>
+        <strong>DNI:</strong>
+        <%= @user.dni %>
+      </p>
+      <p>
+        <strong>Nombres:</strong>
+        <%= @user.full_name %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+      <p>
+        <strong>Sede:</strong>
+        <%= @user.branch.name %>
+      </p>
+      <p>
+        <strong>Distrito:</strong>
+        <%= @user.district %>
+      </p>
+      <p>
+        <strong>Edad:</strong>
+        <%= @user.age %>
+      </p>
+      <p>
+        <strong>Usuario de Facebook:</strong>
+        <%= @user.facebook_username %>
+      </p>
+      <p>
+        <strong>Teléfono 1:</strong>
+        <%= @user.phone1 %>
+      </p>
+      <p>
+        <strong>Teléfono 2:</strong>
+        <%= @user.phone2 %>
+      </p>
+    </div>
+    <div class="form-actions">
+        <%= link_to 'Editar', edit_user_path(@user), :class => "btn btn-primary" %>
+        <%= link_to 'Regresar', users_path, :class => "btn btn-danger" %>            
+    </div>
+</div>
+
