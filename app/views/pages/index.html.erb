@@ -24,7 +24,7 @@
           <td><%= page.page_type %></td>
           <td><%= page.unit.title %></td>
           <td>
-            <%= link_to 'Ver página', course_unit_page_path(@course,@unit,page) %>  |  
+            <%= link_to 'Ver página', mycourse_unit_page_path(@course,@unit,page) %>  |  
             <%= link_to 'Editar', edit_course_unit_page_path(@course,@unit,page) %>  |  
             <%= link_to 'Eliminar', [@course,@unit,page], method: :delete, data: { confirm: '¿Está seguro?' } %>
           </td>
