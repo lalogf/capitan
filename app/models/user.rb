@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :branch
-  has_many :answers
+  has_many :answers , :dependent => :destroy
   has_many :pages, through: :answers
   
   # Include default devise modules. Others available are:
@@ -96,70 +96,46 @@ class User < ActiveRecord::Base
     return ActiveRecord::Base.connection.execute(query)
   end
   
-  def total_points()
-    points = 0
-    self.answers.each do |answer|
-        points = points + answer.points if ["editor","questions"].include?(answer.page.page_type) and answer.points != nil 
-    end
-    return points
-  end
-  
-  def subtotal_points()
-    points = 0
-    self.answers.each do |answer|
-      if ["editor","questions"].include?(answer.page.page_type) and !answer.page.selfLearning?
-        points = points + (answer.points != nil ? answer.points : 0)
-      end
-    end
-    return points
-  end
-
-  def calculate_self_learning_points()
-    points = 0
-    self.answers.each do |answer|
-      if ["questions"].include?(answer.page.page_type) and answer.page.selfLearning?
-        points = points + (answer.points != nil ? answer.points : 0)
-      end
-    end
-    return points    
-  end
-  
   def calculate_test_time()
     answers = self.answers.order(:created_at)
     return !answers.empty? ? (answers.try(:last).try(:created_at) - answers.try(:first).try(:created_at)) : 0
   end
   
-  def getEditorAnswers()
-    self.answers.select { |answer| answer.page.page_type == "editor" }
+  def getEditorAnswers(course_id)
+    Answer.joins(page: {unit: :course}).where("pages.page_type = ? and courses.id = ? and answers.user_id = ? ","editor",course_id,self.id)
   end
   
-  def getQuestions()
+  def getQuestionsAnswers(course_id,selfLearning)
+    
     questionsAnswers = []
-    self.answers.each do |answer|
-      if (answer.page.page_type == "questions" and !answer.page.selfLearning)
-        parts = answer.result.split(";")
-        for i in 1...parts.length
-          question_id_option_id = parts[i].split("|")
-          questionsAnswers << [QuestionGroup.find(question_id_option_id[0]),Option.find(question_id_option_id[1]),answer]
-        end
+    question_ids = []
+    option_ids = []
+    
+    answers = Answer.joins(page: {unit: :course}).where("pages.page_type = ? and pages.selfLearning = ? and courses.id = ? and answers.user_id = ? ","questions",selfLearning ? 1 : 0, course_id,self.id)
+    answers.each do |answer|
+      parts = answer.result.split(";")
+
+      for i in 1...parts.length
+        question_id, option_id = parts[i].split("|")
+        question_ids << question_id
+        option_ids << option_id
       end
     end
+    
+    questionsGroup = Hash[ QuestionGroup.find(question_ids).map{ |q| [q.id,q] } ]
+    options = Hash[ Option.find(option_ids).map{ |o| [o.id,o] } ]
+    
+    answers.each do |answer|
+      parts = answer.result.split(";")
+      for i in 1...parts.length
+        question_id, option_id = parts[i].split("|")
+        questionsAnswers << [questionsGroup[question_id.to_i],options[option_id.to_i],answer]
+      end
+      
+    end
+    
     return questionsAnswers
   end
-  
-  def getSelfLearningQuestions()
-    questionsAnswers = []
-    self.answers.each do |answer|
-      if (answer.page.page_type == "questions" and answer.page.selfLearning)
-        parts = answer.result.split(";")
-        for i in 1...parts.length
-          question_id_option_id = parts[i].split("|")
-          questionsAnswers << [QuestionGroup.find(question_id_option_id[0]),Option.find(question_id_option_id[1]),answer]
-        end
-      end
-    end
-    return questionsAnswers
-  end  
   
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file)

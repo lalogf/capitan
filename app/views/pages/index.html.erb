@@ -1,41 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="page-header clearfix">
-      <h1 class="pull-left">Páginas</h1>
-      <div class="pull-right">
-        <%= link_to 'Crear Nueva Página', new_course_unit_page_path(@course,@unit), :class => "btn btn-primary btn-new" %>
-      </div>
+<div class="container-fluid p-20">
+  <div class="page-header clearfix">
+    <h1 class="pull-left">Páginas</h1>
+    <div class="pull-right">
+      <%= link_to 'Crear Nueva Página', new_course_unit_page_path(@course,@unit), :class => "btn btn-primary btn-new" %>
     </div>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Título</th>
-          <th>Tipo</th>
-          <th>Unidad</th>
-          <th></th>
-        </tr>
-      </thead>
-    
-      <tbody>
-        <% @pages.order(:sequence).each do |page| %>
-          <tr>
-            <td><%= page.sequence %></td>
-            <td><%= page.title %></td>
-            <td><%= page.page_type %></td>
-            <td><%= page.unit.title %></td>
-            <td>
-              <%= link_to 'Ver página', course_unit_page_path(@course,@unit,page) %>  |  
-              <%= link_to 'Editar', edit_course_unit_page_path(@course,@unit,page) %>  |  
-              <%= link_to 'Eliminar', [@course,@unit,page], method: :delete, data: { confirm: '¿Está seguro?' } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    
-    <br>
-    
-        
   </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Título</th>
+        <th>Tipo</th>
+        <th>Unidad</th>
+        <th></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @pages.order(:sequence).each do |page| %>
+        <tr>
+          <td><%= page.sequence %></td>
+          <td><%= page.title %></td>
+          <td><%= page.page_type %></td>
+          <td><%= page.unit.title %></td>
+          <td>
+            <%= link_to 'Ver página', course_unit_page_path(@course,@unit,page) %>  |  
+            <%= link_to 'Editar', edit_course_unit_page_path(@course,@unit,page) %>  |  
+            <%= link_to 'Eliminar', [@course,@unit,page], method: :delete, data: { confirm: '¿Está seguro?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

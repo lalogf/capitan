@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="courses">
+        <% @courses.each_slice(2) do |courses| %>
+          <div class="row">
+            <% courses.each do |course| %>
+              <div class="col-md-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading" style="<%= "background-color: #{course.color}" %>">
+                    <%= link_to course_details_path(course) do %>
+                      <i class="fa fa-book"></i>
+                      <%= course.name %>
+                    <% end %>
+                  </div>
+                  <div class="panel-body"><%= course.description %></div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>  
+      </div>      
+    </div>
+  </div>
+</div>

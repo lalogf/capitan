@@ -1,72 +1,53 @@
-<div class="course-header clearfix" 
-     style="<%= "background-color: #{@course.color}" %>">
-    <div class="content container">
-        <div class="row">
-          <p>
-            <%= link_to courses_path do %>
-              <i class="fa fa-play fa-rotate-180"></i>Volver a la lista de cursos
-            <% end %>
-          </p>
-          <h1><%= @course.name %></h1>
-          <h4><%= @course.description %></h4>
-        </div>
-    </div>
-</div>
-<div class="container units-container">
-  <div class="row">
-    <div class="col-xs-12">
-      <p>TODO EL CONTENIDO EN "<%= @course.name %>"</p>
-      <hr>
-      <div class="units">
-        <% @course.units.order(:sequence).each_with_index do |unit,index| %>
-          <div class="row unit">
-            <div class="col-sm-3">
-              <div class="overview">
-                <h2><%= unit.title %></h2>
-                <p><%= unit.description %></p>
-              </div>
-            </div>
-            <div class="col-sm-9">
-              <div class="content-box clearfix">
-                <ol>
-                  <% unit.pages.each do |page| %>
-                    <% if page.page_type != "closer" %>
-                      <li class="progress-item">
-                        <% if !page.answers.where(:user_id => current_user.id).empty? || page.page_type == "opener" %>
-                          <%= link_to course_unit_page_path(@course,unit,page.id), 
-                          :class => ((page.page_type == "editor" and page.answers.where(:user_id => current_user.id).first !=nil and page.answers.where(:user_id => current_user.id).first.result == nil) ? "red-viewed" : "viewed") do %>
-                            <% if page.page_type == "video" %>
-                              <i class="fa fa-play-circle-o"></i>
-                            <% elsif page.page_type == "editor" %>
-                              <i class="fa fa-list-alt"></i>
-                            <% elsif page.page_type == "questions" %>
-                              <i class="fa fa-list-ol"></i>
-                            <% elsif page.page_type == "opener" or page.page_type == "html" %>
-                              <i class="fa fa-file-text-o"></i>
-                            <% end %>
-                            <span><%= page.title %></span>
-                          <% end %>
-                        <% else %>
-                            <% if page.page_type == "video" %>
-                              <i class="fa fa-play-circle-o"></i>
-                            <% elsif page.page_type == "editor" %>
-                              <i class="fa fa-list-alt"></i>
-                            <% elsif page.page_type == "questions" %>
-                              <i class="fa fa-list-ol"></i>
-                            <% elsif page.page_type == "opener" or page.page_type == "html" %>
-                              <i class="fa fa-file-text-o"></i>                              
-                            <% end %>
-                            <span><%= page.title %></span>
-                        <% end %>
-                      </li>
-                    <% end %>
-                  <% end %>
-                </ol>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
+<div class="container-fluid p-20">
+  <div class="breadcrumb">
+    <%= link_to "Volver a la lista", courses_path %> / 
+    <span><%= @course.name %></span>
+  </div>  
+  <div class="page-header clearfix">
+    <h1>Detalle del curso</h1>
   </div>
+  <div>
+    <p>
+      <strong>Code:</strong>
+      <%= @course.code %>
+    </p>
+    <p>
+      <strong>Name:</strong>
+      <%= @course.name %>
+    </p>
+    
+    <p>
+      <strong>Description:</strong>
+      <%= @course.description %>
+    </p>
+    <p>
+      <strong>Color:</strong>
+      <%= @course.color %>
+    </p>
+  </div><br>
+  
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @course.units.each do |unit| %>
+        <tr>
+          <td><%= unit.sequence %></td>
+          <td><%= link_to unit.title, course_unit_path(@course,unit)  %></td>
+          <td><%= unit.description %></td>
+          <td> 
+            <%= link_to 'Editar', edit_course_unit_path(@course,unit) %>  |  
+            <%= link_to 'Eliminar', [@course,unit], method: :delete, data: { confirm: '¿Está seguro?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

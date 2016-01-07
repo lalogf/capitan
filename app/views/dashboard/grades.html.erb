@@ -5,16 +5,29 @@
         document.location = '<%= grades_url %>/branch/' + this.value;
       });
       
+      /*
       $(".course-score").click(function(e) {
         e.preventDefault();
         $.get('<%= grades_url %>/activities.json',{
           user_id: $(this).attr("data-user-id"),
           course_id: $(this).attr("data-course-id")
         }, function(data) {
-          swal()
+          var activities = $("<ul></ul>");
+          $.each(data.activities, function(index, value) {
+            var activity = $("<li></li>").html(value.title);
+            activities.append(activity);
+          });
+          
+          swal({
+            title: "Detalle de notas - " + data.user.name + " " + data.user.lastname1 + " " + data.user.lastname2,
+            text: activities[0].outerHTML,
+            confirmButtonText: "Ok",   
+            closeOnConfirm: true,
+            html: true
+          });
         });
-      })
-      
+      });
+      */
     });
   </script>
 <% end %>
@@ -42,14 +55,14 @@
         <tbody>
           <% @users.each_with_index do |user,index| %>
             <tr>
-              <td><%= link_to user.code,ranking_detail_path(user.id) %></td>
+              <td><%= user.code %></td>
               <td><%= user.full_name %></td>
               <% @courses.each do |course| %>
                 <td>
-                    <a href="#" class="course-score" data-user-id="<%= user.id %>" data-course-id="<%= course.id %>">
+                    <%= link_to grade_details_path(user.id,course.id) do %>
                       <%= @users_score_by_course_map[course.id][user.id] != nil ? @users_score_by_course_map[course.id][user.id] : 0 %>/
                       <%= @courses_points_map[course.id] %>
-                    </a>
+                    <% end %>
                 </td>
               <% end %>
             </tr>

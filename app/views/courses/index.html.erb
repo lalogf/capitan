@@ -1,27 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="courses">
-        <% @courses.each_slice(2) do |courses| %>
-          <div class="row">
-            <% courses.each do |course| %>
-              <div class="col-md-6">
-                <div class="panel panel-default">
-                  <div class="panel-heading" style="<%= "background-color: #{course.color}" %>">
-                    <%= link_to course_path(course) do %>
-                      <i class="fa fa-book"></i>
-                      <%= course.name %>
-                    <% end %>
-                  </div>
-                  <div class="panel-body"><%= course.description %></div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>  
-      </div>      
+<div class="container-fluid p-20">
+  <div class="page-header clearfix">
+      <h1 class="pull-left">Cursos</h1>
+      <div class="pull-right">
+        <%= link_to 'Crear un nuevo curso', new_course_path, :class => "btn btn-primary btn-new" %>
+      </div>
     </div>
-  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= link_to course.name, course %></td>
+          <td><%= course.description %></td>
+          <td>
+            <%= link_to 'Editar', edit_course_path(course) %>  |  
+            <%= link_to 'Eliminar', course, method: :delete, data: { confirm: '¿Está seguro?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-

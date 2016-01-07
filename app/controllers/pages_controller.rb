@@ -1,7 +1,9 @@
 class PagesController < ApplicationController
   
-  before_action :set_course, except: [:saveAnswer,:saveQuestion]
-  before_action :set_unit, except: [:saveAnswer,:saveQuestion]
+  layout "admin", except: [:show]
+  
+  before_action :set_course, except: [:saveAnswer,:saveQuestion, :saveAnswers]
+  before_action :set_unit, except: [:saveAnswer,:saveQuestion, :saveAnswers]
 
   # GET /pages
   # GET /pages.json
@@ -45,7 +47,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to course_unit_pages_path(@course,@unit), notice: 'Page was successfully created.' }
+        format.html { redirect_to [@course,@unit], notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new }
@@ -60,7 +62,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       @page = @unit.pages.find(params[:id])
       if @page.update(page_params)
-        format.html { redirect_to course_unit_pages_path(@course,@unit), notice: 'Page was successfully updated.' }
+        format.html { redirect_to [@course,@unit], notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
@@ -75,20 +77,40 @@ class PagesController < ApplicationController
     @page = @unit.pages.find(params[:id])
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to course_unit_pages_url(@course,@unit), notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to [@course,@unit], notice: 'Page was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
   
   def saveAnswer
-    answer = Answer.find_by_page_id_and_user_id(params[:page_id],current_user.id)
+    answer = Answer.find_by_page_id_and_user_id(params[:page_id],params[:user_id])
     page = Page.find(params[:page_id])
     if answer != nil
-      answer.result = params[:answer]
-      answer.points = page.points
+      answer.result = params[:answer] if params[:answer] != nil
+      answer.points = params[:points] != nil ? params[:points] : page.points
       answer.save
       render :json => { :status => :ok, :message => "success" }
     end
+  end
+  
+  def saveAnswers
+    status = "ok"
+    message = "success"
+    begin
+      if params[:answer_ids] != nil
+        for i in 0...params[:answer_ids].length
+          answer = Answer.find(params[:answer_ids][i])
+          if answer != nil
+            answer.points = params[:answer_values][i]
+            answer.save
+          end
+        end
+      end
+    rescue
+      status = "fail"
+      message = "We could not save the answers"
+    end
+    render :json => { :status => status, :message => message }
   end
   
   def saveQuestion

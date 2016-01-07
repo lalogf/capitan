@@ -1,9 +1,9 @@
 class CoursesController < ApplicationController
   
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_current_user_is_admin, except: [:index, :show]
+  before_action :set_course, only: [:show, :edit, :update, :destroy,:course_details]
+  before_action :check_if_current_user_is_admin, except: [:course_list, :course_details]
   
-  layout "admin", except: [:index, :show]
+  layout "admin", except: [:course_list, :course_details]
   
   # GET /courses
   # GET /courses.json
@@ -11,8 +11,11 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
   
-  def admin
+  def course_list
     @courses = Course.all
+  end
+  
+  def course_details
   end
 
   # GET /courses/1
@@ -36,7 +39,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to courses_admin_path, notice: 'Course was successfully created.' }
+        format.html { redirect_to courses_path, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -50,7 +53,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to courses_admin_path, notice: 'Course was successfully updated.' }
+        format.html { redirect_to courses_path, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -64,7 +67,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_admin_path, notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to courses_path, notice: 'Course was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

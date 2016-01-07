@@ -1,6 +1,8 @@
 class UnitsController < ApplicationController
   
   before_action :set_course 
+  
+  layout "admin"
 
   # GET /units
   # GET /units.json

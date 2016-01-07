@@ -21,6 +21,15 @@ class DashboardController < ApplicationController
      ]}]
   end
   
+  def grade_details
+    @user = User.find(params[:user_id])
+    @user_score = Hash[User.total_score_by_course(params[:course_id]).map { |user| [user.id, user.score] }]
+    @editorAnswers = @user.getEditorAnswers(params[:course_id])
+    @followUpQuestionAnswers = @user.getQuestionsAnswers(params[:course_id],false)
+    @selfLearningQuestionAnswers = @user.getQuestionsAnswers(params[:course_id],true)
+  end
+  
+  
   def list_activities_scorables
     user = User.find(params[:user_id])
     
@@ -50,26 +59,5 @@ class DashboardController < ApplicationController
     respond_to do |format|
       format.json { render :json => json }
     end
-
   end
-
-  def ranking
-    @branches = Branch.all
-    if params[:branch_id]
-      @users = User.where("branch_id = ?", params[:branch_id]).sort { |a,b| 
-        comp = b.total_points() <=> a.total_points() 
-        comp.zero? ? (a.calculate_test_time <=> b.calculate_test_time) : comp
-      }
-    else
-      @users = User.all.sort { |a,b| 
-        comp = b.total_points() <=> a.total_points() 
-        comp.zero? ? (a.calculate_test_time <=> b.calculate_test_time) : comp
-      }
-    end
-  end
-  
-  def ranking_detail
-    @user = User.find(params[:id])
-  end
-
 end

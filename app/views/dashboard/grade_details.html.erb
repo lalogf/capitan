@@ -1,0 +1,169 @@
+<% content_for :scripts do %>
+ <script type="text/javascript">
+    function editor(id)
+    {
+         CodeMirror.fromTextArea(document.getElementById(id), {
+            lineNumbers: true,
+            lineWrapping: true,
+            readOnly: true
+        });
+    }
+    
+    <% @editorAnswers.each do |answer| %>
+      editor("code_<%= answer.id %>");
+    <% end %>
+    
+    $(document).ready(function() {
+      $(".save-answer-points").click(function(e) {
+        e.preventDefault();
+        var answerids = $(".new-input-answer").map(function() {
+          return $(this).attr("data-answer-id");
+        }).get();
+        var answervalues = $(".new-input-answer").map(function() {
+          return $(this).val();
+        }).get();
+        $.post("/saveAnswers",{
+            answer_ids: answerids,
+            answer_values: answervalues
+          },function(result) {
+            if (result.status == "ok") {
+              swal({
+                title: "Se grabó con éxito",
+                text: "El puntaje de las preguntas se grabaron con éxito",
+                confirmButtonText: "OK",
+                closeOnConfirm: true              
+              });
+            } else {
+              swal({
+                title: "Hubo un problema",
+                text: "No se pudo grabar con éxito las preguntas",
+                confirmButtonText: "OK",
+                closeOnConfirm: true              
+              });
+            }
+        });
+      });
+    });
+    
+ </script>
+<% end %>
+<style>
+  ol {
+    margin-left: 20px;
+  }
+</style>
+<div class="container-fluid p-20">
+
+    <ol class="breadcrumb" style="margin:0px;">
+      <li>
+        <%= link_to "Notas",grades_path %>
+      </li>
+      <li class="active">Información de notas</li>
+    </ol>     
+    <div class="page-header clearfix">
+      <h1>Información personal</h1>
+    </div>
+    <div>
+      <p><strong>Código:</strong><%= @user.code %></p>
+      <p><strong>Nombre:</strong><%= @user.full_name %></p>
+      <p><strong>Puntaje Total:</strong><%= @user_score[@user.id] %></p>
+    </div>
+    <% if !@editorAnswers.empty? %>
+      <div class="page-header clearfix">
+        <h1>Respuestas del Editor</h1>
+      </div>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pregunta</th>
+            <th>Código</th>
+            <th>Respuesta</th>
+            <th style="width: 8%;">Puntaje Máx.</th>
+            <th>Puntaje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @editorAnswers.each_with_index do |answer,index| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= answer.page.title %></td>
+              <td><textarea id="code_<%= answer.id %>" name="code"><%= answer.result %></textarea></td>
+              <td><%= raw answer.result %></td>
+              <td><%= answer.page.points %></td>
+              <td>
+                  <% if answer.page.auto_corrector %>
+                    <%= answer.points %>
+                    <i class="fa fa-magic" style="margin-left:10px"></i>
+                  <% else %>
+                    <input type="text" class="new-input-answer" value="<%= answer.points %>" data-answer-id="<%= answer.id %>" style="width:50px;"/>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+            <tr>
+              <td colspan="5"></td>
+              <td>
+                <a href="#" class="save-answer-points btn btn-primary">Grabar</a> 
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    <% end %>
+    
+    <% if !@followUpQuestionAnswers.empty? %>
+      <div class="page-header clearfix">
+        <h1>Preguntas Seguimiento</h1>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pregunta</th>
+            <th>Respuesta</th>
+            <th style="width: 8%;">Puntaje Máx.</th>
+            <th>Puntaje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @followUpQuestionAnswers.each_with_index do |question,index| %>
+            <tr>
+              <td><%= index + 1%></td>
+              <td><%= question[0].question.description %></td>
+              <td><%= question[1].description %></td>
+              <td><%= question[2].page.question_points %></td>
+              <td><%= question[1].correct? ? question[2].page.question_points : 0 %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    
+    <% if !@selfLearningQuestionAnswers.empty? %>
+      <div class="page-header clearfix">
+        <h1>Preguntas Investigación</h1>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pregunta</th>
+            <th>Respuesta</th>
+            <th style="width: 8%;">Puntaje Máx.</th>
+            <th>Puntaje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @selfLearningQuestionAnswers.each_with_index do |question,index| %>
+            <tr>
+              <td><%= index + 1%></td>
+              <td><%= question[0].question.description %></td>
+              <td><%= question[1].description %></td>
+              <td><%= question[2].page.question_points %></td>
+              <td><%= question[1].correct? ? question[2].page.question_points : 0 %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+</div>

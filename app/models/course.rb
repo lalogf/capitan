@@ -36,7 +36,7 @@ class Course < ActiveRecord::Base
     
     validates :name, presence: true
     
-    has_many :units
+    has_many :units, :dependent => :destroy
     
     def get_course_sum_points
         points = 0

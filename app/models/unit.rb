@@ -14,6 +14,6 @@
 class Unit < ActiveRecord::Base
   
   belongs_to :course
-  has_many :pages
+  has_many :pages, :dependent => :destroy
   
 end
