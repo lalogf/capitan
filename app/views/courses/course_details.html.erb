@@ -43,6 +43,10 @@
                               <i class="fa fa-list-ol"></i>
                             <% elsif page.page_type == "opener" or page.page_type == "html" %>
                               <i class="fa fa-file-text-o"></i>
+                            <% elsif page.page_type == "slides"%>
+                              <i class="fa fa-slideshare"></i>
+                            <% elsif page.page_type == "exercise" %>
+                              <i class="fa fa-flask"></i>
                             <% end %>
                             <span><%= page.title %></span>
                           <% end %>
@@ -55,6 +59,10 @@
                               <i class="fa fa-list-ol"></i>
                             <% elsif page.page_type == "opener" or page.page_type == "html" %>
                               <i class="fa fa-file-text-o"></i>                              
+                            <% elsif page.page_type == "slides"%>
+                              <i class="fa fa-slideshare"></i>
+                            <% elsif page.page_type == "exercise" %>
+                              <i class="fa fa-flask"></i>
                             <% end %>
                             <span><%= page.title %></span>
                         <% end %>
