@@ -25,7 +25,7 @@ class PagesController < ApplicationController
     end
     @page.answers.find_or_create_by(page_id: @page.id,user_id: current_user.id)
     if @page.load_from_previous
-      @page.initial_state = @previous_page.answers.first.result
+      @page.initial_state = @previous_page.answers.where(user_id: current_user.id).first.result
     end
   end
 
