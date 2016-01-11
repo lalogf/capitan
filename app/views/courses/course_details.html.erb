@@ -29,7 +29,7 @@
             <div class="col-sm-9">
               <div class="content-box clearfix">
                 <ol>
-                  <% unit.pages.each do |page| %>
+                  <% unit.pages.order(:sequence).each do |page| %>
                     <% if page.page_type != "closer" %>
                       <li class="progress-item">
                         <% if !page.answers.where(:user_id => current_user.id).empty? || page.page_type == "opener" %>
