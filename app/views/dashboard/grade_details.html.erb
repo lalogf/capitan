@@ -102,7 +102,7 @@
               <td style="width:45%">
                 <iframe id="answer-<%= answer.id %>" class="preview"></iframe>
                 <script type="text/javascript">
-                  updatePreview("answer-"+'<%= answer.id %>','<%= raw answer.result.delete("\n") %>');
+                  updatePreview("answer-"+'<%= answer.id %>','<%= raw answer.result.delete("\n") if answer.result != nil %>');
                 </script>
               </td>
               <td><%= answer.page.points %></td>
