@@ -74,11 +74,12 @@
         <h1>Respuestas del Editor</h1>
       </div>
       <script>
-        function updatePreview(frameId,value) {
+        function updatePreview(frameId,textAreaId) {
           var previewFrame = document.getElementById(frameId);
           var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+          var textAreaValue = document.getElementById(textAreaId).value;
           preview.open();
-          preview.write(value);
+          preview.write(textAreaValue);
           preview.close();
         }        
       </script>
@@ -102,7 +103,7 @@
               <td style="width:45%">
                 <iframe id="answer-<%= answer.id %>" class="preview"></iframe>
                 <script type="text/javascript">
-                  updatePreview("answer-"+'<%= answer.id %>','<%= raw answer.result.delete("\n") if answer.result != nil %>');
+                  updatePreview("answer-<%= answer.id %>","code_<%= answer.id %>");
                 </script>
               </td>
               <td><%= answer.page.points %></td>
