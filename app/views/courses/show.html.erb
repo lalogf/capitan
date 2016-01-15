@@ -27,7 +27,7 @@
   </div>    
   <br><br>
     <div>
-      <%= link_to "Nuevo Página", new_course_unit_path(@course), :class => "btn btn-primary" %>
+      <%= link_to "Nueva unidad", new_course_unit_path(@course), :class => "btn btn-primary" %>
     </div>
     <br><br>
   
@@ -42,7 +42,7 @@
     </thead>
   
     <tbody>
-      <% @course.units.each do |unit| %>
+      <% @course.units.order(:sequence).each do |unit| %>
         <tr>
           <td><%= unit.sequence %></td>
           <td><%= link_to unit.title, course_unit_path(@course,unit)  %></td>

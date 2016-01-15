@@ -147,6 +147,11 @@
         });        
         
       <% end %>
+      <% if @page.page_type == 'exercise' %>
+      
+        converter = new Markdown.Converter();
+        $(".exercise_instructions").html(converter.makeHtml('<%= escape_javascript(@page.excercise_instructions)%>'));
+      <% end %>
     });
     
     <% if @page.page_type == 'editor' %>
@@ -163,6 +168,7 @@
         },function() {
           $.post("/saveAnswer",{
             answer: editor.getValue(),
+            points: <%= @page.points %>,
             page_id: <%= @page.id %>,
             user_id: <%= current_user.id %>
           },function(result) {
@@ -261,7 +267,6 @@
         <% if page.page_type != "closer" %>
           <li class="unit-item clearfix <%= page.id == @page.id ? "active": ""%>"
               title="<%= page.title %>">
-            <% if !page.answers.where(:user_id => current_user.id).empty? || page.page_type == "opener" %>
               <%= link_to mycourse_unit_page_path(@course,page.unit,page),
                   :class => "clearfix item #{((page.page_type == "editor" and page.answers.where(:user_id => current_user.id).first !=nil and page.answers.where(:user_id => current_user.id).first.result == nil) ? "red-viewed" : "viewed")}" do %>
                 <div class="icon">
@@ -272,31 +277,17 @@
                   <% elsif page.page_type == "questions" %>
                     <i class="fa fa-list-ol"></i>
                   <% elsif page.page_type == "opener" or page.page_type == "html" %>
-                    <i class="fa fa-file-text-o"></i>                    
+                    <i class="fa fa-file-text-o"></i>
+                  <% elsif page.page_type == "slides"%>
+                    <i class="fa fa-slideshare"></i>
+                  <% elsif page.page_type == "exercise" %>
+                    <i class="fa fa-flask"></i>
                   <% end %>
                 </div>
                 <div class="unit-title">
                   <%= page.title %>
                 </div>
               <% end %>
-            <% else %>
-              <div class="item">
-                <div class="icon">
-                  <% if page.page_type == "video" %>
-                    <i class="fa fa-play-circle-o"></i>
-                  <% elsif page.page_type == "editor" %>
-                    <i class="fa fa-list-alt"></i>
-                  <% elsif page.page_type == "questions" %>
-                    <i class="fa fa-list-ol"></i>
-                  <% elsif page.page_type == "opener" or page.page_type == "html" %>
-                    <i class="fa fa-file-text-o"></i>                    
-                  <% end %>
-                </div>
-                <div class="unit-title">
-                  <%= page.title %>
-                </div>
-              </div>
-            <% end %>
           </li>
         <% end %>
       <% end %>
@@ -318,10 +309,33 @@
           </div>
           <div id="video-content"></div>
           <div class="text-center mt-20">
-            <%= link_to 'Saltar video', mycourse_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-warning" %>
+            <% if @course != nil and @unit != nil and @next_page != nil %>
+              <%= link_to 'Saltar video', mycourse_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-warning" %>
+            <% end %>
           </div>
         </div>
       </div>
+    <% end %>
+    <% if @page.page_type == 'slides' %>
+      <div class="outer-container">
+        <div class="inner-container text-center">
+          <div id="video-content">
+            <iframe 
+            src="<%= @page.slide_url %>" 
+            frameborder="0" 
+            width="715" 
+            height="567" 
+            allowfullscreen="true" 
+            mozallowfullscreen="true" 
+            webkitallowfullscreen="true"></iframe>
+          </div>
+          <div class="text-center mt-20">
+            <% if @course != nil and @unit != nil and @next_page != nil %>
+              <%= link_to 'Saltar Slide', mycourse_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-warning" %>
+            <% end %>
+          </div>
+        </div>
+      </div>      
     <% end %>
     <% if @page.page_type == 'editor' %>
       <div class="container-fluid p-20">
@@ -406,6 +420,17 @@
           <%= raw @page.html %>
         </div>
       </div>    
+    <% end %>
+    <% if @page.page_type == 'exercise' %>
+      <div class="container-fluid p-20">
+        <div class="exercise_instructions">
+        </div>
+        <h2>Materiales</h2>
+        Descarga todos los materiales necesario para realizar el ejercicio aqui
+        <%= link_to @page.document.url do %>
+           <i class="fa fa-file-archive-o"></i>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

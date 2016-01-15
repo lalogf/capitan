@@ -3,42 +3,41 @@
   
     var converter;
     
+    function showFields(sectionToShow,sectionToHide) {
+      $.each(sectionToHide,function(index,section) {
+        $("."+section).hide();
+      });
+      $("."+sectionToShow).show();
+    }
+    
     $(document).ready(function() {
       
       $("#page_page_type").change(function(select) {
         var page_type = $("#page_page_type").val();
         if (page_type === "video") {
-          $(".video_fields").show();
-          $(".editor_fields").hide();
-          $(".questions_fields").hide();
-          $(".closer_fields").hide();
-          $(".opener_fields").hide();
-          $(".html_fields").hide();
+          showFields("video_fields",["editor_fields","questions_fields","html_fields",
+                                     "slide_fields","exercise_fields"]);
         } else if (page_type === "editor") {
-          $(".video_fields").hide();
-          $(".editor_fields").show();
-          $(".questions_fields").hide();
-          $(".html_fields").hide();          
+          showFields("editor_fields",["video_fields","questions_fields","html_fields",
+                                     "slide_fields","exercise_fields"]);      
         } else if (page_type === "questions") {
-          $(".video_fields").hide();
-          $(".editor_fields").hide();
-          $(".questions_fields").show();
-          $(".html_fields").hide();          
+          showFields("questions_fields",["video_fields","editor_fields","html_fields",
+                                     "slide_fields","exercise_fields"]);          
         } else if (page_type === "closer") {
-          $(".video_fields").hide();
-          $(".editor_fields").hide();
-          $(".questions_fields").hide();
-          $(".html_fields").show();          
+          showFields("html_fields",["video_fields","editor_fields",
+                                     "slide_fields","exercise_fields"]);        
         } else if (page_type === "opener") {
-          $(".video_fields").hide();
-          $(".editor_fields").hide();
-          $(".questions_fields").hide();
-          $(".html_fields").show();
+          showFields("html_fields",["video_fields","editor_fields",
+                                     "slide_fields","exercise_fields"]);  
         } else if (page_type === "html") {
-          $(".video_fields").hide();
-          $(".editor_fields").hide();
-          $(".questions_fields").hide();
-          $(".html_fields").show();     
+          showFields("html_fields",["video_fields","editor_fields",
+                                     "questions_fields","slide_fields","exercise_fields"]);    
+        } else if (page_type === "slides") {
+          showFields("slide_fields",["video_fields","editor_fields",
+                                     "questions_fields", "html_fields","exercise_fields"]); 
+        } else if (page_type === "exercise") {
+          showFields("exercise_fields",["video_fields","editor_fields", "questions_fields",
+                                     "html_fields","slides_fields"]); 
         }
       });
       
@@ -72,7 +71,7 @@
   <div class="form-inputs">
     <%= f.input :sequence %>
     <%= f.input :title %>
-    <%= f.input :page_type, :collection => [['video','video'],['editor','editor'],['questions','questions'],['closer','closer'],['opener','opener'],['html','html']] %>
+    <%= f.input :page_type, :collection => [['video','video'],['editor','editor'],['questions','questions'],['closer','closer'],['opener','opener'],['html','html'],['slides','slides'],['exercise','exercise']] %>
     <div class="video_fields" style="<%= @page.page_type == "video" ? "": "display:none;"%>">
       <%= f.association :videos, as: :check_boxes,label_method: :title  %>
     </div>
@@ -103,7 +102,14 @@
     <div id="html_fields" class="html_fields" style="<%= (@page.page_type == "html" or @page.page_type == "opener" or @page.page_type == "closer") ? "": "display:none;"%>">
       <br>
       <%= f.input :html, as: :text %>
-    </div>    
+    </div>
+    <div id="slide_fields" class="slide_fields" style="<%= @page.page_type == "slides" ? "" : "display:none;"%>">
+      <%= f.input :slide_url %>
+    </div>
+    <div id="exercise_fields" class="exercise_fields" style="<%= @page.page_type == "exercise" ? "" : "display:none;"%>">
+      <%= f.input :excercise_instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %><br>
+      <%= f.input :document, as: :file %>
+    </div>
   </div>
   <br>
   <div class="form-actions">

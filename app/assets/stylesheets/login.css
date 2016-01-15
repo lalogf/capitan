@@ -1,7 +1,5 @@
 /*
-*= require twitter-bootstrap-static/bootstrap
-*= require twitter-bootstrap-static/fontawesome
-*= require font-awesome 
+* = require bootstrap_and_overrides
 *= require bootstrap-social
 *= require_self
  */

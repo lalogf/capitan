@@ -2,25 +2,31 @@
 #
 # Table name: pages
 #
-#  id                 :integer          not null, primary key
-#  title              :string(255)
-#  unit_id            :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  page_type          :string(255)
-#  sequence           :integer
-#  instructions       :text(65535)
-#  html               :text(65535)
-#  initial_state      :text(65535)
-#  solution           :text(65535)
-#  success_message    :string(255)
-#  videotip           :string(255)
-#  points             :integer
-#  question_points    :integer
-#  selfLearning       :boolean          default(FALSE)
-#  load_from_previous :boolean
-#  auto_corrector     :boolean          default(FALSE)
-#  grade              :integer          default(0)
+#  id                     :integer          not null, primary key
+#  title                  :string(255)
+#  unit_id                :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  page_type              :string(255)
+#  sequence               :integer
+#  instructions           :text(65535)
+#  html                   :text(65535)
+#  initial_state          :text(65535)
+#  solution               :text(65535)
+#  success_message        :string(255)
+#  videotip               :string(255)
+#  points                 :integer
+#  question_points        :integer
+#  selfLearning           :boolean          default(FALSE)
+#  load_from_previous     :boolean
+#  auto_corrector         :boolean          default(FALSE)
+#  grade                  :integer          default(0)
+#  slide_url              :string(255)
+#  document_file_name     :string(255)
+#  document_content_type  :string(255)
+#  document_file_size     :integer
+#  document_updated_at    :datetime
+#  excercise_instructions :text(65535)
 #
 
 class Page < ActiveRecord::Base
@@ -37,6 +43,14 @@ class Page < ActiveRecord::Base
                                  allow_destroy: true
   
   accepts_nested_attributes_for :answers
+  
+  has_attached_file :document
+  validates_attachment :document, content_type: { content_type: ["application/zip","application/x-zip","application/x-zip-compressed"] }
+  before_post_process :skip_for_zip
+
+  def skip_for_zip
+     ! %w(application/zip application/x-zip).include?(document_content_type)
+  end  
   
   scope :editor_pages, -> { where(page_type: 'editor') }
   scope :question_pages, -> { where(page_type: 'questions') }

@@ -17,10 +17,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>        
-        <a class="navbar-brand">
+        <%= link_to course_list_path, :class => "navbar-brand" do %>
         	<%= image_tag 'isotipo.png' %>
         	Recursos laboratoria
-        </a>
+        <% end %>
       </div>
       <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">    
         <ul class="nav navbar-nav navbar-right">

@@ -462,11 +462,11 @@ video {
     border: 1px solid silver;
 }
 
-.instructions {
+.instructions, .exercise_instructions {
   margin-bottom:20px;
 }
 
-.instructions ol {
+.instructions ol, .exercise_instructions ol {
   margin-left: 22px;
 }
 
