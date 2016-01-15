@@ -29,6 +29,7 @@
 #  phone1                 :string(255)
 #  phone2                 :string(255)
 #  branch_id              :integer
+#  disable                :boolean          default(FALSE)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

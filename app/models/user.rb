@@ -30,6 +30,7 @@ require 'roo'
 #  phone1                 :string(255)
 #  phone2                 :string(255)
 #  branch_id              :integer
+#  disable                :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base

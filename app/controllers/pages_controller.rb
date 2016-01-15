@@ -87,7 +87,7 @@ class PagesController < ApplicationController
     page = Page.find(params[:page_id])
     if answer != nil
       answer.result = params[:answer] if params[:answer] != nil
-      answer.points = params[:points] != nil ? params[:points] : page.points
+      answer.points = page.points if page.auto_corrector
       answer.save
       render :json => { :status => :ok, :message => "success" }
     end
