@@ -1,0 +1,86 @@
+<% content_for :scripts do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#branches").change(function() {
+        document.location = '<%= enrollments_url %>/branch/' + this.value;
+      });
+      
+      $(".select-all").change(function(e) {
+          var course_id = $(this).attr("data-course-id");
+          var checked = this.checked;
+          var checkboxes = $('input[data-course-id="' + course_id +'"]');
+          checkboxes.map(function (index, elem) {
+              $(elem).prop('checked', checked);
+          });
+      });
+      
+      $(".save-changes").click(function(e) {
+          e.preventDefault();
+          var course_ids = $(".select-all").map(function(index,elem) {
+              return [$(elem).attr("data-course-id")];
+          }).get();
+          var student_ids = [];
+          $.each(course_ids,function(index, course_id) {
+              student_ids.push($('input[data-course-id="' + course_id +'"]').map(function(index, elem) {
+                      return [{
+                        course_id: course_id,
+                        student_id: $(elem).attr("data-student-id"),
+                        status: $(elem).is( ":checked" )
+                      }]
+              }).get());
+          });
+          $.post("/admin/saveEnrollments",{
+              course_ids: course_ids,
+              student_ids: JSON.stringify(student_ids)
+          }, function(result) {
+              
+          });
+      });
+    });
+  </script>
+<% end %>
+<div class="container-fluid p-20">
+    <div class="page-header clearfix">
+      <h1 class="pull-left">Inscripción de alumnos en cursos laboratoria</h1>
+    </div>
+    <label for="branches">
+      Sedes:
+      <%= select_tag "branches", options_from_collection_for_select(@branches, "id", "name",@branch_id) %>
+    </label>
+    <a href="#" class="btn btn-primary pull-right save-changes">Grabar cambios</a>
+    <br>
+    <br>
+    <div class="table-grades">
+      <table class="table table-striped table-hover table-bordered ">
+        <thead>
+          <tr>
+            <th class="w-135">Código</th>
+            <th>Nombres</th>
+            <% @courses.each do |course| %>
+              <th style="<%= "background-color:#{course.color}" if !course.color.blank? %>">
+                  <%= course.name %>
+                  <div class="text-center">
+                      <input type="checkbox" class="select-all" data-course-id="<%= course.id %>">
+                  </div>
+              </th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @students.each_with_index do |student,index| %>
+            <tr>
+              <td><%= student.code %></td>
+              <td><%= student.full_name %></td>
+              <% @courses.each do |course| %>
+                <td class="text-center" style="width:15%;">
+                    <input type="checkbox" class="user_course_enroll" data-student-id="<%= student.id %>" data-course-id="<%= course.id%>"/>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <a href="#" class="btn btn-primary pull-right">Grabar cambios</a>
+    </div>
+    <br>
+</div>

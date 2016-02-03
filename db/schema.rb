@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114223512) do
+ActiveRecord::Schema.define(version: 20160203203836) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20160114223512) do
     t.string   "code",                          limit: 255
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "course_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id", using: :btree
+  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
+
   create_table "options", force: :cascade do |t|
     t.string   "description", limit: 255
     t.integer  "question_id", limit: 4
@@ -92,6 +102,12 @@ ActiveRecord::Schema.define(version: 20160114223512) do
     t.integer  "document_file_size",     limit: 4
     t.datetime "document_updated_at"
     t.text     "excercise_instructions", limit: 65535
+    t.boolean  "show_solution",          limit: 1
+    t.string   "video_solution",         limit: 255
+    t.string   "solution_file_name",     limit: 255
+    t.string   "solution_content_type",  limit: 255
+    t.integer  "solution_file_size",     limit: 4
+    t.datetime "solution_updated_at"
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree
@@ -185,6 +201,8 @@ ActiveRecord::Schema.define(version: 20160114223512) do
 
   add_foreign_key "answers", "pages"
   add_foreign_key "answers", "users"
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "users"
   add_foreign_key "options", "questions"
   add_foreign_key "pages", "units"
   add_foreign_key "question_groups", "pages"

@@ -424,10 +424,20 @@
       <div class="container-fluid p-20">
         <div class="exercise_instructions">
         </div>
-        <h2>Materiales</h2>
-        Descarga todos los materiales necesario para realizar el ejercicio aqui
-        <%= link_to @page.document.url do %>
-           <i class="fa fa-file-archive-o"></i>
+        <% if @page.document.url != nil %>
+          <h2>Materiales</h2>
+          Descarga todos los materiales necesario para realizar el ejercicio aqui
+          <%= link_to @page.document.url do %>
+             <i class="fa fa-file-archive-o"></i>
+          <% end %>
+        <% end %>
+        <% if @page.show_solution %>
+          <h2>Solucionario</h2>
+          Descarga el solucionario del ejercicio aqui 
+          <%= link_to @page.solution.url do %>
+            <i class="fa fa-file-archive-o"></i>
+          <% end %><br><br>
+          <iframe width="560" height="315" src="<%= @page.video_solution %>" frameborder="0" allowfullscreen></iframe>          
         <% end %>
       </div>
     <% end %>

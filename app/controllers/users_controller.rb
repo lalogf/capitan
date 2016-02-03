@@ -1,3 +1,5 @@
+require 'wannabe_bool'
+
 class UsersController < ApplicationController
   
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -10,8 +12,9 @@ class UsersController < ApplicationController
     @branches = Branch.all
     @branch_id = params[:branch_id] != nil ? params[:branch_id] : current_user.branch_id
     
-    @students = User.where("branch_id = ? and admin = 0",@branch_id)
-    @admins = User.where("branch_id = ? and admin = 1",@branch_id)
+    @students = User.students(@branch_id)
+    @admins = User.admins(@branch_id)
+    @disables = User.disables(@branch_id)
   end
 
   # GET /users/1
@@ -66,6 +69,29 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def change_user_status
+    status = "ok"
+    message = "success"
+    begin
+      if (params[:status] != nil && params[:user_id] != nil)
+        u = User.find(params[:user_id])
+        if u != nil
+          u.disable = params[:status].to_b
+          u.save
+        else
+          raise "User not found"
+        end
+      else
+        raise "Parameter invalid"
+      end
+    rescue => exception
+      puts exception.backtrace
+      status = "fail"
+      message = "We could not change user status"
+    end      
+    render :json => { :status => status, :message => message }
   end
 
   private

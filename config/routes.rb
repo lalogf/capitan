@@ -22,13 +22,16 @@ Rails.application.routes.draw do
       get 'grades/activities' => 'dashboard#list_activities_scorables', :as => :activities
       get 'users(/branch/:branch_id)' => 'users#index', :as => :users_index
       get 'ranking(/:branch_id)' => 'users#ranking', :as => :ranking
-      get 'ranking_detail/:id' => 'users#ranking_detail', :as => :ranking_detail      
-      
+      get 'ranking_detail/:id' => 'users#ranking_detail', :as => :ranking_detail
+      get 'enrollments(/branch/:branch_id)' => 'dashboard#enrollments', :as => :enrollments
+      post 'saveEnrollments' => 'dashboard#save_enrollments', :as => :saveEnrollments
     end
     
     post 'saveAnswer' => 'pages#saveAnswer'
     post 'saveAnswers' => 'pages#saveAnswers'
-    post 'saveQuestion' => 'pages#saveQuestion'   
+    post 'saveQuestion' => 'pages#saveQuestion'
+    
+    post 'changeUserStatus' => 'users#change_user_status'
     
     root :to => 'courses#course_list'    
     

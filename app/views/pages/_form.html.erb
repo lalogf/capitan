@@ -108,7 +108,10 @@
     </div>
     <div id="exercise_fields" class="exercise_fields" style="<%= @page.page_type == "exercise" ? "" : "display:none;"%>">
       <%= f.input :excercise_instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %><br>
-      <%= f.input :document, as: :file %>
+      <%= f.input :document, as: :file %><br>
+      <%= f.input :solution, as: :file %><br>
+      <%= f.input :video_solution %><br>
+      <%= f.input :show_solution, as: :boolean %><br>
     </div>
   </div>
   <br>

@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
   belongs_to :branch
   has_many :answers , :dependent => :destroy
   has_many :pages, through: :answers
+  has_many :enrollments, :dependent => :destroy
+  has_many :courses, through: :enrollments
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -50,6 +52,9 @@ class User < ActiveRecord::Base
          :omniauthable, 
          :omniauth_providers => [:github,:facebook]
   
+  scope :students, -> (branch_id) { where(branch_id: branch_id, admin: 0, disable: 0) }
+  scope :admins, -> (branch_id) { where(branch_id: branch_id, admin: 1, disable: 0) }
+  scope :disables, -> (branch_id) { where(branch_id: branch_id, disable: 1) }
   
   def self.create_from_omniauth(params)
     attributes = {

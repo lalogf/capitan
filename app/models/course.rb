@@ -37,6 +37,10 @@ class Course < ActiveRecord::Base
     validates :name, presence: true
     
     has_many :units, :dependent => :destroy
+    has_many :enrollments, :dependent => :destroy
+    has_many :users, through: :enrollments
+    
+    accepts_nested_attributes_for :enrollments
     
     def get_course_sum_points
         points = 0
