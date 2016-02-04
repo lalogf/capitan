@@ -35,4 +35,8 @@ build/
 .rvmrc
 
 #paperclip
-/public/system/
+/public/system/**
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
