@@ -78,36 +78,36 @@ ActiveRecord::Schema.define(version: 20160203203836) do
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
-    t.string   "title",                  limit: 255
-    t.integer  "unit_id",                limit: 4
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
-    t.string   "page_type",              limit: 255
-    t.integer  "sequence",               limit: 4
-    t.text     "instructions",           limit: 65535
-    t.text     "html",                   limit: 65535
-    t.text     "initial_state",          limit: 65535
-    t.text     "solution",               limit: 65535
-    t.string   "success_message",        limit: 255
-    t.string   "videotip",               limit: 255
-    t.integer  "points",                 limit: 4
-    t.integer  "question_points",        limit: 4
-    t.boolean  "selfLearning",           limit: 1,     default: false
-    t.boolean  "load_from_previous",     limit: 1
-    t.boolean  "auto_corrector",         limit: 1,     default: false
-    t.integer  "grade",                  limit: 4,     default: 0
-    t.string   "slide_url",              limit: 255
-    t.string   "document_file_name",     limit: 255
-    t.string   "document_content_type",  limit: 255
-    t.integer  "document_file_size",     limit: 4
+    t.string   "title",                      limit: 255
+    t.integer  "unit_id",                    limit: 4
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.string   "page_type",                  limit: 255
+    t.integer  "sequence",                   limit: 4
+    t.text     "instructions",               limit: 65535
+    t.text     "html",                       limit: 65535
+    t.text     "initial_state",              limit: 65535
+    t.text     "solution",                   limit: 65535
+    t.string   "success_message",            limit: 255
+    t.string   "videotip",                   limit: 255
+    t.integer  "points",                     limit: 4
+    t.integer  "question_points",            limit: 4
+    t.boolean  "selfLearning",               limit: 1,     default: false
+    t.boolean  "load_from_previous",         limit: 1
+    t.boolean  "auto_corrector",             limit: 1,     default: false
+    t.integer  "grade",                      limit: 4,     default: 0
+    t.string   "slide_url",                  limit: 255
+    t.string   "document_file_name",         limit: 255
+    t.string   "document_content_type",      limit: 255
+    t.integer  "document_file_size",         limit: 4
     t.datetime "document_updated_at"
-    t.text     "excercise_instructions", limit: 65535
-    t.boolean  "show_solution",          limit: 1
-    t.string   "video_solution",         limit: 255
-    t.string   "solution_file_name",     limit: 255
-    t.string   "solution_content_type",  limit: 255
-    t.integer  "solution_file_size",     limit: 4
-    t.datetime "solution_updated_at"
+    t.text     "excercise_instructions",     limit: 65535
+    t.boolean  "show_solution",              limit: 1
+    t.string   "video_solution",             limit: 255
+    t.string   "solution_file_file_name",    limit: 255
+    t.string   "solution_file_content_type", limit: 255
+    t.integer  "solution_file_file_size",    limit: 4
+    t.datetime "solution_file_updated_at"
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree

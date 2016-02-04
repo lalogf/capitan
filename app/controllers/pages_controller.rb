@@ -147,7 +147,7 @@ class PagesController < ApplicationController
       :initial_state, :slide_url, :solution,:videotip,:load_from_previous,
       :auto_corrector,:grade,:points,:question_points,:selfLearning, 
       :success_message, :instructions, :document, :excercise_instructions,
-      :solution, :video_solution, :show_solution,
+      :solution_file, :video_solution, :show_solution,
       :video_ids => [],
       question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
     end

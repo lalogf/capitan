@@ -434,7 +434,7 @@
         <% if @page.show_solution %>
           <h2>Solucionario</h2>
           Descarga el solucionario del ejercicio aqui 
-          <%= link_to @page.solution.url do %>
+          <%= link_to @page.solution_file.url do %>
             <i class="fa fa-file-archive-o"></i>
           <% end %><br><br>
           <iframe width="560" height="315" src="<%= @page.video_solution %>" frameborder="0" allowfullscreen></iframe>          
