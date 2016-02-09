@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   end
   
   def course_list
-    @courses = Course.all
+    @courses = Course.available_courses(current_user)
   end
   
   def course_details

@@ -19,7 +19,8 @@
       <hr>
       <div class="units">
         <% @course.units.order(:sequence).each_with_index do |unit,index| %>
-          <div class="row unit">
+          <% if unit.has_pages(current_user.branch_id) %>
+            <div class="row unit">
             <div class="col-sm-3">
               <div class="overview">
                 <h2><%= unit.title %></h2>
@@ -29,7 +30,7 @@
             <div class="col-sm-9">
               <div class="content-box clearfix">
                 <ol>
-                  <% unit.pages.order(:sequence).each do |page| %>
+                  <% unit.visible_pages(current_user.branch_id).each do |page| %>
                     <% if page.page_type != "closer" %>
                       <li class="progress-item">
                           <%= link_to mycourse_unit_page_path(@course,unit,page.id), 
@@ -56,6 +57,7 @@
               </div>
             </div>
           </div>
+          <% end %>
         <% end %>
       </div>
     </div>

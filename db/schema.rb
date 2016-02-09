@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203203836) do
+ActiveRecord::Schema.define(version: 20160206210424) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160203203836) do
     t.integer  "course_id",  limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.boolean  "status",     limit: 1
   end
 
   add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id", using: :btree
@@ -76,6 +77,17 @@ ActiveRecord::Schema.define(version: 20160203203836) do
   end
 
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
+
+  create_table "page_visibilities", force: :cascade do |t|
+    t.integer  "page_id",    limit: 4
+    t.integer  "branch_id",  limit: 4
+    t.boolean  "status",     limit: 1
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "page_visibilities", ["branch_id"], name: "index_page_visibilities_on_branch_id", using: :btree
+  add_index "page_visibilities", ["page_id"], name: "index_page_visibilities_on_page_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title",                      limit: 255
@@ -204,6 +216,8 @@ ActiveRecord::Schema.define(version: 20160203203836) do
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
   add_foreign_key "options", "questions"
+  add_foreign_key "page_visibilities", "branches"
+  add_foreign_key "page_visibilities", "pages"
   add_foreign_key "pages", "units"
   add_foreign_key "question_groups", "pages"
   add_foreign_key "question_groups", "questions"

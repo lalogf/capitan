@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       get 'ranking_detail/:id' => 'users#ranking_detail', :as => :ranking_detail
       get 'enrollments(/branch/:branch_id)' => 'dashboard#enrollments', :as => :enrollments
       post 'saveEnrollments' => 'dashboard#save_enrollments', :as => :saveEnrollments
+      get 'page_visibility' => 'dashboard#page_visibility', :as => :page_visibility
+      post 'saveVisibility' => 'dashboard#saveVisibility', :as => :saveVisibility
     end
     
     post 'saveAnswer' => 'pages#saveAnswer'

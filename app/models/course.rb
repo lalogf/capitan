@@ -52,4 +52,18 @@ class Course < ActiveRecord::Base
         end
         return points
     end
+    
+    def self.available_courses(user)
+       return Course.joins(:enrollments).where(" enrollments.user_id = ? ", user.id)
+    end
+    
+    def has_pages(branch_id)
+        query = "select count(*) 
+                 from pages p
+                 join units u on p.unit_id = u.id
+                 join courses c on c.id = u.course_id
+                 join page_visibilities pv on p.id = pv.page_id
+                 where c.id = #{self.id} and branch_id = #{branch_id} and pv.status = 1"
+        return ActiveRecord::Base.connection.execute(query).first[0] > 0
+    end
 end

@@ -262,7 +262,7 @@
       <h2><%= @unit.title %></h2>
     </div>
     <ol class="units">
-      <% @unit.pages.order(:sequence).each do |page| %>
+      <% @unit.visible_pages(current_user.branch_id).order(:sequence).each do |page| %>
         <% if page.page_type != "closer" %>
           <li class="unit-item clearfix <%= page.id == @page.id ? "active": ""%>"
               title="<%= page.title %>">

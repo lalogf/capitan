@@ -16,25 +16,49 @@
       
       $(".save-changes").click(function(e) {
           e.preventDefault();
+          
+        swal({
+          title: 'Guardando cambios',
+          text: '¿Está seguro que desea grabar la configuración actual de los alumnos inscritos por curso?',
+          confirmButtonText: "Grabar cambios",
+          closeOnConfirm: false,
+          cancelButtonText: "Cancelar",
+          showLoaderOnConfirm: true
+        }, function() {
           var course_ids = $(".select-all").map(function(index,elem) {
               return [$(elem).attr("data-course-id")];
           }).get();
-          var student_ids = [];
+          var enrollments = [];
           $.each(course_ids,function(index, course_id) {
-              student_ids.push($('input[data-course-id="' + course_id +'"]').map(function(index, elem) {
-                      return [{
-                        course_id: course_id,
-                        student_id: $(elem).attr("data-student-id"),
-                        status: $(elem).is( ":checked" )
-                      }]
-              }).get());
+            $('input[data-course-id="' + course_id +'"]').each(function(index, elem) {
+                enrollments.push({
+                  course_id: course_id,
+                  student_id: $(elem).attr("data-student-id"),
+                  status: $(elem).is( ":checked" )
+                });
+            });
           });
-          $.post("/admin/saveEnrollments",{
-              course_ids: course_ids,
-              student_ids: JSON.stringify(student_ids)
+          
+          $.post("/admin/saveEnrollments", {
+              enrollments: JSON.stringify(enrollments)
           }, function(result) {
-              
-          });
+            if (result.status == "ok") {
+              swal({
+                title: "Inscripciones actualizadas",
+                text: "Las inscripciones a los distintos cursos se actualizaron con éxito",
+                confirmButtonText: "OK",
+                closeOnConfirm: true              
+              });
+            } else {
+              swal({
+                title: "Hubo un problema",
+                text: "No se pudo actualizar las inscripciones a los cursos",
+                confirmButtonText: "OK",
+                closeOnConfirm: true              
+              });
+            }
+          });          
+        });
       });
     });
   </script>
@@ -73,14 +97,18 @@
               <td><%= student.full_name %></td>
               <% @courses.each do |course| %>
                 <td class="text-center" style="width:15%;">
-                    <input type="checkbox" class="user_course_enroll" data-student-id="<%= student.id %>" data-course-id="<%= course.id%>"/>
+                    <input type="checkbox" 
+                           class="user_course_enroll" 
+                           data-student-id="<%= student.id %>" 
+                           data-course-id="<%= course.id%>"
+                           <%= course.enrollments.find_by(course_id: course.id,user_id: student.id) != nil && course.enrollments.find_by(course_id: course.id,user_id: student.id).status ? "checked" : "" %>
+                    />
                 </td>
               <% end %>
             </tr>
           <% end %>
         </tbody>
       </table>
-      <a href="#" class="btn btn-primary pull-right">Grabar cambios</a>
     </div>
     <br>
 </div>

@@ -11,4 +11,6 @@
 
 class Branch < ActiveRecord::Base
     has_many :users
+    has_many :pages, through: :page_visibility
+    has_many :page_visibilities
 end

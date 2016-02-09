@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
   
   scope :students, -> (branch_id) { where(branch_id: branch_id, admin: 0, disable: 0) }
   scope :admins, -> (branch_id) { where(branch_id: branch_id, admin: 1, disable: 0) }
+  scope :students_and_admins, -> (branch_id) { where(branch_id: branch_id, disable:0) }
   scope :disables, -> (branch_id) { where(branch_id: branch_id, disable: 1) }
   
   def self.create_from_omniauth(params)

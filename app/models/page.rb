@@ -43,6 +43,11 @@ class Page < ActiveRecord::Base
   has_many :users, through: :answers
   has_many :question_groups, :dependent => :destroy
   has_many :questions, through: :question_groups
+  has_many :page_visibilities, :dependent => :destroy
+  has_many :branches, through: :page_visibility
+  
+   scope :visible_page, -> (branch_id) { joins(:page_visibilities).where('page_visibilities.status = ? and page_visibilities.branch_id = ? ', true, branch_id) }
+  
   
   accepts_nested_attributes_for :question_groups, 
                                  reject_if: proc { |attributes| attributes['sequence'].blank? }, 
