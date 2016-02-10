@@ -78,7 +78,7 @@
                   showLoaderOnConfirm: true
                 },function() {
                   <% if @next_page != nil %>
-                    window.location = '<%= mycourse_unit_page_url(@course,@unit,@next_page) %>';
+                    window.location = '<%= mycourse_unit_page_url(@course,@next_unit,@next_page) %>';
                   <% else %>
                     alert("Aún no hay una siguiente página a la que saltar!");
                   <% end %>
@@ -143,7 +143,7 @@
         
         $(".next-step-finished").click(function(e) {
           e.preventDefault();
-          window.location = '<%= mycourse_unit_page_url(@course,@unit,@next_page) %>';
+          window.location = '<%= mycourse_unit_page_url(@course,@next_unit,@next_page) %>';
         });        
         
       <% end %>
