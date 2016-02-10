@@ -19,9 +19,9 @@ class PagesController < ApplicationController
     @next_page = @unit.pages.find_by_sequence(@page.sequence+1)
     @next_unit = @unit
     if @next_page == nil
-      next_unit = Unit.where("course_id = ? and sequence = ?",@course.id, @unit.sequence+1).first
-      if next_unit != nil
-        @next_page = next_unit.pages.first
+      @next_unit = Unit.where("course_id = ? and sequence = ?",@course.id, @unit.sequence+1).first
+      if @next_unit != nil
+        @next_page = @next_unit.pages.first
       end
     end
     @page.answers.find_or_create_by(page_id: @page.id,user_id: current_user.id)
