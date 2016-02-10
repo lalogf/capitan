@@ -54,7 +54,7 @@ class Course < ActiveRecord::Base
     end
     
     def self.available_courses(user)
-       return Course.joins(:enrollments).where(" enrollments.user_id = ? ", user.id)
+       return Course.joins(:enrollments).where(" enrollments.user_id = ? and enrollments.status = 1", user.id)
     end
     
     def has_pages(branch_id)
