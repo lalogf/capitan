@@ -19,14 +19,14 @@
         </button>        
         <%= link_to course_list_path, :class => "navbar-brand" do %>
         	<%= image_tag 'isotipo.png' %>
-        	Recursos laboratoria
+        	El capitán
         <% end %>
       </div>
       <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">    
         <ul class="nav navbar-nav navbar-right">
           <li>
             <a>
-              Bienvenida, <%= current_user.full_name %>
+              <%= current_user.full_name %>
             </a>
           </li>
           <li>

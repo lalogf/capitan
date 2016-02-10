@@ -290,7 +290,6 @@ article.course .commands a:hover {
   min-width: 300px;
   position: static;
   transition: max-width 200ms;
-  border-right: 1px solid #ddd;
   vertical-align: top;
   z-index: 10;
   background-color:#EEEEEE;
@@ -321,22 +320,22 @@ article.course .commands a:hover {
     display: block;
     line-height: 1.3;
     margin: 10px 0 0;
-    text-transform: uppercase;
-    font-size: 14px;
+    font-size: 18px;
     background-color:#EEE;
-    border-bottom: 1px solid #ccc;
     padding-bottom: 15px;
 }
 
 .page .navigation .breadcrumb h2 {
-  color: #444;
-  font-size: 18px;
   margin-bottom: 0;  
 }
 
-
+.page .navigation .breadcrumb a {
+  color: #606060;
+}
 .page .navigation .breadcrumb i {
-  margin-right: 5px;
+  margin-right: 0px;
+  font-size:18px;
+  display: inline-block;
 }
 
 .page .navigation .units {
@@ -365,7 +364,7 @@ article.course .commands a:hover {
   width: 40px;
 }
 
-.page .navigation .units .unit-item .item .unit-title {
+.page .navigation .units .unit-item .item .page-title {
   display:table-cell;
   box-sizing: border-box;
   min-height: 40px;
@@ -385,15 +384,18 @@ article.course .commands a:hover {
 }
 
 .page .content .page-title {
-  margin: 0;
-  padding: 20px;
-  color: white;
+  margin: 30px 0px 0px;
+  padding: 20px 20px 10px;
+  color: #000;
+  text-transform: uppercase;
+  font-size: 26px;
+  font-weight: bold;
 }
 
 .page .content .outer-container {
   padding: 40px 0px;
   min-height: 500px;
-  background-color: #303030;
+  background-color: white;
 }
 
 .column {
@@ -462,6 +464,34 @@ video {
     border: 1px solid silver;
 }
 
+.instructions h1,
+.instructions h2,
+.instructions h3 {
+  color: #F5A829;
+  margin-bottom:20px;
+}
+
+.instructions li {
+  padding: 10px 0px;
+}
+
+.instructions ol {
+  margin-bottom: 10px;
+}
+
+.instructions ol {
+    counter-reset: item;
+}
+.instructions ol li { 
+  display: block }
+
+.instructions ol li:before {
+    content: counter(item) ". ";
+    counter-increment: item;
+    font-weight: bold;
+    padding-right:15px;
+}
+
 .instructions, .exercise_instructions {
   margin-bottom:20px;
 }
@@ -470,8 +500,16 @@ video {
   margin-left: 22px;
 }
 
+.exercise_instructions img {
+  max-width: 100%;
+}
+
 .viewed {
-  color: #428bca;
+  color: #606060;
+}
+
+.viewed:hover {
+  color: #373737;
 }
 
 .red-viewed {
@@ -608,8 +646,69 @@ video {
     font-weight: normal;  
 }
 
+.breakline {
+  border: 1px solid #F5A829;
+  width: 20px;
+  margin: 0px auto;
+}
 
+.btn {
+  border-radius: 2px;
+  -webkit-box-shadow: 6px 9px 18px -4px rgba(205,204,204,1);
+  -moz-box-shadow: 6px 9px 18px -4px rgba(205,204,204,1);
+  box-shadow: 6px 9px 18px -4px rgba(205,204,204,1);
+}
 
+.nav-divider {
+  border-top: 1px solid #ccc;
+  margin: 5px 0px;
+}
+
+.unit-title {
+  padding: 15px 5px 15px 10px;
+  border-bottom: 1px solid #ccc;
+  margin: 0px;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #444;
+  font-size: 18px;  
+}
+
+.editors {
+  margin-bottom:30px;
+  font-size: 18px;
+}
+
+.editor-notes .yellow {
+  color: #F5A829;
+  text-transform: uppercase;
+}
+
+.actions {
+  margin-top:60px;
+}
+
+.actions .btn {
+  text-transform: uppercase;
+  padding-right: 40px;
+  padding-left: 40px;
+  font-size: 16px;
+}
+
+.check-video-again {
+  background-color: #606060;
+  margin-right: 20px;
+}
+
+.start-over {
+  background-color: #009688;
+  margin-right: 20px;
+}
+
+.save {
+  background-color: #62D1B7;
+}
 
 .mt-20 {
   margin-top:20px;
@@ -617,6 +716,10 @@ video {
 
 .p-20 {
   padding: 20px;
+}
+
+.plr-20x {
+  padding:20px 5%;
 }
 
 .w-135 {

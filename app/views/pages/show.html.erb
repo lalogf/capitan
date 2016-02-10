@@ -231,8 +231,8 @@
     
       function onYouTubePlayerAPIReady() {
         player = new YT.Player('video-content', {
-          height: '390',
-          width: '640',
+          height: '450',
+          width: '800',
           videoId: '<%= @page.videos.first.youtube if @page.videos.first != nil %>',
           events: {
             'onStateChange': onPlayerStateChange
@@ -257,10 +257,11 @@
   <div class="navigation">
     <div class="breadcrumb">
       <%= link_to course_details_path(@course) do %>
-        <i class="fa fa-play fa-rotate-180"></i><%= @course.name %>
+        <i class="fa fa-arrow-circle-o-left"></i> Volver
       <% end %>
-      <h2><%= @unit.title %></h2>
     </div>
+    <hr class="nav-divider">
+    <h2 class="unit-title" style=""><%= @unit.title %></h2>    
     <ol class="units">
       <% @unit.visible_pages(current_user.branch_id).order(:sequence).each do |page| %>
         <% if page.page_type != "closer" %>
@@ -283,7 +284,7 @@
                     <i class="fa fa-flask"></i>
                   <% end %>
                 </div>
-                <div class="unit-title">
+                <div class="page-title">
                   <%= page.title %>
                 </div>
               <% end %>
@@ -293,9 +294,8 @@
     </ol>
   </div>
   <div class="content">
-    <h3 class="page-title" style="<%= "background-color: #{@course.color}" %>">
-      <%= @page.title %>
-    </h3>
+    <h3 class="page-title text-center"><%= @page.title %></h3>
+    <div class="breakline"></div>
     <% if @page.page_type == 'video' %>
       <div class="outer-container">
         <div class="inner-container text-center">
@@ -337,35 +337,35 @@
       </div>      
     <% end %>
     <% if @page.page_type == 'editor' %>
-      <div class="container-fluid p-20">
+      <div class="container-fluid plr-20x">
         <div class="instructions">
         </div>
-        <div class="editors">
+        <div class="editors clearfix">
             <div class="col-sm-6" style="padding-left:0px;padding-right:3px;position:relative;">
               <h3>Editor</h3>
               <textarea id="solution" style="display:none"><%= @page.solution%></textarea>
               <textarea id="initial_state" style="display:none"><%= @page.initial_state %></textarea>
               <textarea id="code" name="code" placeholder="Tu código va aquí..."><%= !@page.answers.where(:user_id => current_user.id).empty? && !@page.answers.where(:user_id => current_user.id).first.result.blank? ? @page.answers.where(:user_id => current_user.id).first.result : @page.initial_state  %></textarea>
-              <span class="editor-notes"><strong>Nota:</strong>&nbsp;Presionar <strong>F11</strong> dentro del editor para pantalla completa y <strong>ESC</strong> para regresar al estado normal</span>
             </div>
             <div class="col-sm-6" style="padding-left:3px;padding-right:0px;">
               <h3>Navegador</h3>
               <iframe id="preview" class="preview"></iframe>
             </div>
         </div>
+        <span class="editor-notes"><strong class="yellow">Nota:</strong>&nbsp;Presionar <strong>F11</strong> dentro del editor para pantalla completa y <strong>ESC</strong> para regresar al estado normal</span>
         <div class="actions">
-          <div class="pull-right">
+          <div class="text-center">
             <% if !@page.videotip.empty? %>
-              <a href="#" class="check-video-again btn btn-info">Volver al video</a>
+              <a href="#" class="check-video-again btn btn-lg btn-info">Volver al video</a>
             <% end %>
-            <a href="#" class="start-over btn btn-info">Empezar de nuevo</a>
-            <a href="#" class="save btn btn-success">Guardar y Continuar</a>
+            <a href="#" class="start-over btn btn-lg btn-info">Empezar de nuevo</a>
+            <a href="#" class="save btn btn-lg btn-success">Guardar y Continuar</a>
           </div>
         </div>
       </div>    
     <% end %>
     <% if @page.page_type == 'questions' %>
-      <div class="container-fluid p-20">
+      <div class="container-fluid plr-20x">
         <div class="questions-slider">
           <% if @page.getCurrentQuestionGroupId(current_user) != "MAX" %>
           <div class="question-span">
@@ -421,7 +421,7 @@
       </div>    
     <% end %>
     <% if @page.page_type == 'exercise' %>
-      <div class="container-fluid p-20">
+      <div class="container-fluid plr-20x">
         <div class="exercise_instructions">
         </div>
         <% if @page.document.url != nil %>
