@@ -56,14 +56,14 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :answers
   
   has_attached_file :document
-  validates_attachment :document, content_type: { content_type: ["application/zip","application/x-zip","application/x-zip-compressed"] }
+  #validates_attachment :document, content_type: { content_type: ["application/zip","application/x-zip","application/x-zip-compressed"] }
   before_post_process :skip_for_zip
   
   has_attached_file :solution_file
-  validates_attachment :solution_file, content_type: { content_type: ["application/zip","application/x-zip","application/x-zip-compressed"] }
+  #validates_attachment :solution_file, content_type: { content_type: ["application/zip","application/x-zip","application/x-zip-compressed"] }
 
   def skip_for_zip
-     type = %w(application/zip application/x-zip)
+     type = %w(application/x-zip-compressed application/zip application/x-zip)
      ! (type.include?(document_content_type) or type.include?(solution_file_content_type))
   end  
   

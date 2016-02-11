@@ -11,8 +11,8 @@
       <% if @page.page_type == 'editor' %>
         
         converter = new Markdown.Converter();
-        
-        $(".instructions").html(converter.makeHtml('<%= escape_javascript(@page.instructions)%>'));
+        var instructions = $(".instructions");
+        instructions.html(converter.makeHtml(instructions.html()));
         
         if (document.getElementById("code") !== null) {
           editor = CodeMirror.fromTextArea(document.getElementById("code"), {
@@ -148,9 +148,9 @@
         
       <% end %>
       <% if @page.page_type == 'exercise' %>
-      
         converter = new Markdown.Converter();
-        $(".exercise_instructions").html(converter.makeHtml('<%= escape_javascript(@page.excercise_instructions)%>'));
+        var excercise_instructions = $(".exercise_instructions");
+        excercise_instructions.html(converter.makeHtml(excercise_instructions.html()));
       <% end %>
     });
     
@@ -339,6 +339,7 @@
     <% if @page.page_type == 'editor' %>
       <div class="container-fluid plr-20x">
         <div class="instructions">
+          <%= @page.instructions %>
         </div>
         <div class="editors clearfix">
             <div class="col-sm-6" style="padding-left:0px;padding-right:3px;position:relative;">
@@ -423,6 +424,7 @@
     <% if @page.page_type == 'exercise' %>
       <div class="container-fluid plr-20x">
         <div class="exercise_instructions">
+          <%= @page.excercise_instructions %>
         </div>
         <% if @page.document.url != nil %>
           <h2>Materiales</h2>
