@@ -11,6 +11,7 @@
       <% if @page.page_type == 'editor' %>
         
         converter = new Markdown.Converter();
+        Markdown.Extra.init(converter);
         var instructions = $(".instructions");
         instructions.html(converter.makeHtml(instructions.html()));
         

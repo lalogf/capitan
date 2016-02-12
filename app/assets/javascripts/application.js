@@ -21,6 +21,7 @@
 //= require pagedown_init
 //= require jquery_nested_form
 //= require sweetalert.min
+//= require Markdown.Extra
 //= require_self
 
 $(document).ready(function() {
