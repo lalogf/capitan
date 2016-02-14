@@ -1,0 +1,39 @@
+  <div class="navigation">
+    <div class="breadcrumb">
+      <%= link_to course_details_path(@course) do %>
+        <i class="fa fa-arrow-circle-o-left"></i> Volver
+      <% end %>
+    </div>
+    <hr class="nav-divider">
+    <h2 class="unit-title" style=""><%= @unit.title %></h2>    
+    <ol class="units">
+      <% @unit.visible_pages(current_user.branch_id).order(:sequence).each do |page| %>
+        <% if page.page_type != "closer" %>
+          <li class="unit-item clearfix <%= page.id == @page.id ? "active": ""%>"
+              title="<%= page.title %>">
+              <%= link_to mycourse_unit_page_path(@course,page.unit,page),
+                  :class => "clearfix item #{((page.page_type == "editor" and page.answers.where(:user_id => current_user.id).first !=nil and page.answers.where(:user_id => current_user.id).first.result == nil) ? "red-viewed" : "viewed")}" do %>
+                <div class="icon">
+                  <% if page.page_type == "video" %>
+                    <i class="fa fa-play-circle-o"></i>
+                  <% elsif page.page_type == "editor" %>
+                    <i class="fa fa-list-alt"></i>
+                  <% elsif page.page_type == "questions" %>
+                    <i class="fa fa-list-ol"></i>
+                  <% elsif page.page_type == "opener" or page.page_type == "html" %>
+                    <i class="fa fa-file-text-o"></i>
+                  <% elsif page.page_type == "slides"%>
+                    <i class="fa fa-slideshare"></i>
+                  <% elsif page.page_type == "exercise" %>
+                    <i class="fa fa-flask"></i>
+                  <% end %>
+                </div>
+                <div class="page-title">
+                  <%= page.title %>
+                </div>
+              <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ol>
+  </div>

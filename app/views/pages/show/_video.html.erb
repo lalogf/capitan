@@ -1,0 +1,17 @@
+<div class="outer-container">
+    <div class="inner-container text-center">
+      <div class="video-overlay" style="display: none;">
+        <%= link_to 'Continuar', mycourse_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-primary" %>
+        <br><br>
+        <a href="#" class="rewind-video">
+          <i class="fa fa-undo fa-2x"></i> Ver de nuevo
+        </a>
+      </div>
+      <div id="video-content"></div>
+      <div class="text-center mt-20">
+        <% if @course != nil and @unit != nil and @next_page != nil %>
+          <%= link_to 'Saltar video', mycourse_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-warning" %>
+        <% end %>
+      </div>
+    </div>
+</div>

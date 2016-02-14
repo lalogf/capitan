@@ -28,7 +28,8 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'devise-i18n'
 gem "font-awesome-rails"
 gem 'annotate'
-gem 'paperclip'
+gem "paperclip", "~> 4.3"
+gem 'paperclip-i18n', :git => 'https://github.com/thoughtbot/paperclip-i18n.git'
 gem 'simple_form'
 gem 'domp'
 gem 'omniauth-facebook'

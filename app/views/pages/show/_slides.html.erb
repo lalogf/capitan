@@ -1,0 +1,19 @@
+<div class="outer-container">
+    <div class="inner-container text-center">
+      <div id="video-content">
+        <iframe 
+        src="<%= @page.slide_url %>" 
+        frameborder="0" 
+        width="715" 
+        height="567" 
+        allowfullscreen="true" 
+        mozallowfullscreen="true" 
+        webkitallowfullscreen="true"></iframe>
+      </div>
+      <div class="text-center mt-20">
+        <% if @course != nil and @unit != nil and @next_page != nil %>
+          <%= link_to 'Saltar Slide', mycourse_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-warning" %>
+        <% end %>
+      </div>
+    </div>
+</div> 

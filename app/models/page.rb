@@ -46,7 +46,7 @@ class Page < ActiveRecord::Base
   has_many :page_visibilities, :dependent => :destroy
   has_many :branches, through: :page_visibility
   
-   scope :visible_page, -> (branch_id) { joins(:page_visibilities).where('page_visibilities.status = ? and page_visibilities.branch_id = ? ', true, branch_id) }
+  scope :visible_page, -> (branch_id) { joins(:page_visibilities).where('page_visibilities.status = ? and page_visibilities.branch_id = ? ', true, branch_id) }
   
   
   accepts_nested_attributes_for :question_groups, 
@@ -56,11 +56,17 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :answers
   
   has_attached_file :document
-  #validates_attachment :document, content_type: { content_type: ["application/zip","application/x-zip","application/x-zip-compressed"] }
-  before_post_process :skip_for_zip
+  validates_attachment_content_type :document, 
+  :content_type => ['application/zip','application/x-zip','application/x-zip-compressed',
+                    'application/empty', 'application/octet-stream']
+  validates_attachment_file_name :document, matches: /zip\Z/
   
   has_attached_file :solution_file
-  #validates_attachment :solution_file, content_type: { content_type: ["application/zip","application/x-zip","application/x-zip-compressed"] }
+  validates_attachment_content_type :solution_file, 
+  :content_type => ['application/zip','application/x-zip','application/x-zip-compressed',
+                    'application/empty', 'application/octet-stream']
+  
+  before_post_process :skip_for_zip
 
   def skip_for_zip
      type = %w(application/x-zip-compressed application/zip application/x-zip)

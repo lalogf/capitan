@@ -1,0 +1,40 @@
+<div class="container-fluid plr-20x">
+    <div class="questions-slider">
+      <% if @page.getCurrentQuestionGroupId(current_user) != "MAX" %>
+      <div class="question-span">
+        <h3>Pregunta <span id="sequence"><%= @page.getCurrentSequence(current_user) %></span> de <%= @page.question_groups.size %></h3>
+        <% @page.question_groups.order(:sequence).each do |question_group| %>
+          <div class="question" 
+               style="<%= @page.getCurrentQuestionGroupId(current_user).to_i == question_group.id ? "" : "display:none;" %>"
+               data-question-id="<%= question_group.id %>">
+            <h3><%= question_group.question.description %></h3>
+            <ul style="margin-bottom: 30px;">
+              <% question_group.question.options.each do |option| %>
+                <li>
+                  <table>
+                    <tr>
+                      <td style="width:2%;padding-right:10px;">
+                        <input type="radio" 
+                               id="q-<%=option.id %>" 
+                               name="question-option" 
+                               value="<%= option.id %>" 
+                               data-question-id="<%= question_group.id %>">
+                      </td>
+                      <td><label for="q-<%=option.id %>" style="cursor:pointer;font-weight:300;"><%= option.description %></label></td>
+                    </tr>
+                  </table>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>  
+        <a href="#" class="btn btn-primary next-step">Guardar y Continuar</a>
+      </div>
+      <% end %>
+      <div class="question-finished" style="<%= @page.getCurrentQuestionGroupId(current_user) != "MAX" ? "display:none;" : "" %>">
+        <h2>Gracias por responder las preguntas</h2>
+        <p>Los cuestionarios sólo se pueden responder una vez</p>
+        <a href="#" class="btn btn-primary next-step-finished">Continuar</a>
+      </div>
+    </div>
+</div>

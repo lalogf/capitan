@@ -1,0 +1,20 @@
+<div class="container-fluid plr-20x">
+    <div class="exercise_instructions">
+      <%= @page.excercise_instructions %>
+    </div>
+    <% if @page.document.url != nil %>
+      <h2>Materiales</h2>
+      Descarga todos los materiales necesario para realizar el ejercicio aqui
+      <%= link_to @page.document.url do %>
+         <i class="fa fa-file-archive-o"></i>
+      <% end %>
+    <% end %>
+    <% if @page.show_solution %>
+      <h2>Solucionario</h2>
+      Descarga el solucionario del ejercicio aqui 
+      <%= link_to @page.solution_file.url do %>
+        <i class="fa fa-file-archive-o"></i>
+      <% end %><br><br>
+      <iframe width="560" height="315" src="<%= @page.video_solution %>" frameborder="0" allowfullscreen></iframe>          
+    <% end %>
+</div>

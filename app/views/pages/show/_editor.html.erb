@@ -1,0 +1,27 @@
+<div class="container-fluid plr-20x">
+    <div class="instructions">
+      <%= @page.instructions %>
+    </div>
+    <div class="editors clearfix">
+        <div class="col-sm-6" style="padding-left:0px;padding-right:3px;position:relative;">
+          <h3>Editor</h3>
+          <textarea id="solution" style="display:none"><%= @page.solution%></textarea>
+          <textarea id="initial_state" style="display:none"><%= @page.initial_state %></textarea>
+          <textarea id="code" name="code" placeholder="Tu código va aquí..."><%= !@page.answers.where(:user_id => current_user.id).empty? && !@page.answers.where(:user_id => current_user.id).first.result.blank? ? @page.answers.where(:user_id => current_user.id).first.result : @page.initial_state  %></textarea>
+        </div>
+        <div class="col-sm-6" style="padding-left:3px;padding-right:0px;">
+          <h3>Navegador</h3>
+          <iframe id="preview" class="preview"></iframe>
+        </div>
+    </div>
+    <span class="editor-notes"><strong class="yellow">Nota:</strong>&nbsp;Presionar <strong>F11</strong> dentro del editor para pantalla completa y <strong>ESC</strong> para regresar al estado normal</span>
+    <div class="actions">
+      <div class="text-center">
+        <% if !@page.videotip.empty? %>
+          <a href="#" class="check-video-again btn btn-lg btn-info">Volver al video</a>
+        <% end %>
+        <a href="#" class="start-over btn btn-lg btn-info">Empezar de nuevo</a>
+        <a href="#" class="save btn btn-lg btn-success">Guardar y Continuar</a>
+      </div>
+    </div>
+</div>
