@@ -16,7 +16,7 @@
         <i class="fa fa-file-archive-o"></i>
       <% end %><br><br>
       <div class="row">
-        <% @page.video_solution.split(',').each |solution| do %>
+        <% @page.video_solution.split(',').each do |solution| %>
           <div class="video-solution">
             <iframe width="560" height="315" src="<%= @page.video_solution %>" frameborder="0" allowfullscreen></iframe>
           </div>        
