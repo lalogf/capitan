@@ -104,14 +104,6 @@
         
       <% end %>
       
-      <% if @page.page_type == 'video' %>
-        $(".rewind-video").click(function(e) {
-            e.preventDefault();
-            $(".video-overlay").hide();
-            player.seekTo(0,true);
-        });
-      <% end %>
-      
       <% if @page.page_type == 'questions' %>
 
         $(".next-step").click(function(e) {
@@ -218,6 +210,12 @@
     <% end %>
     
     <% if @page.page_type == 'video' %>
+    
+      $(".rewind-video").click(function(e) {
+          e.preventDefault();
+          $(".video-overlay").hide();
+          player.seekTo(0,true);
+      });    
     
       if (typeof youtube_api_init == 'undefined') {
         var tag = document.createElement('script');
