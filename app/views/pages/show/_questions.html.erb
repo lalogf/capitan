@@ -32,8 +32,7 @@
       </div>
       <% end %>
       <div class="question-finished" style="<%= @page.getCurrentQuestionGroupId(current_user) != "MAX" ? "display:none;" : "" %>">
-        <h2>Gracias por responder las preguntas</h2>
-        <p>Los cuestionarios sólo se pueden responder una vez</p>
+        <h3>Gracias por responder todas las preguntas pero los cuestionarios sólo se pueden responder una vez</h3>
         <a href="#" class="btn btn-primary next-step-finished">Continuar</a>
       </div>
     </div>
