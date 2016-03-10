@@ -11,8 +11,8 @@
         webkitallowfullscreen="true"></iframe>
       </div>
       <div class="text-center mt-20">
-        <% if @course != nil and @unit != nil and @next_page != nil %>
-          <%= link_to 'Saltar Slide', mycourse_unit_page_path(@course,@unit,@next_page),:class => "btn btn-lg btn-warning" %>
+        <% if @course != nil and @next_unit != nil and @next_page != nil %>
+          <%= link_to 'Saltar Slide', mycourse_unit_page_path(@course,@next_unit,@next_page),:class => "btn btn-lg btn-warning" %>
         <% end %>
       </div>
     </div>
