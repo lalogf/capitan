@@ -33,6 +33,10 @@
 #  solution_file_content_type :string(255)
 #  solution_file_file_size    :integer
 #  solution_file_updated_at   :datetime
+#  draft_comments_count       :integer          default(0)
+#  published_comments_count   :integer          default(0)
+#  deleted_comments_count     :integer          default(0)
+#  solution_visibility        :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

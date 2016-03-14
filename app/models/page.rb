@@ -33,10 +33,14 @@
 #  solution_file_content_type :string(255)
 #  solution_file_file_size    :integer
 #  solution_file_updated_at   :datetime
+#  draft_comments_count       :integer          default(0)
+#  published_comments_count   :integer          default(0)
+#  deleted_comments_count     :integer          default(0)
+#  solution_visibility        :integer
 #
 
 class Page < ActiveRecord::Base
-  
+  include TheComments::Commentable
   belongs_to :unit
   has_and_belongs_to_many :videos
   has_many :answers, :dependent => :destroy

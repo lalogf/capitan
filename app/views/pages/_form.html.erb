@@ -1,66 +1,7 @@
 <% content_for :scripts do %>
   <script>
-  
-    var converter;
-    
-    function showFields(sectionToShow,sectionToHide) {
-      $.each(sectionToHide,function(index,section) {
-        $("."+section).hide();
-      });
-      $("."+sectionToShow).show();
-    }
-    
     $(document).ready(function() {
-      
-      $("#page_page_type").change(function(select) {
-        var page_type = $("#page_page_type").val();
-        if (page_type === "video") {
-          showFields("video_fields",["editor_fields","questions_fields","html_fields",
-                                     "slide_fields","exercise_fields"]);
-        } else if (page_type === "editor") {
-          showFields("editor_fields",["video_fields","questions_fields","html_fields",
-                                     "slide_fields","exercise_fields"]);      
-        } else if (page_type === "questions") {
-          showFields("questions_fields",["video_fields","editor_fields","html_fields",
-                                     "slide_fields","exercise_fields"]);          
-        } else if (page_type === "closer") {
-          showFields("html_fields",["video_fields","editor_fields",
-                                     "slide_fields","exercise_fields"]);        
-        } else if (page_type === "opener") {
-          showFields("html_fields",["video_fields","editor_fields",
-                                     "slide_fields","exercise_fields"]);  
-        } else if (page_type === "html") {
-          showFields("html_fields",["video_fields","editor_fields",
-                                     "questions_fields","slide_fields","exercise_fields"]);    
-        } else if (page_type === "slides") {
-          showFields("slide_fields",["video_fields","editor_fields",
-                                     "questions_fields", "html_fields","exercise_fields"]); 
-        } else if (page_type === "exercise") {
-          showFields("exercise_fields",["video_fields","editor_fields", "questions_fields",
-                                     "html_fields","slides_fields"]); 
-        }
-      });
-      
-      if (document.getElementById("page_html") !== null) {
-        editor = CodeMirror.fromTextArea(document.getElementById("page_html"), {
-          lineWrapping: true
-        });
-      }
-      
-      if (document.getElementById("page_initial_state") !== null) {
-        editor = CodeMirror.fromTextArea(document.getElementById("page_initial_state"), {
-          lineWrapping: true,
-          lineNumbers: true
-        });
-      }
-      
-      if (document.getElementById("page_solution") !== null) {
-        editor = CodeMirror.fromTextArea(document.getElementById("page_solution"), {
-          lineWrapping: true,
-          lineNumbers: true
-        });
-      }
-      
+      CAPITAN.page.form.init();
     });
   </script>
 <% end %>

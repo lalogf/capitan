@@ -1,3 +1,10 @@
+<% content_for :scripts do %>
+  <script>
+    $(document).ready(function() {
+      CAPITAN.page.show.excercise.init($(".exercise_instructions"));
+    });
+  </script>
+<% end %>
 <div class="container-fluid plr-20x">
     <div class="exercise_instructions">
       <%= @page.excercise_instructions %>

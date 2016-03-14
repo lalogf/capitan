@@ -22,10 +22,12 @@
 //= require jquery_nested_form
 //= require sweetalert.min
 //= require Markdown.Extra
+//= require pages/form
+//= require pages/show
 //= require_self
 
 $(document).ready(function() {
     $(".alert").fadeTo(4000, 500).slideUp(500, function(){
-        $(".alert").alert('close');
-    });    
+        $(this).alert('close');
+    });
 });

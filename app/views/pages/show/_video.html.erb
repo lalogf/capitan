@@ -1,3 +1,22 @@
+<% content_for :scripts do %>
+  <script>
+    $(document).ready(function() {
+      CAPITAN.page.show.video.init({
+        videoId: "<%= @page.videos.first.youtube if @page.videos.first != nil %>"
+      });
+      
+      $(".rewind-video").click(function(e) {
+          e.preventDefault();
+          CAPITAN.page.show.video.rewind();
+      });
+      
+    });
+    
+    function onYouTubeIframeAPIReady() {
+      CAPITAN.page.show.video.onYouTubePlayerAPIReady();
+    }
+  </script>
+<% end %>
 <div class="outer-container">
     <div class="inner-container text-center">
       <div class="video-overlay" style="display: none;">
@@ -9,9 +28,7 @@
       </div>
       <div id="video-content"></div>
       <div class="text-center mt-20">
-        <h1>hola</h1>
         <% if @course != nil and @next_unit != nil and @next_page != nil %>
-          
           <%= link_to 'Saltar video', mycourse_unit_page_path(@course,@next_unit,@next_page),:class => "btn btn-lg btn-warning" %>
         <% end %>
       </div>

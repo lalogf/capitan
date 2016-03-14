@@ -1,3 +1,18 @@
+<% content_for :scripts do %>
+  <script>
+    $(document).ready(function() {
+        $(".next-step").click(function(e) {
+          e.preventDefault();
+          CAPITAN.page.show.question.saveQuestion(<%= @page.id %>)
+        });
+        
+        $(".next-step-finished").click(function(e) {
+          e.preventDefault();
+          window.location = '<%= mycourse_unit_page_url(@course,@next_unit,@next_page) %>';
+        }); 
+    });
+  </script>
+<% end %>    
 <div class="container-fluid plr-20x">
     <div class="questions-slider">
       <% if @page.getCurrentQuestionGroupId(current_user) != "MAX" %>

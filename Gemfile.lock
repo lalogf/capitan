@@ -56,6 +56,8 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (~> 10.4)
     arel (6.0.3)
+    awesome_nested_set (3.0.3)
+      activerecord (>= 4.0.0, < 5)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -92,6 +94,8 @@ GEM
       railties (>= 3.2, < 5.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    haml (4.0.7)
+      tilt
     handlebars_assets (0.23.0)
       execjs (~> 2.0)
       multi_json (~> 1.0)
@@ -219,6 +223,12 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    state_machine (1.2.0)
+    the_comments (2.2.2)
+      state_machine
+      the_sortable_tree
+    the_sortable_tree (2.5.0)
+      rails (>= 3.1)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -247,12 +257,14 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  awesome_nested_set
   byebug
   coffee-rails (~> 4.1.0)
   devise
   devise-i18n
   domp
   font-awesome-rails
+  haml
   handlebars_assets
   hirb
   jbuilder (~> 2.0)
@@ -275,6 +287,7 @@ DEPENDENCIES
   simple_form
   spreadsheet
   spring
+  the_comments (~> 2.2.1)
   therubyracer
   turbolinks
   twitter-bootstrap-rails!

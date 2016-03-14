@@ -44,3 +44,7 @@ gem 'nokogiri'
 gem 'roo'
 gem 'handlebars_assets'
 gem 'wannabe_bool'
+gem "the_comments", "~> 2.2.1"
+
+gem 'haml'
+gem 'awesome_nested_set'

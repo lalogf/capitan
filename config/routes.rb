@@ -35,6 +35,11 @@ Rails.application.routes.draw do
     
     post 'changeUserStatus' => 'users#change_user_status'
     
+    # TheComments routes
+    concern   :user_comments,  TheComments::UserRoutes.new
+    concern   :admin_comments, TheComments::AdminRoutes.new
+    resources :comments, concerns:  [:user_comments, :admin_comments]    
+    
     root :to => 'courses#course_list'    
     
   end

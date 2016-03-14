@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206210424) do
+ActiveRecord::Schema.define(version: 20160308222119) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -38,6 +38,34 @@ ActiveRecord::Schema.define(version: 20160206210424) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "code",       limit: 255
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id",           limit: 4
+    t.integer  "holder_id",         limit: 4
+    t.integer  "commentable_id",    limit: 4
+    t.string   "commentable_type",  limit: 255
+    t.string   "commentable_url",   limit: 255
+    t.string   "commentable_title", limit: 255
+    t.string   "commentable_state", limit: 255
+    t.string   "anchor",            limit: 255
+    t.string   "title",             limit: 255
+    t.string   "contacts",          limit: 255
+    t.text     "raw_content",       limit: 65535
+    t.text     "content",           limit: 65535
+    t.string   "view_token",        limit: 255
+    t.string   "state",             limit: 255,   default: "draft"
+    t.string   "ip",                limit: 255,   default: "undefined"
+    t.string   "referer",           limit: 255,   default: "undefined"
+    t.string   "user_agent",        limit: 255,   default: "undefined"
+    t.integer  "tolerance_time",    limit: 4
+    t.boolean  "spam",              limit: 1,     default: false
+    t.integer  "parent_id",         limit: 4
+    t.integer  "lft",               limit: 4
+    t.integer  "rgt",               limit: 4
+    t.integer  "depth",             limit: 4,     default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -120,6 +148,10 @@ ActiveRecord::Schema.define(version: 20160206210424) do
     t.string   "solution_file_content_type", limit: 255
     t.integer  "solution_file_file_size",    limit: 4
     t.datetime "solution_file_updated_at"
+    t.integer  "draft_comments_count",       limit: 4,     default: 0
+    t.integer  "published_comments_count",   limit: 4,     default: 0
+    t.integer  "deleted_comments_count",     limit: 4,     default: 0
+    t.integer  "solution_visibility",        limit: 4
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree
@@ -172,33 +204,40 @@ ActiveRecord::Schema.define(version: 20160206210424) do
   add_index "user_authentications", ["user_id"], name: "index_user_authentications_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: ""
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                       limit: 255, default: ""
+    t.string   "encrypted_password",          limit: 255, default: "",    null: false
+    t.string   "reset_password_token",        limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
+    t.integer  "sign_in_count",               limit: 4,   default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
-    t.string   "provider",               limit: 255
-    t.string   "uid",                    limit: 255
-    t.boolean  "admin",                  limit: 1,   default: false
-    t.string   "dni",                    limit: 255
-    t.string   "code",                   limit: 255
-    t.string   "name",                   limit: 255,                 null: false
-    t.string   "lastname1",              limit: 255,                 null: false
-    t.string   "lastname2",              limit: 255
-    t.integer  "age",                    limit: 4
-    t.string   "district",               limit: 255
-    t.string   "facebook_username",      limit: 255
-    t.string   "phone1",                 limit: 255
-    t.string   "phone2",                 limit: 255
-    t.integer  "branch_id",              limit: 4
-    t.boolean  "disable",                limit: 1,   default: false
+    t.string   "current_sign_in_ip",          limit: 255
+    t.string   "last_sign_in_ip",             limit: 255
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.string   "provider",                    limit: 255
+    t.string   "uid",                         limit: 255
+    t.boolean  "admin",                       limit: 1,   default: false
+    t.string   "dni",                         limit: 255
+    t.string   "code",                        limit: 255
+    t.string   "name",                        limit: 255,                 null: false
+    t.string   "lastname1",                   limit: 255,                 null: false
+    t.string   "lastname2",                   limit: 255
+    t.integer  "age",                         limit: 4
+    t.string   "district",                    limit: 255
+    t.string   "facebook_username",           limit: 255
+    t.string   "phone1",                      limit: 255
+    t.string   "phone2",                      limit: 255
+    t.integer  "branch_id",                   limit: 4
+    t.boolean  "disable",                     limit: 1,   default: false
+    t.integer  "my_draft_comments_count",     limit: 4,   default: 0
+    t.integer  "my_published_comments_count", limit: 4,   default: 0
+    t.integer  "my_comments_count",           limit: 4,   default: 0
+    t.integer  "draft_comcoms_count",         limit: 4,   default: 0
+    t.integer  "published_comcoms_count",     limit: 4,   default: 0
+    t.integer  "deleted_comcoms_count",       limit: 4,   default: 0
+    t.integer  "spam_comcoms_count",          limit: 4,   default: 0
   end
 
   add_index "users", ["branch_id"], name: "index_users_on_branch_id", using: :btree
