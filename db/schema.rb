@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308222119) do
+ActiveRecord::Schema.define(version: 20160315192500) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -241,6 +241,7 @@ ActiveRecord::Schema.define(version: 20160308222119) do
   end
 
   add_index "users", ["branch_id"], name: "index_users_on_branch_id", using: :btree
+  add_index "users", ["code"], name: "index_users_on_code", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|

@@ -4,6 +4,15 @@ namespace :capitan do
       User.destroy_all
   end
   
+  task :blank_password => :environment do
+    User.all.each do |user|
+      p "Cambiando password a admin, user= #{user.code}"
+      user.password = "admin"
+      user.password_confirmation  = "admin"
+      user.save!
+    end
+  end
+  
   task :import_users, [:file_name] => :environment do |t, args|
       import_file = "#{Rails.root}/public/seed_data/#{args[:file_name]}"
       User.import(import_file)

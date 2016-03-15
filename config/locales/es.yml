@@ -20,3 +20,5 @@ es:
               blank: "Ingresa tu primer apellido"
             lastname2:
               blank: "Ingresa tu segundo apellido"
+            code:
+              taken: "El código de usuario ya existe"

@@ -65,6 +65,9 @@ class User < ActiveRecord::Base
   scope :students_and_admins, -> (branch_id) { where(branch_id: branch_id, disable:0) }
   scope :disables, -> (branch_id) { where(branch_id: branch_id, disable: 1) }
   
+  validates :code, uniqueness: { case_sensitive: false }
+  
+  
   def self.create_from_omniauth(params)
     attributes = {
       name: params['info']['name'],
