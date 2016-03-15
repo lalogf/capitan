@@ -16,7 +16,7 @@
          <i class="fa fa-file-archive-o"></i>
       <% end %>
     <% end %>
-    <% if @page.solution_visibility.split(",").include? current_user.branch.id.to_s %>
+    <% if @page.solution_visibility != nil && @page.solution_visibility.split(",").include? current_user.branch.id.to_s %>
       <h2>Solucionario</h2>
       Descarga el solucionario del ejercicio aqui 
       <%= link_to @page.solution_file.url do %>
