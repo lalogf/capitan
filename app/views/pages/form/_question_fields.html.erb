@@ -1,0 +1,14 @@
+<div id="questions_fields" class="questions_fields" style="<%= @page.page_type == "questions" ? "": "display:none;"%>">
+  <%= f.input :question_points %><br>
+  <%= f.input :selfLearning %><br>
+  <table id="questions_field" style="width:70%">
+    <%= f.fields_for :question_groups, :wrapper => false do |qg|%>
+      <tr class="fields">
+        <td style="width: 5%;"><%= qg.input :sequence,label: false %></td>
+        <td><%= qg.select :question_id, Question.all.collect { |p| [p.description, p.id] } %></td>
+        <td><%= qg.link_to_remove "Eliminar" %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= f.link_to_add "Añadir pregunta", :question_groups, :data => { :target => "#questions_field" } %>
+</div>

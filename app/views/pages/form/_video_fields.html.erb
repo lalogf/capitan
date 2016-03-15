@@ -1,0 +1,3 @@
+<div class="video_fields" style="<%= @page.page_type == "video" ? "": "display:none;"%>">
+  <%= f.association :videos, as: :check_boxes,label_method: :title  %>
+</div>

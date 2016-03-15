@@ -1,5 +1,5 @@
 var CAPITAN = CAPITAN || {};
-CAPITAN.page = {};
+CAPITAN.page = CAPITAN.page || {};
 
 CAPITAN.page.form = {
     
@@ -34,6 +34,28 @@ CAPITAN.page.form = {
               lineNumbers: true
           });
       });
+      
+      var solution_visibility = $("#page_solution_visibility").val().split(",");
+      if (solution_visibility.length !== 0) {
+          $.each(solution_visibility, function(index, element) {
+              if (element !== "") {
+                var input = $(".checkbox-inline input[value="+element+"]");
+                if (input !== null) { input.prop("checked",true); }
+              }
+          });
+      }
+      
+      $(".page-submit-form").click(function(e) {
+          var visibility = [];
+          $(".checkbox-inline input").each(function(index,element) {
+              if ($(element).is(':checked')) {
+                  visibility.push($(element).val());
+              } else {
+                  visibility.push(0);
+              }
+          });
+          $("#page_solution_visibility").val(visibility.join(","));
+      });
     },
     
     page_type_change: function(page_type) {
@@ -60,4 +82,4 @@ CAPITAN.page.form = {
                 break;                
         }    
     }
-}
+};

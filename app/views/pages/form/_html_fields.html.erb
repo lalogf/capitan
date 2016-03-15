@@ -1,0 +1,4 @@
+<div id="html_fields" class="html_fields" style="<%= (@page.page_type == "html" or @page.page_type == "opener" or @page.page_type == "closer") ? "": "display:none;"%>">
+  <br>
+  <%= f.input :html, as: :text %>
+</div>

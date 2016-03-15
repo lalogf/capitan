@@ -1,0 +1,12 @@
+    <div id="exercise_fields" class="exercise_fields" style="<%= @page.page_type == "exercise" ? "" : "display:none;"%>">
+      <%= f.input :excercise_instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %><br>
+      <%= f.input :document, as: :file %><br>
+      <%= f.input :solution_file, as: :file %><br>
+      <%= f.input :video_solution %><br>
+      <% @branches.each do |branch| %>
+        <label class="checkbox-inline">
+          <input type="checkbox" data-branch-id="<%= branch.id %>" value="<%= branch.id %>"><%= branch.name %>
+        </label>
+      <% end %>
+      <%= f.input :solution_visibility, :as => :hidden %>
+    </div>

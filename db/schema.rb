@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 20160308222119) do
     t.integer  "draft_comments_count",       limit: 4,     default: 0
     t.integer  "published_comments_count",   limit: 4,     default: 0
     t.integer  "deleted_comments_count",     limit: 4,     default: 0
-    t.integer  "solution_visibility",        limit: 4
+    t.string   "solution_visibility",        limit: 255
   end
 
   add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree

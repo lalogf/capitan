@@ -36,7 +36,7 @@
 #  draft_comments_count       :integer          default(0)
 #  published_comments_count   :integer          default(0)
 #  deleted_comments_count     :integer          default(0)
-#  solution_visibility        :integer
+#  solution_visibility        :string(255)
 #
 
 class PagesController < ApplicationController
@@ -73,12 +73,14 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
+    @branches = Branch.all
     @page = @unit.pages.new
     @page.questions.build
   end
 
   # GET /pages/1/edit
   def edit
+    @branches = Branch.all
     @page = @unit.pages.find(params[:id])
   end
 
@@ -189,7 +191,7 @@ class PagesController < ApplicationController
       :initial_state, :slide_url, :solution,:videotip,:load_from_previous,
       :auto_corrector,:grade,:points,:question_points,:selfLearning, 
       :success_message, :instructions, :document, :excercise_instructions,
-      :solution_file, :video_solution, :show_solution,
+      :solution_file, :video_solution, :show_solution, :solution_visibility, 
       :video_ids => [],
       question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
     end

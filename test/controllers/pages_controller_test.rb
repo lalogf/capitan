@@ -36,7 +36,7 @@
 #  draft_comments_count       :integer          default(0)
 #  published_comments_count   :integer          default(0)
 #  deleted_comments_count     :integer          default(0)
-#  solution_visibility        :integer
+#  solution_visibility        :string(255)
 #
 
 require 'test_helper'

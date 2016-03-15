@@ -13,51 +13,16 @@
     <%= f.input :sequence %>
     <%= f.input :title %>
     <%= f.input :page_type, :collection => [['video','video'],['editor','editor'],['questions','questions'],['closer','closer'],['opener','opener'],['html','html'],['slides','slides'],['exercise','exercise']] %>
-    <div class="video_fields" style="<%= @page.page_type == "video" ? "": "display:none;"%>">
-      <%= f.association :videos, as: :check_boxes,label_method: :title  %>
-    </div>
-    <div class="editor_fields" style="<%= @page.page_type == "editor" ? "": "display:none;"%>">
-      <%= f.input :instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %>
-      <%= f.input :success_message %><br>
-      <%= f.input :points, label: "Editor points" %><br>
-      <%= f.input :videotip %><br>
-      <%= f.input :initial_state, as: :text, input_html: { placeholder: "Estado inicial del editor" } %>
-      <%= f.input :load_from_previous, as: :boolean %><br>
-      <%= f.input :solution, as: :text, input_html: { placeholder: "Solución del problema" } %>
-      <%= f.input :auto_corrector, as: :boolean %>
-    </div>
-    <div id="questions_fields" class="questions_fields" style="<%= @page.page_type == "questions" ? "": "display:none;"%>">
-      <%= f.input :question_points %><br>
-      <%= f.input :selfLearning %><br>
-      <table id="questions_field" style="width:70%">
-        <%= f.fields_for :question_groups, :wrapper => false do |qg|%>
-          <tr class="fields">
-            <td style="width: 5%;"><%= qg.input :sequence,label: false %></td>
-            <td><%= qg.select :question_id, Question.all.collect { |p| [p.description, p.id] } %></td>
-            <td><%= qg.link_to_remove "Eliminar" %></td>
-          </tr>
-        <% end %>
-      </table>
-      <%= f.link_to_add "Añadir pregunta", :question_groups, :data => { :target => "#questions_field" } %>
-    </div>
-    <div id="html_fields" class="html_fields" style="<%= (@page.page_type == "html" or @page.page_type == "opener" or @page.page_type == "closer") ? "": "display:none;"%>">
-      <br>
-      <%= f.input :html, as: :text %>
-    </div>
-    <div id="slide_fields" class="slide_fields" style="<%= @page.page_type == "slides" ? "" : "display:none;"%>">
-      <%= f.input :slide_url %>
-    </div>
-    <div id="exercise_fields" class="exercise_fields" style="<%= @page.page_type == "exercise" ? "" : "display:none;"%>">
-      <%= f.input :excercise_instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %><br>
-      <%= f.input :document, as: :file %><br>
-      <%= f.input :solution_file, as: :file %><br>
-      <%= f.input :video_solution %><br>
-      <%= f.input :show_solution, as: :boolean %><br>
-    </div>
+    <%= render :partial=> 'pages/form/video_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'pages/form/editor_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'pages/form/question_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'pages/form/html_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'pages/form/slide_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'pages/form/exercise_fields', :locals => {:f => f} %>
   </div>
   <br>
   <div class="form-actions">
-    <%= f.button :submit, :class => "btn btn-primary" %>
+    <%= f.button :submit, :class => "btn btn-primary page-submit-form" %>
     <%= link_to 'Cancelar', [@course,@unit],:class => "btn btn-danger" %>  
   </div>
 <% end %>

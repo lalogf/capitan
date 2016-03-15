@@ -1,0 +1,10 @@
+<div class="editor_fields" style="<%= @page.page_type == "editor" ? "": "display:none;"%>">
+  <%= f.input :instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %>
+  <%= f.input :success_message %><br>
+  <%= f.input :points, label: "Editor points" %><br>
+  <%= f.input :videotip %><br>
+  <%= f.input :initial_state, as: :text, input_html: { placeholder: "Estado inicial del editor" } %>
+  <%= f.input :load_from_previous, as: :boolean %><br>
+  <%= f.input :solution, as: :text, input_html: { placeholder: "Solución del problema" } %>
+  <%= f.input :auto_corrector, as: :boolean %>
+</div>

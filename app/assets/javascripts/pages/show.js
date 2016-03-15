@@ -1,6 +1,6 @@
 var CAPITAN = CAPITAN || {};
-CAPITAN.page = {};
-CAPITAN.page.show = {};
+CAPITAN.page = CAPITAN.page || {};
+CAPITAN.page.show = CAPITAN.page.show || {};
 
 CAPITAN.page.show.editor = {
 
