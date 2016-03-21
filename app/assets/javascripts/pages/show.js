@@ -47,9 +47,9 @@ CAPITAN.page.show.editor = {
                 gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
             });
             
-            this.editor.on("change", function() {
-                clearTimeout(this.delay);
-                this.delay = setTimeout(me.updatePreview('preview'), 300);
+            me.editor.on("change", function() {
+                clearTimeout(me.delay);
+                me.delay = setTimeout(me.updatePreview('preview'), 300);
             });
             
             setTimeout(me.updatePreview('preview'), 300);              
@@ -71,6 +71,7 @@ CAPITAN.page.show.editor = {
     },
     
     save: function(autoCorrector) {
+      var me = this;
       if (autoCorrector) {
         if (this.isValidCode(this.editor.getValue())) {
           this.saveAnswer(true);
@@ -97,7 +98,7 @@ CAPITAN.page.show.editor = {
               showLoaderOnConfirm: true
             },function() {
                 if (this.options.next_page_url != '') {
-                    window.location = this.options.next_page_url;
+                    window.location = me.options.next_page_url;
                 } else {
                     alert("Aún no hay una siguiente página a la que saltar!");
                 }
@@ -111,45 +112,46 @@ CAPITAN.page.show.editor = {
     },
     
     saveAnswer: function(autoCorrector) {
-        swal({
-          title: autoCorrector ? this.options.save_answer_title : "Grabar respuesta",   
-          text: autoCorrector ? this.options.save_answer_text   : "Este tipo de pregunta no tiene evaluación automática, la pregunta se guardará para una posterior evaluación",   
-          type: autoCorrector ? "success" : "info",
-          confirmButtonText: "Grabar mi respuesta",   
-          closeOnConfirm: false,
-          showLoaderOnConfirm: true,
-          html: true
-        },function() {
-          $.post("/saveAnswer",{
-            answer: this.editor.getValue(),
-            page_id: this.option.page_id,
-            user_id: this.option.user_id
-          },function(result) {
-            if (result.status == "ok") {
-              swal({
-                title: "Tu código se grabó con éxito",
-                text: "Da click en continuar para seguir con las siguientes actividades",
-                confirmButtonText: "Continuar",
-                closeOnConfirm: false,
-                showLoaderOnConfirm: true
-              },function() {
-                  if (this.options.next_page_url != '') {
-                      window.location = this.options.next_page_url;
-                  } else {
-                      alert("Aún no hay una siguiente página a la que saltar!");
-                  }
-              });
-            } else {
-              swal({
-                title: "¡Hubo un error al intentar grabar la respuesta!",
-                text: "Por favor vuelta a intentarlo.",
-                type: "error",
-                confirmButtonText: "OK",
-                closeOnConfirm: true
-              });
-            }
-          });
-        });      
+      var me = this;
+      swal({
+        title: autoCorrector ? me.options.save_answer_title : "Grabar respuesta",   
+        text: autoCorrector ? me.options.save_answer_text   : "Este tipo de pregunta no tiene evaluación automática, la pregunta se guardará para una posterior evaluación",   
+        type: autoCorrector ? "success" : "info",
+        confirmButtonText: "Grabar mi respuesta",   
+        closeOnConfirm: false,
+        showLoaderOnConfirm: true,
+        html: true
+      },function() {
+        $.post("/saveAnswer",{
+          answer: me.editor.getValue(),
+          page_id: me.options.page_id,
+          user_id: me.options.user_id
+        },function(result) {
+          if (result.status == "ok") {
+            swal({
+              title: "Tu código se grabó con éxito",
+              text: "Da click en continuar para seguir con las siguientes actividades",
+              confirmButtonText: "Continuar",
+              closeOnConfirm: false,
+              showLoaderOnConfirm: true
+            },function() {
+                if (me.options.next_page_url != '') {
+                    window.location = me.options.next_page_url;
+                } else {
+                    alert("Aún no hay una siguiente página a la que saltar!");
+                }
+            });
+          } else {
+            swal({
+              title: "¡Hubo un error al intentar grabar la respuesta!",
+              text: "Por favor vuelta a intentarlo.",
+              type: "error",
+              confirmButtonText: "OK",
+              closeOnConfirm: true
+            });
+          }
+        });
+      });     
     },
     
     isValidCode: function(code) {
