@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315192500) do
+ActiveRecord::Schema.define(version: 20160315230558) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -142,7 +142,6 @@ ActiveRecord::Schema.define(version: 20160315192500) do
     t.integer  "document_file_size",         limit: 4
     t.datetime "document_updated_at"
     t.text     "excercise_instructions",     limit: 65535
-    t.boolean  "show_solution",              limit: 1
     t.string   "video_solution",             limit: 255
     t.string   "solution_file_file_name",    limit: 255
     t.string   "solution_file_content_type", limit: 255
@@ -176,6 +175,12 @@ ActiveRecord::Schema.define(version: 20160315192500) do
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "units", force: :cascade do |t|
