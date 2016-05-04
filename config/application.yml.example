@@ -1,0 +1,25 @@
+# Agrega los valores de configuracion para cada uno de los ambientes 
+# del capitan
+#
+# production:
+#   database: micapitan
+#   database_username: capitan
+# 
+# Development y test tienen la configuracion para C9
+
+development:
+    host: <%= ENV['IP'] %>
+    database: capitan_development
+    database_username: <%= ENV['C9_USER'] %>
+    database_password: 
+test:
+    host: <%= ENV['IP'] %>
+    database: capitan_test
+    database_username: <%= ENV['C9_USER'] %>
+    database_password: 
+production:
+    host: ~
+    database: capitan
+    database_username: capitan
+    database_password: capitan
+    SECRET_KEY_BASE: your_only_secret_is_mine
