@@ -48,3 +48,4 @@ gem "the_comments", "~> 2.2.1"
 
 gem 'haml'
 gem 'awesome_nested_set'
+gem "figaro"
