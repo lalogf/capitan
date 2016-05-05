@@ -13,7 +13,6 @@ capybara-*.html
 /test/tmp/
 /test/version_tmp/
 /public/system
-Gemfile.lock
 
 ## Specific to RubyMotion:
 .dat*
