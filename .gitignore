@@ -1,9 +1,9 @@
 *.gem
-*.lock
 *.rbc
 capybara-*.html
 .rspec
-/log
+/log/development.log
+/log/production.log
 /tmp
 /.config
 /coverage/
@@ -13,6 +13,7 @@ capybara-*.html
 /test/tmp/
 /test/version_tmp/
 /public/system
+Gemfile.lock
 
 ## Specific to RubyMotion:
 .dat*
