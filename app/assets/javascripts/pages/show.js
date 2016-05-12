@@ -163,9 +163,15 @@ CAPITAN.page.show.editor = {
     
     checkVideoAgain: function() {
         swal({
-            title: "Repasemos la lección",
-            text: '<iframe id="videotip" width="100%" height="315" src="http://www.youtube.com/embed/'+this.options.videotip_url+'?enablejsapi=1" frameborder="0" allowfullscreen></iframe>',
-            html: true
+              title: 'Repasemos la lección',
+              text: '<iframe id="videotip" width="100%" height="315" src="http://www.youtube.com/embed/'+this.options.videotip_url+'?enablejsapi=1" frameborder="0" allowfullscreen></iframe>',
+              html:'<iframe id="videotip" width="100%" height="315" src="http://www.youtube.com/embed/'+this.options.videotip_url+'?enablejsapi=1" frameborder="0" allowfullscreen></iframe>',
+              showCloseButton: true,
+              showCancelButton: true,
+              confirmButtonText:
+                'Ok!',
+              cancelButtonText:
+                'Close',
         },function() {
             $("#videotip").remove();
         });
