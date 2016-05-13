@@ -20,7 +20,7 @@
 //= require pagedown_bootstrap
 //= require pagedown_init
 //= require jquery_nested_form
-//= require sweetalert2.min
+//= require sweetalert.min
 //= require Markdown.Extra
 //= require pages/form
 //= require pages/show

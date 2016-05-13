@@ -21,14 +21,14 @@
 
 </head>
 
-<body>
+<body data-no-turbolink="true">
   <div class="wrapper">
     <%= render "shared/header" %>
     <%= bootstrap_flash %>
     <%= yield %>
     <%= render "shared/footer" %>
   </div>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track'=> true %>
+  <%= javascript_include_tag 'application' %>
   <%= yield :scripts %>
 </body>
 

@@ -2,14 +2,14 @@
 <html>
 <head>
   <title>El Capitan</title>
-  <%= stylesheet_link_tag 'login', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'login' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
   <script src="//use.typekit.net/owh6gyt.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
 </head>
-<body>
+<body data-no-turbolink="true">
   <div class="wrapper">
     <%= render "shared/login_header" %>
     <%= bootstrap_flash %>

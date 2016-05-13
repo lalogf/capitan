@@ -7,7 +7,8 @@
         save_answer_title: '<%= @page.success_message.split("|")[0] %>',
         save_answer_text: '<%= @page.success_message.split("|")[1]%>',
         page_id: <%= @page.id %>,
-        user_id: <%= current_user.id %>
+        user_id: <%= current_user.id %>,
+        videotip_url: '<%= @page.videotip %>'
       });
       
       $(".start-over").click(function(e) {
