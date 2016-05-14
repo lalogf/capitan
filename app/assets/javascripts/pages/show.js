@@ -97,7 +97,7 @@ CAPITAN.page.show.editor = {
               closeOnConfirm: false,
               showLoaderOnConfirm: true
             },function() {
-                if (this.options.next_page_url != '') {
+                if (me.options.next_page_url != '') {
                     window.location = me.options.next_page_url;
                 } else {
                     alert("Aún no hay una siguiente página a la que saltar!");
