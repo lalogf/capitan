@@ -47,7 +47,7 @@ body {
 
 .navbar-brand {
   padding: 0px;
-  width: 328px;
+  /*width: 328px;*/
   line-height: 50px;
   font-weight: 300;
   font-size: 150%;
@@ -244,9 +244,10 @@ article.course .commands a:hover {
 .units-container .units ol .progress-item {
   font-size: 17px;
   font-weight: 300;
-  height: 45px;
+  /*height: 45px;*/
   line-height: 45px;
-  position: relative;  
+  position: relative;
+  margin-top: 19px;
 }
 
 .units-container .units ol .progress-item i {
@@ -719,6 +720,10 @@ video {
 
 .p-20 {
   padding: 20px;
+}
+
+.pr-0 {
+  padding-right: 0px;
 }
 
 .plr-20x {

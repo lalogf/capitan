@@ -5,7 +5,7 @@
 <% end %>
 <header>
   <nav class="navbar navbar-default">
-    <div class="container-fluid">
+    <div class="container-fluid pr-0 pr-15-xs">
       <div class="navbar-header">
         <button type="button" 
                 class="navbar-toggle collapsed" 
@@ -25,11 +25,14 @@
       <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">    
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a>
+            <a class="hidden-xs">
               <%= current_user.full_name %>
             </a>
+            <a class="hidden-lg hidden-md">
+             Mi Perfil
+            </a>
           </li>
-          <li>
+          <li class="hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle=dropdown>
               <span class="caret"></span>
             </a>
@@ -43,6 +46,14 @@
                 <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
               </li>
             </ul>
+          </li>
+          <% if current_user.admin %>
+            <li class="hidden-lg hidden-md">
+              <%= link_to "Panel de administración", dashboard_path %>
+            </li>
+          <% end %>
+          <li class="hidden-lg hidden-md">
+            <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
           </li>
         </ul>
       </div>      
