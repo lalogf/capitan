@@ -38,7 +38,9 @@ require 'roo'
 #  published_comcoms_count     :integer          default(0)
 #  deleted_comcoms_count       :integer          default(0)
 #  spam_comcoms_count          :integer          default(0)
+#  roles_mask                  :integer
 #
+
 class User < ActiveRecord::Base
   
   #TODO: ESTO DEBE SALIR PORQUE VAMOS A USAR DISCOURSE U OTRO SISTEMA DE COMENTARIOS
@@ -69,6 +71,13 @@ class User < ActiveRecord::Base
   scope :disables, -> (branch_id) { where(branch_id: branch_id, disable: 1) }
   
   validates :code, uniqueness: { case_sensitive: false }
+  
+  has_attached_file :avatar, 
+                    :styles => { :menu => "80x80", :navbar => "35x35" },
+                    :url => "/system/:class/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension"  
+                    
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/   
   
   # TODO: PODER VINCULAR MI CUENTA CON GITHUB, ESTO QUEDO A MEDIAS
   def self.create_from_omniauth(params)

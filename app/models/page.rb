@@ -27,7 +27,6 @@
 #  document_file_size         :integer
 #  document_updated_at        :datetime
 #  excercise_instructions     :text(65535)
-#  show_solution              :boolean
 #  video_solution             :string(255)
 #  solution_file_file_name    :string(255)
 #  solution_file_content_type :string(255)

@@ -18,6 +18,7 @@
         <%= f.input :lastname1, label: false, required: true, placeholder: "Primer apellido" %><br>
         <%= f.input :lastname2, label: false, required: true, placeholder: "Segundo apellido" %><br>
         <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %><br>
+        <%= f.input :avatar, as: :file %>
         <%= f.association :branch, prompt: "Selecciona una sede", collection: Branch.all, label:false  %><br>
         <p>Elige el rol del usuario:</p>
         <% for role in User::ROLES %>

@@ -37,6 +37,7 @@
 #  published_comcoms_count     :integer          default(0)
 #  deleted_comcoms_count       :integer          default(0)
 #  spam_comcoms_count          :integer          default(0)
+#  roles_mask                  :integer
 #
 
 module UsersHelper

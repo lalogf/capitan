@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     scope "/admin" do
       resources :questions
       resources :videos
+      resources :groups      
       resources :users, except: [:index]
       resources :courses do
         resources :units do

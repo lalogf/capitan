@@ -1,0 +1,56 @@
+<div id="user-left-box" class="clearfix hidden-sm hidden-xs">
+	<%= image_tag current_user.avatar.url(:menu) %>
+	<div class="user-box">
+		<span class="name"><%= "#{current_user.name} #{current_user.lastname1}" %></span>
+		<span class="roles"><%= current_user.roles.map(&:capitalize).join(", ") %></span>
+	</div>
+</div>
+<div class="navigation">
+  <ul>
+      <li>
+        <%= link_to dashboard_path do %>
+          <i class="fa fa-tachometer"></i>Dashboard
+        <% end %>
+      </li>
+      <li>
+        <%= link_to courses_path do %>
+          <i class="fa fa-book"></i>Cursos
+        <% end %>
+      </li>
+      <li>
+        <%= link_to enrollments_path do %>
+          <i class="fa fa-envelope"></i>Inscripciones
+        <% end %>
+      </li>
+      <li>
+        <%= link_to page_visibility_path do %>
+          <i class="fa fa-binoculars"></i>Visibilidad de páginas
+        <% end %>
+      </li>
+      <li>
+        <%= link_to grades_path do %>
+          <i class="fa fa-table"></i>Notas
+        <% end %>
+      </li>
+      <li>
+        <%= link_to questions_path do %>
+          <i class="fa fa-question-circle"></i>Preguntas
+        <% end %>
+      </li>
+      <li>
+        <%= link_to videos_path do %>
+          <i class="fa fa-youtube"></i>Videos
+        <% end %>
+      </li>
+      <li>
+        <%= link_to groups_path do %>
+          <i class="fa fa-users"></i>Grupos
+        <% end %>
+      </li>
+      <li>
+        <%= link_to users_path do %>
+        <i class="fa fa-user"></i>Usuarios
+        <% end %>
+      </li>
+  </ul>
+</div>
