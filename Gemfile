@@ -10,9 +10,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'therubyracer'
-# gem 'bcrypt', '~> 3.1.7'
-# gem 'unicorn'
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'byebug'
@@ -44,8 +41,8 @@ gem 'nokogiri'
 gem 'roo'
 gem 'handlebars_assets'
 gem 'wannabe_bool'
-gem "the_comments", "~> 2.2.1"
+gem 'the_comments', '~> 2.2.1'
 
-gem 'haml'
 gem 'awesome_nested_set'
-gem "figaro"
+gem 'figaro'
+gem 'bourbon'

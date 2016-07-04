@@ -1,0 +1,90 @@
+/* course_list */
+.courses {
+    margin-top: 40px;
+}
+
+.panel a {
+  font-weight: 300;
+  font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  color: white;
+}
+
+/* course_details */
+
+.course-header {
+  border-top: 1px solid;
+  padding: 4em 50px 0em;
+  margin-bottom: 30px;
+}
+
+.course-header .content {
+  color: white;
+  max-width: 75em;
+  position: relative;
+  font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: normal;
+}
+
+.course-header .content a {
+  font-weight: 300;
+  font-size: 18px;
+  font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  color: white;
+}
+
+.course-header .content i {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.course-header .content h1 {
+  font-size: 36px;
+}
+
+.course-header .content h4 {
+  font-weight: 300;
+}
+
+.course-header .content img {
+  max-width: 100%;
+}
+
+.units-container {
+  min-height: 100px;
+}
+
+.units-container .units ol {
+  list-style:none;
+}
+
+.units-container .units .unit {
+  margin-bottom: 60px;
+  border-bottom: 1px dashed #eee;
+}
+
+.units-container .units ol .progress-item {
+  font-size: 17px;
+  font-weight: 300;
+  height: 45px;
+  line-height: 45px;
+  position: relative;  
+}
+
+.units-container .units ol .progress-item i {
+  vertical-align: middle;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.units-container .progress-item .fa-code {
+  font-size: 26px !important;
+}
+
+.units-container .units .overview h2 {
+  margin-top: 0px;
+  font-size: 25px;
+}
+
+.units-container .units .content-box {
+  padding: 0px 20px;
+}

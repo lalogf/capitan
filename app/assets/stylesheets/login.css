@@ -3,7 +3,10 @@
 *= require bootstrap-social
 *= require_self
  */
- 
+
+
+/** GENERAL **/
+
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -13,62 +16,54 @@
 html,body {
 	margin:0;
 	padding:0;
-	height:100%;  
+	height:100%;
 }
  
  body {
   font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857;
-  color: #3E3F40;
-  background-color: #F0F0F0;
+  font-size: 16px;
+  line-height: 1.71429;
+  color: #333333;
+  background-color: white;
 }
 
-.wrapper {
-	min-height:100%;
-	position:relative;  
+h2 {
+  font-size: 3.375rem;
+  line-height: 1.1;
+  color: inherit;
 }
 
-.content {
-	position:relative;  
-  padding: 0% 25% 90px;
+.separator-primary {
+  border-top: 1px solid #F9A91A;
+  margin-top: 7px;
+  margin-bottom: 14px;
+  width: 28px;
+  width: 1.75rem;
+  height: 1px;
+  height: 0.0625rem;   
 }
 
-.navbar {
-  margin: 0;
-  border: 0px;
+.separator-centered {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.navbar-default {
-  background-color: #333333;
-  border-color: transparent;
+/** HEADER **/
+.header {
+  background-color: white;
 }
 
-.navbar-default .navbar-collapse {
-  padding: 1.5% 2%;
+/** BODY **/
+
+.login-container {
+  padding-top: 5%;
 }
 
-.navbar-brand {
-  padding: 0px;
-  width: 328px;
-  line-height: 50px;
-  font-weight: 300;
-  font-size: 170%;
-  color: #fff !important;
-  font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+.login-container .form-container {
+    padding: 21px 56px 0px;
 }
 
-.navbar-brand img {
-	padding: 0;
-	margin-right: 10px;
-	float: left;
-}
-
-.collapse img {
-	width: 40px;
-	height: 40px;
-}
-
+/** FOOTER **/
 footer{
 	background-color: #333333;
 	color: white;
@@ -85,31 +80,19 @@ footer h5 {
   margin:0px;
 }
 
+/** BUTTONS **/
 
-.login-title {
-  color: #F9A91A;
-  font-size: 3.5em;
-  margin:0px;
-  padding: 15% 0% 7%;
-}
-
-.update-field-title {
-  color: #F9A91A;
-  font-size: 2em;
-  font-weight: bold;
-  margin:0px;
-  padding: 2% 0%;
-}
-
-
-.form-session {
-    max-width: 60%;
-    margin: 0 auto;
-}
-
-.login-form-session {
-    max-width: 45%;
-    margin: 0 auto;
+.btn-amarillo-lab {
+  color: #fff;
+  background-color: #F9A91A;
+  border-color: #f39e06;
+}    
+    
+    
+.btn-amarillo-lab:hover {
+  background-color: #b37405;
+  color: #f7f7f7;
+  border-color: #f9a30b;  
 }
 
 .control-label {
@@ -121,16 +104,53 @@ footer h5 {
 
 .form-control {
   height: 45px;
+  border-color: #AEAEAE;
+  border-radius: 0;
 }
 
-@media(max-width:767px){
-  .content {
-  	position:relative;  
-    padding: 0% 0% 60px;
+.form-control:focus {
+  box-shadow: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .container-xs,
+  .container-sm,
+  .container-md {
+    padding-left: 14px;
+    padding-right: 14px;
+    margin: 0 auto; 
+    
+  }
+
+  .container-xs {
+    width: 508px; 
+  }
+
+  .container-sm {
+    width: 748px; 
+  }
+
+  .container-md {
+    width: 968px; 
+  }
+}
+    
+@media only screen and (max-width: 480px) {
+  .container-xs,
+  .container-sm,
+  .container-md {
+    width: 100%;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin: 0 auto;
   }
   
-  .form-session {
-    max-width: 80%;
+  .login-container {
+    padding-top: 0%;
+  }  
+  
+  .login-container .form-container {
+    padding: 0px;
   }
 }
 
@@ -165,6 +185,40 @@ footer h5 {
   margin-top: 40px;
 }
 
+.mtp-10 {
+  margin-top: 10%;
+}
+
 .mb-40 {
   margin-bottom: 40px;
+}
+
+.pv-14 {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.pv-21 {
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+
+.h3 {
+    font-size: 1.25rem;
+}
+.lh-28 {
+    line-height: 28px;
+}
+
+.ph-56 {
+    padding-left: 56px;
+    padding-right: 56px;
+}
+.pt-21 {
+    padding-top: 21px;
+}
+
+.logo-laboratoria {
+  margin: 0px auto;
+  height: 65px;
 }

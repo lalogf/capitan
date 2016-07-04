@@ -1,0 +1,52 @@
+.navbar {
+  margin: 0;
+  border: 0px;
+}
+
+.navbar-default {
+  background-color: #323232;
+  border-color: transparent;
+}
+
+.navbar-default a {
+  color: white !important;
+}
+
+.navbar-brand {
+  padding: 0px;
+  width: 328px;
+  line-height: 50px;
+  font-weight: 300;
+  font-size: 150%;
+  color: #fff !important;
+  font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+.navbar-brand img {
+	padding: 0;
+	margin-right: 10px;
+	float: left;
+}
+
+.collapse img {
+	width: 40px;
+	height: 40px;
+}
+
+.dropdown-menu a {
+    color: #333 !important;
+}
+
+.dropdown-toggle, .dropdown-toggle:hover {
+  background-color: #F9A91A !important;
+}
+
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus {
+    background-color: #F7B617;
+}
+
+.dropdown-menu>li>a:hover {
+  background-color: #F7B617;
+}

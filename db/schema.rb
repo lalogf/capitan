@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315230558) do
+ActiveRecord::Schema.define(version: 20160703163220) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -178,9 +178,11 @@ ActiveRecord::Schema.define(version: 20160315230558) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",        limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "description", limit: 255
+    t.integer  "duration",    limit: 4
   end
 
   create_table "units", force: :cascade do |t|
