@@ -39,9 +39,14 @@ require 'roo'
 #  deleted_comcoms_count       :integer          default(0)
 #  spam_comcoms_count          :integer          default(0)
 #
-
 class User < ActiveRecord::Base
+  
+  #TODO: ESTO DEBE SALIR PORQUE VAMOS A USAR DISCOURSE U OTRO SISTEMA DE COMENTARIOS
   include TheComments::User
+  
+  ROLES = %w[student teacher assistant admin].freeze
+
+  after_initialize :set_default_role
   
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :branch
@@ -50,8 +55,6 @@ class User < ActiveRecord::Base
   has_many :enrollments, :dependent => :destroy
   has_many :courses, through: :enrollments
   
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
          :registerable,
          :recoverable, 
@@ -67,7 +70,7 @@ class User < ActiveRecord::Base
   
   validates :code, uniqueness: { case_sensitive: false }
   
-  
+  # TODO: PODER VINCULAR MI CUENTA CON GITHUB, ESTO QUEDO A MEDIAS
   def self.create_from_omniauth(params)
     attributes = {
       name: params['info']['name'],
@@ -78,6 +81,26 @@ class User < ActiveRecord::Base
     create(attributes)
   end
   
+  # MANEJO DE ROLES
+  def set_default_role
+    roles()
+  end  
+  
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+  end
+  
+  def roles
+    ROLES.reject do |r|
+      ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+  
+  def is?(role)
+    roles.include?(role.to_s)
+  end  
+  
+  #UTILITARIOS
   def full_name
     return "#{name} #{lastname1} #{lastname2}"
   end
@@ -85,15 +108,8 @@ class User < ActiveRecord::Base
   def email_required?
     false
   end
-  
-  def comments_admin?
-    admin?
-  end
 
-  def comments_moderator? comment
-    id == comment.holder_id
-  end  
-  
+  # METODOS DE CONSULTA PARA EL ADMINISTRADOR
   def self.total_score_by_course(course_id)
     User.select(:id,'courses.id as course_id','sum(answers.points) as score')
     .joins(answers: {page: {unit: :course}})

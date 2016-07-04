@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703163220) do
+ActiveRecord::Schema.define(version: 20160704062805) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -245,6 +245,7 @@ ActiveRecord::Schema.define(version: 20160703163220) do
     t.integer  "published_comcoms_count",     limit: 4,   default: 0
     t.integer  "deleted_comcoms_count",       limit: 4,   default: 0
     t.integer  "spam_comcoms_count",          limit: 4,   default: 0
+    t.integer  "roles_mask",                  limit: 4
   end
 
   add_index "users", ["branch_id"], name: "index_users_on_branch_id", using: :btree

@@ -1,44 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                          :integer          not null, primary key
-#  email                       :string(255)      default("")
-#  encrypted_password          :string(255)      default(""), not null
-#  reset_password_token        :string(255)
-#  reset_password_sent_at      :datetime
-#  remember_created_at         :datetime
-#  sign_in_count               :integer          default(0), not null
-#  current_sign_in_at          :datetime
-#  last_sign_in_at             :datetime
-#  current_sign_in_ip          :string(255)
-#  last_sign_in_ip             :string(255)
-#  created_at                  :datetime         not null
-#  updated_at                  :datetime         not null
-#  provider                    :string(255)
-#  uid                         :string(255)
-#  admin                       :boolean          default(FALSE)
-#  dni                         :string(255)
-#  code                        :string(255)
-#  name                        :string(255)      not null
-#  lastname1                   :string(255)      not null
-#  lastname2                   :string(255)
-#  age                         :integer
-#  district                    :string(255)
-#  facebook_username           :string(255)
-#  phone1                      :string(255)
-#  phone2                      :string(255)
-#  branch_id                   :integer
-#  disable                     :boolean          default(FALSE)
-#  my_draft_comments_count     :integer          default(0)
-#  my_published_comments_count :integer          default(0)
-#  my_comments_count           :integer          default(0)
-#  draft_comcoms_count         :integer          default(0)
-#  published_comcoms_count     :integer          default(0)
-#  deleted_comcoms_count       :integer          default(0)
-#  spam_comcoms_count          :integer          default(0)
-#
-
 require 'wannabe_bool'
 
 class UsersController < ApplicationController
@@ -144,6 +103,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:code, :dni, :name, :lastname1, :lastname2, 
-      :email, :branch_id, :district, :age,:facebook_username,:phone1,:phone2,:admin,:password, :password_confirmation)
+      :email, :branch_id, :district, :age,:facebook_username,:phone1,:phone2,:admin,:password, :password_confirmation, roles: [])
     end
 end
