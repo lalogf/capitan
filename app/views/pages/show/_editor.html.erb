@@ -3,7 +3,7 @@
     $(document).ready(function() {
       CAPITAN.page.show.editor.init({
         initial_state: $("#initial_state").text(),
-        next_page_url: '<%= mycourse_unit_page_url(@course,@next_unit,@next_page) %>',
+        next_page_url: '<%= mycourse_unit_lesson_page_url(@course,@unit,@next_lesson,@next_page) %>',
         save_answer_title: '<%= @page.success_message.split("|")[0] %>',
         save_answer_text: '<%= @page.success_message.split("|")[1]%>',
         page_id: <%= @page.id %>,

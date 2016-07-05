@@ -4,24 +4,25 @@ class PagesController < ApplicationController
   
   before_action :set_course, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_unit, except: [:saveAnswer,:saveQuestion, :saveAnswers]
+  before_action :set_lesson, except: [:saveAnswer,:saveQuestion, :saveAnswers]
 
   # GET /pages
   # GET /pages.json
   def index
-    @pages = @unit.pages.all
+    @pages = @lesson.pages.all
   end
 
   # GET /pages/1
   # GET /pages/1.json
   def show
-    @page = @unit.pages.find(params[:id])
-    @previous_page = @unit.pages.find_by_sequence(@page.sequence-1)
-    @next_page = @unit.pages.find_by_sequence(@page.sequence+1)
-    @next_unit = @unit
+    @page = @lesson.pages.find(params[:id])
+    @previous_page = @lesson.pages.find_by_sequence(@page.sequence-1)
+    @next_page = @lesson.pages.find_by_sequence(@page.sequence+1)
+    @next_lesson = @lesson
     if @next_page == nil
-      @next_unit = Unit.where("course_id = ? and sequence = ?",@course.id, @unit.sequence+1).first
-      if @next_unit != nil
-        @next_page = @next_unit.pages.first
+      @next_lesson = Lesson.where("unit_id = ? and sequence = ?",@unit.id, @lesson.sequence+1).first
+      if @next_lesson != nil
+        @next_page = @next_lesson.pages.first
       end
     end
     @page.answers.find_or_create_by(page_id: @page.id,user_id: current_user.id)
@@ -33,24 +34,24 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @branches = Branch.all
-    @page = @unit.pages.new
+    @page = @lesson.pages.new
     @page.questions.build
   end
 
   # GET /pages/1/edit
   def edit
     @branches = Branch.all
-    @page = @unit.pages.find(params[:id])
+    @page = @lesson.pages.find(params[:id])
   end
 
   # POST /pages
   # POST /pages.json
   def create
-    @page = @unit.pages.new(page_params)
+    @page = @lesson.pages.new(page_params)
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to [@course,@unit], notice: 'Page was successfully created.' }
+        format.html { redirect_to [@course,@unit,@lesson], notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new }
@@ -63,9 +64,9 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1.json
   def update
     respond_to do |format|
-      @page = @unit.pages.find(params[:id])
+      @page = @lesson.pages.find(params[:id])
       if @page.update(page_params)
-        format.html { redirect_to [@course,@unit], notice: 'Page was successfully updated.' }
+        format.html { redirect_to [@course,@unit,@lesson], notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
@@ -77,10 +78,10 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
-    @page = @unit.pages.find(params[:id])
+    @page = @lesson.pages.find(params[:id])
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to [@course,@unit], notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to [@course,@unit,@lesson], notice: 'Page was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -143,10 +144,14 @@ class PagesController < ApplicationController
     def set_unit
       @unit = @course.units.find(params[:unit_id])
     end
+    
+    def set_lesson
+      @lesson = @unit.lessons.find(params[:lesson_id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :page_type,:sequence, :unit_id, :html,
+      params.require(:page).permit(:title, :page_type,:sequence, :lesson_id, :html,
       :initial_state, :slide_url, :solution,:videotip,:load_from_previous,
       :auto_corrector,:grade,:points,:question_points,:selfLearning, 
       :success_message, :instructions, :document, :excercise_instructions,

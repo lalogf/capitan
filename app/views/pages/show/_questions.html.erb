@@ -8,7 +8,7 @@
         
         $(".next-step-finished").click(function(e) {
           e.preventDefault();
-          window.location = '<%= mycourse_unit_page_url(@course,@next_unit,@next_page) %>';
+          window.location = '<%= mycourse_unit_lesson_page_url(@course,@unit,@next_lesson,@next_page) %>';
         }); 
     });
   </script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704083009) do
+ActiveRecord::Schema.define(version: 20160705142221) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -106,6 +106,16 @@ ActiveRecord::Schema.define(version: 20160704083009) do
 
   add_index "groups", ["branch_id"], name: "index_groups_on_branch_id", using: :btree
 
+  create_table "lessons", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.integer  "unit_id",    limit: 4
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "sequence",   limit: 4,   default: 0
+  end
+
+  add_index "lessons", ["unit_id"], name: "index_lessons_on_unit_id", using: :btree
+
   create_table "options", force: :cascade do |t|
     t.string   "description", limit: 255
     t.integer  "question_id", limit: 4
@@ -129,7 +139,6 @@ ActiveRecord::Schema.define(version: 20160704083009) do
 
   create_table "pages", force: :cascade do |t|
     t.string   "title",                      limit: 255
-    t.integer  "unit_id",                    limit: 4
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
     t.string   "page_type",                  limit: 255
@@ -161,9 +170,10 @@ ActiveRecord::Schema.define(version: 20160704083009) do
     t.integer  "published_comments_count",   limit: 4,     default: 0
     t.integer  "deleted_comments_count",     limit: 4,     default: 0
     t.string   "solution_visibility",        limit: 255
+    t.integer  "lesson_id",                  limit: 4
   end
 
-  add_index "pages", ["unit_id"], name: "index_pages_on_unit_id", using: :btree
+  add_index "pages", ["lesson_id"], name: "index_pages_on_lesson_id", using: :btree
 
   create_table "pages_videos", id: false, force: :cascade do |t|
     t.integer "page_id",  limit: 4, null: false
@@ -278,10 +288,11 @@ ActiveRecord::Schema.define(version: 20160704083009) do
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
   add_foreign_key "groups", "branches"
+  add_foreign_key "lessons", "units"
   add_foreign_key "options", "questions"
   add_foreign_key "page_visibilities", "branches"
   add_foreign_key "page_visibilities", "pages"
-  add_foreign_key "pages", "units"
+  add_foreign_key "pages", "lessons"
   add_foreign_key "question_groups", "pages"
   add_foreign_key "question_groups", "questions"
   add_foreign_key "units", "courses"
