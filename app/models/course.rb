@@ -58,11 +58,12 @@ class Course < ActiveRecord::Base
     end
     
     def has_pages(branch_id)
-        query = "select count(*) 
+        query = "select count(p.id) 
                  from pages p
-                 join units u on p.unit_id = u.id
-                 join courses c on c.id = u.course_id
-                 join page_visibilities pv on p.id = pv.page_id
+                 inner join lessons l on p.lesson_id = l.id
+                 inner join units u on l.unit_id = u.id
+                 inner join courses c on c.id = u.course_id
+                 inner join page_visibilities pv on p.id = pv.page_id
                  where c.id = #{self.id} and branch_id = #{branch_id} and pv.status = 1"
         return ActiveRecord::Base.connection.execute(query).first[0] > 0
     end
