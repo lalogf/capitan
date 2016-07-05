@@ -1,42 +1,53 @@
-<div class="course-header clearfix" 
-     style="<%= "background-color: #{@course.color}" %>">
+<div class="course-header clearfix bg-gray-dark">
     <div class="content container">
         <div class="row">
-          <p>
-            <%= link_to course_list_path do %>
-              <i class="fa fa-play fa-rotate-180"></i>Volver a la lista de cursos
-            <% end %>
-          </p>
-          <h1><%= @course.name %></h1>
-          <h4><%= @course.description %></h4>
+          <div class="col-md-5 col-md-offset-1 pr-49">
+            
+            <h1 class="light text-uppercase"><%= @course.name %></h1>
+            <p class="thin lh-md mb-42-md fz-21"><%= @course.description %></p>
+             <%= link_to  do %>
+                <%= image_tag "bullet-down.png",alt: "Laboratoria código que transforma", class: "ho" %>
+                <span class="thin">Syllabus</span>
+              <% end %>
+          </div>
+          <div class="col-md-5 pl-49 mt-63-md">
+            <h4 class="ligth">LECCIONES COMPLETADAS</h4>
+            <div class="progress progress-details">
+              <div class="progress-bar progress-bar-details" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 65%;">
+                65%
+              </div>
+            </div>
+          </div>
+          
         </div>
     </div>
 </div>
 <div class="container units-container">
   <div class="row">
-    <div class="col-xs-12">
-      <p>TODO EL CONTENIDO EN "<%= @course.name %>"</p>
-      <hr>
+    <div class="col-xs-10 col-md-offset-1">
+      <h2 class="lh-21 light text-left mt-42 mb-0">contenido</h2>
+      <div class="separator separator-sm separator-primary separator-left mb-28"></div>
+      
       <div class="units">
         <% @course.units.order(:sequence).each_with_index do |unit,index| %>
           <% if unit.has_pages(current_user.branch_id) %>
             <div class="row unit">
-            <div class="col-sm-3">
+            <div class="col-sm-6 pr-49">
               <div class="overview">
+                <small class="thin">Semana 1</small>
                 <h2><%= unit.title %></h2>
                 <p><%= unit.description %></p>
               </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-6 pl-49">
               <div class="content-box clearfix">
                 <ol>
                   <% unit.lessons.order(:sequence).each do |lesson| %>
                     <li class="progress-item">
-                      <%= link_to mycourse_unit_lesson_page_path(@course,unit,lesson.id, lesson.pages.first.id), 
-                          :class => "viewed" do %>
-                          <i class="fa fa-square-o"></i>
+                        <%= link_to mycourse_unit_lesson_page_path(@course,unit,lesson.id, lesson.pages.first.id),
+                            :class => "viewed" do %>
                           <span><%= lesson.title %></span>
-                      <% end %>
+                        <% end %>
                     </li>
                   <% end %>
                 </ol>

@@ -30,4 +30,10 @@ $(document).ready(function() {
     $(".alert").fadeTo(4000, 500).slideUp(500, function(){
         $(this).alert('close');
     });
+    $(".arrow").on("click", function(a) {
+        a.preventDefault();
+        var elemClass = $(this).attr("data-el"); 
+        $(this).toggleClass("hide"); 
+        $(this).siblings("." + elemClass).toggleClass("hide");
+    });
 });
