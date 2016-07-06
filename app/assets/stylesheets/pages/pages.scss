@@ -13,7 +13,11 @@
   transition: max-width 200ms;
   vertical-align: top;
   z-index: 10;
-  background-color:#EEEEEE;
+  background-color: #3E3F40;
+}
+
+.page-title {
+  color: white;
 }
 
 .page .navigation:before {
@@ -41,7 +45,7 @@
     line-height: 1.3;
     margin: 10px 0 0;
     font-size: 18px;
-    background-color:#EEE;
+    background-color:#3E3F40;
     padding-bottom: 15px;
 }
 
@@ -69,7 +73,6 @@
 
 .page .navigation .units .unit-item .item {
   font-weight: 300;
-  padding-left: 10px;
   width: 100%;
   display: table;
   font-size: 14px;
@@ -99,8 +102,37 @@
   padding: 15px;
 }
 
-.page .navigation .units .active {
-  background-color: white;
+.square-pages {
+  &:before {
+    content: '';
+    border: 1px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 27px;
+    text-align: center;
+    position: absolute;
+    left: 13px;
+    margin-top: 1px;
+    background: #3e3f40;
+  }
+  &.active {
+    &:before {
+      content: '';
+      border: 1px solid #FCB425;
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+      margin-right: 27px;
+      text-align: center;
+      position: absolute;
+      left: 13px;
+      margin-top: 1px;
+      background: #FCB425;
+    }
+  }
 }
 
 .page .content .page-title {
@@ -252,12 +284,10 @@ video {
 
 .unit-title {
   padding: 15px 5px 15px 10px;
-  border-bottom: 1px solid #ccc;
   margin: 0px;
   font-size: 20px;
   text-transform: uppercase;
-  text-align: center;
-  color: #444;
+  color: #fff;
   font-size: 18px;  
 }
 
@@ -316,3 +346,70 @@ video {
   width: 20px;
   margin: 0px auto;
 } 
+
+// COLLAPSE PAGES
+
+.bg-collapse {
+    color: #333;
+    background-color: #3E3F40 !important;
+    border-color: #3E3F40 !important;
+}
+
+.border-gray-dark {
+  border-color: #3E3F40 !important;
+}
+
+.bg-gray-dark {
+    background: #3E3F40 !important;
+    color: white;
+}
+
+.quote-list {
+  &:before {
+    content: "-";
+    margin-right: 7px;
+    position: absolute;
+    left: 2px;
+  }
+}
+
+.disabled {
+  color: #ddd;
+}
+
+.fz-14 {
+  font-size: 14px;
+}
+
+.square-pages-list {
+  &:before {
+    content: '';
+    border: 1px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    margin-right: 27px;
+    text-align: center;
+    position: absolute;
+    left: 35px;
+    margin-top: 3px;
+    background: #3e3f40;
+  }
+  &.active {
+    &:before {
+      content: '';
+      border: 1px solid #FCB425;
+      display: inline-block;
+      vertical-align: middle;
+      width: 15px;
+      height: 15px;
+      margin-right: 27px;
+      text-align: center;
+      position: absolute;
+      left: 35px;
+      margin-top: 3px;
+      background: #FCB425;
+    }
+  }
+}

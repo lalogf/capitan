@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   
   layout "admin", except: [:show]
+  layout "pages", only: [:show]
   
   before_action :set_course, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_unit, except: [:saveAnswer,:saveQuestion, :saveAnswers]
