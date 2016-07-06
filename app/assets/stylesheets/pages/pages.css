@@ -33,7 +33,7 @@
   background-color: white;
   display: table-cell;
   width: 100%;
-  z-index: 21; }
+  z-index: 1; }
 
 .page .navigation .breadcrumb {
   display: block;

@@ -37,7 +37,7 @@
     background-color: white;
     display: table-cell;
     width: 100%;
-    z-index: 21;    
+    z-index: 1;    
 }
 
 .page .navigation .breadcrumb {
@@ -425,5 +425,17 @@ video {
       margin-top: 3px;
       background: #FCB425;
     }
+  }
+}
+
+.w-300 {
+    max-width: 300px;
+    min-width: 300px;
+}
+
+.user-pages {
+  color: #3e3f40;
+  &:hover {
+    background: none !important;
   }
 }

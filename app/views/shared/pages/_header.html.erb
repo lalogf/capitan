@@ -1,0 +1,34 @@
+<div class="container-fluidv pl-0">
+    <div class="bg-gray-dark w-300 pull-left">
+        <div class="text-center">
+          <%= image_tag "laboratoria-white.svg",alt: "Laboratoria código que transforma", class: "mt-14", height: "63px" %>
+        </div>
+    </div>
+    <div class="w-300 pt-7 pull-right">
+          <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">    
+            <ul class="nav navbar-nav navbar-right mt-14">
+              <li>
+                <a class="user-pages">
+                  <%= current_user.full_name %>
+                </a>
+              </li>
+              <li class="header-arrow">
+                <a href="#" class="dropdown-toggle " data-toggle=dropdown>
+                  <%= image_tag "arrow-up.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
+                  <%= image_tag "arrow-down.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
+                </a>
+                <ul class="dropdown-menu">
+                  <% if current_user.admin %>
+                    <li>
+                      <%= link_to "Panel de administración", dashboard_path %>
+                    </li>
+                  <% end %>
+                  <li>
+                    <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>  
+        </div>
+</div>
