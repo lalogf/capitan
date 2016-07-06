@@ -103,6 +103,11 @@
 }
 
 .square-pages {
+  &:hover {
+    &:before {
+      background: #FCB425;
+    }
+  }
   &:before {
     content: '';
     border: 1px solid #ddd;
