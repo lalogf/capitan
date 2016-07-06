@@ -381,7 +381,12 @@ video {
   font-size: 14px;
 }
 
+.full-height {
+  height: 100vh;
+}
+
 .square-pages-list {
+  &:
   &:before {
     content: '';
     border: 1px solid #ddd;
