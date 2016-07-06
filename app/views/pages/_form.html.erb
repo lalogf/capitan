@@ -10,8 +10,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :sequence %>
-    <%= f.input :title %>
+    <%= f.input :sequence %><br>
+    <%= f.input :title %><br>
+    <%= f.input :points, label: "Points" %><br>
     <%= f.input :page_type, :collection => [['video','video'],['editor','editor'],['questions','questions'],['closer','closer'],['opener','opener'],['html','html'],['slides','slides'],['exercise','exercise']] %>
     <%= render :partial=> 'pages/form/video_fields', :locals => {:f => f} %>
     <%= render :partial=> 'pages/form/editor_fields', :locals => {:f => f} %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705142221) do
+ActiveRecord::Schema.define(version: 20160705210254) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20160705142221) do
     t.integer  "background_image_file_size",    limit: 4
     t.datetime "background_image_updated_at"
     t.string   "code",                          limit: 255
+    t.integer  "points",                        limit: 4
   end
 
   create_table "enrollments", force: :cascade do |t|
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20160705142221) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.integer  "sequence",   limit: 4,   default: 0
+    t.integer  "points",     limit: 4
   end
 
   add_index "lessons", ["unit_id"], name: "index_lessons_on_unit_id", using: :btree
@@ -212,6 +214,7 @@ ActiveRecord::Schema.define(version: 20160705142221) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "sequence",    limit: 4,   default: 0
+    t.integer  "points",      limit: 4
   end
 
   add_index "units", ["course_id"], name: "index_units_on_course_id", using: :btree

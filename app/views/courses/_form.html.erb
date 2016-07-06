@@ -3,6 +3,7 @@
     <%= f.input :code %><br>
     <%= f.input :name, :class => "short" %><br>
     <%= f.input :description %><br>
+    <%= f.input :points, placeholder: "#{@course.total_points} pts" %><br>
     <%= f.input :color %><br>
     <%= f.input :avatar %><br>
     <%= f.input :background_image %>

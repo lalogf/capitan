@@ -5,6 +5,7 @@
     <%= f.input :title %>
     <%= f.association :unit %>
     <%= f.input :sequence %>
+    <%= f.input :points, placeholder: "#{@lesson.total_points} pts" %>
   </div>
   <br>
   <div class="form-actions">

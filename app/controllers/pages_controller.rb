@@ -152,8 +152,8 @@ class PagesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
       params.require(:page).permit(:title, :page_type,:sequence, :lesson_id, :html,
-      :initial_state, :slide_url, :solution,:videotip,:load_from_previous,
-      :auto_corrector,:grade,:points,:question_points,:selfLearning, 
+      :initial_state, :slide_url, :solution, :videotip, :load_from_previous,
+      :auto_corrector, :grade, :points, :question_points, :selfLearning, 
       :success_message, :instructions, :document, :excercise_instructions,
       :solution_file, :video_solution, :show_solution, :solution_visibility, 
       :video_ids => [],
