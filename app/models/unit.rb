@@ -29,4 +29,8 @@ class Unit < ActiveRecord::Base
   #   return self.lessons.visible_page(branch_id).order(:sequence)
   # end
   
+  def total_points
+    return self.lessons.sum(:points)
+  end
+  
 end

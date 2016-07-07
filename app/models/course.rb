@@ -67,4 +67,8 @@ class Course < ActiveRecord::Base
                  where c.id = #{self.id} and branch_id = #{branch_id} and pv.status = 1"
         return ActiveRecord::Base.connection.execute(query).first[0] > 0
     end
+    
+    def total_points
+      return self.units.sum(:points) 
+    end
 end

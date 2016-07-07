@@ -92,22 +92,29 @@
                   <%= unit.description %>
                 </td>
               </tr>
-              <% unit.pages.each do |page| %>
+              <% unit.lessons.each do |lesson| %>
                 <tr>
-                  <td style="padding-left: 30px;"><%= page.title %></td>
-                  <% @branches.each do |branch| %>
-                    <td class="text-center">
-                      <input type="checkbox"
-                             class="page_checkbox"
-                             data-branch-id="<%= branch.id %>"
-                             data-course-id="<%= course.id %>"
-                             data-unit-id="<%= unit.id %>"
-                             data-page-id="<%= page.id %>"
-                             <%= page.page_visibilities.find_by(page_id:page.id,branch_id:branch.id) != nil &&
-                                 page.page_visibilities.find_by(page_id:page.id,branch_id:branch.id).status ? "checked" : "" %>  />
-                    </td>
-                  <% end %>
+                  <td colspan="<%= @branches.to_a.size + 1 %>" style="padding-left: 30px">
+                    <%= lesson.title %>
+                  </td>
                 </tr>
+                <% lesson.pages.each do |page| %>
+                  <tr>
+                    <td style="padding-left: 60px;"><%= page.title %></td>
+                    <% @branches.each do |branch| %>
+                      <td class="text-center">
+                        <input type="checkbox"
+                               class="page_checkbox"
+                               data-branch-id="<%= branch.id %>"
+                               data-course-id="<%= course.id %>"
+                               data-unit-id="<%= unit.id %>"
+                               data-page-id="<%= page.id %>"
+                               <%= page.page_visibilities.find_by(page_id:page.id,branch_id:branch.id) != nil &&
+                                   page.page_visibilities.find_by(page_id:page.id,branch_id:branch.id).status ? "checked" : "" %>  />
+                      </td>
+                    <% end %>
+                  </tr>
+                <% end %>
               <% end %>
             <% end %>
             <tr>
