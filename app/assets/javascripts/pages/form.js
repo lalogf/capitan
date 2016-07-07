@@ -68,9 +68,7 @@ CAPITAN.page.form = {
                 break;
             case 'questions':
                 this.showFields("questions_fields");
-                break;                
-            case 'closer':
-            case 'opener':
+                break;
             case 'html':    
                 this.showFields("html_fields");
                 break;

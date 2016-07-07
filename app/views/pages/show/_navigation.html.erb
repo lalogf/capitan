@@ -1,3 +1,4 @@
+
   <div class="navigation full-height">
     <div class="breadcrumb">
       <%= link_to course_details_path(@course) do %>
@@ -25,18 +26,16 @@
              <!--</ul>-->
               <ul class="units pl-7">
                 <% @lesson.visible_pages(current_user.branch_id).order(:sequence).each do |page| %>
-                  <% if page.page_type != "closer" %>
-                    <li class="unit-item clearfix <%= page.id == @page.id ? "active": ""%>"
-                        title="<%= page.title %>">
-                        
-                        <%= link_to mycourse_unit_lesson_page_path(@course,@unit,page.lesson,page),
-                            :class => "clearfix item" do %>
-                          <div class="page-title quote-list pv-7">
-                            <%= page.title %>
-                          </div>
-                        <% end %>
-                    </li>
-                  <% end %>
+                  <li class="unit-item clearfix <%= page.id == @page.id ? "active": ""%>"
+                      title="<%= page.title %>">
+                      
+                      <%= link_to mycourse_unit_lesson_page_path(@course,@unit,page.lesson,page),
+                          :class => "clearfix item" do %>
+                        <div class="page-title quote-list pv-7">
+                          <%= page.title %>
+                        </div>
+                      <% end %>
+                  </li>
                 <% end %>
               </ul>
           </div>

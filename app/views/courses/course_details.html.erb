@@ -44,7 +44,7 @@
                 <ol>
                   <% unit.lessons.order(:sequence).each do |lesson| %>
                     <li class="progress-item">
-                        <%= link_to mycourse_unit_lesson_page_path(@course,unit,lesson.id, lesson.pages.first.id),
+                        <%= link_to mycourse_unit_lesson_page_path(@course,unit,lesson.id, lesson.pages.order(:sequence).first.id),
                             :class => "viewed" do %>
                           <span><%= lesson.title %></span>
                           <span>(<%= lesson.total_points %> pts)</span>
