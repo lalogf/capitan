@@ -9,6 +9,86 @@
   color: white;
 }
 
+.header-grid {
+    height: 121px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+}
+
+.bg-tracks {
+  // background: image-url("hands-computer.jpg");
+  height: 290px;
+  // background-size: cover;
+  // background-position-y: -226px;
+  // background-repeat: no-repeat;
+  // position: relative;
+}
+
+.bg-tracks {
+  & .overlay {
+    background-color: rgba(0, 0, 0, 0.65);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+
+.grid-cursos {
+  border: 1px solid #333333;
+  height: 280px;
+}
+
+.text-primary {
+  color: #f9a91a !important;  
+}
+
+.text-white {
+  color: white !important;
+}
+
+a:-webkit-any-link {
+    color: inherit;
+    cursor: auto;
+}
+
+.lh-course {
+  line-height: 1.4;
+}
+
+
+.bg-img-block {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* course_details */
 
 .course-header {

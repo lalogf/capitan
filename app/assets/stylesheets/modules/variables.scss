@@ -28,7 +28,7 @@ $gray-light:                #9B9B9B !default;
 $gray-lighter:              #ECEEEF !default;
 $gray-lightest:             #F7F7F9 !default; 
 
-$brand-primary:             #F7B617 !default;
+$brand-primary:             #F9A91A !default;
 $brand-success:             #b5bd00 !default;
 $brand-info:                #00C1D5 !default;
 $brand-warning:             #f0ad4e !default;
@@ -93,17 +93,31 @@ $grid-breakpoints: (
   xl: 75em
 ) !default;
 
+//** Number of columns in the grid.
+$grid-columns:              12 !default;
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width:         28px !default;
 
-// Grid containers
+//== Container sizes
 //
-// Define the maximum width of `.container` for different screen sizes.
+//## Define the maximum width of `.container` for different screen sizes.
 
-$container-max-widths: (
-  sm: 34rem,    // 480
-  md: 45rem,    // 720
-  lg: 60rem,    // 960
-  xl: 72.25rem  // 1140
-) !default;
+// Small screen / tablet
+$container-tablet:             (720px + $grid-gutter-width) !default;
+//** For `$screen-sm-min` and up.
+$container-sm:                 $container-tablet !default;
+
+$container-fluid: 						 $grid-gutter-width / 2;
+
+// Medium screen / desktop
+$container-desktop:            (940px + $grid-gutter-width) !default;
+//** For `$screen-md-min` and up.
+$container-md:                 $container-desktop !default;
+
+// Large screen / wide desktop
+$container-large-desktop:      (1140px + $grid-gutter-width) !default;
+//** For `$screen-lg-min` and up.
+$container-lg:                 $container-large-desktop !default;
 
 
 // Grid columns
@@ -861,14 +875,9 @@ $screen-desktop: map-get($grid-breakpoints, lg);
 $screen-lg-desktop: map-get($grid-breakpoints, xl);
 // $screen-xl-desktop: map-get($grid-breakpoints, xl);
 
-// CUSTOM CONTAINER VARIABLES
-$container-xs: rem(480px) + $grid-gutter-width;
-$container-sm: map-get($container-max-widths, sm);
-$container-md: map-get($container-max-widths, md);
-$container-lg: map-get($container-max-widths, lg);
-$container-xl: map-get($container-max-widths, xl);
-$container-xxl: 84rem;
-$container-fluid: $grid-gutter-width / 2;
+// CUSTOM CONTAINER VARIABLE
+$container-xs: 								((480px + $grid-gutter-width)) !default;
+$container-fluid: 						 $grid-gutter-width / 2;
 
 /* 
   Text in rem units
