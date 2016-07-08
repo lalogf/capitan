@@ -10,7 +10,7 @@
     <div class="panel-group mb-0" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default border-gray-dark">
         <div class="panel-heading bg-collapse" role="tab" id="headingOne">
-          <h4 class="panel-title  square-pages active ml-28 lh-md">
+          <h4 class="panel-title  square-pages active ml-28 lh-md <%="active" if @page.page_type == "material" %>">
             <a role="button" class="text-uppercase text-white" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
               Material
             </a>
@@ -24,7 +24,7 @@
              <!--  <li class="quote-list">Blog: Formulario</li>-->
              <!--</ul>-->
               <ul class="units pl-7">
-                <% @lesson.visible_pages(current_user.branch_id).order(:sequence).each do |page| %>
+                <% @lesson.visible_pages(current_user.branch_id).where(page_type: "material").order(:sequence).each do |page| %>
                   <li class="unit-item clearfix <%= page.id == @page.id ? "active": ""%>"
                       title="<%= page.title %>">
                       
@@ -44,7 +44,7 @@
         <div class="row">
           <div class="col-md-8">
             <ul class="pl-28 mb-0 bg-gray-dark">
-              <li class="square-pages text-uppercase pv-7">Pretrabajo</li>
+              <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "prework" %>">Pretrabajo</li>
             </ul>
           </div>
           <div class="col-md-4">
@@ -56,7 +56,7 @@
         <div class="row">
           <div class="col-md-8">
             <ul class="pl-28 mb-0 bg-gray-dark">
-              <li class="square-pages text-uppercase pv-7">Quiz</li>
+              <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "quiz" %>">Quiz</li>
             </ul>
           </div>
           <div class="col-md-4">
@@ -68,7 +68,7 @@
       </div>
       <div class="panel panel-default border-gray-dark">
         <div class="panel-heading pv-7 bg-collapse" role="tab" id="headingTwo">
-          <h4 class="panel-title  square-pages ml-28 lh-md">
+          <h4 class="panel-title  square-pages ml-28 lh-md <%="active" if @page.page_type == "quiz" %>">
             <a class="collapsed text-uppercase text-white" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
               EJERCICIOS
             </a>
@@ -108,7 +108,7 @@
       <div class="row">
         <div class="col-md-8">
           <ul class="pl-28 bg-gray-dark disabled mb-0">
-            <li class="square-pages text-uppercase pv-7">Solucionario</li>
+            <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "solution" %>">Solucionario</li>
           </ul>
         </div>
         <div class="col-md-4">
@@ -120,7 +120,7 @@
       <div class="row">
         <div class="col-md-8">
           <ul class="pl-28 bg-gray-dark disabled mb-0">
-            <li class="square-pages text-uppercase pv-7">Autoevaluación</li>
+            <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "retrospective" %>">Autoevaluación</li>
           </ul>
         </div>
         <div class="col-md-4">
@@ -132,7 +132,7 @@
       <div class="row">
         <div class="col-md-8">
           <ul class="pl-28 bg-gray-dark disabled mb-0">
-            <li class="square-pages text-uppercase pv-7">Peer review</li>
+            <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "peerreview" %>">Peer review</li>
           </ul>
         </div>
         <div class="col-md-4">
