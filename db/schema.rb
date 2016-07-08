@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705210254) do
+ActiveRecord::Schema.define(version: 20160705220035) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
