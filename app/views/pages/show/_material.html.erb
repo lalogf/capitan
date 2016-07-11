@@ -12,7 +12,9 @@
         </div>
         <div id="video-container" class="<%="hidden" if @page.material_type != "video" %>">
             <div class="video-overlay" style="display: none;">
-                <%= link_to 'Continuar', lesson_page_details_path(@track,@course,@unit,@next_lesson,@next_page),:class => "btn btn-lg btn-primary" %>
+                <% if @course != nil and @unit != nil and @next_lesson != nil and @next_page != nil %>
+                  <%= link_to 'Continuar', lesson_page_details_path(@track,@course,@unit,@next_lesson,@next_page),:class => "btn btn-lg btn-primary" %>
+                <% end %>
                 <br><br>
                 <a href="#" class="rewind-video">
                   <i class="fa fa-undo fa-2x"></i> Ver de nuevo
