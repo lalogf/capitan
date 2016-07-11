@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   
   before_action :set_track
-  before_action :set_course
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :check_if_current_user_is_admin, except: [:show_details]
   
   layout "admin", except: [:show_details]
