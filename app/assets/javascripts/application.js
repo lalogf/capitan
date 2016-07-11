@@ -30,10 +30,11 @@ $(document).ready(function() {
     $(".alert").fadeTo(4000, 500).slideUp(500, function(){
         $(this).alert('close');
     });
-    $(".arrow").on("click", function(a) {
-        a.preventDefault();
-        var elemClass = $(this).attr("data-el"); 
-        $(this).toggleClass("hide"); 
-        $(this).siblings("." + elemClass).toggleClass("hide");
+    $(".header-arrow a").on("click", function(e) {
+        e.preventDefault();
+        var elem = $(this).find(".hide");
+        var elemClass = elem.attr("data-el"); 
+        elem.toggleClass("hide");
+        elem.siblings("." + elemClass).toggleClass("hide");
     });
 });

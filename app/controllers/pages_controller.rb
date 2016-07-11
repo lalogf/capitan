@@ -3,18 +3,15 @@ class PagesController < ApplicationController
   layout "pages", only: [:show]
   layout "admin", except: [:show]
   
+  before_action :set_track, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_course, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_unit, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_lesson, except: [:saveAnswer,:saveQuestion, :saveAnswers]
 
-  # GET /pages
-  # GET /pages.json
   def index
     @pages = @lesson.pages.all
   end
 
-  # GET /pages/1
-  # GET /pages/1.json
   def show
     @page = @lesson.pages.find(params[:id])
     @previous_page = @lesson.pages.find_by_sequence(@page.sequence-1)
@@ -32,27 +29,23 @@ class PagesController < ApplicationController
     end
   end
 
-  # GET /pages/new
   def new
     @branches = Branch.all
     @page = @lesson.pages.new
     @page.questions.build
   end
 
-  # GET /pages/1/edit
   def edit
     @branches = Branch.all
     @page = @lesson.pages.find(params[:id])
   end
 
-  # POST /pages
-  # POST /pages.json
   def create
     @page = @lesson.pages.new(page_params)
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to [@course,@unit,@lesson], notice: 'Page was successfully created.' }
+        format.html { redirect_to [@track,@course,@unit,@lesson], notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new }
@@ -61,13 +54,11 @@ class PagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /pages/1
-  # PATCH/PUT /pages/1.json
   def update
     respond_to do |format|
       @page = @lesson.pages.find(params[:id])
       if @page.update(page_params)
-        format.html { redirect_to [@course,@unit,@lesson], notice: 'Page was successfully updated.' }
+        format.html { redirect_to [@track,@course,@unit,@lesson], notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
@@ -76,13 +67,11 @@ class PagesController < ApplicationController
     end
   end
 
-  # DELETE /pages/1
-  # DELETE /pages/1.json
   def destroy
     @page = @lesson.pages.find(params[:id])
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to [@course,@unit,@lesson], notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to [@track,@course,@unit,@lesson], notice: 'Page was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -138,6 +127,10 @@ class PagesController < ApplicationController
   end
 
   private
+    def set_track
+      @track = Track.find(params[:track_id])
+    end
+    
     def set_course
       @course = Course.find(params[:course_id])
     end
@@ -150,10 +143,9 @@ class PagesController < ApplicationController
       @lesson = @unit.lessons.find(params[:lesson_id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :page_type,:sequence, :lesson_id, :html,
-      :initial_state, :slide_url, :solution, :videotip, :load_from_previous,
+      params.require(:page).permit(:title, :page_type,:material_type,:sequence, :lesson_id, :html,
+      :initial_state, :slide_url,:quiz_url, :solution, :videotip, :load_from_previous,
       :auto_corrector, :grade, :points, :question_points, :selfLearning, 
       :success_message, :instructions, :document, :excercise_instructions,
       :solution_file, :video_solution, :show_solution, :solution_visibility, 

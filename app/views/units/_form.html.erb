@@ -1,16 +1,16 @@
-<%= simple_form_for([@course,@unit]) do |f| %>
+<%= simple_form_for([@track,@course,@unit]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :description %>
+    <%= f.input :duration %>
     <%= f.association :course %>
     <%= f.input :sequence %>
-    <%= f.input :points, placeholder: "#{@unit.total_points} pts" %><br>
   </div>
   <br>
   <div class="form-actions">
     <%= f.button :submit, :class => "btn btn-primary" %>
-    <%= link_to 'Cancelar', course_units_path(@course), :class => "btn btn-danger" %>
+    <%= link_to 'Cancelar', track_course_units_path(@track,@course), :class => "btn btn-danger" %>
   </div>
 <% end %>

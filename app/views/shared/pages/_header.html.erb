@@ -7,13 +7,9 @@
     <div class="w-300 pt-7 pull-right">
           <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">    
             <ul class="nav navbar-nav navbar-right mt-14">
-              <li>
-                <a class="user-pages">
-                  <%= current_user.full_name %>
-                </a>
-              </li>
               <li class="header-arrow">
-                <a href="#" class="dropdown-toggle " data-toggle=dropdown>
+                <a href="#" class="dropdown-toggle user-pages" data-toggle=dropdown>
+                  <%= current_user.full_name %>
                   <%= image_tag "arrow-up.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
                   <%= image_tag "arrow-down.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
                 </a>
@@ -26,7 +22,7 @@
                   <li>
                     <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
                   </li>
-                </ul>
+                </ul>                
               </li>
             </ul>
           </div>  

@@ -2,7 +2,7 @@
   <div class="page-header clearfix">
       <h1 class="pull-left">Cursos</h1>
       <div class="pull-right">
-        <%= link_to 'Crear un nuevo curso', new_course_path, :class => "btn btn-primary btn-new" %>
+        <%= link_to 'Crear un nuevo curso', new_track_course_path(@track), :class => "btn btn-primary btn-new" %>
       </div>
     </div>
   <table class="table table-striped table-hover">
@@ -10,6 +10,7 @@
       <tr>
         <th>Nombre</th>
         <th>Descripción</th>
+        <th>Duración</th>
         <th></th>
       </tr>
     </thead>
@@ -19,8 +20,9 @@
         <tr>
           <td><%= link_to course.name, course %></td>
           <td><%= course.description %></td>
+          <td><%= course.duration %></td>
           <td>
-            <%= link_to 'Editar', edit_course_path(course) %>  |  
+            <%= link_to 'Editar', edit_track_course_path(@track,course) %>  |  
             <%= link_to 'Eliminar', course, method: :delete, data: { confirm: '¿Está seguro?' } %>
           </td>
         </tr>

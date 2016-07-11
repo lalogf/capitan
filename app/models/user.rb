@@ -75,7 +75,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, 
                     :styles => { :menu => "80x80", :navbar => "35x35" },
                     :url => "/system/:class/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension"  
+                    :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension",
+                    :default_url => "/system/missing.png"
                     
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/   
   

@@ -2,15 +2,10 @@
     <div class="content container">
         <div class="row">
           <div class="col-md-5 col-md-offset-1 pr-49">
-            
             <h1 class="light text-uppercase"><%= @course.name %></h1>
             <p class="thin lh-md mb-42-md fz-21"><%= @course.description %></p>
-             <%= link_to  do %>
-                <%= image_tag "bullet-down.png",alt: "Laboratoria código que transforma", class: "ho" %>
-                <span class="thin">Syllabus</span>
-              <% end %>
           </div>
-          <div class="col-md-5 pl-49 mt-63-md">
+          <div class="col-md-5 pl-49">
             <h4 class="ligth">LECCIONES COMPLETADAS</h4>
             <div class="progress progress-details">
               <div class="progress-bar progress-bar-details" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
@@ -34,7 +29,8 @@
             <div class="row unit">
             <div class="col-sm-6 pr-49">
               <div class="overview">
-                <small class="thin">Semana 1</small>
+                <small class="thin">Semana <%= week_couting(@week_start,unit.duration) %></small>
+                <% @week_start += unit.duration %>
                 <h2><%= unit.title %></h2>
                 <p><%= unit.description %></p>
               </div>
@@ -44,7 +40,7 @@
                 <ol>
                   <% unit.lessons.order(:sequence).each do |lesson| %>
                     <li class="progress-item">
-                        <%= link_to mycourse_unit_lesson_page_path(@course,unit,lesson.id, lesson.pages.order(:sequence).first.id),
+                        <%= link_to lesson_page_details_path(@track,@course,unit,lesson.id, lesson.pages.order(:sequence).first.id),
                             :class => "viewed" do %>
                           <span><%= lesson.title %></span>
                           <span>(<%= lesson.total_points %> pts)</span>

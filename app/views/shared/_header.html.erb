@@ -8,11 +8,6 @@
     <div class="container-fluid">
       <div class="row pv-7">
         <div class="col-md-4">
-          <p class="hidden">
-              <%= link_to course_list_path do %>
-                <i class="fa fa-play fa-rotate-180"></i>Volver a la lista de cursos
-              <% end %>
-            </p>
           <div class="navbar-header">
             <button type="button" 
                     class="navbar-toggle collapsed" 
@@ -32,15 +27,11 @@
         <div class="col-md-4 pt-7">
           <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">    
             <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a>
-                  <%= current_user.full_name %>
-                </a>
-              </li>
               <li class="header-arrow">
                 <a href="#" class="dropdown-toggle " data-toggle=dropdown>
-                  <%= image_tag "arrow-up.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
-                  <%= image_tag "arrow-down.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
+                  <%= current_user.full_name %>
+                  <%= image_tag "arrow-up.png",alt: "Arrow up", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
+                  <%= image_tag "arrow-down.png",alt: "Arrow down", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
                 </a>
                 <ul class="dropdown-menu">
                   <% if current_user.admin %>
@@ -51,7 +42,7 @@
                   <li>
                     <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
                   </li>
-                </ul>
+                </ul>                
               </li>
             </ul>
           </div>  

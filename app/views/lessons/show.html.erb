@@ -1,12 +1,12 @@
 <div class="container-fluid p-20">
     <div class="breadcrumb">
-      <%= link_to @course.name, course_path(@course) %> / <%= link_to @unit.title, course_unit_path(@course,@unit) %> /
+      <%= link_to @track.name, track_path(@track) %> / <%= link_to @course.name, track_course_path(@track,@course) %> / <%= link_to @unit.title, track_course_unit_path(@track,@course,@unit) %> /
       <span><%= @lesson.title %></span>
     </div>
     <div class="page-header clearfix">
       <h1 class="pull-left">Detalle de la lección</h1>
       <div class="pull-right">
-        <%= link_to 'Editar', edit_course_unit_lesson_path(@course,@unit, @lesson), :class => "btn btn-primary" %>
+        <%= link_to 'Editar', edit_track_course_unit_lesson_path(@track,@course,@unit, @lesson), :class => "btn btn-primary" %>
       </div>
     </div>
     <div>
@@ -21,7 +21,7 @@
     </div>
     <br><br>
     <div>
-      <%= link_to "Nueva Página", new_course_unit_lesson_page_path(@course,@unit,@lesson), :class => "btn btn-primary" %>
+      <%= link_to "Nueva Página", new_track_course_unit_lesson_page_path(@track,@course,@unit,@lesson), :class => "btn btn-primary" %>
     </div>
     <br><br>
     <table class="table table-striped table-hover">
@@ -37,13 +37,12 @@
       <tbody>
         <% @lesson.pages.order(:sequence).each do |page| %>
           <tr>
-            <td><%= page.sequence %></td>
+            <td><%= link_to page.sequence, track_course_unit_lesson_page_path(@track,@course,@unit,@lesson,page) %></td>
             <td><%= page.title %></td>
             <td><%= page.lesson.title %></td>
             <td>
-              <%= link_to 'Ver página', course_unit_lesson_page_path(@course,@unit,@lesson,page) %>  |  
-              <%= link_to 'Editar', edit_course_unit_lesson_page_path(@course,@unit,@lesson,page) %>  |  
-              <%= link_to 'Eliminar', [@course,@unit,@lesson,page], method: :delete, data: { confirm: '¿Está seguro?' } %>
+              <%= link_to 'Editar', edit_track_course_unit_lesson_page_path(@track,@course,@unit,@lesson,page) %>  |  
+              <%= link_to 'Eliminar', [@track,@course,@unit,@lesson,page], method: :delete, data: { confirm: '¿Está seguro?' } %>
             </td>
           </tr>
         <% end %>

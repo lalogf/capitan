@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705220035) do
+ActiveRecord::Schema.define(version: 20160711070306) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -84,7 +84,10 @@ ActiveRecord::Schema.define(version: 20160705220035) do
     t.datetime "background_image_updated_at"
     t.string   "code",                          limit: 255
     t.integer  "points",                        limit: 4
+    t.integer  "track_id",                      limit: 4
   end
+
+  add_index "courses", ["track_id"], name: "index_courses_on_track_id", using: :btree
 
   create_table "enrollments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -174,6 +177,7 @@ ActiveRecord::Schema.define(version: 20160705220035) do
     t.string   "solution_visibility",        limit: 255
     t.integer  "lesson_id",                  limit: 4
     t.string   "material_type",              limit: 255
+    t.string   "quiz_url",                   limit: 255
   end
 
   add_index "pages", ["lesson_id"], name: "index_pages_on_lesson_id", using: :btree
@@ -200,21 +204,12 @@ ActiveRecord::Schema.define(version: 20160705220035) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "topics", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.string   "type",       limit: 255
-    t.integer  "points",     limit: 4
-    t.integer  "sequence",   limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "tracks", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "description", limit: 255
-    t.integer  "duration",    limit: 4
+    t.string   "syllabus",    limit: 255
   end
 
   create_table "units", force: :cascade do |t|
@@ -225,6 +220,7 @@ ActiveRecord::Schema.define(version: 20160705220035) do
     t.datetime "updated_at",                          null: false
     t.integer  "sequence",    limit: 4,   default: 0
     t.integer  "points",      limit: 4
+    t.integer  "duration",    limit: 4
   end
 
   add_index "units", ["course_id"], name: "index_units_on_course_id", using: :btree
@@ -298,6 +294,7 @@ ActiveRecord::Schema.define(version: 20160705220035) do
 
   add_foreign_key "answers", "pages"
   add_foreign_key "answers", "users"
+  add_foreign_key "courses", "tracks"
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
   add_foreign_key "groups", "branches"

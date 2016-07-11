@@ -36,6 +36,7 @@ class Course < ActiveRecord::Base
     
     validates :name, presence: true
     
+    belongs_to :track
     has_many :units, :dependent => :destroy
     has_many :enrollments, :dependent => :destroy
     has_many :users, through: :enrollments
@@ -71,4 +72,9 @@ class Course < ActiveRecord::Base
     def total_points
       return self.units.sum(:points) 
     end
+    
+    def duration
+        units.sum(:duration)
+    end
+    
 end

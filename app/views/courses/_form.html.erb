@@ -1,15 +1,10 @@
-<%= simple_form_for @course do |f| %>
+<%= simple_form_for [@track,@course] do |f| %>
   <div class="form-inputs">
-    <%= f.input :code %><br>
     <%= f.input :name, :class => "short" %><br>
-    <%= f.input :description %><br>
-    <%= f.input :points, placeholder: "#{@course.total_points} pts" %><br>
-    <%= f.input :color %><br>
-    <%= f.input :avatar %><br>
-    <%= f.input :background_image %>
+    <%= f.input :description %>
   </div><br>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn btn-primary' %>
-    <%= link_to 'Cancelar', courses_path, :class => 'btn btn-danger' %>    
+    <%= link_to 'Cancelar', track_courses_path, :class => 'btn btn-danger' %>    
   </div>
 <% end %>

@@ -6,7 +6,7 @@
   </script>
 <% end %>
 
-<%= simple_nested_form_for([@course,@unit,@lesson,@page]) do |f| %>
+<%= simple_nested_form_for([@track,@course,@unit,@lesson,@page]) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :sequence %><br>
@@ -25,6 +25,6 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit, :class => "btn btn-primary page-submit-form" %>
-    <%= link_to 'Cancelar', [@course,@unit,@lesson],:class => "btn btn-danger" %>  
+    <%= link_to 'Cancelar', [@track,@course,@unit,@lesson],:class => "btn btn-danger" %>  
   </div>
 <% end %>

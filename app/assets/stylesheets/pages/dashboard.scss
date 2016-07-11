@@ -4,6 +4,9 @@
   width: 100%;
   position: relative;
   
+  .btn {
+    color: white;
+  }
   
   .container {
       margin: 0;
@@ -172,7 +175,7 @@
     border-right: 1px solid #ccc;
     vertical-align: top;
     z-index: 10;
-    background-color:#3E3F40;
+    background-color: #E8EBF2;
   }
   
   .navigation:before {

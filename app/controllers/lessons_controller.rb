@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
-     
+  
+  before_action :set_track
   before_action :set_course 
   before_action :set_unit
   
@@ -34,7 +35,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to [@course,@unit,@lesson], notice: 'Lesson was successfully created.' }
+        format.html { redirect_to [@track,@course,@unit,@lesson], notice: 'Lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new }
@@ -49,7 +50,7 @@ class LessonsController < ApplicationController
     respond_to do |format|
       @lesson = @unit.lessons.find(params[:id])
       if @lesson.update(lesson_params)
-        format.html { redirect_to [@course,@unit,@lesson], notice: 'Lesson was successfully updated.' }
+        format.html { redirect_to [@track,@course,@unit,@lesson], notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
       else
         format.html { render :edit }
@@ -64,12 +65,17 @@ class LessonsController < ApplicationController
     @lesson = @unit.lessons.find(params[:id])
     @lesson.destroy
     respond_to do |format|
-      format.html { redirect_to course_unit_lessons_url(@course, @unit), notice: 'Lesson was successfully destroyed.' }
+      format.html { redirect_to track_course_unit_lessons_url(@track,@course, @unit), notice: 'Lesson was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+  
+    def set_track
+      @track = Track.find(params[:track_id])
+    end
+  
     def set_course
       @course = Course.find(params[:course_id])
     end

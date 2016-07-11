@@ -1,7 +1,7 @@
 
   <div class="navigation full-height">
     <div class="breadcrumb">
-      <%= link_to course_details_path(@course) do %>
+      <%= link_to course_details_path(@track,@course) do %>
         <i class="fa fa-arrow-circle-o-left"></i> Volver
       <% end %>
     </div>
@@ -24,11 +24,11 @@
              <!--  <li class="quote-list">Blog: Formulario</li>-->
              <!--</ul>-->
               <ul class="units pl-7">
-                <% @lesson.visible_pages(current_user.branch_id).where(page_type: "material").order(:sequence).each do |page| %>
+                <% @lesson.visible_pages_by_type(current_user.branch_id,"material").each do |page| %>
                   <li class="unit-item clearfix <%= page.id == @page.id ? "active": ""%>"
                       title="<%= page.title %>">
                       
-                      <%= link_to mycourse_unit_lesson_page_path(@course,@unit,page.lesson,page),
+                      <%= link_to lesson_page_details_path(@track,@course,@unit,page.lesson,page),
                           :class => "clearfix item" do %>
                         <div class="page-title quote-list pv-7">
                           <%= page.title %>
@@ -41,30 +41,38 @@
         </div>
       </div>
       <div class="panel-body pv-0">
-        <div class="row">
-          <div class="col-md-8">
-            <ul class="pl-28 mb-0 bg-gray-dark">
-              <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "prework" %>">Pretrabajo</li>
-            </ul>
+        <% @lesson.visible_pages_by_type(current_user.branch_id,"prework").each do |page| %>
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="pl-28 mb-0 bg-gray-dark">
+                <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "prework" %>">
+                  <%= link_to "Pretrabajo",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="bg-gray-dark mb-0">
+                <li class="pv-7">(<%= pluralize page.points, "pt" %>)</li>
+              </ul>
+            </div>
           </div>
-          <div class="col-md-4">
-            <ul class="bg-gray-dark mb-0">
-              <li class="pv-7">(5 pts)</li>
-            </ul>
+        <% end %>
+        <% @lesson.visible_pages_by_type(current_user.branch_id,"quiz").each do |page| %>
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="pl-28 mb-0 bg-gray-dark">
+                <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "quiz" %>">
+                  <%= link_to "quiz",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="bg-gray-dark mb-0">
+                <li class="pv-7">(<%= pluralize page.points, "pt" %>)</li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-8">
-            <ul class="pl-28 mb-0 bg-gray-dark">
-              <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "quiz" %>">Quiz</li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <ul class="bg-gray-dark mb-0">
-              <li class="pv-7">(10 pts)</li>
-            </ul>
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class="panel panel-default border-gray-dark">
         <div class="panel-heading pv-7 bg-collapse" role="tab" id="headingTwo">
@@ -76,30 +84,22 @@
         </div>
         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
           <div class="panel-body ph-7 pv-0 bg-gray-dark border-gray-dark">
-            <div class="row">
-              <div class="col-md-8">
-                <ul class="bg-gray-dark mb-0">
-                  <li class="square-pages-list fz-14 ml-42 pv-7">Ejercicio 1</li>
-                </ul>
+            <% @lesson.visible_pages_by_type(current_user.branch_id,"exercise").each do |page| %>
+              <div class="row">
+                <div class="col-md-8">
+                  <ul class="bg-gray-dark mb-0">
+                    <li class="square-pages-list fz-14 ml-42 pv-7">
+                      <%= link_to page.title,lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <ul class="bg-gray-dark">
+                    <li class="pv-7 fz-14">(<%= pluralize page.points, "pt" %>)</li>
+                  </ul>
+                </div>
               </div>
-              <div class="col-md-4">
-                <ul class="bg-gray-dark">
-                  <li class="pv-7 fz-14">(5 pts)</li>
-                </ul>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-8">
-                <ul class="bg-gray-dark mb-0">
-                  <li class="square-pages-list fz-14 ml-42 pv-7">Ejercicio 2</li>
-                </ul>
-              </div>
-              <div class="col-md-4">
-                <ul class="bg-gray-dark">
-                  <li class="pv-7 fz-14">(10 pts)</li>
-                </ul>
-              </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>

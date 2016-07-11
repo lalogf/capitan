@@ -2,8 +2,12 @@ Rails.application.routes.draw do
 
   authenticate :user do
     
-    get 'mycourses' => 'courses#course_list', :as => :course_list
-    get 'mycourses/:id' => 'courses#course_details', :as => :course_details
+    get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
+    get 'tracks/:track_id/courses/:id' => 'courses#show_details', :as => :course_details
+    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:id/' => "lessons#show", :as => :lesson_details
+    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:lesson_id/pages/:id' => "pages#show", :as => :lesson_page_details
+    
+    
     get 'mycourses/:course_id/u/:unit_id/l/:id' => 'lessons#show', :as => :mycourse_unit_lesson
     get 'mycourses/:course_id/u/:unit_id/l/:lesson_id/p/:id' => 'pages#show', :as => :mycourse_unit_lesson_page
     
@@ -12,10 +16,13 @@ Rails.application.routes.draw do
       resources :videos
       resources :groups      
       resources :users, except: [:index]
-      resources :courses do
-        resources :units do
-          resources :lessons do
-            resources :pages
+      
+      resources :tracks do
+        resources :courses do
+          resources :units do
+            resources :lessons do
+              resources :pages
+            end
           end
         end
       end
@@ -44,7 +51,7 @@ Rails.application.routes.draw do
     concern   :admin_comments, TheComments::AdminRoutes.new
     resources :comments, concerns:  [:user_comments, :admin_comments]    
     
-    root :to => 'courses#course_list'    
+    root :to => 'tracks#show_user_track'    
     
   end
   
