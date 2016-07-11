@@ -1,7 +1,7 @@
 class TracksController < ApplicationController
   
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_current_user_is_admin, except: [:course_list, :course_details]
+  before_action :check_if_current_user_is_admin, except: [:show_user_track, :course_details]
   
   layout "admin", except: [:show_user_track, :course_details]
 
