@@ -36,7 +36,7 @@
                 <ul class="dropdown-menu">
                   <% if current_user.admin %>
                     <li>
-                      <%= link_to "Panel de administración", dashboard_path %>
+                      <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
                     </li>
                   <% end %>
                   <li>
