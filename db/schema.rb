@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711070306) do
+ActiveRecord::Schema.define(version: 20160712183748) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -111,12 +111,13 @@ ActiveRecord::Schema.define(version: 20160711070306) do
   add_index "groups", ["branch_id"], name: "index_groups_on_branch_id", using: :btree
 
   create_table "lessons", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.integer  "unit_id",    limit: 4
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.integer  "sequence",   limit: 4,   default: 0
-    t.integer  "points",     limit: 4
+    t.string   "title",       limit: 255
+    t.integer  "unit_id",     limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "sequence",    limit: 4,   default: 0
+    t.integer  "points",      limit: 4
+    t.string   "lesson_plan", limit: 255
   end
 
   add_index "lessons", ["unit_id"], name: "index_lessons_on_unit_id", using: :btree
@@ -178,6 +179,7 @@ ActiveRecord::Schema.define(version: 20160711070306) do
     t.integer  "lesson_id",                  limit: 4
     t.string   "material_type",              limit: 255
     t.string   "quiz_url",                   limit: 255
+    t.boolean  "show_title",                 limit: 1,     default: true
   end
 
   add_index "pages", ["lesson_id"], name: "index_pages_on_lesson_id", using: :btree

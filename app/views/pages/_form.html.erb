@@ -22,6 +22,7 @@
     <%= render :partial=> 'pages/form/solution_fields', :locals => {:f => f} %>
     <%= render :partial=> 'pages/form/peerreview_fields', :locals => {:f => f} %>
     <%= render :partial=> 'pages/form/html_fields', :locals => {:f => f} %>
+    <%= f.input :show_title %><br>
   </div>
   <div class="form-actions">
     <%= f.button :submit, :class => "btn btn-primary page-submit-form" %>

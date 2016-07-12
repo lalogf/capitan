@@ -1,5 +1,5 @@
 <div  id="html_fields" 
-      class="html_fields <%= "hidden" if @page.page_type != "material" or (@page.page_type == "material" and @page.material_type != "blog") %>" 
+      class="html_fields <%= "hidden" if (@page.page_type != "material" and @page.page_type != "prework") or (@page.page_type == "material" and @page.material_type != "blog") %>" 
       data-page-type="prework" 
       data-material-type="blog" 
       data-page-active="<%= "true" if @page.page_type == "prework" %>" 

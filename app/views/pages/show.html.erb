@@ -1,8 +1,10 @@
 <div class="page pb-0">
   <%= render 'pages/show/navigation' %>
   <div class="content">
-    <h3 class="page-title text-center"><%= @page.title %></h3>
-    <div class="breakline"></div>
+    <% if @page.show_title %>
+      <h3 class="page-title text-center"><%= @page.title %></h3>
+      <div class="breakline"></div>
+    <% end %>
     <%= render 'pages/show/material' if @page.page_type == 'material' %>
     <%= render 'pages/show/html' if @page.page_type == 'prework' %>
     <%= render 'pages/show/quiz' if @page.page_type == 'quiz' %>

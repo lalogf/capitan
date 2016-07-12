@@ -7,10 +7,16 @@
     </div>
     <!--<hr class="nav-divider">-->
     <h2 class="unit-title text-left light" style=""><%= @lesson.title %></h2>
+    <% if @lesson.lesson_plan %>
+      <a href="<%= @lesson.lesson_plan %>" target="_blank" class="text-white ml-7">
+        <i class="fa fa-chevron-right text-primary" aria-hidden="true"></i>
+        <span class="thin">Lesson Plan</span>
+      </a>
+    <% end %>
     <div class="panel-group mb-0" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default border-gray-dark">
         <div class="panel-heading bg-collapse" role="tab" id="headingOne">
-          <h4 class="panel-title  square-pages active ml-28 lh-md <%="active" if @page.page_type == "material" %>">
+          <h4 class="panel-title  square-pages ml-28 lh-md <%="active" if @page.page_type == "material" %>">
             <a role="button" class="text-uppercase text-white" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
               Material
             </a>
