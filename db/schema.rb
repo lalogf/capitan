@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712183748) do
+ActiveRecord::Schema.define(version: 20160712195614) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160712183748) do
     t.string   "code",                          limit: 255
     t.integer  "points",                        limit: 4
     t.integer  "track_id",                      limit: 4
+    t.string   "course_plan",                   limit: 255
   end
 
   add_index "courses", ["track_id"], name: "index_courses_on_track_id", using: :btree
