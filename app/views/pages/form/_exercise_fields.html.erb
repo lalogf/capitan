@@ -1,4 +1,4 @@
-    <div id="exercise_fields" class="exercise_fields hidden" data-page-type="exercise">
+    <div id="exercise_fields" class="exercise_fields <%= "hidden" if @page.page_type != "exercise" %>" data-page-type="exercise" data-page-active="<%= "true" if @page.page_type == "exercise" %>">
       <%= f.input :excercise_instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %><br>
       <%= f.input :document, as: :file %><br>
       <%= f.input :solution_file, as: :file %><br>
