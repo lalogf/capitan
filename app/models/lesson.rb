@@ -18,5 +18,9 @@ class Lesson < ActiveRecord::Base
   def total_points
     return self.pages.sum(:points)
   end
+  
+  def total_points_by_type(page_type)
+    return self.pages.where(page_type: page_type).sum(:points)
+  end
     
 end

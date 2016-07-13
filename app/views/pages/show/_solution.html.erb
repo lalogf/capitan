@@ -7,10 +7,10 @@
     <% end %><br><br>
     <div class="clearfix">
       <% @page.video_solution.split(',').each do |solution| %>
-        <div class="video-solution">
-          <iframe width="560" height="315" src="<%= @page.video_solution %>" frameborder="0" allowfullscreen></iframe>
+        <div>
+          <iframe width="560" height="315" src="<%= solution %>" frameborder="0" allowfullscreen></iframe>
         </div>        
       <% end %>
     </div> 
   </div>
-</div> 
+</div>
