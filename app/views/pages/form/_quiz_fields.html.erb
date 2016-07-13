@@ -1,4 +1,4 @@
-<div data-page-type="quiz|retrospective" class="<%="hidden" unless ["quiz","retrospective"].include?(@page.page_type)%>"
-    data-page-active="<%= "true" if ["quiz","retrospective"].include?(@page.page_type) %>">
+<div data-page-type="quiz|retrospective|codereview" class="<%="hidden" unless ["quiz","retrospective","codereview"].include?(@page.page_type)%>"
+    data-page-active="<%= "true" if ["quiz","retrospective","codereview"].include?(@page.page_type) %>">
   <%= f.input :quiz_url %><br>
 </div>

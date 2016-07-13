@@ -56,6 +56,8 @@ class User < ActiveRecord::Base
   has_many :pages, through: :answers
   has_many :enrollments, :dependent => :destroy
   has_many :courses, through: :enrollments
+  has_many :submissions, :dependent => :destroy
+  has_many :pages, through: :submissions
   
   devise :database_authenticatable, 
          :registerable,

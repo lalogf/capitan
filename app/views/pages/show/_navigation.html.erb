@@ -173,18 +173,22 @@
         <% end %>
       <% end %>
       <% if @lesson.has_visible_pages_by_type(current_user.branch_id,"codereview") %>
-      <div class="row">
-        <div class="col-md-8">
-          <ul class="pl-28 bg-gray-dark disabled mb-0">
-            <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "codereview" %>">Peer review</li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <ul class="bg-gray-dark mb-0">
-            <li class="pv-7">(<%= pluralize @page.points, "pt" %>)</li>
-          </ul>
-        </div>
-      </div>
+        <% @lesson.visible_pages_by_type(current_user.branch_id,"codereview").each do |page| %>
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="pl-28 bg-gray-dark mb-0">
+                <li class="square-pages text-uppercase pv-7 <%="active" if @page.id == page.id %>">
+                  <%= link_to "Code Review",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="bg-gray-dark mb-0">
+                <li class="pv-7">(<%= pluralize page.points, "pt" %>)</li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

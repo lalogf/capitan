@@ -15,7 +15,7 @@
     <%= f.input :page_type, 
       :collection => [['Material','material'],['Pre-work','prework'],['Quiz','quiz'],
       ['Exercise','exercise'],['Solution','solution'],['Retrospective','retrospective'], 
-      ['Peer Review', 'peerreview']] %><br>
+      ['Code Review', 'codereview']] %><br>
     <%= render :partial=> 'pages/form/material_fields', :locals => {:f => f} %>
     <%= render :partial=> 'pages/form/quiz_fields', :locals => {:f => f} %>
     <%= render :partial=> 'pages/form/exercise_fields', :locals => {:f => f} %>

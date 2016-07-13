@@ -48,6 +48,8 @@ class Page < ActiveRecord::Base
   has_many :questions, through: :question_groups
   has_many :page_visibilities, :dependent => :destroy
   has_many :branches, through: :page_visibility
+  has_many :submissions, :dependent => :destroy
+  has_many :users, through: :submissions
   
   scope :visible_page, -> (branch_id) { joins(:page_visibilities).where('page_visibilities.status = ? and page_visibilities.branch_id = ? ', true, branch_id) }
   

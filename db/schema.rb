@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712195614) do
+ActiveRecord::Schema.define(version: 20160713205458) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -206,6 +206,18 @@ ActiveRecord::Schema.define(version: 20160712195614) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "submissions", force: :cascade do |t|
+    t.integer  "page_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.string   "link",       limit: 255
+    t.integer  "points",     limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "submissions", ["page_id"], name: "index_submissions_on_page_id", using: :btree
+  add_index "submissions", ["user_id"], name: "index_submissions_on_user_id", using: :btree
 
   create_table "tracks", force: :cascade do |t|
     t.string   "name",        limit: 255
