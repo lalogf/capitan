@@ -20,7 +20,7 @@ CAPITAN.page.form = {
         var $pageActive = $("div[data-" + level + "-active='true']");
         $pageActive.addClass("hidden");
         $pageActive.removeProp("data-" + level + "-active");
-        var $currentPage = $("div[data-" + level + "-type='" + type + "']");
+        var $currentPage = $("div[data-" + level + "-type*='" + type + "']");
         $currentPage.attr("data-" + level + "-active", 'true');
         $currentPage.removeClass("hidden"); 
     },
