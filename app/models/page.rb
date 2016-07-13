@@ -79,6 +79,10 @@ class Page < ActiveRecord::Base
   scope :editor_pages, -> { where(page_type: 'editor') }
   scope :question_pages, -> { where(page_type: 'questions') }
   
+  def self.get_exercises_by_lesson(lesson_id)
+    return Page.where(page_type: "exercise", lesson_id: lesson_id)
+  end
+  
   def self.get_editor_pages_for_course(course_id)
     Page.editor_pages.includes(unit: :course).where(courses: {id: course_id})
   end

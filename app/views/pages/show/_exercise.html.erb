@@ -16,18 +16,4 @@
          <i class="fa fa-file-archive-o"></i>
       <% end %>
     <% end %>
-    <% if @page.solution_visibility != nil && (@page.solution_visibility.split(",").include? current_user.branch.id.to_s) %>
-      <h2>Solucionario</h2>
-      Descarga el solucionario del ejercicio aqui 
-      <%= link_to @page.solution_file.url do %>
-        <i class="fa fa-file-archive-o"></i>
-      <% end %><br><br>
-      <div class="clearfix">
-        <% @page.video_solution.split(',').each do |solution| %>
-          <div class="video-solution">
-            <iframe width="560" height="315" src="<%= @page.video_solution %>" frameborder="0" allowfullscreen></iframe>
-          </div>        
-        <% end %>
-      </div>
-    <% end %>
 </div>

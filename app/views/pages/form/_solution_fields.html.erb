@@ -1,3 +1,6 @@
-<div data-page-type="quiz" class="hidden">
-    
+<div data-page-type="solution" class="<%= "hidden" if @page.page_type != "solution" %>" data-page-active="<%= "true" if @page.page_type == "solution" %>">
+  <!-- f.input :exercise, 
+      :collection => Page.get_exercises_by_lesson(@page.lesson.id) <br>-->
+  <%= f.input :solution_file, as: :file %><br>
+  <%= f.input :video_solution %><br>
 </div>

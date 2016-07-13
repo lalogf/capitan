@@ -1,12 +1,10 @@
-    <div id="exercise_fields" class="exercise_fields <%= "hidden" if @page.page_type != "exercise" %>" data-page-type="exercise" data-page-active="<%= "true" if @page.page_type == "exercise" %>">
-      <%= f.input :excercise_instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %><br>
-      <%= f.input :document, as: :file %><br>
-      <%= f.input :solution_file, as: :file %><br>
-      <%= f.input :video_solution %><br>
-      <% @branches.each do |branch| %>
-        <label class="checkbox-inline">
-          <input type="checkbox" data-branch-id="<%= branch.id %>" value="<%= branch.id %>"><%= branch.name %>
-        </label>
-      <% end %>
-      <%= f.input :solution_visibility, :as => :hidden %>
-    </div>
+<div id="exercise_fields" class="exercise_fields <%= "hidden" if @page.page_type != "exercise" %>" data-page-type="exercise" data-page-active="<%= "true" if @page.page_type == "exercise" %>">
+  <%= f.input :excercise_instructions, as: :pagedown, input_html: { preview: true, rows: 10 } %><br>
+  <%= f.input :document, as: :file %><br>
+  <% @branches.each do |branch| %>
+    <label class="checkbox-inline">
+      <input type="checkbox" data-branch-id="<%= branch.id %>" value="<%= branch.id %>"><%= branch.name %>
+    </label>
+  <% end %>
+  <%= f.input :solution_visibility, :as => :hidden %>
+</div>

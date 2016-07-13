@@ -24,11 +24,6 @@
         </div>
         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body ph-7 pv-0 bg-gray-dark border-gray-dark">
-             <!--<ul class="pl-28">-->
-             <!--  <li class="quote-list">Slides</li>-->
-             <!--  <li class="quote-list">Blog: Etiquetas</li>-->
-             <!--  <li class="quote-list">Blog: Formulario</li>-->
-             <!--</ul>-->
               <ul class="units pl-7">
                 <% @lesson.visible_pages_by_type(current_user.branch_id,"material").each do |page| %>
                   <li class="unit-item clearfix <%= page.id == @page.id ? "active": ""%>"
@@ -80,9 +75,10 @@
           </div>
         <% end %>
       </div>
-      <div class="panel panel-default border-gray-dark">
+      <% if @lesson.has_visible_pages_by_type(current_user.branch_id,"exercise") %>
+        <div class="panel panel-default border-gray-dark">
         <div class="panel-heading pv-7 bg-collapse" role="tab" id="headingTwo">
-          <h4 class="panel-title  square-pages ml-28 lh-md <%="active" if @page.page_type == "quiz" %>">
+          <h4 class="panel-title square-pages ml-28 lh-md <%="active" if @page.page_type == "exercise" %>">
             <a class="collapsed text-uppercase text-white" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
               EJERCICIOS
             </a>
@@ -109,20 +105,41 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="panel-body pt-0">
-      <div class="row">
-        <div class="col-md-8">
-          <ul class="pl-28 bg-gray-dark disabled mb-0">
-            <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "solution" %>">Solucionario</li>
-          </ul>
+      <% end %>
+      <% if @lesson.has_visible_pages_by_type(current_user.branch_id,"solution") %>
+        <div class="panel panel-default border-gray-dark">
+        <div class="panel-heading pv-7 bg-collapse" role="tab" id="headingThree">
+          <h4 class="panel-title square-pages ml-28 lh-md <%="active" if @page.page_type == "solution" %>">
+            <a class="collapsed text-uppercase text-white" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              SOLUCIONARIO
+            </a>
+          </h4>
         </div>
-        <div class="col-md-4">
-          <ul class="bg-gray-dark mb-0">
-            <li class="pv-7">(5 pts)</li>
-          </ul>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body ph-7 pv-0 bg-gray-dark border-gray-dark">
+            <% @lesson.visible_pages_by_type(current_user.branch_id,"solution").each do |page| %>
+              <div class="row">
+                <div class="col-md-8">
+                  <ul class="bg-gray-dark mb-0">
+                    <li class="square-pages-list fz-14 ml-42 pv-7">
+                      <%= link_to page.title,lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <ul class="bg-gray-dark">
+                    <li class="pv-7 fz-14">(<%= pluralize page.points, "pt" %>)</li>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
+      <% end %>
+    </div>
+    <div class="panel-body pt-0">
+    <% if @lesson.has_visible_pages_by_type(current_user.branch_id,"retrospective") %>
       <div class="row">
         <div class="col-md-8">
           <ul class="pl-28 bg-gray-dark disabled mb-0">
@@ -131,21 +148,24 @@
         </div>
         <div class="col-md-4">
           <ul class="bg-gray-dark mb-0">
-            <li class="pv-7">(10 pts)</li>
+            <li class="pv-7">(<%= pluralize @page.points, "pt" %>)</li>
           </ul>
         </div>
       </div>
+      <% end %>
+      <% if @lesson.has_visible_pages_by_type(current_user.branch_id,"codereview") %>
       <div class="row">
         <div class="col-md-8">
           <ul class="pl-28 bg-gray-dark disabled mb-0">
-            <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "peerreview" %>">Peer review</li>
+            <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "codereview" %>">Peer review</li>
           </ul>
         </div>
         <div class="col-md-4">
           <ul class="bg-gray-dark mb-0">
-            <li class="pv-7">(20 pts)</li>
+            <li class="pv-7">(<%= pluralize @page.points, "pt" %>)</li>
           </ul>
         </div>
       </div>
+      <% end %>
     </div>
   </div>

@@ -30,6 +30,7 @@
           <th>#</th>
           <th>Título</th>
           <th>Lección</th>
+          <th>Tipo</th>
           <th></th>
         </tr>
       </thead>
@@ -40,6 +41,7 @@
             <td><%= link_to page.sequence, track_course_unit_lesson_page_path(@track,@course,@unit,@lesson,page) %></td>
             <td><%= page.title %></td>
             <td><%= page.lesson.title %></td>
+            <td><%= page.page_type %></td>
             <td>
               <%= link_to 'Editar', edit_track_course_unit_lesson_page_path(@track,@course,@unit,@lesson,page) %>  |  
               <%= link_to 'Eliminar', [@track,@course,@unit,@lesson,page], method: :delete, data: { confirm: '¿Está seguro?' } %>
