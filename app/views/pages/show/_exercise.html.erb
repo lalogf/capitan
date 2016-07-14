@@ -9,7 +9,7 @@
     <div class="exercise_instructions">
       <%= @page.excercise_instructions %>
     </div>
-    <% if @page.document.url != nil %>
+    <% if @page.document.file? %>
       <h2>Materiales</h2>
       Descarga todos los materiales necesario para realizar el ejercicio aqui
       <%= link_to @page.document.url do %>
