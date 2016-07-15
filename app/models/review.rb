@@ -21,9 +21,9 @@ class Review < ActiveRecord::Base
         end
       end
     end
-    q1 = Question.where(description: header[2])
-    q2 = Question.where(description: header[3])
-    q3 = Question.where(description: header[4])
+    q1 = Question.where(description: header[2]).first
+    q2 = Question.where(description: header[3]).first
+    q3 = Question.where(description: header[4]).first
     (2..spreadsheet.last_row).each do |i|
       row = spreadsheet.row(i)
       page_id = Page.where(page_type: "codereview").first.id
