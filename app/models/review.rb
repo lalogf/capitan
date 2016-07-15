@@ -30,9 +30,19 @@ class Review < ActiveRecord::Base
       reviewer = User.where(code: row[0]).first
       user = User.where(code: row[1]).first
       if reviewer != nil and user != nil
-        review = Review.new(page_id: page_id, user_id: user.id, reviewer_id: reviewer.id, question_id: q1.id, answer: row[])
+        review1 = Review.new(page_id: page_id, user_id: user.id, reviewer_id: reviewer.id, question_id: q1.id, answer: row[3])
+        if review1.save
+          p "Guardado!"
+        end
+        review2 = Review.new(page_id: page_id, user_id: user.id, reviewer_id: reviewer.id, question_id: q2.id, answer: row[4])
+        if review2.save
+          p "Guardado"
+        end
+        review3 = Review.new(page_id: page_id, user_id: user.id, reviewer_id: reviewer.id, question_id: q3.id, answer: row[5])
+        if review3.save
+          p "Guardado"
+        end
       end
-      Review.where(page_id: page_id)
     end
   end
 end
