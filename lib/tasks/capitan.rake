@@ -18,6 +18,16 @@ namespace :capitan do
       User.import(import_file)
   end
   
+  task :import_code_review, [:file_name] => :environment do |t, args|
+    import_file = "#{Rails.root}/public/seed_data/#{args[:file_name]}"
+    Review.import(import_file)
+  end
+  
+  task :import_scores, [:file_name] => :environment do |t, args|
+    import_file = "#{Rails.root}/public/seed_data/#{args[:file_name]}"
+    User.import_score(import_file)
+  end
+  
   task :rebuild_grades => :environment do
     users = User.all
     users.each do |user|

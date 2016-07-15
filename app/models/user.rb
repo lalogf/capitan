@@ -58,6 +58,8 @@ class User < ActiveRecord::Base
   has_many :courses, through: :enrollments
   has_many :submissions, :dependent => :destroy
   has_many :pages, through: :submissions
+  has_many :primary_reviews, :class_name => "Review", :foreign_key => "user_id"
+  has_many :secondary_reviews, :class_name => "Review", :foreign_key => "reviewer_id"
   
   devise :database_authenticatable, 
          :registerable,
@@ -204,5 +206,54 @@ class User < ActiveRecord::Base
       end
     end
   end  
+  
+  def self.import_score(file)
+    spreadsheet = Roo::Spreadsheet.open(file)
+    header = spreadsheet.row(1)
+    lesson = Lesson.find(3)
+    (2..spreadsheet.last_row).each do |i|
+      row = spreadsheet.row(i)
+      user = User.where(code: row[0]).first
+      if user != nil
+        quiz = lesson.pages.where(page_type: "prework").first
+        exercise = lesson.pages.where(page_type: header[2]).first
+        retrospective = lesson.pages.where(page_type: header[3]).first
+        solution = lesson.pages.where(page_type: header[4]).first
+        codereview = lesson.pages.where(page_type: header[5]).first
+        sub1 = Submission.new(page_id: quiz.id, user_id: user.id, points: row[1])
+        if sub1.save
+          p "User #{user.code} saved with quiz #{row[1]}" 
+        else
+          p "User #{user.code} failed"
+        end
+        sub2 = Submission.new(page_id: exercise.id, user_id: user.id, points: row[2])
+        if sub2.save
+          p "User #{user.code} saved with quiz #{row[2]}" 
+        else
+          p "User #{user.code} failed"
+        end
+        sub3 = Submission.new(page_id: retrospective.id, user_id: user.id, points: row[3])
+        if sub3.save
+          p "User #{user.code} saved with quiz #{row[3]}" 
+        else
+          p "User #{user.code} failed"
+        end
+        sub4 = Submission.new(page_id: solution.id, user_id: user.id, points: row[4])
+        if sub4.save
+          p "User #{user.code} saved with quiz #{row[4]}" 
+        else
+          p "User #{user.code} failed"
+        end
+        sub5 = Submission.new(page_id: codereview.id, user_id: user.id, points: row[5])
+        if sub5.save
+          p "User #{user.code} saved with quiz #{row[5]}" 
+        else
+          p "User #{user.code} failed"
+        end
+      else
+        p "User #{row[0]} no existe"
+      end
+    end
+  end
 
 end

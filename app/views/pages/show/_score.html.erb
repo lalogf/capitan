@@ -1,0 +1,46 @@
+<div class="outer-container">
+    <div class="inner-container text-center">
+      <div class="text-center mt-20">
+        <% if Submission.where(user_id: current_user.id).count > 0 %>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Puntos Alcanzados</th>
+                  <th>% del Total de Puntos Disponibles</th>
+                  <th>Promedio Salón</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% total_average = 0 %>
+                <% @lesson.pages.where("points > 0").each do |page| %>
+                  <% my_points = page.submissions.where(user_id: current_user.id).first.points.to_f %>
+                  <% average = page.submissions.average(:points).round(2) %>
+                  <% topic = {"prework" => "Quiz ", "exercise" => "Ejercicio ", "solution" => "Solucionario ", "retrospective" => "", "codereview" => ""} %>
+                  <tr>
+                    <th class="scope"><%= topic[page.page_type] + page.title %></th>
+                    <td><%= my_points %></td>
+                    <td><%= (my_points/page.points*100).round(2) %> %</td>
+                    <td><%= average %></td>
+                  </tr>
+                  <% total_average += average %>
+                <% end %>
+              </tbody>
+              <tfooter>
+                <% total_points = Submission.where(user_id: current_user.id).sum(:points) %>
+                <tr>
+                  <th class="scope">Total</th>
+                  <td><%= total_points  %></td>
+                  <td><%= (total_points.to_f/@lesson.pages.sum(:points)*100).round(2) %> %</td>
+                  <td><%= total_average %></td>
+                </tr>
+              </tfooter>
+            </table>
+          </div>
+        <% else %>
+          <p>Aun no se pueden visualizar tus puntos.</p>
+        <% end %>
+      </div>
+    </div>
+</div>
