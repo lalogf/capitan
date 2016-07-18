@@ -220,33 +220,33 @@ class User < ActiveRecord::Base
         retrospective = lesson.pages.where(page_type: header[3]).first
         solution = lesson.pages.where(page_type: header[4]).first
         codereview = lesson.pages.where(page_type: header[5]).first
-        sub1 = Submission.new(page_id: quiz.id, user_id: user.id, points: row[1])
+        sub1 = Submission.new(page_id: quiz.id, user_id: user.id, points: row[1].to_f.round)
         if sub1.save
-          p "User #{user.code} saved with quiz #{row[1]}" 
+          p "User #{user.code} saved with quiz #{row[1].to_f.round}" 
         else
           p "User #{user.code} failed"
         end
-        sub2 = Submission.new(page_id: exercise.id, user_id: user.id, points: row[2])
+        sub2 = Submission.new(page_id: exercise.id, user_id: user.id, points: row[2].to_f.round)
         if sub2.save
-          p "User #{user.code} saved with quiz #{row[2]}" 
+          p "User #{user.code} saved with quiz #{row[2].to_f.round}" 
         else
           p "User #{user.code} failed"
         end
-        sub3 = Submission.new(page_id: retrospective.id, user_id: user.id, points: row[3])
+        sub3 = Submission.new(page_id: retrospective.id, user_id: user.id, points: row[3].to_f.round)
         if sub3.save
-          p "User #{user.code} saved with quiz #{row[3]}" 
+          p "User #{user.code} saved with quiz #{row[3].to_f.round}" 
         else
           p "User #{user.code} failed"
         end
-        sub4 = Submission.new(page_id: solution.id, user_id: user.id, points: row[4])
+        sub4 = Submission.new(page_id: solution.id, user_id: user.id, points: row[4].to_f.round)
         if sub4.save
-          p "User #{user.code} saved with quiz #{row[4]}" 
+          p "User #{user.code} saved with quiz #{row[4].to_f.round}" 
         else
           p "User #{user.code} failed"
         end
-        sub5 = Submission.new(page_id: codereview.id, user_id: user.id, points: row[5])
+        sub5 = Submission.new(page_id: codereview.id, user_id: user.id, points: row[5].to_f.round)
         if sub5.save
-          p "User #{user.code} saved with quiz #{row[5]}" 
+          p "User #{user.code} saved with quiz #{row[5].to_f.round}" 
         else
           p "User #{user.code} failed"
         end
