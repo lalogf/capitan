@@ -1,5 +1,7 @@
 class DashboardController < ApplicationController
 
+  before_action :check_if_current_user_is_admin, except: [:show_user_track, :course_details]
+  
   layout "admin"
 
   def index

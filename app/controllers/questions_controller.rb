@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_current_user_is_admin
   
   layout "admin"
 
