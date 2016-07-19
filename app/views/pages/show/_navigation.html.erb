@@ -119,7 +119,7 @@
           <div class="row">
             <div class="col-md-8">
               <h4 class="panel-title square-pages ml-28 lh-md <%="active" if @page.page_type == "solution" %>">
-                <a class="collapsed text-uppercase text-white" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="<%= if @page.page_type == "exercise" then "true" else "false" end %>" aria-controls="collapseThree">
+                <a class="collapsed text-uppercase text-white" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="<%= if @page.page_type == "solution" then "true" else "false" end %>" aria-controls="collapseThree">
                   SOLUCIONARIO
                 </a>
               </h4>    
@@ -177,7 +177,7 @@
           <div class="row">
             <div class="col-md-8">
               <ul class="pl-28 bg-gray-dark mb-0">
-                <li class="square-pages text-uppercase pv-7 <%="active" if @page.id == page.id %>">
+                <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "codereview" %>">
                   <%= link_to "Code Review",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
                 </li>
               </ul>
@@ -195,7 +195,7 @@
           <div class="row">
             <div class="col-md-8">
               <ul class="pl-28 bg-gray-dark mb-0">
-                <li class="square-pages text-uppercase pv-7 <%="active" if @page.id == page.id %>">
+                <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "score" %>">
                   <%= link_to "Puntos",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
                 </li>
               </ul>

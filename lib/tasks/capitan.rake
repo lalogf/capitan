@@ -23,9 +23,9 @@ namespace :capitan do
     Review.import(import_file)
   end
   
-  task :import_scores, [:file_name] => :environment do |t, args|
-    import_file = "#{Rails.root}/public/seed_data/#{args[:file_name]}"
-    User.import_score(import_file)
+  task :import_scores => :environment do |t, args|
+    import_file = "#{Rails.root}/public/seed_data/#{ENV['FILE_NAME']}"
+    User.import_score(import_file, ENV['LESSON_ID'])
   end
   
   task :rebuild_grades => :environment do

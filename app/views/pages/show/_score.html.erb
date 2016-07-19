@@ -14,9 +14,12 @@
               </thead>
               <tbody>
                 <% total_average = 0 %>
+                <% total_points = 0 %>
                 <% @lesson.pages.where("points > 0").each do |page| %>
                   <% my_points = page.submissions.where(user_id: current_user.id).first.points.to_f %>
-                  <% average = page.submissions.average(:points).round(2) %>
+                  <% total = page.submissions.sum(:points).round(2) %>
+                  <% count = page.submissions.where("points > 0").count %>
+                  <% average = (total.to_f/count).round(2)  %>
                   <% topic = {"prework" => "Quiz ", "exercise" => "Ejercicio ", "solution" => "Solucionario ", "retrospective" => "", "codereview" => ""} %>
                   <tr>
                     <th class="scope"><%= topic[page.page_type] + page.title %></th>
@@ -25,14 +28,14 @@
                     <td><%= average %></td>
                   </tr>
                   <% total_average += average %>
+                  <% total_points += my_points %>
                 <% end %>
               </tbody>
               <tfooter>
-                <% total_points = Submission.where(user_id: current_user.id).sum(:points) %>
                 <tr>
                   <th class="scope">Total</th>
-                  <td><%= total_points  %></td>
-                  <td><%= (total_points.to_f/@lesson.pages.sum(:points)*100).round(2) %> %</td>
+                  <td><%= total_points %></td>
+                  <td><%= (total_points/@lesson.pages.sum(:points)*100).round(2) %> %</td>
                   <td><%= total_average %></td>
                 </tr>
               </tfooter>

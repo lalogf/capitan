@@ -207,48 +207,25 @@ class User < ActiveRecord::Base
     end
   end  
   
-  def self.import_score(file)
+  def self.import_score(file, lesson_id)
     spreadsheet = Roo::Spreadsheet.open(file)
     header = spreadsheet.row(1)
-    lesson = Lesson.find(3)
+    lesson = Lesson.find(lesson_id)
     (2..spreadsheet.last_row).each do |i|
       row = spreadsheet.row(i)
       user = User.where(code: row[0]).first
       if user != nil
-        quiz = lesson.pages.where(page_type: "prework").first
-        exercise = lesson.pages.where(page_type: header[2]).first
-        retrospective = lesson.pages.where(page_type: header[3]).first
-        solution = lesson.pages.where(page_type: header[4]).first
-        codereview = lesson.pages.where(page_type: header[5]).first
-        sub1 = Submission.new(page_id: quiz.id, user_id: user.id, points: row[1].to_f.round)
-        if sub1.save
-          p "User #{user.code} saved with quiz #{row[1].to_f.round}" 
-        else
-          p "User #{user.code} failed"
-        end
-        sub2 = Submission.new(page_id: exercise.id, user_id: user.id, points: row[2].to_f.round)
-        if sub2.save
-          p "User #{user.code} saved with quiz #{row[2].to_f.round}" 
-        else
-          p "User #{user.code} failed"
-        end
-        sub3 = Submission.new(page_id: retrospective.id, user_id: user.id, points: row[3].to_f.round)
-        if sub3.save
-          p "User #{user.code} saved with quiz #{row[3].to_f.round}" 
-        else
-          p "User #{user.code} failed"
-        end
-        sub4 = Submission.new(page_id: solution.id, user_id: user.id, points: row[4].to_f.round)
-        if sub4.save
-          p "User #{user.code} saved with quiz #{row[4].to_f.round}" 
-        else
-          p "User #{user.code} failed"
-        end
-        sub5 = Submission.new(page_id: codereview.id, user_id: user.id, points: row[5].to_f.round)
-        if sub5.save
-          p "User #{user.code} saved with quiz #{row[5].to_f.round}" 
-        else
-          p "User #{user.code} failed"
+        header.each_with_index do |h,index|
+          if h != "code"
+            h = "prework" if h == "quiz"
+            page = lesson.pages.where(page_type: h).first
+            submission = Submission.new(page_id: page.id, user_id: user.id, points: row[index].to_f.round)
+            if submission.save
+              p "User #{user.code} saved with quiz #{row[index].to_f.round}" 
+            else
+              p "User #{user.code} failed"
+            end
+          end
         end
       else
         p "User #{row[0]} no existe"
