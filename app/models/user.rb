@@ -215,10 +215,20 @@ class User < ActiveRecord::Base
       row = spreadsheet.row(i)
       user = User.where(code: row[0]).first
       if user != nil
+        exercise_index = 0
+        solution_index = 0
         header.each_with_index do |h,index|
           if h != "code"
             h = "prework" if h == "quiz"
-            page = lesson.pages.where(page_type: h).first
+            if h == "exercise"
+              page = lesson.pages.where(page_type: h).order(:sequence)[exercise_index]
+              exercise_index += 1
+            elsif h == "solution"
+              page = lesson.pages.where(page_type: h).order(:sequence)[solution_index]
+              solution_index += 1
+            else
+              page = lesson.pages.where(page_type: h).first
+            end
             submission = Submission.new(page_id: page.id, user_id: user.id, points: row[index].to_f.round)
             if submission.save
               p "User #{user.code} saved with quiz #{row[index].to_f.round}" 
