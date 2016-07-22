@@ -34,9 +34,12 @@
                   <%= image_tag "arrow-down.png",alt: "Arrow down", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
                 </a>
                 <ul class="dropdown-menu">
-                  <% unless current_page?(myprofile_path) %>
+                  <li>
+                    <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
+                  </li>
+                  <% unless current_page?(codereview_path) %>
                     <li>
-                      <%= link_to('Code Review', myprofile_path, :method => :get) %>
+                      <%= link_to('Code Review', codereview_path, :method => :get) %>
                     </li>
                   <% else %>
                     <li>
