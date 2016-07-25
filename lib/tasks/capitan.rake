@@ -19,8 +19,8 @@ namespace :capitan do
   end
   
   task :import_code_review, [:file_name] => :environment do |t, args|
-    import_file = "#{Rails.root}/public/seed_data/#{args[:file_name]}"
-    Review.import(import_file)
+    import_file = "#{Rails.root}/public/seed_data/#{ENV['FILE_NAME']}"
+    Review.import(import_file, ENV['LESSON_ID'])
   end
   
   task :import_scores => :environment do |t, args|
