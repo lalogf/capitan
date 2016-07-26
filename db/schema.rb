@@ -207,12 +207,6 @@ ActiveRecord::Schema.define(version: 20160714161112) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "quizzes", force: :cascade do |t|
-    t.string   "question",   limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer  "page_id",     limit: 4
     t.integer  "question_id", limit: 4

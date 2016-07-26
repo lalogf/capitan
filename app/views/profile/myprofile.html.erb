@@ -1,0 +1,183 @@
+<section>
+    <div class="container-md pv-56">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <%= image_tag "foto-perfil.png",alt: "coder", class: "img-circle img-responsive", width: "130" %> 
+                    </div>
+                    <div class="col-sm-7">
+                        <h3 class="mv-7">Daniela Segura</h3>
+                        <p class="light mb-0 lh-profile">25 años</p>
+                        <p class="light lh-profile ">Lima, Perú</p>
+                        <p class="thin text-gray-light mb-0 lh-profile">Front-End Developer</p>
+                    </div> 
+                </div>
+                
+                <div class="mt-56 pr-42-md">
+                    <h4 class="bold mb-7">sobre mi</h4>
+                    <div class="hidden-xs mb-7 separator separator-primary separator-left"></div>
+                    <p class="light text-left">Desarrolladora front-end y comunicadora social. Crear e implementar sitios web amigables y efectivos es mi pasión. </p>
+                </div>
+                
+            </div>
+            <div class="col-sm-6">
+                <h4 class="bold mv-7">reconocimientos</h4>
+                <div class="hidden-xs mb-7 separator separator-primary separator-left"></div>
+                <div class="row mt-21">
+                    <div class="col-sm-2 minh-70 ph-7">
+                        <%= image_tag "cuadro.png",alt: "coder", class: "img-circle img-responsive", width: "90" %> 
+                    </div>
+                    <div class="col-sm-2 minh-70 ph-7">
+                        <%= image_tag "tercio.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
+                    </div>
+                    
+                </div>
+                <div class="row mv-35">
+                    <div class="col-sm-2 minh-70 ph-7 mb-21">
+                        <%= image_tag "unicornio.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
+                    </div>
+                    <div class="col-sm-2 minh-70 ph-7 mb-21">
+                        <%= image_tag "agile.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
+                    </div>
+                    <div class="col-sm-2 minh-70 ph-7 mb-21">
+                        <%= image_tag "best.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
+                    </div>
+                    
+                    
+                    <div class="col-sm-2 minh-70 ph-7 mb-21">
+                        <%= image_tag "agile.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
+                    </div>
+                    <div class="col-sm-2 minh-70 ph-7 mb-21">
+                        <%= image_tag "best.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
+                    </div>
+                    <div class="col-sm-2 minh-70 ph-7 mb-21">
+                        <%= image_tag "code.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
+                    </div>
+                    <div class="col-sm-2 minh-70 ph-7 mb-21">
+                        <%= image_tag "agile.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
+                    </div>
+                    <div class="col-sm-2 minh-70 ph-7">
+                        <%= image_tag "best.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-md">
+        <h4 class="bold mb-7 text-center">puntos</h4>
+        <div class="hidden-xs mb-7 separator separator-primary separator-centered"></div>
+        <p class="light text-center mt-35">
+            este es el detalle de tu avance hasta ahora
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="container-2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<% content_for :scripts do %>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: '1800<br>puntos',
+                    align: 'center',
+                    verticalAlign: 'middle',
+                    y: 40
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: -30,
+                            style: {
+                                fontWeight: 'light',
+                                color: 'white',
+                                textShadow: '0px 1px 2px black'
+                            }
+                        },       
+                        center: ['50%', '65%']
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Browser share',
+                    innerSize: '50%',
+                    data: [
+                        ['Firefox',   10.38],
+                        ['IE',       26.33],
+                        ['IE',       16.33],
+                        ['Pre Work',  20.33],
+                        ['Chrome', 14.03],
+                        ['Chrome', 10.03],
+                        ['Safari',    4.77],
+                        ['Opera',     10.91],
+                        {
+                            name: 'Quiz',
+                            y: 9.2,
+                        }
+                    ]
+                }]
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#container-2').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: '1800<br>puntos',
+                    align: 'center',
+                    verticalAlign: 'middle',
+                    y: 40
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: -30,
+                            style: {
+                                fontWeight: 'light',
+                                color: 'white',
+                                textShadow: '0px 1px 2px black'
+                            }
+                        },       
+                        center: ['50%', '65%']
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Browser share',
+                    innerSize: '50%',
+                    data: [
+                        ['Firefox',   10.38],
+                        ['IE',       26.33],
+                    ]
+                }]
+            });
+        });
+    </script>
+<% end %>
