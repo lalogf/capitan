@@ -34,9 +34,9 @@
               <tfooter>
                 <tr>
                   <th class="scope">Total</th>
-                  <td><%= total_points %></td>
+                  <td><%= total_points.round(2) %></td>
                   <td><%= (total_points/@lesson.pages.sum(:points)*100).round(2) %> %</td>
-                  <td><%= total_average %></td>
+                  <td><%= total_average.round(2) %></td>
                 </tr>
               </tfooter>
             </table>
