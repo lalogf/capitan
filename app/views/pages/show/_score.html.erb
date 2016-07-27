@@ -19,7 +19,7 @@
                   <% my_points = page.submissions.where(user_id: current_user.id).first.points.to_f %>
                   <% total = page.submissions.sum(:points).round(2) %>
                   <% count = page.submissions.where("points > 0").count %>
-                  <% average = (total.to_f/count).round(2)  %>
+                  <% average = ((total.to_f/count).nan?) ? 0 : (total.to_f/count).round(2) %>
                   <% topic = {"prework" => "Quiz ", "exercise" => "", "solution" => "", "retrospective" => "", "codereview" => ""} %>
                   <tr>
                     <th class="scope"><%= topic[page.page_type] + page.title %></th>
