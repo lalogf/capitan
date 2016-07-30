@@ -69,7 +69,7 @@
       <table class="table table-striped table-hover table-bordered ">
         <tbody>
           <% @courses.each do |course| %>
-            <tr style="color:white;<%= "background-color:#{course.color}" if !course.color.blank? %>">
+            <tr>
               <td>
                 <%= course.name %>
               </td>
@@ -87,7 +87,7 @@
             </tr>
             <% course.units.each do |unit| %>
               <tr>
-                <td colspan="<%= @branches.to_a.size + 1%>" style="background-color:#F1F1F1;">
+                <td colspan="<%= @branches.to_a.size + 1%>">
                   <%= unit.title %><br>
                   <%= unit.description %>
                 </td>
