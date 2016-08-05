@@ -65,19 +65,85 @@
         </div>
     </div>
 </section>
-<section>
-    <div class="container-md">
+<section class="bg-gray-light">
+    <div class="container-md pv-56 puntos border-bottom-gray">
         <h4 class="bold mb-7 text-center">puntos</h4>
         <div class="hidden-xs mb-7 separator separator-primary separator-centered"></div>
         <p class="light text-center mt-35">
             este es el detalle de tu avance hasta ahora
         </p>
-        <div class="row">
+        <div class="row pt-21">
             <div class="col-md-6">
                 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
             </div>
-            <div class="col-md-6">
-                <div id="container-2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            <div class="col-md-6 pv-49 ph-35">
+                <div class="row pl-70-md">
+                    <div class="col-sm-12">
+                        <div class="c100 p80 big orange">
+                            <span>80%</span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5 col-sm-offset-3 text-center">
+                        <p><span class="book">1800/</span><span class="thin h4">3000</span></p>
+                        <h4 class="light">puntos</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-md pv-56">
+        <h4 class="light mb-7 text-center">nivel técnico</h4>
+        <div class="row mt-28">
+            <div class="col-md-2 col-md-offset-1">
+                <div class="c100 p80 small gray">
+                    <span>80%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="c100 p80 small gray">
+                    <span>80%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="c100 p80 small gray">
+                    <span>80%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="c100 p80 small gray">
+                    <span>80%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="c100 p80 small gray">
+                    <span>80%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -88,16 +154,20 @@
         $(function () {
             $('#container').highcharts({
                 chart: {
-                    plotBackgroundColor: null,
+                    plotBackgroundColor: "#F5F5F5",
                     plotBorderWidth: 0,
-                    plotShadow: false
+                    plotShadow: false,
+                    backgroundColor: "#F5F5F5"
                 },
                 title: {
                     text: '1800<br>puntos',
                     align: 'center',
                     verticalAlign: 'middle',
-                    y: 40
+                    y: 20
                 },
+                credits: {
+                   enabled: false
+               },
                 tooltip: {
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                 },
@@ -105,14 +175,14 @@
                     pie: {
                         dataLabels: {
                             enabled: true,
-                            distance: -30,
+                            distance: -50,
                             style: {
                                 fontWeight: 'light',
                                 color: 'white',
                                 textShadow: '0px 1px 2px black'
                             }
                         },       
-                        center: ['50%', '65%']
+                        center: ['50%', '55%']
                     }
                 },
                 series: [{
@@ -132,49 +202,6 @@
                             name: 'Quiz',
                             y: 9.2,
                         }
-                    ]
-                }]
-            });
-        });
-    </script>
-    <script>
-        $(function () {
-            $('#container-2').highcharts({
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: 0,
-                    plotShadow: false
-                },
-                title: {
-                    text: '1800<br>puntos',
-                    align: 'center',
-                    verticalAlign: 'middle',
-                    y: 40
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        dataLabels: {
-                            enabled: true,
-                            distance: -30,
-                            style: {
-                                fontWeight: 'light',
-                                color: 'white',
-                                textShadow: '0px 1px 2px black'
-                            }
-                        },       
-                        center: ['50%', '65%']
-                    }
-                },
-                series: [{
-                    type: 'pie',
-                    name: 'Browser share',
-                    innerSize: '50%',
-                    data: [
-                        ['Firefox',   10.38],
-                        ['IE',       26.33],
                     ]
                 }]
             });
