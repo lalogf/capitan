@@ -229,9 +229,15 @@ class User < ActiveRecord::Base
             else
               page = lesson.pages.where(page_type: h).first
             end
-            submission = Submission.new(page_id: page.id, user_id: user.id, points: row[index].to_f.round)
-            if submission.save
-              p "User #{user.code} saved with quiz #{row[index].to_f.round}" 
+            subm = Submission.where(page_id: page.id, user_id: user.id)
+            if subm.count == 0
+              subm = Submission.new(page_id: page.id, user_id: user.id, points: row[index].to_f.round)
+            else
+              subm = subm.first
+              subm.points = row[index].to_f.round
+            end
+            if subm.save
+              p "User #{user.code} saved with grade #{row[index].to_f.round}" 
             else
               p "User #{user.code} failed"
             end
