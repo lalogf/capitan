@@ -1,29 +1,46 @@
-<% @pages.each do |page| %>
+<% @sprints.each do |sprint| %>
 <section class="container">
-  <h3><%= page.lesson.title %></h3>
+  <h3>Resumen: Sprint <%= sprint %></h3>
   <div class="table-responsive">
-    <% reviews = Review.where(user_id: current_user.id, page_id: page.id) %>
-    <% if reviews.count > 0 %>
+    <% scores = SprintSummary.where(user_id: current_user.id, sprint_id: sprint) %>
+    <% if scores.count > 0 %>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Pregunta</th>
-          <th>Respuesta</th>
+          <th></th>
+          <th>Puntos</th>
+          <th>% de Puntos Alcanzados</th>
+          <th>Promedio del Salón</th>
         </tr>
       </thead>
       <tbody>
-        <% reviews.each_with_index do |review, index| %>
+          <% score = scores.first %>
+          <% percent_technical_skills = (score.total_technical_skills / score.max_technical_skills * 100).round(2) %>
+          <% percent_soft_skills = (score.total_soft_skills / score.max_soft_skills * 100).round(2) %>
+          <% avg_technical_skills = SprintSummary.where(sprint_id: sprint).average(:total_technical_skills).round(2) %> 
+          <% avg_soft_skills = SprintSummary.where(sprint_id: sprint).average(:total_soft_skills).round(2) %> 
           <tr>
-            <th class="scope"><%= index + 1%></th>
-            <td><%= review.question.description %></td>
-            <td><%= review.answer %></td>
+            <th class="scope">Nivel Técnico</th>
+            <td><%= score.total_technical_skills %></td>
+            <td><%= percent_technical_skills %> %</td>
+            <td><%= avg_technical_skills %></td>
           </tr>
-        <% end %>
+          <tr>
+            <th class="scope">Actitud Profesional</th>
+            <td><%= score.total_soft_skills %></td>
+            <td><%= percent_soft_skills%> %</td>
+            <td><%= avg_soft_skills %></td>
+          </tr>
+          <tr>
+            <th class="scope">Total</th>
+            <td><%= score.total_technical_skills + score.total_soft_skills %></td>
+            <td><%= ((percent_technical_skills + percent_soft_skills) / 2).round(2) %> %</td>
+            <td><%= avg_technical_skills +avg_soft_skills %></td>
+          </tr>
       </tbody>
     </table>
     <% else %>
-      <p class="text-center">Aún no te han realizado un code review.</p>
+      <p class="text-center">Aún no tiene puntos en este sprint.</p>
     <% end %>
   </div>
 </section>

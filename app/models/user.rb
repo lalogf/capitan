@@ -248,5 +248,39 @@ class User < ActiveRecord::Base
       end
     end
   end
+  
+  def self.import_sprint_scores(file)
+    spreadsheet = Roo::Spreadsheet.open(file)
+    header = spreadsheet.row(1)
+    (2..spreadsheet.last_row).each do |i|
+      row = spreadsheet.row(i)
+      user = User.where(code: row[0]).first
+      if user != nil
+        sprint_id = row[1]
+        total_technical_skills = row[2].to_f.round(2)
+        total_soft_skills = row[3].to_f.round(2)
+        max_technical_skills = row[4].to_f.round(2)
+        max_soft_skills = row[5].to_f.round(2)
+        user_sprint = SprintSummary.where(user_id: user.id, sprint_id: sprint_id)
+        if user_sprint.count > 0
+          user_sprint = user_sprint.first
+          user_sprint.total_technical_skills = total_technical_skills
+          user_sprint.total_soft_skills = total_soft_skills
+          user_sprint.max_technical_skills = max_technical_skills
+          user_sprint.max_soft_skills = max_soft_skills
+        else
+          user_sprint = SprintSummary.new(user_id: user.id, sprint_id: sprint_id, total_technical_skills: total_technical_skills, 
+            total_soft_skills: total_soft_skills, max_technical_skills: max_technical_skills, max_soft_skills: max_soft_skills)
+        end
+        if user_sprint.save
+          puts "#{user.code} saved!"
+        else
+          puts "Error with user #{user.code}"
+        end
+      else
+        puts "#{row[0]} is not a user!"
+      end
+    end
+  end
 
 end

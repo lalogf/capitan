@@ -28,6 +28,12 @@ namespace :capitan do
     User.import_score(import_file, ENV['LESSON_ID'])
   end
   
+  # Borrar ASAP!!
+  task :import_sprint_scores => :environment do |t, args|
+    import_file = "#{Rails.root}/public/seed_data/#{ENV['FILE_NAME']}"
+    User.import_sprint_scores(import_file)
+  end
+  
   task :rebuild_grades => :environment do
     users = User.all
     users.each do |user|
