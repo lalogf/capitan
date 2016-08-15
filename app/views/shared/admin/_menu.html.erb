@@ -2,7 +2,7 @@
 	<%= image_tag current_user.avatar.url(:menu) %>
 	<div class="user-box">
 		<span class="name"><%= "#{current_user.name} #{current_user.lastname1}" %></span>
-		<span class="roles"><%= current_user.roles.map(&:capitalize).join(", ") %></span>
+		<span class="roles"><%= current_user.role.capitalize %></span>
 	</div>
 </div>
 <div class="navigation">

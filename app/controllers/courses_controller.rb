@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
-  
+
   before_action :set_track
   before_action :set_course, only: [:show, :edit, :update, :destroy, :show_details]
-  before_action :check_if_current_user_is_admin, except: [:show_details]
-  
+  before_action :require_admin, except: [:show_details]
+
   layout "admin", except: [:show_details]
-  
+
   def index
     @courses = @track.courses.all
   end
@@ -66,7 +66,7 @@ class CoursesController < ApplicationController
     def set_course
       @course = Course.find(params[:id])
     end
-    
+
     def set_track
       @track = Track.find(params[:track_id])
     end

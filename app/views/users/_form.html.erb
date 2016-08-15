@@ -1,6 +1,6 @@
 <%= simple_form_for(@user) do |f| %>
   <%= f.error_notification %>
-  
+
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Información básica</a>
@@ -8,8 +8,8 @@
     <li role="presentation">
       <a href="#extra" aria-controls="extra" role="tab" data-toggle="tab">Información Extra</a>
     </li>
-  </ul>  
-  
+  </ul>
+
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="basic">
       <div class="form-inputs" style="width: 40%;padding: 20px 0px">
@@ -18,14 +18,12 @@
         <%= f.input :lastname1, label: false, required: true, placeholder: "Primer apellido" %><br>
         <%= f.input :lastname2, label: false, required: true, placeholder: "Segundo apellido" %><br>
         <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %><br>
-        <%= f.input :avatar, as: :file %>
+        <%= f.input :avatar, as: :file %> <br>
         <%= f.association :branch, prompt: "Selecciona una sede", collection: Branch.all, label:false  %><br>
+
         <p>Elige el rol del usuario:</p>
-        <% for role in User::ROLES %>
-          <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-          <%= label_tag "user_roles_#{role}", role.humanize, class: "mr-20" %>
-        <% end %>
-        <%= hidden_field_tag "user[roles][]", "" %><br><br>
+        <%= f.input :role, label: false, collection: User.roles.keys, label_method: lambda {|k| k.capitalize} %> <br>
+
         <%= f.input :password,label: false, required: true, placeholder: "Contraseña" %><br>
         <%= f.input :password_confirmation,label: false, required: true, placeholder: "Confirmar contraseña" %><br>
       </div>
@@ -37,7 +35,7 @@
         <%= f.input :age, label: false, required: true, placeholder: "Edad" %><br>
         <%= f.input :facebook_username, label: false, required: true, placeholder: "Facebook User" %><br>
         <%= f.input :phone1, label: false, required: true, placeholder: "Teléfono" %><br>
-        <%= f.input :phone2, label: false, required: true, placeholder: "Otro teléfono" %><br>        
+        <%= f.input :phone2, label: false, required: true, placeholder: "Otro teléfono" %><br>
       </div>
     </div>
   </div>
