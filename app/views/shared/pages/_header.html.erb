@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="w-347 pt-7 pull-right">
-          <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">    
+          <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right mt-14">
               <li class="header-arrow">
                 <a href="#" class="dropdown-toggle user-pages" data-toggle=dropdown>
@@ -25,7 +25,10 @@
                   <li>
                     <%= link_to('Code Review', code_review_path, :method => :get) %>
                   </li>
-                  <% if current_user.admin %>
+                  
+                  <!-- Display admin panel link only if the user is not a student -->
+
+                  <% unless current_user.student? %>
                     <li>
                       <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
                     </li>
@@ -33,9 +36,9 @@
                   <li>
                     <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
                   </li>
-                </ul>                
+                </ul>
               </li>
             </ul>
-          </div>  
+          </div>
         </div>
 </div>

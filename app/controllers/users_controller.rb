@@ -1,9 +1,9 @@
 require 'wannabe_bool'
 
 class UsersController < ApplicationController
-  
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_current_user_is_admin
+  before_action :require_admin
 
   layout "admin"
 
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def index
     @branches = Branch.all
     @branch_id = params[:branch_id] != nil ? params[:branch_id] : current_user.branch_id
-    
+
     @students = User.students(@branch_id)
     @admins = User.admins(@branch_id)
     @disables = User.disables(@branch_id)
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def change_user_status
     status = "ok"
     message = "success"
@@ -91,7 +91,7 @@ class UsersController < ApplicationController
       puts exception.backtrace
       status = "fail"
       message = "We could not change user status"
-    end      
+    end
     render :json => { :status => status, :message => message }
   end
 
@@ -103,7 +103,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:code, :dni, :name, :lastname1, :lastname2, 
-      :email, :branch_id, :district, :age,:facebook_username,:phone1,:phone2,:admin,:password, :password_confirmation, :avatar, roles: [])
+      params.require(:user).permit(:code, :dni, :name, :lastname1, :lastname2,
+      :email, :branch_id, :district, :age,:facebook_username,:phone1,:phone2,:password, :password_confirmation, :avatar, :role)
     end
 end

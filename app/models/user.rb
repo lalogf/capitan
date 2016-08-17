@@ -18,7 +18,7 @@ require 'roo'
 #  updated_at                  :datetime         not null
 #  provider                    :string(255)
 #  uid                         :string(255)
-#  admin                       :boolean          default(FALSE)
+#  role                        :role             default(0)
 #  dni                         :string(255)
 #  code                        :string(255)
 #  name                        :string(255)      not null
@@ -42,14 +42,22 @@ require 'roo'
 #
 
 class User < ActiveRecord::Base
-  
+
+  # Adds a enum data type which maps to integers in the users Table
+  # Eventhough enum is simple to use, there are some weird
+  # behaviours when querying.
+  # For more, see  https://hackhands.com/ruby-on-enums-queries-and-rails-4-1/
+
+  # Student maps to 0 in the users table. assistant to 1 and so on
+  # Use user.student! to set the user role to student
+  # user.role => "student"
+  # use user.admin? to check if the user is an admin
+
+  enum role: [:student, :assistant, :teacher, :admin]
+
   #TODO: ESTO DEBE SALIR PORQUE VAMOS A USAR DISCOURSE U OTRO SISTEMA DE COMENTARIOS
   include TheComments::User
-  
-  ROLES = %w[student teacher assistant admin].freeze
 
-  after_initialize :set_default_role
-  
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :branch
   has_many :answers , :dependent => :destroy
@@ -60,30 +68,30 @@ class User < ActiveRecord::Base
   has_many :pages, through: :submissions
   has_many :primary_reviews, :class_name => "Review", :foreign_key => "user_id"
   has_many :secondary_reviews, :class_name => "Review", :foreign_key => "reviewer_id"
-  
-  devise :database_authenticatable, 
+
+  devise :database_authenticatable,
          :registerable,
-         :recoverable, 
-         :rememberable, 
-         :trackable, 
-         :omniauthable, 
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :omniauthable,
          :omniauth_providers => [:github,:facebook]
-  
-  scope :students, -> (branch_id) { where(branch_id: branch_id, admin: 0, disable: 0) }
-  scope :admins, -> (branch_id) { where(branch_id: branch_id, admin: 1, disable: 0) }
+
+  scope :students, -> (branch_id) { where(branch_id: branch_id, role: 0, disable: 0) }
+  scope :admins, -> (branch_id) { where.not(role: 0).where(branch_id: branch_id, disable: 0) }
   scope :students_and_admins, -> (branch_id) { where(branch_id: branch_id, disable:0) }
   scope :disables, -> (branch_id) { where(branch_id: branch_id, disable: 1) }
-  
+
   validates :code, uniqueness: { case_sensitive: false }
-  
-  has_attached_file :avatar, 
+
+  has_attached_file :avatar,
                     :styles => { :menu => "80x80", :navbar => "35x35" },
                     :url => "/system/:class/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension",
                     :default_url => "/system/missing.png"
-                    
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/   
-  
+
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   # TODO: PODER VINCULAR MI CUENTA CON GITHUB, ESTO QUEDO A MEDIAS
   def self.create_from_omniauth(params)
     attributes = {
@@ -94,31 +102,12 @@ class User < ActiveRecord::Base
 
     create(attributes)
   end
-  
-  # MANEJO DE ROLES
-  def set_default_role
-    roles()
-  end  
-  
-  def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
-  end
-  
-  def roles
-    ROLES.reject do |r|
-      ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
-    end
-  end
-  
-  def is?(role)
-    roles.include?(role.to_s)
-  end  
-  
+
   #UTILITARIOS
   def full_name
     return "#{name} #{lastname1} #{lastname2}"
   end
-  
+
   def email_required?
     false
   end
@@ -127,14 +116,14 @@ class User < ActiveRecord::Base
   def self.total_score_by_course(course_id)
     User.select(:id,'courses.id as course_id','sum(answers.points) as score')
     .joins(answers: {page: {unit: :course}})
-    .where('pages.page_type in (?,?) and courses.id = ? and users.admin = 0','editor','questions',course_id)
+    .where('pages.page_type in (?,?) and courses.id = ? and users.role = 0','editor','questions',course_id)
     .group('answers.user_id')
     .order('answers.user_id')
   end
-  
+
   def list_activities_scorables(course_id)
     query = "select tb2.user_id, p.id, p.title, p.points,p.question_points * tb1.questions_per_page as question_points, p.auto_corrector, tb2.score, p.page_type
-             from pages p 
+             from pages p
              join units u on p.unit_id = u.id
              join courses c on u.course_id = c.id
              left join (select p.id as page_id,count(qg.id) as questions_per_page from question_groups qg join pages p on qg.page_id = p.id group by p.id)tb1 on tb1.page_id = p.id
@@ -145,28 +134,28 @@ class User < ActiveRecord::Base
              join units u on p.unit_id = u.id
              join courses c on u.course_id = c.id
              join users us on a.user_id = us.id
-             where p.page_type in ('editor','questions') and c.id = #{course_id} and us.admin = 0 and us.id = #{self.id}
+             where p.page_type in ('editor','questions') and c.id = #{course_id} and us.role = 0 and us.id = #{self.id}
              order by a.user_id, p.page_type)tb2 on tb2.page_id = p.id
              where p.page_type in ('editor','questions') and c.id = #{course_id}"
 
     return ActiveRecord::Base.connection.execute(query)
   end
-  
+
   def calculate_test_time()
     answers = self.answers.order(:created_at)
     return !answers.empty? ? (answers.try(:last).try(:created_at) - answers.try(:first).try(:created_at)) : 0
   end
-  
+
   def getEditorAnswers(course_id)
     Answer.joins(page: {unit: :course}).where("pages.page_type = ? and courses.id = ? and answers.user_id = ? ","editor",course_id,self.id)
   end
-  
+
   def getQuestionsAnswers(course_id,selfLearning)
-    
+
     questionsAnswers = []
     question_ids = []
     option_ids = []
-    
+
     answers = Answer.joins(page: {unit: :course}).where("pages.page_type = ? and pages.selfLearning = ? and courses.id = ? and answers.user_id = ? ","questions",selfLearning ? 1 : 0, course_id,self.id)
     answers.each do |answer|
       parts = answer.result.split(";")
@@ -177,22 +166,22 @@ class User < ActiveRecord::Base
         option_ids << option_id
       end
     end
-    
+
     questionsGroup = Hash[ QuestionGroup.find(question_ids).map{ |q| [q.id,q] } ]
     options = Hash[ Option.find(option_ids).map{ |o| [o.id,o] } ]
-    
+
     answers.each do |answer|
       parts = answer.result.split(";")
       for i in 1...parts.length
         question_id, option_id = parts[i].split("|")
         questionsAnswers << [questionsGroup[question_id.to_i],options[option_id.to_i],answer]
       end
-      
+
     end
-    
+
     return questionsAnswers
   end
-  
+
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file)
     header = spreadsheet.row(1)
@@ -205,8 +194,8 @@ class User < ActiveRecord::Base
         p "USER CODE #{user.code}: #{user.errors.full_messages}"
       end
     end
-  end  
-  
+  end
+
   def self.import_score(file, lesson_id)
     spreadsheet = Roo::Spreadsheet.open(file)
     header = spreadsheet.row(1)
@@ -237,7 +226,7 @@ class User < ActiveRecord::Base
               subm.points = row[index].to_f.round
             end
             if subm.save
-              p "User #{user.code} saved with grade #{row[index].to_f.round}" 
+              p "User #{user.code} saved with grade #{row[index].to_f.round}"
             else
               p "User #{user.code} failed"
             end
@@ -248,7 +237,7 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
+
   def self.import_sprint_scores(file)
     spreadsheet = Roo::Spreadsheet.open(file)
     header = spreadsheet.row(1)
@@ -269,7 +258,7 @@ class User < ActiveRecord::Base
           user_sprint.max_technical_skills = max_technical_skills
           user_sprint.max_soft_skills = max_soft_skills
         else
-          user_sprint = SprintSummary.new(user_id: user.id, sprint_id: sprint_id, total_technical_skills: total_technical_skills, 
+          user_sprint = SprintSummary.new(user_id: user.id, sprint_id: sprint_id, total_technical_skills: total_technical_skills,
             total_soft_skills: total_soft_skills, max_technical_skills: max_technical_skills, max_soft_skills: max_soft_skills)
         end
         if user_sprint.save

@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_current_user_is_admin
-  
+  before_action :require_admin
+
   layout "admin"
 
   # GET /reviews

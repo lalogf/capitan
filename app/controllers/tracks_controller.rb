@@ -1,8 +1,8 @@
 class TracksController < ApplicationController
-  
+
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_current_user_is_admin, except: [:show_user_track, :course_details]
-  
+  before_action :require_admin, except: [:show_user_track, :course_details]
+
   layout "admin", except: [:show_user_track, :course_details]
 
   def index
@@ -11,7 +11,7 @@ class TracksController < ApplicationController
 
   def show
   end
-  
+
   def show_user_track
     @track = Track.find(params[:id] || 1)
     @teachers = [{name: "Giancarlo Corzo", image: "gian.jpg", title: "Full Stack Developer", mail: "gian@laboratoria.la"},
