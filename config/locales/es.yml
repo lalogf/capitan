@@ -12,8 +12,6 @@ es:
               blank: "Ingresa una contraseña válida"
               confirmation: "La contraseña no coincide"
               too_short: "La contraseña es muy corta"
-            password_confirmation:
-              blank: "Por favor confirma la contraseña"
             name:
               blank: "Ingresa tu nombre"
             lastname1:
@@ -21,4 +19,7 @@ es:
             lastname2:
               blank: "Ingresa tu segundo apellido"
             code:
+              blank: "El código laboratoria no puede estar en blanco"
               taken: "El código de usuario ya existe"
+            branch_id:
+              blank: "El código de sucursal laboratoria no puede estar en blanco"

@@ -25,7 +25,6 @@
         <%= f.input :role, label: false, collection: User.roles.keys, label_method: lambda {|k| k.capitalize} %> <br>
 
         <%= f.input :password,label: false, required: true, placeholder: "Contraseña" %><br>
-        <%= f.input :password_confirmation,label: false, required: true, placeholder: "Confirmar contraseña" %><br>
       </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="extra">
