@@ -9,19 +9,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    courses_url
+    show_track_url(1)
   end
 
   def after_sign_up_path_for(resource)
-    courses_url
+    show_track_url(1)
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:dni, :code, :name, :lastname1, :lastname2, :branch_id, :district, :age, :facebook_username,
       :email, :phone1, :phone2, :password)
     end
-    devise_parameter_sanitizer.for(:account_update) do |u|
+    devise_parameter_sanitizer.permit(:account_update) do |u|
       u.permit(:dni, :code, :name, :lastname1, :lastname2, :branch_id, :district, :age, :facebook_username,
         :email, :phone1, :phone2, :password, :current_password)
     end
