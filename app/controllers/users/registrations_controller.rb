@@ -9,11 +9,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    courses_url
+    show_track_url(1)
   end
 
   def after_sign_up_path_for(resource)
-    courses_url
+    show_track_url(1)
   end
 
   def configure_permitted_parameters

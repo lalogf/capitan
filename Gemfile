@@ -17,7 +17,7 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'devise'
+gem 'devise', "4.2.0"
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'less-rails'
