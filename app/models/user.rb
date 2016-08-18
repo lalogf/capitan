@@ -107,7 +107,7 @@ class User < ActiveRecord::Base
 
   #UTILITARIOS
   def full_name
-    return "#{name} #{lastname1} #{lastname2}"
+    "#{name} #{lastname1} #{lastname2}"
   end
 
   def email_required?
@@ -140,7 +140,7 @@ class User < ActiveRecord::Base
              order by a.user_id, p.page_type)tb2 on tb2.page_id = p.id
              where p.page_type in ('editor','questions') and c.id = #{course_id}"
 
-    return ActiveRecord::Base.connection.execute(query)
+    ActiveRecord::Base.connection.execute(query)
   end
 
   def calculate_test_time()
@@ -181,7 +181,7 @@ class User < ActiveRecord::Base
 
     end
 
-    return questionsAnswers
+    questionsAnswers
   end
 
   def self.import(file)
