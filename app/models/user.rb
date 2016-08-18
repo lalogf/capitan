@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
   scope :disables, -> (branch_id) { where(branch_id: branch_id, disable: 1) }
 
   validates :code, presence: true, uniqueness: { case_sensitive: false }
-  validates :password, presence: true
+  validates :password, presence: true, on: :create
   validates :branch_id, presence: true
 
   has_attached_file :avatar,
