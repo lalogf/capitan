@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815200922) do
+ActiveRecord::Schema.define(version: 20160818213411) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -185,11 +185,6 @@ ActiveRecord::Schema.define(version: 20160815200922) do
 
   add_index "pages", ["lesson_id"], name: "index_pages_on_lesson_id", using: :btree
 
-  create_table "pages_videos", id: false, force: :cascade do |t|
-    t.integer "page_id",  limit: 4, null: false
-    t.integer "video_id", limit: 4, null: false
-  end
-
   create_table "question_groups", force: :cascade do |t|
     t.integer  "page_id",     limit: 4
     t.integer  "question_id", limit: 4
@@ -325,13 +320,6 @@ ActiveRecord::Schema.define(version: 20160815200922) do
   add_index "users", ["branch_id"], name: "index_users_on_branch_id", using: :btree
   add_index "users", ["code"], name: "index_users_on_code", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "videos", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "youtube",    limit: 255
-  end
 
   add_foreign_key "answers", "pages"
   add_foreign_key "answers", "users"

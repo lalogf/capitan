@@ -41,7 +41,6 @@
 class Page < ActiveRecord::Base
   include TheComments::Commentable
   belongs_to :lesson
-  has_and_belongs_to_many :videos
   has_many :answers, :dependent => :destroy
   has_many :users, through: :answers
   has_many :question_groups, :dependent => :destroy
