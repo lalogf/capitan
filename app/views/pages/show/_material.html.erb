@@ -38,7 +38,7 @@
   <script>
     $(document).ready(function() {
       CAPITAN.page.show.video.init({
-        /*videoId: "<%#= @page.videos.first.youtube if @page.videos.first != nil %>"*/
+        videoId: "<%= @page.video_url %>"
       });
 
       $(".rewind-video").click(function(e) {

@@ -149,7 +149,7 @@ class PagesController < ApplicationController
       :auto_corrector, :grade, :points, :question_points, :selfLearning,
       :success_message, :instructions, :document, :excercise_instructions,
       :solution_file, :video_solution, :show_solution, :solution_visibility,
-      :show_title,
+      :show_title, :video_url,
       question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
     end
 end
