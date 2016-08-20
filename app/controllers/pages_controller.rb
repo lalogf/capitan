@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
-  
+
   layout "pages", only: [:show]
   layout "admin", except: [:show]
-  
+
   before_action :set_track, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_course, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_unit, except: [:saveAnswer,:saveQuestion, :saveAnswers]
@@ -75,7 +75,7 @@ class PagesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def saveAnswer
     answer = Answer.find_by_page_id_and_user_id(params[:page_id],params[:user_id])
     page = Page.find(params[:page_id])
@@ -86,7 +86,7 @@ class PagesController < ApplicationController
       render :json => { :status => :ok, :message => "success" }
     end
   end
-  
+
   def saveAnswers
     status = "ok"
     message = "success"
@@ -106,12 +106,12 @@ class PagesController < ApplicationController
     end
     render :json => { :status => status, :message => message }
   end
-  
+
   def saveQuestion
     answer = Answer.find_by_page_id_and_user_id(params[:page_id],current_user.id)
     page = Page.find(params[:page_id])
     if answer != nil
-      
+
       questionGroup = page.question_groups.find_by_sequence(params[:sequence].to_i+1)
       if answer.result == nil
         result = "#{questionGroup != nil ? questionGroup.id : "MAX"};#{params[:question_group_id]}|#{params[:option_id]}"
@@ -130,15 +130,15 @@ class PagesController < ApplicationController
     def set_track
       @track = Track.find(params[:track_id])
     end
-    
+
     def set_course
       @course = Course.find(params[:course_id])
     end
-    
+
     def set_unit
       @unit = @course.units.find(params[:unit_id])
     end
-    
+
     def set_lesson
       @lesson = @unit.lessons.find(params[:lesson_id])
     end
@@ -146,11 +146,10 @@ class PagesController < ApplicationController
     def page_params
       params.require(:page).permit(:title, :page_type,:material_type,:sequence, :lesson_id, :html,
       :initial_state, :slide_url,:quiz_url, :solution, :videotip, :load_from_previous,
-      :auto_corrector, :grade, :points, :question_points, :selfLearning, 
+      :auto_corrector, :grade, :points, :question_points, :selfLearning,
       :success_message, :instructions, :document, :excercise_instructions,
-      :solution_file, :video_solution, :show_solution, :solution_visibility, 
-      :show_title, 
-      :video_ids => [],
+      :solution_file, :video_solution, :show_solution, :solution_visibility,
+      :show_title,
       question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
     end
 end

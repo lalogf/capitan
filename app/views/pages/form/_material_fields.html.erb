@@ -1,13 +1,9 @@
 <div data-page-type="material" class="<%= "hidden" if @page.page_type != "material" %>"
     data-page-active="<%= "true" if @page.page_type == "material" %>">
-  <%= f.input :material_type, 
+  <%= f.input :material_type,
       :collection => [['Slide','slide'],['Video','video'],['Blog','blog']] %><br>
-  <div data-material-type="slide" class="<%= "hidden" if @page.material_type != "slide" %>" 
+  <div data-material-type="slide" class="<%= "hidden" if @page.material_type != "slide" %>"
       data-material-active="<%= "true" if @page.material_type == "slide" %>">
       <%= f.input :slide_url %><br>
-  </div>
-  <div data-material-type="video" class="<%= "hidden" if @page.material_type != "video" %>" 
-      data-material-active="<%= "true" if @page.material_type == "video" %>">
-      <%= f.association :videos, as: :check_boxes,label_method: :title  %><br>
   </div>
 </div>

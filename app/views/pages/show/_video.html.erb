@@ -2,16 +2,16 @@
   <script>
     $(document).ready(function() {
       CAPITAN.page.show.video.init({
-        videoId: "<%= @page.videos.first.youtube if @page.videos.first != nil %>"
+        /*videoId: "<%#= @page.videos.first.youtube if @page.videos.first != nil %>"*/
       });
-      
+
       $(".rewind-video").click(function(e) {
           e.preventDefault();
           CAPITAN.page.show.video.rewind();
       });
-      
+
     });
-    
+
     function onYouTubeIframeAPIReady() {
       CAPITAN.page.show.video.onYouTubePlayerAPIReady();
     }

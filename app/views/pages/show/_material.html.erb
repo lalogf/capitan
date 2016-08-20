@@ -1,13 +1,13 @@
 <div class="outer-container <%="hidden" if @page.page_type != "material" %>">
     <div class="inner-container text-center">
         <div id="slide-container" class="<%="hidden" if @page.material_type != "slide" %>">
-            <iframe 
-            src="<%= @page.slide_url %>" 
-            frameborder="0" 
-            width="715" 
-            height="567" 
-            allowfullscreen="true" 
-            mozallowfullscreen="true" 
+            <iframe
+            src="<%= @page.slide_url %>"
+            frameborder="0"
+            width="715"
+            height="567"
+            allowfullscreen="true"
+            mozallowfullscreen="true"
             webkitallowfullscreen="true"></iframe>
         </div>
         <div id="video-container" class="<%="hidden" if @page.material_type != "video" %>">
@@ -31,23 +31,23 @@
             <% end %>
         </div>
     </div>
-</div> 
+</div>
 
 
 <% content_for :scripts do %>
   <script>
     $(document).ready(function() {
       CAPITAN.page.show.video.init({
-        videoId: "<%= @page.videos.first.youtube if @page.videos.first != nil %>"
+        /*videoId: "<%#= @page.videos.first.youtube if @page.videos.first != nil %>"*/
       });
-      
+
       $(".rewind-video").click(function(e) {
           e.preventDefault();
           CAPITAN.page.show.video.rewind();
       });
-      
+
     });
-    
+
     function onYouTubeIframeAPIReady() {
       CAPITAN.page.show.video.onYouTubePlayerAPIReady();
     }
