@@ -41,8 +41,15 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = @lesson.pages.new(page_params)
 
+    # We need @branches defined here in case a validation error occurs
+    # because when we render the `new` action,
+    # _exercise_fields partial needs `@branches`
+    # If we don't define @branches, here then @branches will be nil
+    # in `_exercise_fields`
+
+    @branches = Branch.all
+    @page = @lesson.pages.new(page_params)
     respond_to do |format|
       if @page.save
         format.html { redirect_to [@track,@course,@unit,@lesson], notice: 'Page was successfully created.' }

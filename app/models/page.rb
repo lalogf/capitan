@@ -62,6 +62,7 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :answers
 
   has_attached_file :document
+  validates :video_url, presence: true, if: :is_video_material?
   validates_attachment_content_type :document,
   :content_type => ['application/zip','application/x-zip','application/x-zip-compressed',
                     'application/empty', 'application/octet-stream']
@@ -73,6 +74,11 @@ class Page < ActiveRecord::Base
                     'application/empty', 'application/octet-stream']
 
   before_post_process :skip_for_zip
+
+  # Checks whether the page is of type `video` material type
+  def is_video_material?
+    page_type == "material" and material_type == "video"
+  end
 
   def skip_for_zip
      type = %w(application/x-zip-compressed application/zip application/x-zip)
