@@ -1,25 +1,24 @@
 Rails.application.routes.draw do
 
   authenticate :user do
-    
+
     get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
     get 'tracks/:track_id/courses/:id' => 'courses#show_details', :as => :course_details
     get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:id/' => "lessons#show", :as => :lesson_details
     get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:lesson_id/pages/:id' => "pages#show", :as => :lesson_page_details
-    
-    
+
+
     get 'mycourses/:course_id/u/:unit_id/l/:id' => 'lessons#show', :as => :mycourse_unit_lesson
     get 'mycourses/:course_id/u/:unit_id/l/:lesson_id/p/:id' => 'pages#show', :as => :mycourse_unit_lesson_page
     get 'myprofile' => 'profile#myprofile', :as => :myprofile
     get 'codereview' => 'profile#codereview', :as => :code_review
-    
+
     scope "/admin" do
       resources :questions
-      resources :videos
-      resources :groups      
-      resources :users, except: [:index]  
+      resources :groups
+      resources :users, except: [:index]
       resources :reviews
-      
+
       resources :tracks do
         resources :courses do
           resources :units do
@@ -42,26 +41,26 @@ Rails.application.routes.draw do
       get 'page_visibility' => 'dashboard#page_visibility', :as => :page_visibility
       post 'saveVisibility' => 'dashboard#saveVisibility', :as => :saveVisibility
     end
-    
+
     post 'saveAnswer' => 'pages#saveAnswer'
     post 'saveAnswers' => 'pages#saveAnswers'
     post 'saveQuestion' => 'pages#saveQuestion'
-    
+
     post 'changeUserStatus' => 'users#change_user_status'
-    
+
     # TheComments routes
     concern   :user_comments,  TheComments::UserRoutes.new
     concern   :admin_comments, TheComments::AdminRoutes.new
-    resources :comments, concerns:  [:user_comments, :admin_comments]    
-    
-    root :to => 'tracks#show_user_track'    
-    
+    resources :comments, concerns:  [:user_comments, :admin_comments]
+
+    root :to => 'tracks#show_user_track'
+
   end
-  
+
   get 'editor' => 'editor#video', :as => :video_editor
-  
-  devise_for :users, controllers: { 
-    omniauth_callbacks: 'users/omniauth_callbacks', 
+
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: "users/registrations",
     sessions: "users/sessions" }
 end

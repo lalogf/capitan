@@ -23,3 +23,7 @@ es:
               taken: "El código de usuario ya existe"
             branch_id:
               blank: "El código de sucursal laboratoria no puede estar en blanco"
+        page:
+          attributes:
+            video_url:
+              blank: "URL del video no puede estar en blanco"
