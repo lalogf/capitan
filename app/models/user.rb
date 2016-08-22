@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   include TheComments::User
 
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
-  belongs_to :branch
+  belongs_to :group
   has_many :answers , :dependent => :destroy
   has_many :pages, through: :answers
   has_many :enrollments, :dependent => :destroy
@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
 
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, on: :create
-  validates :branch_id, presence: true
+  validates :group_id, presence: true
 
   has_attached_file :avatar,
                     :styles => { :menu => "80x80", :navbar => "35x35" },

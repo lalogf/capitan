@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820074109) do
+ActiveRecord::Schema.define(version: 20160822230949) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -301,7 +301,6 @@ ActiveRecord::Schema.define(version: 20160820074109) do
     t.string   "facebook_username",           limit: 255
     t.string   "phone1",                      limit: 255
     t.string   "phone2",                      limit: 255
-    t.integer  "branch_id",                   limit: 4
     t.boolean  "disable",                     limit: 1,   default: false
     t.integer  "my_draft_comments_count",     limit: 4,   default: 0
     t.integer  "my_published_comments_count", limit: 4,   default: 0
@@ -316,10 +315,11 @@ ActiveRecord::Schema.define(version: 20160820074109) do
     t.integer  "avatar_file_size",            limit: 4
     t.datetime "avatar_updated_at"
     t.integer  "role",                        limit: 4,   default: 0
+    t.integer  "group_id",                    limit: 4
   end
 
-  add_index "users", ["branch_id"], name: "index_users_on_branch_id", using: :btree
   add_index "users", ["code"], name: "index_users_on_code", unique: true, using: :btree
+  add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "answers", "pages"
@@ -336,5 +336,5 @@ ActiveRecord::Schema.define(version: 20160820074109) do
   add_foreign_key "question_groups", "pages"
   add_foreign_key "question_groups", "questions"
   add_foreign_key "units", "courses"
-  add_foreign_key "users", "branches"
+  add_foreign_key "users", "groups"
 end
