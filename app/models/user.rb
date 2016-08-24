@@ -29,7 +29,7 @@ require 'roo'
 #  facebook_username           :string(255)
 #  phone1                      :string(255)
 #  phone2                      :string(255)
-#  branch_id                   :integer
+#  group_id                   :integer
 #  disable                     :boolean          default(FALSE)
 #  my_draft_comments_count     :integer          default(0)
 #  my_published_comments_count :integer          default(0)
@@ -77,11 +77,6 @@ class User < ActiveRecord::Base
          :omniauthable,
          :omniauth_providers => [:github,:facebook]
 
-  scope :students, -> (branch_id) { where(branch_id: branch_id, role: 0, disable: 0) }
-  scope :admins, -> (branch_id) { where.not(role: 0).where(branch_id: branch_id, disable: 0) }
-  scope :students_and_admins, -> (branch_id) { where(branch_id: branch_id, disable:0) }
-  scope :disables, -> (branch_id) { where(branch_id: branch_id, disable: 1) }
-
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, on: :create
   validates :group_id, presence: true
@@ -112,6 +107,10 @@ class User < ActiveRecord::Base
 
   def email_required?
     false
+  end
+
+  def branch
+    self.group.branch
   end
 
   # METODOS DE CONSULTA PARA EL ADMINISTRADOR

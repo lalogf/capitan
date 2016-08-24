@@ -3,22 +3,22 @@
   padding: 0 0 53px 0;
   width: 100%;
   position: relative;
-  
+
   .btn {
     color: white;
   }
-  
+
   .container {
       margin: 0;
       padding:0;
       max-width: 1920px;
       width: 100%;
   }
-  
+
   #header-navbar .navbar-brand {
     margin-left: 10px;
-  }  
-  
+  }
+
   #header-navbar {
       background-color: #3498db;
       border: 0 none;
@@ -134,11 +134,11 @@
       border-top-color: #fff;
       border-bottom-color: #fff;
   }
-  
+
   #user-left-box {
     padding: 20px 15px;
     background-color: #fff;
-    border-bottom: 1px solid #dce1e4; 
+    border-bottom: 1px solid #dce1e4;
     text-align: center;
   }
   #user-left-box img {
@@ -164,8 +164,8 @@
   #user-left-box .user-box>.status>i {
       color: #2ecc71;
       margin-right: 4px;
-  }  
- 
+  }
+
   .navigation {
     display: table-cell;
     max-width: 240px;
@@ -177,7 +177,7 @@
     z-index: 10;
     background-color: #E8EBF2;
   }
-  
+
   .navigation:before {
     content: "";
     display: block;
@@ -187,24 +187,24 @@
     top: 0px;
     z-index: -1;
     border-right: 1px solid #ccc;
-    background-color: #e8ebf2; 
+    background-color: #e8ebf2;
   }
-  
+
   .content {
       padding: 0;
       position: relative;
       background-color: white;
       display: table-cell;
       width: 100%;
-      z-index: 21;    
+      z-index: 21;
   }
-  
+
   .navigation ul {
       margin: 0;
       padding: 0;
       list-style: none;
   }
-  
+
   .navigation ul li {
       display: block;
       padding: 0;
@@ -213,11 +213,11 @@
       position: relative;
       line-height: 20px;
   }
-  
+
   .navigation ul > li > a:hover {
     background-color: #3498db;
   }
-  
+
   .navigation ul > li > a {
       display: block;
       height: 50px;
@@ -229,13 +229,23 @@
       font-size: 1em;
       text-decoration: none;
   }
-  
+
   .navigation ul > li > a > i {
       display: inline-block;
       vertical-align: middle;
       min-width: 30px;
       text-align: center;
       font-size: 18px;
-      font-weight: normal;  
+      font-weight: normal;
   }
+}
+
+/* styles for admin panel user tabs */
+
+.nav-tabs.user-tabs {
+  margin-top: 20px;
+}
+
+.mr-12 {
+  margin-right: 12px;
 }

@@ -14,4 +14,16 @@ class Branch < ActiveRecord::Base
     has_many :users, through: :groups
     has_many :pages, through: :page_visibility
     has_many :page_visibilities
+
+    def students
+      self.users.where(role: 0, disable: 0)
+    end
+
+    def admins
+      self.users.where.not(role:0).where(disable: 0)
+    end
+
+    def disables
+      self.users.where(disable: 1)
+    end
 end

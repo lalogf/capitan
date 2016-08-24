@@ -21,7 +21,7 @@
       </p>
       <p>
         <strong>Sede:</strong>
-        <%= @user.branch.name %>
+        <%= @branch.name %>
       </p>
       <p>
         <strong>Distrito:</strong>
@@ -46,6 +46,6 @@
     </div>
     <div class="form-actions">
         <%= link_to 'Editar', edit_user_path(@user), :class => "btn btn-primary" %>
-        <%= link_to 'Regresar', users_path, :class => "btn btn-danger" %>            
+        <%= link_to 'Regresar', users_path, :class => "btn btn-danger" %>
     </div>
 </div>

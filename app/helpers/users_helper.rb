@@ -28,7 +28,7 @@
 #  facebook_username           :string(255)
 #  phone1                      :string(255)
 #  phone2                      :string(255)
-#  branch_id                   :integer
+#  group_id                   :integer
 #  disable                     :boolean          default(FALSE)
 #  my_draft_comments_count     :integer          default(0)
 #  my_published_comments_count :integer          default(0)
