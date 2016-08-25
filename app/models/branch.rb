@@ -23,6 +23,10 @@ class Branch < ActiveRecord::Base
       self.users.where.not(role:0).where(disable: 0)
     end
 
+    def students_and_admins
+      self.students.where(disable: 0)
+    end
+
     def disables
       self.users.where(disable: 1)
     end

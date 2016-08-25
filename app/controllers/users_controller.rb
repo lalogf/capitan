@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     # An admin has to belong to a group for the below statement to work properly
 
-    @branch_id = params[:branch_id] || current_user.group.branch_id
+    @branch_id = params[:branch_id] || current_user.branch.id
     @branch = Branch.find(@branch_id)
 
     @groups = @branch.groups
