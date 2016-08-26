@@ -10,12 +10,13 @@ class DashboardController < ApplicationController
 
   def grades
     @branches = Branch.all
-    @branch_id = params[:branch_id] != nil ? params[:branch_id] : current_user.branch_id
+    @branch_id = params[:branch_id] != nil ? params[:branch_id] : current_user.branch.id
+    @branch = Branch.find(@branch_id)
 
     @courses = Course.all
     @courses_points_map = Hash[@courses.map { |course| [course.id,course.get_course_sum_points]}]
 
-    @users = User.students(@branch_id)
+    @users = @branch.students
     @users_score_by_course_map = Hash[@courses.map { |course|
      [course.id, Hash[User.total_score_by_course(course.id).map { |user|
         [user.id, user.score]
@@ -65,9 +66,10 @@ class DashboardController < ApplicationController
 
   def enrollments
     @branches = Branch.all
-    @branch_id = params[:branch_id] != nil ? params[:branch_id] : current_user.branch_id
+    @branch_id = params[:branch_id] != nil ? params[:branch_id] : current_user.branch.id
 
-    @students = User.students_and_admins(@branch_id)
+    @branch = Branch.find(@branch_id)
+    @students = @branch.students_and_admins
     @courses = Course.all
   end
 

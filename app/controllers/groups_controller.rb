@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  
+
   layout "admin"
 
   # GET /groups
@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    respond_to :js
   end
 
   # GET /groups/new

@@ -6,25 +6,25 @@
   <div class="form form-session">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
-    
+
       <div class="form-inputs">
         <%= f.input :dni, label: "DNI", required: true, autofocus: true, placeholder: "DNI", disabled: true %>
         <%= f.input :name, label: "Nombre", required: true, placeholder: "Nombre", disabled: true %>
         <%= f.input :lastname1, label: "Primer Apellido", required: true, placeholder: "Primer apellido", disabled: true %>
         <%= f.input :lastname2, label: "Segundo Apellido", required: true, placeholder: "Segundo apellido", disabled: true %>
         <%= f.input :email,label: "Correo electrónico", required: true, placeholder: "Correo electrónico", disabled: true %>
-        <%= f.association :branch,label: "Sede", prompt: "Selecciona una sede", collection: Branch.all, disabled: true  %>
+        <%= f.association :group, label: false, collection: Branch.all, as: :grouped_select, group_method: :groups %><br>
         <%= f.input :district, label: "Distrito", required: true, placeholder: "Distrito" %>
         <%= f.input :age, label: "Edad", required: true, placeholder: "Edad" %>
         <%= f.input :facebook_username, label: "Usuario de Facebook", required: true, placeholder: "Facebook User" %>
         <%= f.input :phone1, label: "Teléfono", required: true, placeholder: "Teléfono" %>
         <%= f.input :phone2, label: "Otro teléfono", required: true, placeholder: "Otro teléfono" %>
       </div>
-    
+
       <div class="form-actions">
         <%= f.button :submit, "Confirmar Datos", :class => "btn btn-primary" %>
         <%= link_to "Cancelar", destroy_user_session_path, :method => :delete, :class => "btn btn-default btn-danger" %>
       </div>
-    <% end %>    
+    <% end %>
   </div>
 </div>

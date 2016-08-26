@@ -21,8 +21,8 @@ es:
             code:
               blank: "El código laboratoria no puede estar en blanco"
               taken: "El código de usuario ya existe"
-            branch_id:
-              blank: "El código de sucursal laboratoria no puede estar en blanco"
+            group_id:
+              blank: "El nombre del grupo de Laboratoria no puede estar en blanco"
         page:
           attributes:
             video_url:

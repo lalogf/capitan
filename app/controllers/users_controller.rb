@@ -11,16 +11,23 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @branches = Branch.all
-    @branch_id = params[:branch_id] != nil ? params[:branch_id] : current_user.branch_id
 
-    @students = User.students(@branch_id)
-    @admins = User.admins(@branch_id)
-    @disables = User.disables(@branch_id)
+    # An admin has to belong to a group for the below statement to work properly
+
+    @branch_id = params[:branch_id] || current_user.branch.id
+    @branch = Branch.find(@branch_id)
+
+    @groups = @branch.groups
+
+    @students = @branch.students
+    @admins = @branch.admins
+    @disables = @branch.disables
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @branch = @user.branch
   end
 
   # GET /users/new
@@ -104,7 +111,7 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:code, :dni, :name, :lastname1, :lastname2,
-      :email, :branch_id, :district, :age,:facebook_username,:phone1,:phone2,:password,
+      :email, :group_id, :district, :age,:facebook_username,:phone1,:phone2,:password,
       :avatar, :role)
     end
 end
