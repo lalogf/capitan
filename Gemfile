@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
+
 gem 'rails', '4.2.1'
 gem 'mysql2', '~> 0.3.20'
 gem 'sass-rails', '~> 5.0'
