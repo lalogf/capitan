@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829111739) do
+ActiveRecord::Schema.define(version: 20160830102824) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -122,6 +122,14 @@ ActiveRecord::Schema.define(version: 20160829111739) do
   end
 
   add_index "lessons", ["unit_id"], name: "index_lessons_on_unit_id", using: :btree
+
+  create_table "lessons_sprints", id: false, force: :cascade do |t|
+    t.integer "lesson_id", limit: 4
+    t.integer "sprint_id", limit: 4
+  end
+
+  add_index "lessons_sprints", ["lesson_id", "sprint_id"], name: "index_lessons_sprints_on_lesson_id_and_sprint_id", using: :btree
+  add_index "lessons_sprints", ["sprint_id"], name: "fk_rails_a233759b7d", using: :btree
 
   create_table "options", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -339,6 +347,8 @@ ActiveRecord::Schema.define(version: 20160829111739) do
   add_foreign_key "enrollments", "users"
   add_foreign_key "groups", "branches"
   add_foreign_key "lessons", "units"
+  add_foreign_key "lessons_sprints", "lessons"
+  add_foreign_key "lessons_sprints", "sprints"
   add_foreign_key "options", "questions"
   add_foreign_key "page_visibilities", "branches"
   add_foreign_key "page_visibilities", "pages"
