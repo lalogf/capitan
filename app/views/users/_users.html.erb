@@ -16,8 +16,8 @@
         <td><%= link_to user.code, user %></td>
         <td><%= user.full_name %></td>
         <td><%= user.email %></td>
-        <td><%= user.phone1 %></td>
-        <td><%= user.phone2 %></td>
+        <td><%= number_to_phone(user.phone1, delimiter: " ") %></td>
+        <td><%= number_to_phone(user.phone2, delimiter: " ") %></td>
 
         <% if user.disable? %>
           <td><a href="#" class="enable-user" data-user-id="<%= user.id %>">Habilitar</a></td>

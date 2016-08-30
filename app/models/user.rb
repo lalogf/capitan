@@ -110,7 +110,7 @@ class User < ActiveRecord::Base
   end
 
   def branch
-    self.group.branch
+    self.group.branch if group != nil
   end
 
   # METODOS DE CONSULTA PARA EL ADMINISTRADOR
