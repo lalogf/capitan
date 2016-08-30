@@ -1,6 +1,6 @@
 <div class="container-fluid p-20">
   <div class="breadcrumb">
-    <%= link_to "Volver a la lista", courses_path %> / 
+    <%= link_to "Volver al track", track_path(@track) %> / 
     <span><%= @course.name %></span>
   </div>  
   <div class="page-header clearfix">
@@ -8,26 +8,22 @@
   </div>
   <div>
     <p>
-      <strong>Code:</strong>
-      <%= @course.code %>
-    </p>
-    <p>
-      <strong>Name:</strong>
+      <strong>Nombre:</strong>
       <%= @course.name %>
     </p>
     
     <p>
-      <strong>Description:</strong>
+      <strong>Descripción:</strong>
       <%= @course.description %>
     </p>
     <p>
-      <strong>Color:</strong>
-      <%= @course.color %>
+      <strong>Duración:</strong>
+      <%= @course.duration %>
     </p>
   </div>    
   <br><br>
     <div>
-      <%= link_to "Nueva unidad", new_course_unit_path(@course), :class => "btn btn-primary" %>
+      <%= link_to "Nueva unidad", new_track_course_unit_path(@track,@course), :class => "btn btn-primary" %>
     </div>
     <br><br>
   
@@ -35,8 +31,9 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Title</th>
-        <th>Description</th>
+        <th>Nombre Unidad</th>
+        <th>Descripión</th>
+        <th>Duración</th>
         <th></th>
       </tr>
     </thead>
@@ -45,11 +42,12 @@
       <% @course.units.order(:sequence).each do |unit| %>
         <tr>
           <td><%= unit.sequence %></td>
-          <td><%= link_to unit.title, course_unit_path(@course,unit)  %></td>
+          <td><%= link_to unit.title, track_course_unit_path(@track,@course,unit)  %></td>
           <td><%= unit.description %></td>
+          <td><%= unit.duration %></td>
           <td> 
-            <%= link_to 'Editar', edit_course_unit_path(@course,unit) %>  |  
-            <%= link_to 'Eliminar', [@course,unit], method: :delete, data: { confirm: '¿Está seguro?' } %>
+            <%= link_to 'Editar', edit_track_course_unit_path(@track,@course,unit) %>  |  
+            <%= link_to 'Eliminar', [@track,@course,unit], method: :delete, data: { confirm: '¿Está seguro?' } %>
           </td>
         </tr>
       <% end %>

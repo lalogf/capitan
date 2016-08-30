@@ -1,4 +1,8 @@
-<div id="html_fields" class="html_fields" style="<%= (@page.page_type == "html" or @page.page_type == "opener" or @page.page_type == "closer") ? "": "display:none;"%>">
-  <br>
-  <%= f.input :html, as: :text %>
+<div  id="html_fields" 
+      class="html_fields <%= "hidden" if (@page.page_type != "material" and @page.page_type != "prework") or (@page.page_type == "material" and @page.material_type != "blog") %>" 
+      data-page-type="prework" 
+      data-material-type="blog" 
+      data-page-active="<%= "true" if @page.page_type == "prework" %>" 
+      data-material-active="<%= "true" if @page.material_type == "blog" %>">
+  <%= f.input :html, as: :text, class: "editable" %><br>
 </div>

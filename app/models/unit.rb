@@ -12,20 +12,25 @@
 #
 
 class Unit < ActiveRecord::Base
-  
+
   belongs_to :course
-  has_many :pages, :dependent => :destroy
-  
+  has_many :lessons, :dependent => :destroy
+
   def has_pages(branch_id)
-    query = "select count(*) 
+    query = "select count(p.id)
              from pages p
              join units u on p.unit_id = u.id
              join page_visibilities pv on p.id = pv.page_id
-             where u.id = #{self.id} and branch_id = #{branch_id} and pv.status = 1"    
+             where u.id = #{self.id} and branch_id = #{branch_id} and pv.status = 1"
+    true
   end
-  
-  def visible_pages(branch_id)
-    return self.pages.visible_page(branch_id).order(:sequence)
+
+  # def visible_pages(branch_id)
+  #   return self.lessons.visible_page(branch_id).order(:sequence)
+  # end
+
+  def total_points
+    self.lessons.sum(:points)
   end
-  
+
 end

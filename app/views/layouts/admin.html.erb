@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Recursos laboratoria</title>
+  <title>El Capitán</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=> true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
@@ -21,19 +21,18 @@
 
 </head>
 
-<body data-no-turbolink="true">
+<body data-no-turbolink="true" class="dashboard">
   <div class="wrapper">
-    <%= render "shared/header" %>
+    <%= render "shared/admin/header" %>
     <%= bootstrap_flash %>
     <div class="dashboard">
       <div class="navigation">
-        <%= render "shared/admin_menu" %>
+        <%= render "shared/admin/menu" %>
       </div>
       <div class="content">
         <%= yield %>
       </div>
     </div>
-    <%= render "shared/footer" %>
   </div>
   <%= javascript_include_tag 'application' %>
   <%= yield :scripts %>

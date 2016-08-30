@@ -1,0 +1,55 @@
+<div class="outer-container <%="hidden" if @page.page_type != "material" %>">
+    <div class="inner-container text-center">
+        <div id="slide-container" class="<%="hidden" if @page.material_type != "slide" %>">
+            <iframe
+            src="<%= @page.slide_url %>"
+            frameborder="0"
+            width="715"
+            height="567"
+            allowfullscreen="true"
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"></iframe>
+        </div>
+        <div id="video-container" class="<%="hidden" if @page.material_type != "video" %>">
+            <div class="video-overlay" style="display: none;">
+                <% if @course != nil and @unit != nil and @next_lesson != nil and @next_page != nil %>
+                  <%= link_to 'Continuar', lesson_page_details_path(@track,@course,@unit,@next_lesson,@next_page),:class => "btn btn-lg btn-primary" %>
+                <% end %>
+                <br><br>
+                <a href="#" class="rewind-video">
+                  <i class="fa fa-undo fa-2x"></i> Ver de nuevo
+                </a>
+            </div>
+            <div id="video-content"></div>
+        </div>
+        <div id="blog-container" class="<%="hidden" if @page.material_type != "blog" %>">
+          <%= raw @page.html %>
+        </div>
+        <div class="text-center mt-20">
+            <% if @course != nil and @unit != nil and @next_lesson != nil and @next_page != nil %>
+                <%= link_to 'Continuar', lesson_page_details_path(@track,@course,@unit,@next_lesson,@next_page),:class => "btn btn-lg btn-warning" %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+
+<% content_for :scripts do %>
+  <script>
+    $(document).ready(function() {
+      CAPITAN.page.show.video.init({
+        videoId: "<%= @page.video_url %>"
+      });
+
+      $(".rewind-video").click(function(e) {
+          e.preventDefault();
+          CAPITAN.page.show.video.rewind();
+      });
+
+    });
+
+    function onYouTubeIframeAPIReady() {
+      CAPITAN.page.show.video.onYouTubePlayerAPIReady();
+    }
+  </script>
+<% end %>

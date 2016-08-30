@@ -1,17 +1,16 @@
-<div class="content">
-  <div class="center">
-    <h1 class="login-title thin">¡Bienvenida!</h1>
-  </div>
-
-  <div class="form login-form-session">
-    <h4 class="thin mb-20">Ingresa tu código laboratoria para comenzar </h4>
+<div class="container login-container">
+  <h2 class="hidden-xs thin center">ingresa</h2>
+  <div class="hidden-xs separator separator-primary separator-centered"></div>
+  <h4 class="thin pv-21 lh-28 center">Bienvenido al capitán <br>Ingresa a tu cuenta </h4>
+  
+  <div class="container-xs form-container ph-56 pt-21">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :code, label: false, required: false, autofocus: true, placeholder: "Código Laboratoria" %>
         <%= f.input :password, label: false, required: false, :class => "thin", placeholder: "Contraseña" %>
       </div>
       <div class="form-actions mb-20">
-        <%= f.button :submit, "Ingresar", :class => "btn btn-primary" %>
+        <%= f.button :submit, "Ingresar", :class => "btn btn-amarillo-lab btn-block btn-lg" %>
       </div>
     <% end %>
   </div>

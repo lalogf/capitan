@@ -1,18 +1,6 @@
-# == Schema Information
-#
-# Table name: units
-#
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  description :string(255)
-#  course_id   :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  sequence    :integer          default(0)
-#
-
 class UnitsController < ApplicationController
   
+  before_action :set_track
   before_action :set_course 
   
   layout "admin"
@@ -46,7 +34,7 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       if @unit.save
-        format.html { redirect_to [@course,@unit], notice: 'Unit was successfully created.' }
+        format.html { redirect_to [@track,@course,@unit], notice: 'Unit was successfully created.' }
         format.json { render :show, status: :created, location: @unit }
       else
         format.html { render :new }
@@ -61,7 +49,7 @@ class UnitsController < ApplicationController
     respond_to do |format|
       @unit = @course.units.find(params[:id])
       if @unit.update(unit_params)
-        format.html { redirect_to [@course,@unit], notice: 'Unit was successfully updated.' }
+        format.html { redirect_to [@track,@course,@unit], notice: 'Unit was successfully updated.' }
         format.json { render :show, status: :ok, location: @unit }
       else
         format.html { render :edit }
@@ -76,18 +64,23 @@ class UnitsController < ApplicationController
     @unit = @course.units.find(params[:id])
     @unit.destroy
     respond_to do |format|
-      format.html { redirect_to course_units_url(@course), notice: 'Unit was successfully destroyed.' }
+      format.html { redirect_to track_course_units_url(@track,@course), notice: 'Unit was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+  
+    def set_track
+      @track = Track.find(params[:track_id])
+    end
+  
     def set_course
       @course = Course.find(params[:course_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
-      params.require(:unit).permit(:title, :description, :course_id, :sequence)
+      params.require(:unit).permit(:title, :description, :course_id, :sequence, :points, :duration)
     end
 end

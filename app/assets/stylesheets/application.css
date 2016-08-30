@@ -5,10 +5,8 @@
   = require codeMirror/foldgutter
   = require codeMirror/fullscreen
   = require codeMirror/simplescrollbars
-  = require theme
-  = require theme-responsive
   = require pagedown_bootstrap
   = require sweetalert
   = require_self
- 
+  = require main
 */

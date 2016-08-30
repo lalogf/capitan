@@ -12,8 +12,6 @@ es:
               blank: "Ingresa una contraseña válida"
               confirmation: "La contraseña no coincide"
               too_short: "La contraseña es muy corta"
-            password_confirmation:
-              blank: "Por favor confirma la contraseña"
             name:
               blank: "Ingresa tu nombre"
             lastname1:
@@ -21,4 +19,11 @@ es:
             lastname2:
               blank: "Ingresa tu segundo apellido"
             code:
+              blank: "El código laboratoria no puede estar en blanco"
               taken: "El código de usuario ya existe"
+            group_id:
+              blank: "El nombre del grupo de Laboratoria no puede estar en blanco"
+        page:
+          attributes:
+            video_url:
+              blank: "URL del video no puede estar en blanco"

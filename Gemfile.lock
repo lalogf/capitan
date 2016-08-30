@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: c6893c3db02108bcdee7f8f333531b99806779ac
+  revision: d3776ddd0b89d28fdebfd6e1c1541348cc90e5cc
   specs:
     twitter-bootstrap-rails (3.2.2)
       actionpack (>= 3.1)
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/thoughtbot/paperclip-i18n.git
-  revision: b8021c8f86e1fd70834f027cdcd16cf0f48e1da6
+  revision: 79c5f394acaba279134bd5fea1dfce6d372aefe3
   specs:
     paperclip-i18n (4.3.0)
 
@@ -52,17 +52,20 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    annotate (2.7.0)
+    annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
-      rake (~> 10.4)
+      rake (>= 10.4, < 12.0)
     arel (6.0.3)
-    awesome_nested_set (3.0.3)
-      activerecord (>= 4.0.0, < 5)
+    awesome_nested_set (3.1.1)
+      activerecord (>= 4.0.0, < 5.1)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bourbon (4.2.7)
+      sass (~> 3.4)
+      thor (~> 0.19)
     builder (3.2.2)
-    byebug (8.2.5)
+    byebug (9.0.5)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -77,26 +80,24 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
-    devise (4.1.0)
+    devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.0.1)
+    devise-i18n (1.1.0)
     domp (0.0.7)
     erubis (2.7.0)
-    execjs (2.6.0)
+    execjs (2.7.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     figaro (1.1.1)
       thor (~> 0.14)
-    font-awesome-rails (4.6.1.0)
+    font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    haml (4.0.7)
-      tilt
     handlebars_assets (0.23.0)
       execjs (~> 2.0)
       multi_json (~> 1.0)
@@ -105,7 +106,7 @@ GEM
     hashie (3.4.4)
     hirb (0.7.3)
     i18n (0.7.0)
-    jbuilder (2.4.1)
+    jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jquery-rails (4.1.1)
@@ -113,7 +114,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    jwt (1.5.1)
+    jwt (1.5.4)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.7.1)
@@ -126,22 +127,23 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    mime-types (3.0)
+    mime-types (3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0221)
+    mime-types-data (3.2016.0521)
     mimemagic (0.3.0)
-    mini_portile2 (2.0.0)
-    minitest (5.8.4)
-    multi_json (1.12.0)
+    mini_portile2 (2.1.0)
+    minitest (5.9.0)
+    multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.3.20)
+    mysql2 (0.3.21)
     nested_form (0.3.2)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
-    oauth2 (1.1.0)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
+    oauth2 (1.2.0)
       faraday (>= 0.8, < 0.10)
-      jwt (~> 1.0, < 1.5.2)
+      jwt (~> 1.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
@@ -159,12 +161,13 @@ GEM
     orm_adapter (0.5.0)
     pagedown-bootstrap-rails (2.1.2)
       railties (> 3.1)
-    paperclip (4.3.6)
+    paperclip (4.3.7)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pkg-config (1.1.7)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -192,20 +195,20 @@ GEM
       activesupport (= 4.2.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.5.0)
+    rake (11.2.2)
     rdoc (4.2.2)
       json (~> 1.4)
     ref (2.0.0)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
-    roo (2.3.2)
+    roo (2.4.0)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
     ruby-ole (1.2.12)
     rubyzip (1.2.0)
     sass (3.4.22)
-    sass-rails (5.0.4)
-      railties (>= 4.0.0, < 5.0)
+    sass-rails (5.0.5)
+      railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
@@ -218,11 +221,11 @@ GEM
       activemodel (> 4, < 5.1)
     spreadsheet (1.1.2)
       ruby-ole (>= 1.0)
-    spring (1.7.1)
-    sprockets (3.6.0)
+    spring (1.7.2)
+    sprockets (3.6.3)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.0.4)
+    sprockets-rails (3.1.1)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
@@ -237,9 +240,10 @@ GEM
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.2)
-    turbolinks (2.5.3)
-      coffee-rails
+    tilt (2.0.5)
+    turbolinks (5.0.0)
+      turbolinks-source (~> 5)
+    turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -260,14 +264,14 @@ PLATFORMS
 DEPENDENCIES
   annotate
   awesome_nested_set
+  bourbon
   byebug
   coffee-rails (~> 4.1.0)
-  devise
+  devise (= 4.2.0)
   devise-i18n
   domp
   figaro
   font-awesome-rails
-  haml
   handlebars_assets
   hirb
   jbuilder (~> 2.0)
@@ -298,3 +302,6 @@ DEPENDENCIES
   videojs_rails
   wannabe_bool
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.12.5

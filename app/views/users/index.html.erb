@@ -4,7 +4,22 @@
       $("#branches").change(function() {
         document.location = '<%= users_index_url %>/branch/' + this.value;
       });
-      
+
+      // Filter users based on group
+      $("#groups").change(function() {
+        var groupId = this.value; // String
+
+        // Avoid the option `select a group`
+        if(groupId.length > 0) {
+          console.log('AJAX request');
+          var domain = document.location.origin;
+          $.ajax(domain + '/admin/groups/'+ groupId, {
+              type: 'GET'
+          });
+        }
+      });
+
+
       $(".disable-user").click(function(e) {
         e.preventDefault();
         $.post("/changeUserStatus",{
@@ -32,7 +47,7 @@
           }
         });
       });
-      
+
       $(".enable-user").click(function(e) {
         e.preventDefault();
         $.post("/changeUserStatus",{
@@ -59,8 +74,8 @@
             });
           }
         });
-      });      
-      
+      });
+
     });
   </script>
 <% end %>
@@ -71,15 +86,18 @@
       <%= link_to 'Crear Usuario', new_user_path, :class => "btn btn-primary btn-new" %>
     </div>
   </div>
-  <label for="branches">
-    Sedes:
+  <label class="mr-12" for="branches">
+    Sede
     <%= select_tag "branches", options_from_collection_for_select(@branches, "id", "name",@branch_id) %>
   </label>
-  <br>
-  <br>
-  
+  <label class="mr-12" for="groups">
+    Grupo
+    <%= select_tag "groups", options_from_collection_for_select(@groups, :id, :name),
+    prompt: 'Selecciona un grupo' %>
+  </label>
+
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs user-tabs" role="tablist">
     <li role="presentation" class="active">
       <a href="#students" aria-controls="students" role="tab" data-toggle="tab">Estudiantes</a>
     </li>
@@ -90,95 +108,21 @@
       <a href="#disabled" aria-controls="disabled" role="tab" data-toggle="tab">Usuarios Deshabilitados</a>
     </li>
   </ul>
-  
+
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="students">
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Nombres</th>
-            <th>Email</th>
-            <th>Teléfono 1</th>
-            <th>Teléfono 2</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-    
-        <tbody>
-          <% @students.each do |user| %>
-            <tr>
-              <td><%= link_to user.code, user %></td>
-              <td><%= user.full_name %></td>
-              <td><%= user.email %></td>
-              <td><%= user.phone1 %></td>
-              <td><%= user.phone2 %></td>
-              <td><%= link_to 'Editar', edit_user_path(user) %></td>
-              <td><a href="#" class="disable-user" data-user-id="<%= user.id %>">Deshabilitar</a></td>
-              <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <%= render 'users',users: @students %>
     </div>
+
     <div role="tabpanel" class="tab-pane" id="admins">
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Nombres</th>
-            <th>Email</th>
-            <th>Teléfono 1</th>
-            <th>Teléfono 2</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-    
-        <tbody>
-          <% @admins.each do |user| %>
-            <tr>
-              <td><%= link_to user.code, user %></td>
-              <td><%= user.full_name %></td>
-              <td><%= user.email %></td>
-              <td><%= user.phone1 %></td>
-              <td><%= user.phone2 %></td>
-              <td><%= link_to 'Editar', edit_user_path(user) %></td>
-              <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'users', users: @admins %>
     </div>
+
     <div role="tabpanel" class="tab-pane" id="disabled">
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Nombres</th>
-            <th>Email</th>
-            <th>Teléfono 1</th>
-            <th>Teléfono 2</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-    
-        <tbody>
-          <% @disables.each do |user| %>
-            <tr>
-              <td><%= link_to user.code, user %></td>
-              <td><%= user.full_name %></td>
-              <td><%= user.email %></td>
-              <td><%= user.phone1 %></td>
-              <td><%= user.phone2 %></td>
-              <td><a href="#" class="enable-user" data-user-id="<%= user.id %>">Habilitar</a></td>
-              <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'users', users: @disables %>
     </div>
   </div>
-  
-  
+
+
 
 </div>

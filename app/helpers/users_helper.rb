@@ -17,7 +17,7 @@
 #  updated_at                  :datetime         not null
 #  provider                    :string(255)
 #  uid                         :string(255)
-#  admin                       :boolean          default(FALSE)
+#  role                        :integer          default(0)
 #  dni                         :string(255)
 #  code                        :string(255)
 #  name                        :string(255)      not null
@@ -28,7 +28,7 @@
 #  facebook_username           :string(255)
 #  phone1                      :string(255)
 #  phone2                      :string(255)
-#  branch_id                   :integer
+#  group_id                   :integer
 #  disable                     :boolean          default(FALSE)
 #  my_draft_comments_count     :integer          default(0)
 #  my_published_comments_count :integer          default(0)
@@ -37,6 +37,7 @@
 #  published_comcoms_count     :integer          default(0)
 #  deleted_comcoms_count       :integer          default(0)
 #  spam_comcoms_count          :integer          default(0)
+#  roles_mask                  :integer
 #
 
 module UsersHelper

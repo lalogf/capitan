@@ -1,0 +1,161 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS Diner - Where we feast on CSS Selectors!</title>
+    <meta charset='UTF-8'>
+    <script src="assets/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/levels.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/restaurant.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Exo+2:200,400,600,400italic,600italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+
+    <header>
+      CSS Diner
+      <div class="logo">
+        <plate><apple /></plate>
+      </div>
+    </header>
+
+    <div class="col-wrapper bottom-half">
+
+      <div class="left-col">
+
+        <h2 class="order"></h2>
+
+        <div class="note">
+          <h3>¡No te preocupes, tu puedes hacerlo!</h3>
+          <p>
+            Estas a punto de aprender sobre selectores CSS (CSS selectors)!
+            Los selectores sirven para definir a qué elementos aplicarle un estilo determinado.
+          </p>
+
+          <h4>Ejemplo 1 - Una regla CSS</h4>
+
+<pre>
+p {
+   margin-bottom: 12px;
+}
+</pre>
+          <p>Aqúi, la "p" es el selector (selecciona todos los elementos &lt;p&gt;) y aplica el estilo margin-bottom.</p>
+          <p>
+            Para jugar escribe el selector CSS en el editor de abajo y selecciona los elementos correctos en la mesa (table en inglés). Si aciertas avanzaras al siguiente nivel.
+          </p>
+          <p>Pon el mouse sobre los objetos de la mesa para ver las etiquetas HTML que les corresponde.</p>
+          <p>Consigue ayuda en la derecha! &rarr;</p>
+          <a class="note-toggle" href="#">Ok, estoy listo!</a>
+        </div>
+
+        <a class="note-toggle" href="#">Ayuda!</a>
+
+        <div class="game-wrapper">
+          <div class="table-wrapper">
+            <div class="table"></div>
+          </div>
+          <div class="table-edge">
+            <div class="table-leg"></div>
+            <div class="table-leg"></div>
+          </div>
+        </div>
+
+
+
+        <div class="editor">
+
+          <div class="editor-pane">
+            <div class="input-header">
+              <div class="file-name">style.css</div> CSS Editor
+            </div>
+
+          <div class="file-window css-view">
+            <div class="line-numbers">
+              1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20
+            </div>
+              <input class="input-strobe" type="text" placeholder="Escribe un selector CSS"/><span class="plus">+</span><div class="enter-button">enter</div>
+            <div>
+            {<br/>
+            /* Los estilos irian aquí */<br/>
+            }
+            </div>
+            <div class="help">
+              <br/>
+              /* <br/>
+              Escribe un número para saltearte de nivel.<br/>
+              Ej &rarr; "5" para saltearte al nivel 5 <br/>*/
+            </div>
+          </div>
+        </div>
+
+        <div class="editor-pane html-view">
+          <div class="input-header">
+            <div class="file-name">table.html</div>
+            HTML Viewer
+          </div>
+          <div class="file-window">
+            <div class="line-numbers">
+              1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20              </div>
+            <div class="markup">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="what-is-this">
+        <h2>Qué es esto?</h2>
+        <p>Es un pequeño juego para ayudarte a aprender los selectores CSS. Escribe el selector correcto para pasar al siguiente nivel. Consigue ayuda en la derecha</p>
+        <p>Es un trabajo en progreso, así que porfavor dame tus comentarios!</p>
+        <p>
+          Hecho por <a href="http://www.twitter.com/flukeout">@flukeout</a> con gracias especiales para...
+        </p>
+        <p>
+          <a href="https://twitter.com/k88hudson">@k88hudson</a>, <a href="http://www.twitter.com/antlam7">@antlam7</a> and <a href="https://twitter.com/smashman2004">@smashman2004</a>.
+        </p>
+        <p>
+          Traducido al español por <a href="https://github.com/alejandrogarciasalas">@AlejandroGarcíaSalas</a>.
+        </p>
+        <p>
+          Porfavor envia issues, Pull Requests a <a href="https://github.com/flukeout/restaurant">este repositorio de Github</a>.
+        </p>
+      </div>
+
+      </div><!-- /left col -->
+
+      <div class="right-col">
+
+        <div class="help-wrapper">
+          <div class="level-nav">
+            <a href="#">&lt;</a>
+            <a href="#">&gt;</a>
+          </div>
+          <h1 class="level-header"></h1>
+          <div class="level-progress"><div class="progress"></div></div>
+          <div class="display-help">
+
+            <h3 class="selector-name"></h3>
+            <h2 class="title"></h2>
+            <h3 class="syntax"></h3>
+
+            <div class="hint"></div>
+            <div class="examples"></div>
+            <div class="selector"></div>
+          </div>
+        </div>
+
+        <div class="level-menu">
+          <div class="levels"></div>
+        </div>
+
+        <div class="level-menu-toggle-wrapper">
+          <div class="level-menu-toggle"></div>
+        </div>
+
+      </div><!-- /right col -->
+  </div>
+
+  <!-- This is the popup that floats over table elemetns -->
+  <div class="helper"></div>
+  </body>
+</html>

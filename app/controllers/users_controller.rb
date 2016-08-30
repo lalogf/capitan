@@ -1,49 +1,9 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                          :integer          not null, primary key
-#  email                       :string(255)      default("")
-#  encrypted_password          :string(255)      default(""), not null
-#  reset_password_token        :string(255)
-#  reset_password_sent_at      :datetime
-#  remember_created_at         :datetime
-#  sign_in_count               :integer          default(0), not null
-#  current_sign_in_at          :datetime
-#  last_sign_in_at             :datetime
-#  current_sign_in_ip          :string(255)
-#  last_sign_in_ip             :string(255)
-#  created_at                  :datetime         not null
-#  updated_at                  :datetime         not null
-#  provider                    :string(255)
-#  uid                         :string(255)
-#  admin                       :boolean          default(FALSE)
-#  dni                         :string(255)
-#  code                        :string(255)
-#  name                        :string(255)      not null
-#  lastname1                   :string(255)      not null
-#  lastname2                   :string(255)
-#  age                         :integer
-#  district                    :string(255)
-#  facebook_username           :string(255)
-#  phone1                      :string(255)
-#  phone2                      :string(255)
-#  branch_id                   :integer
-#  disable                     :boolean          default(FALSE)
-#  my_draft_comments_count     :integer          default(0)
-#  my_published_comments_count :integer          default(0)
-#  my_comments_count           :integer          default(0)
-#  draft_comcoms_count         :integer          default(0)
-#  published_comcoms_count     :integer          default(0)
-#  deleted_comcoms_count       :integer          default(0)
-#  spam_comcoms_count          :integer          default(0)
-#
-
 require 'wannabe_bool'
 
 class UsersController < ApplicationController
-  
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin
 
   layout "admin"
 
@@ -51,16 +11,23 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @branches = Branch.all
-    @branch_id = params[:branch_id] != nil ? params[:branch_id] : current_user.branch_id
-    
-    @students = User.students(@branch_id)
-    @admins = User.admins(@branch_id)
-    @disables = User.disables(@branch_id)
+
+    # An admin has to belong to a group for the below statement to work properly
+
+    @branch_id = params[:branch_id] || current_user.branch.id
+    @branch = Branch.find(@branch_id)
+
+    @groups = @branch.groups
+
+    @students = @branch.students
+    @admins = @branch.admins
+    @disables = @branch.disables
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @branch = @user.branch
   end
 
   # GET /users/new
@@ -111,7 +78,7 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def change_user_status
     status = "ok"
     message = "success"
@@ -131,7 +98,7 @@ class UsersController < ApplicationController
       puts exception.backtrace
       status = "fail"
       message = "We could not change user status"
-    end      
+    end
     render :json => { :status => status, :message => message }
   end
 
@@ -143,7 +110,8 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:code, :dni, :name, :lastname1, :lastname2, 
-      :email, :branch_id, :district, :age,:facebook_username,:phone1,:phone2,:admin,:password, :password_confirmation)
+      params.require(:user).permit(:code, :dni, :name, :lastname1, :lastname2,
+      :email, :group_id, :district, :age,:facebook_username,:phone1,:phone2,:password,
+      :avatar, :role)
     end
 end

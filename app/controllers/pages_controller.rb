@@ -1,68 +1,26 @@
-# == Schema Information
-#
-# Table name: pages
-#
-#  id                         :integer          not null, primary key
-#  title                      :string(255)
-#  unit_id                    :integer
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
-#  page_type                  :string(255)
-#  sequence                   :integer
-#  instructions               :text(65535)
-#  html                       :text(65535)
-#  initial_state              :text(65535)
-#  solution                   :text(65535)
-#  success_message            :string(255)
-#  videotip                   :string(255)
-#  points                     :integer
-#  question_points            :integer
-#  selfLearning               :boolean          default(FALSE)
-#  load_from_previous         :boolean
-#  auto_corrector             :boolean          default(FALSE)
-#  grade                      :integer          default(0)
-#  slide_url                  :string(255)
-#  document_file_name         :string(255)
-#  document_content_type      :string(255)
-#  document_file_size         :integer
-#  document_updated_at        :datetime
-#  excercise_instructions     :text(65535)
-#  show_solution              :boolean
-#  video_solution             :string(255)
-#  solution_file_file_name    :string(255)
-#  solution_file_content_type :string(255)
-#  solution_file_file_size    :integer
-#  solution_file_updated_at   :datetime
-#  draft_comments_count       :integer          default(0)
-#  published_comments_count   :integer          default(0)
-#  deleted_comments_count     :integer          default(0)
-#  solution_visibility        :string(255)
-#
-
 class PagesController < ApplicationController
-  
+
+  layout "pages", only: [:show]
   layout "admin", except: [:show]
-  
+
+  before_action :set_track, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_course, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_unit, except: [:saveAnswer,:saveQuestion, :saveAnswers]
+  before_action :set_lesson, except: [:saveAnswer,:saveQuestion, :saveAnswers]
 
-  # GET /pages
-  # GET /pages.json
   def index
-    @pages = @unit.pages.all
+    @pages = @lesson.pages.all
   end
 
-  # GET /pages/1
-  # GET /pages/1.json
   def show
-    @page = @unit.pages.find(params[:id])
-    @previous_page = @unit.pages.find_by_sequence(@page.sequence-1)
-    @next_page = @unit.pages.find_by_sequence(@page.sequence+1)
-    @next_unit = @unit
+    @page = @lesson.pages.find(params[:id])
+    @previous_page = @lesson.pages.find_by_sequence(@page.sequence-1)
+    @next_page = @lesson.pages.find_by_sequence(@page.sequence+1)
+    @next_lesson = @lesson
     if @next_page == nil
-      @next_unit = Unit.where("course_id = ? and sequence = ?",@course.id, @unit.sequence+1).first
-      if @next_unit != nil
-        @next_page = @next_unit.pages.first
+      @next_lesson = Lesson.where("unit_id = ? and sequence = ?",@unit.id, @lesson.sequence+1).first
+      if @next_lesson != nil
+        @next_page = @next_lesson.pages.first
       end
     end
     @page.answers.find_or_create_by(page_id: @page.id,user_id: current_user.id)
@@ -71,27 +29,30 @@ class PagesController < ApplicationController
     end
   end
 
-  # GET /pages/new
   def new
     @branches = Branch.all
-    @page = @unit.pages.new
+    @page = @lesson.pages.new
     @page.questions.build
   end
 
-  # GET /pages/1/edit
   def edit
     @branches = Branch.all
-    @page = @unit.pages.find(params[:id])
+    @page = @lesson.pages.find(params[:id])
   end
 
-  # POST /pages
-  # POST /pages.json
   def create
-    @page = @unit.pages.new(page_params)
 
+    # We need @branches defined here in case a validation error occurs
+    # because when we render the `new` action,
+    # _exercise_fields partial needs `@branches`
+    # If we don't define @branches, here then @branches will be nil
+    # in `_exercise_fields`
+
+    @branches = Branch.all
+    @page = @lesson.pages.new(page_params)
     respond_to do |format|
       if @page.save
-        format.html { redirect_to [@course,@unit], notice: 'Page was successfully created.' }
+        format.html { redirect_to [@track,@course,@unit,@lesson], notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new }
@@ -100,13 +61,11 @@ class PagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /pages/1
-  # PATCH/PUT /pages/1.json
   def update
     respond_to do |format|
-      @page = @unit.pages.find(params[:id])
+      @page = @lesson.pages.find(params[:id])
       if @page.update(page_params)
-        format.html { redirect_to [@course,@unit], notice: 'Page was successfully updated.' }
+        format.html { redirect_to [@track,@course,@unit,@lesson], notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
@@ -115,17 +74,15 @@ class PagesController < ApplicationController
     end
   end
 
-  # DELETE /pages/1
-  # DELETE /pages/1.json
   def destroy
-    @page = @unit.pages.find(params[:id])
+    @page = @lesson.pages.find(params[:id])
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to [@course,@unit], notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to [@track,@course,@unit,@lesson], notice: 'Page was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-  
+
   def saveAnswer
     answer = Answer.find_by_page_id_and_user_id(params[:page_id],params[:user_id])
     page = Page.find(params[:page_id])
@@ -136,7 +93,7 @@ class PagesController < ApplicationController
       render :json => { :status => :ok, :message => "success" }
     end
   end
-  
+
   def saveAnswers
     status = "ok"
     message = "success"
@@ -156,12 +113,12 @@ class PagesController < ApplicationController
     end
     render :json => { :status => status, :message => message }
   end
-  
+
   def saveQuestion
     answer = Answer.find_by_page_id_and_user_id(params[:page_id],current_user.id)
     page = Page.find(params[:page_id])
     if answer != nil
-      
+
       questionGroup = page.question_groups.find_by_sequence(params[:sequence].to_i+1)
       if answer.result == nil
         result = "#{questionGroup != nil ? questionGroup.id : "MAX"};#{params[:question_group_id]}|#{params[:option_id]}"
@@ -177,22 +134,29 @@ class PagesController < ApplicationController
   end
 
   private
+    def set_track
+      @track = Track.find(params[:track_id])
+    end
+
     def set_course
       @course = Course.find(params[:course_id])
     end
-    
+
     def set_unit
       @unit = @course.units.find(params[:unit_id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_lesson
+      @lesson = @unit.lessons.find(params[:lesson_id])
+    end
+
     def page_params
-      params.require(:page).permit(:title, :page_type,:sequence, :unit_id, :html,
-      :initial_state, :slide_url, :solution,:videotip,:load_from_previous,
-      :auto_corrector,:grade,:points,:question_points,:selfLearning, 
+      params.require(:page).permit(:title, :page_type,:material_type,:sequence, :lesson_id, :html,
+      :initial_state, :slide_url,:quiz_url, :solution, :videotip, :load_from_previous,
+      :auto_corrector, :grade, :points, :question_points, :selfLearning,
       :success_message, :instructions, :document, :excercise_instructions,
-      :solution_file, :video_solution, :show_solution, :solution_visibility, 
-      :video_ids => [],
+      :solution_file, :video_solution, :show_solution, :solution_visibility,
+      :show_title, :video_url,
       question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
     end
 end

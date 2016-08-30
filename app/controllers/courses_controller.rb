@@ -1,66 +1,37 @@
-# == Schema Information
-#
-# Table name: courses
-#
-#  id                            :integer          not null, primary key
-#  name                          :string(255)
-#  created_at                    :datetime         not null
-#  updated_at                    :datetime         not null
-#  description                   :text(65535)
-#  avatar_file_name              :string(255)
-#  avatar_content_type           :string(255)
-#  avatar_file_size              :integer
-#  avatar_updated_at             :datetime
-#  color                         :string(255)
-#  background_image_file_name    :string(255)
-#  background_image_content_type :string(255)
-#  background_image_file_size    :integer
-#  background_image_updated_at   :datetime
-#  code                          :string(255)
-#
-
 class CoursesController < ApplicationController
-  
-  before_action :set_course, only: [:show, :edit, :update, :destroy,:course_details]
-  before_action :check_if_current_user_is_admin, except: [:course_list, :course_details]
-  
-  layout "admin", except: [:course_list, :course_details]
-  
-  # GET /courses
-  # GET /courses.json
+
+  before_action :set_track
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :show_details]
+  before_action :require_admin, except: [:show_details]
+
+  layout "admin", except: [:show_details]
+
   def index
-    @courses = Course.all
-  end
-  
-  def course_list
-    @courses = Course.available_courses(current_user)
-  end
-  
-  def course_details
+    @courses = @track.courses.all
   end
 
-  # GET /courses/1
-  # GET /courses/1.json
   def show
+     @course = @track.courses.find(params[:id])
   end
 
-  # GET /courses/new
+  def show_details
+    @week_start = 1
+  end
+
   def new
-    @course = Course.new
+    @course = @track.courses.new
   end
 
-  # GET /courses/1/edit
   def edit
+    @course = @track.courses.find(params[:id])
   end
 
-  # POST /courses
-  # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    @course = @track.courses.new(course_params)
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to courses_path, notice: 'Course was successfully created.' }
+        format.html { redirect_to [@track,@course], notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -69,12 +40,11 @@ class CoursesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
+      @course = @track.courses.find(params[:id])
       if @course.update(course_params)
-        format.html { redirect_to courses_path, notice: 'Course was successfully updated.' }
+        format.html { redirect_to [@track,@course], notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -83,9 +53,8 @@ class CoursesController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
+    @course = @track.courses.find(params[:id])
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_path, notice: 'Course was successfully destroyed.' }
@@ -94,13 +63,15 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_track
+      @track = Track.find(params[:track_id])
+    end
+
     def course_params
-      params.require(:course).permit(:name,:description,:avatar,:color,:background_image,:code)
+      params.require(:course).permit(:name,:description,:avatar,:color,:background_image,:code, :points, :course_plan)
     end
 end

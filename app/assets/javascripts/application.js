@@ -30,4 +30,11 @@ $(document).ready(function() {
     $(".alert").fadeTo(4000, 500).slideUp(500, function(){
         $(this).alert('close');
     });
+    $(".header-arrow a").on("click", function(e) {
+        e.preventDefault();
+        var elem = $(this).find(".hide");
+        var elemClass = elem.attr("data-el"); 
+        elem.toggleClass("hide");
+        elem.siblings("." + elemClass).toggleClass("hide");
+    });
 });

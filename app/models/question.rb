@@ -12,6 +12,7 @@ class Question < ActiveRecord::Base
   belongs_to :page
   has_many :options, dependent: :destroy 
   has_many :question_groups,dependent: :destroy
+  has_many :reviews, dependent: :destroy
   validates :description, presence: true
   
   accepts_nested_attributes_for :options, 

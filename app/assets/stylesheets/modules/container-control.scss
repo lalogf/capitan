@@ -1,0 +1,61 @@
+/*
+	Containers-custom
+*/
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+@mixin make-container($gutter: $grid-gutter-width) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+  @include clearfix();
+}
+
+/*
+	Containers-custom
+*/
+.container-fluid {
+	width: 100%;
+}
+
+@media #{$sm-up} {
+	.container-xs,
+	.container-sm,
+	.container-md {
+		padding-left: $container-fluid;
+		padding-right: $container-fluid;
+		margin: 0 auto;
+	}
+	.container-xs {
+		width: $container-xs;
+	}
+	.container-sm {
+		width: $container-sm;
+	}	
+	.container-md {
+		width: $container-md;
+	}	
+}
+@media #{$xs-only} {
+	.container-xs,
+	.container-sm,
+	.container-md {
+		width: 100%;
+		padding-left: $container-fluid;
+		padding-right: $container-fluid;
+		margin: 0 auto;
+	}
+	.container-sm {}	
+	.container-md {}		
+}

@@ -1,0 +1,51 @@
+<div id="user-left-box" class="clearfix hidden-sm hidden-xs">
+	<%= image_tag current_user.avatar.url(:menu) %>
+	<div class="user-box">
+		<span class="name"><%= "#{current_user.name} #{current_user.lastname1}" %></span>
+		<span class="roles"><%= current_user.role.capitalize %></span>
+	</div>
+</div>
+<div class="navigation">
+  <ul>
+      <li>
+        <%= link_to dashboard_path do %>
+          <i class="fa fa-tachometer"></i>Dashboard
+        <% end %>
+      </li>
+      <li>
+        <%= link_to tracks_path do %>
+          <i class="fa fa-book"></i>Tracks
+        <% end %>
+      </li>
+      <li>
+        <%= link_to enrollments_path do %>
+          <i class="fa fa-envelope"></i>Inscripciones
+        <% end %>
+      </li>
+      <li>
+        <%= link_to page_visibility_path do %>
+          <i class="fa fa-binoculars"></i>Visibilidad de páginas
+        <% end %>
+      </li>
+      <li>
+        <%= link_to grades_path do %>
+          <i class="fa fa-table"></i>Notas
+        <% end %>
+      </li>
+      <li>
+        <%= link_to questions_path do %>
+          <i class="fa fa-question-circle"></i>Preguntas
+        <% end %>
+      </li>
+      <li>
+        <%= link_to reviews_path do %>
+          <i class="fa fa-sticky-note"></i>Reviews
+        <% end %>
+      </li>
+      <li>
+        <%= link_to users_path do %>
+        <i class="fa fa-user"></i>Usuarios
+        <% end %>
+      </li>
+  </ul>
+</div>

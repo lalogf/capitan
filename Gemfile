@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
+
 gem 'rails', '4.2.1'
 gem 'mysql2', '~> 0.3.20'
 gem 'sass-rails', '~> 5.0'
@@ -10,9 +12,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'therubyracer'
-# gem 'bcrypt', '~> 3.1.7'
-# gem 'unicorn'
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'byebug'
@@ -20,7 +19,7 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'devise'
+gem 'devise', "4.2.0"
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'less-rails'
@@ -44,8 +43,8 @@ gem 'nokogiri'
 gem 'roo'
 gem 'handlebars_assets'
 gem 'wannabe_bool'
-gem "the_comments", "~> 2.2.1"
+gem 'the_comments', '~> 2.2.1'
 
-gem 'haml'
 gem 'awesome_nested_set'
-gem "figaro"
+gem 'figaro'
+gem 'bourbon'
