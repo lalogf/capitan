@@ -23,9 +23,9 @@
                     <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
                   </li>
                   <li>
-                    <%= link_to('Code Review', code_review_path, :method => :get) %>
+                    <%= link_to('Code Review', codereview_path, :method => :get) %>
                   </li>
-                  
+
                   <!-- Display admin panel link only if the user is not a student -->
 
                   <% unless current_user.student? %>

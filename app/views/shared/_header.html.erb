@@ -34,18 +34,12 @@
                   <%= image_tag "arrow-down.png",alt: "Arrow down", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
                 </a>
                 <ul class="dropdown-menu">
-                  <% unless current_page?(myprofile_path) %>
+                  <li>
+                    <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
+                  </li>
+                  <% unless current_page?(codereview_path) %>
                     <li>
-                      <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
-                    </li>
-                  <% else %>
-                    <li>
-                      <%= link_to('Mis Cursos', root_path, :method => :get) %>
-                    </li>
-                  <% end %>
-                  <% unless current_page?(code_review_path) %>
-                    <li>
-                      <%= link_to('Code Review', code_review_path, :method => :get) %>
+                      <%= link_to('Code Review', codereview_path, :method => :get) %>
                     </li>
                   <% else %>
                     <li>
@@ -54,7 +48,7 @@
                   <% end %>
 
                   <!-- Display admin panel link only if the user is not a student -->
-                  
+
                   <% unless current_user.student? %>
                     <li>
                       <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
