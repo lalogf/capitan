@@ -46,9 +46,6 @@
                       <%= link_to('Mis Cursos', root_path, :method => :get) %>
                     </li>
                   <% end %>
-
-                  <!-- Display admin panel link only if the user is not a student -->
-
                   <% unless current_user.student? %>
                     <li>
                       <%= link_to("Panel de administración", dashboard_path, :method => :get) %>

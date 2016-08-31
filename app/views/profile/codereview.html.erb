@@ -1,5 +1,5 @@
 <% @pages.each do |page| %>
-<section class="container">
+<section class="container minh-600">
   <h3><%= page.lesson.title %></h3>
   <div class="table-responsive">
     <% reviews = Review.where(user_id: current_user.id, page_id: page.id) %>

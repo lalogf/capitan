@@ -1,28 +1,26 @@
 <div class="container-fluid p-20">
     <div class="page-header clearfix">
-      <h1 class="pull-left">Detalle de sprint</h1>
+      <h1 class="pull-left">Detalles del sprint</h1>
     </div>
 
   <p>
-    <strong>Name:</strong>
+    <strong>Nombre:</strong>
     <%= @sprint.name %>
   </p>
 
   <p>
-    <strong>Description:</strong>
+    <strong>Descripción:</strong>
     <%= @sprint.description %>
   </p>
   <p>
-    <strong>Group:</strong>
+    <strong>Grupo:</strong>
     <%= @sprint.group.name %>
   </p>
-
   <p>
-    <strong>Lessons</strong>
+    <strong>Lecciones</strong>
   </p>
-
   <% if @lessons.empty? %>
-    <p> There are no lessons in this sprint </p>
+    <p> No hay lecciones asociadas a este sprint </p>
   <% else %>
     <div class="col-sm-12">
       <% @lessons.each_with_index do |lesson, index| %>
@@ -39,9 +37,7 @@
       <% end %>
     </div>
   <% end %>
-
-
   <div class="form-actions">
-    <%= link_to 'Edit', edit_sprint_path(@sprint), class: 'btn btn-primary' %>
-    <%= link_to 'Back', sprints_path, class: 'btn btn-danger' %>
+    <%= link_to 'Editar', edit_sprint_path(@sprint), class: 'btn btn-primary' %>
+    <%= link_to 'Atrás', sprints_path, class: 'btn btn-danger' %>
   </div>
