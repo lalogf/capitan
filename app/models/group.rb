@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
   belongs_to :branch
   has_many :users
-  has_many :sprints
+  has_many :sprints, dependent: :destroy
 
   def students
     self.users.where(role: 0, disable: 0)

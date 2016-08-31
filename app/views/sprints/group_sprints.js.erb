@@ -1,1 +1,4 @@
-$('#sprints_body').html("<%= j render 'sprints' %>");
+$('#sprints_table').fadeOut(200, function(){
+  $('#sprints_table').fadeIn(100);
+  $('#sprints_body').html("<%= j render 'sprints' %>");
+});

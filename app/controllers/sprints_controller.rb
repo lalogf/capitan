@@ -15,6 +15,7 @@ class SprintsController < ApplicationController
   end
 
   def show
+    @lessons = @sprint.lessons
   end
 
   def group_sprints
