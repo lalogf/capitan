@@ -1,0 +1,22 @@
+<%= simple_form_for(@sprint) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs" style="margin-bottom:20px">
+    <fieldset>
+      <legend>Información general</legend>
+      <%= f.input :name, placeholder: "Ingresa el nombre del sprint", label: false %>
+      <%= f.input :description, placeholder: "Ingresa la descripción", label: false %>
+      <%= f.association :group, collection: Branch.all, as: :grouped_select,
+            group_method: :groups, label: false, :include_blank => "Seleccione un grupo" %>      
+    </fieldset><br>
+    <fieldset>
+      <legend>Lecciones asociadas</legend>
+      <%= f.association :lessons, as: :check_boxes, label: false,
+          checked: @sprint.lesson_ids %>
+    </fieldset>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to 'Cancelar', sprints_path, class: 'btn btn-danger' %>
+  </div>
+<% end %>

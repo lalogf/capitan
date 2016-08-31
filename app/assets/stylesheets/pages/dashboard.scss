@@ -238,6 +238,13 @@
       font-size: 18px;
       font-weight: normal;
   }
+
+  input[type=text],
+  textarea,
+  select {
+    margin-bottom: 10px;
+  }
+
 }
 
 /* styles for admin panel user tabs */
