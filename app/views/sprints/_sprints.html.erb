@@ -5,8 +5,8 @@
       </td>
       <td><%= sprint.description %></td>
       <td> <%= sprint.group.name %></td>
-      <td><%= link_to 'Show', sprint %></td>
-      <td><%= link_to 'Edit', edit_sprint_path(sprint) %></td>
-      <td><%= link_to 'Destroy', sprint, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+      <td><%= link_to 'Mostrar', sprint %></td>
+      <td><%= link_to 'Editar', edit_sprint_path(sprint) %></td>
+      <td><%= link_to 'Eliminar', sprint, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
     </tr>
 <% end %>
