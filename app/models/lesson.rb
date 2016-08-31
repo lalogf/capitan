@@ -2,6 +2,7 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :unit
   has_many :pages, :dependent => :destroy
+  has_and_belongs_to_many :sprints
 
   def has_visible_pages_by_type(branch_id, page_type)
     self.visible_pages_by_type(branch_id, page_type).count > 0

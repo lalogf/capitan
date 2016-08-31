@@ -1,0 +1,47 @@
+<div class="container-fluid p-20">
+    <div class="page-header clearfix">
+      <h1 class="pull-left">Detalle de sprint</h1>
+    </div>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @sprint.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @sprint.description %>
+  </p>
+  <p>
+    <strong>Group:</strong>
+    <%= @sprint.group.name %>
+  </p>
+
+  <p>
+    <strong>Lessons</strong>
+  </p>
+
+  <% if @lessons.empty? %>
+    <p> There are no lessons in this sprint </p>
+  <% else %>
+    <div class="col-sm-12">
+      <% @lessons.each_with_index do |lesson, index| %>
+
+        <!-- To clear columns if one div is taller than other -->
+
+        <% if index % 3 == 0 %>
+          <div class="clearfix visible-sm visible-md visible-lg"></div>
+        <% end %>
+
+        <div class="col-sm-4">
+          <p> <%= lesson.title %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+
+  <div class="form-actions">
+    <%= link_to 'Edit', edit_sprint_path(@sprint), class: 'btn btn-primary' %>
+    <%= link_to 'Back', sprints_path, class: 'btn btn-danger' %>
+  </div>

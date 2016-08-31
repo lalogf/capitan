@@ -1,0 +1,19 @@
+<%= simple_form_for(@sprint) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs" style="margin-bottom:20px">
+    <%= f.input :name %>
+    <%= f.input :description %>
+
+    <p> Seleccione un grupo </p>
+    <%= f.association :group, collection: Branch.all, as: :grouped_select,
+          group_method: :groups, label: false %>
+    <%= f.association :lessons, as: :check_boxes,
+          checked: @sprint.lesson_ids %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to 'Cancelar', sprints_path, class: 'btn btn-danger' %>
+  </div>
+<% end %>

@@ -17,8 +17,8 @@
           <% score = scores.first %>
           <% percent_technical_skills = (score.total_technical_skills / score.max_technical_skills * 100).round(2) %>
           <% percent_soft_skills = (score.total_soft_skills / score.max_soft_skills * 100).round(2) %>
-          <% avg_technical_skills = SprintSummary.where(sprint_id: sprint).average(:total_technical_skills).round(2) %> 
-          <% avg_soft_skills = SprintSummary.where(sprint_id: sprint).average(:total_soft_skills).round(2) %> 
+          <% avg_technical_skills = SprintSummary.where(sprint_id: sprint).average(:total_technical_skills).round(2) %>
+          <% avg_soft_skills = SprintSummary.where(sprint_id: sprint).average(:total_soft_skills).round(2) %>
           <tr>
             <th class="scope">Nivel Técnico</th>
             <td><%= score.total_technical_skills %></td>
