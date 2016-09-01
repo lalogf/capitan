@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: lessons
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  unit_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  sequence    :integer          default(0)
+#  points      :integer
+#  lesson_plan :string(255)
+#
+
 class Lesson < ActiveRecord::Base
 
   belongs_to :unit

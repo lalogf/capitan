@@ -9,6 +9,8 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  sequence    :integer          default(0)
+#  points      :integer
+#  duration    :integer
 #
 
 class Unit < ActiveRecord::Base

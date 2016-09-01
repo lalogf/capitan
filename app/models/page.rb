@@ -4,7 +4,6 @@
 #
 #  id                         :integer          not null, primary key
 #  title                      :string(255)
-#  unit_id                    :integer
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
 #  page_type                  :string(255)
@@ -36,6 +35,11 @@
 #  published_comments_count   :integer          default(0)
 #  deleted_comments_count     :integer          default(0)
 #  solution_visibility        :string(255)
+#  lesson_id                  :integer
+#  material_type              :string(255)
+#  quiz_url                   :string(255)
+#  show_title                 :boolean          default(TRUE)
+#  video_url                  :string(255)
 #
 
 class Page < ActiveRecord::Base

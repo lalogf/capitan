@@ -32,3 +32,11 @@ es:
             group_id:
               blank:
                 'El nombre del grupo no puede estar en blanco'
+        badge:
+          attributes:
+            name:
+              blank:
+                'El nombre del badge no puede estar en blanco'
+            image:
+              blank:
+                'La image no puede quedar en blanco'

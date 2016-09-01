@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       resources :groups
       resources :users, except: [:index]
       resources :reviews
+      resources :badges
+
       resources :sprints do
         get 'group/:group_id' => 'sprints#group_sprints', on: :collection
       end
