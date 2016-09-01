@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: reviews
+#
+#  id          :integer          not null, primary key
+#  page_id     :integer
+#  question_id :integer
+#  answer      :text(65535)
+#  user_id     :integer
+#  reviewer_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Review < ActiveRecord::Base
   belongs_to :page
   belongs_to :question

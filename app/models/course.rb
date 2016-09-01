@@ -17,6 +17,9 @@
 #  background_image_file_size    :integer
 #  background_image_updated_at   :datetime
 #  code                          :string(255)
+#  points                        :integer
+#  track_id                      :integer
+#  course_plan                   :string(255)
 #
 
 class Course < ActiveRecord::Base
