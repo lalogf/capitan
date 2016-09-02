@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902134646) do
+ActiveRecord::Schema.define(version: 20160902145206) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -234,6 +234,21 @@ ActiveRecord::Schema.define(version: 20160902134646) do
   add_index "reviews", ["page_id"], name: "index_reviews_on_page_id", using: :btree
   add_index "reviews", ["question_id"], name: "index_reviews_on_question_id", using: :btree
 
+  create_table "sprint_badges", force: :cascade do |t|
+    t.integer  "sprint_id",  limit: 4
+    t.integer  "badge_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "sprint_badges", ["badge_id"], name: "index_sprint_badges_on_badge_id", using: :btree
+  add_index "sprint_badges", ["sprint_id"], name: "index_sprint_badges_on_sprint_id", using: :btree
+
+  create_table "sprint_badges_users", id: false, force: :cascade do |t|
+    t.integer "sprint_badge_id", limit: 4, null: false
+    t.integer "user_id",         limit: 4, null: false
+  end
+
   create_table "sprint_summaries", force: :cascade do |t|
     t.integer  "user_id",                limit: 4
     t.integer  "sprint_id",              limit: 4
@@ -366,6 +381,8 @@ ActiveRecord::Schema.define(version: 20160902134646) do
   add_foreign_key "pages", "lessons"
   add_foreign_key "question_groups", "pages"
   add_foreign_key "question_groups", "questions"
+  add_foreign_key "sprint_badges", "badges"
+  add_foreign_key "sprint_badges", "sprints"
   add_foreign_key "sprints", "groups"
   add_foreign_key "units", "courses"
   add_foreign_key "users", "groups"

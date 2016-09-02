@@ -79,6 +79,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sprint_params
-      params.require(:sprint).permit(:name, :description, :group_id, lesson_ids: [])
+      params.require(:sprint).permit(:name, :description, :group_id, lesson_ids: [], badge_ids: [])
     end
 end
