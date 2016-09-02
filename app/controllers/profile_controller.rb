@@ -2,6 +2,7 @@ class ProfileController < ApplicationController
 
     def myprofile
         @sprints = SprintSummary.uniq.pluck(:sprint_id)
+        @user = current_user
     end
 
     def codereview
