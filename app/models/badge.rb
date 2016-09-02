@@ -13,6 +13,9 @@
 
 class Badge < ActiveRecord::Base
 
+  has_many :sprint_badges
+  has_many :sprints, through: :sprint_badges
+
   validates :name, presence: true
   validates :image, presence: true
 

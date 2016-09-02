@@ -12,6 +12,8 @@
 
 class Sprint < ActiveRecord::Base
   has_and_belongs_to_many :lessons
+  has_many :badges, through: :sprint_badges
+  has_many :sprint_badges
   belongs_to :group
 
   validates :group_id, presence: true
