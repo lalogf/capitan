@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
 
   #UTILITARIOS
   def full_name
-    "#{name} #{lastname1} #{lastname2}"
+    "#{name} #{lastname1} #{lastname2}".strip
   end
 
   def email_required?
