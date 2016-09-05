@@ -1,23 +1,24 @@
-<%= @user.inspect %>
 <section>
   <div class="container-md pv-56">
     <div class="row">
       <div class="col-sm-5">
         <div class="row">
           <div class="col-sm-4">
-            <%= image_tag @user.avatar.url(:thumb), alt: "coder", class: "img-circle img-responsive", width: "130" %>
+            <%= image_tag @user.avatar.url(:menu), alt: "coder", class: "img-circle img-responsive", width: "130" %>
           </div>
           <div class="col-sm-7">
-            <h3 class="mv-7">
+            <h3 class="mv-7 light name">
               <%= @user.full_name %>
             </h3>
-            <p class="light mb-0 lh-profile">
-              <%= age @user %>
+            <p class="light mb-0 lh-profile description">
+              <%= "#{@user.age} años" %>
             </p>
-            <p class="light lh-profile ">
-              <%= district @user %>
+            <p class="light lh-profile description">
+              <%= @user.branch.name %>
             </p>
-            <p class="thin text-gray-light mb-0 lh-profile">Front-End Developer</p>
+            <p class="mb-0 lh-profile codigo">
+              <%= @user.code %>
+            </p>
           </div>
         </div>
         <div class="mt-56 pr-42-md">
@@ -31,39 +32,17 @@
       <div class="col-sm-6">
         <h4 class="bold mv-7">reconocimientos</h4>
         <div class="hidden-xs mb-7 separator separator-primary separator-left"></div>
-        <div class="row mt-21">
-          <div class="col-sm-2 minh-70 ph-7">
-              <%= image_tag "cuadro.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7">
-              <%= image_tag "tercio.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-        </div>
-        <div class="row mv-35">
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-            <%= image_tag "unicornio.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-            <%= image_tag "agile.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-            <%= image_tag "best.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-              <%= image_tag "agile.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-              <%= image_tag "best.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-              <%= image_tag "code.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-              <%= image_tag "agile.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7">
-              <%= image_tag "best.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
+        <div class="mt-21">
+          <% if @sprint_badges.each do |sprint_badge| %>
+            <% sprint_badge.each do |key,count| %>
+              <div class="col-sm-2 minh-70 ph-7 badge">
+                  <%= image_tag key.image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "70" %>
+                  <div class="badge-count"><p><%= "x#{count}" %></p></div>
+              </div> 
+            <% end %>        
+          <% end.empty? %>
+            <p class="thin">Aún no tienes reconocimientos logrados, <br> ¡Sigue esforzándote!</p>
+          <% end %>
         </div>
       </div>
     </div>

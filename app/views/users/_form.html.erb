@@ -1,48 +1,97 @@
+<% content_for :scripts do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#user_avatar').on('change', function(event) {
+        var files = event.target.files;
+        var image = files[0]
+        var reader = new FileReader();
+        reader.onload = function(file) {
+          var img = new Image();
+          console.log(file);
+          img.src = file.target.result;
+          $('#target').html(img);
+        }
+        reader.readAsDataURL(image);
+        console.log(files);
+      });
+    });
+  </script>
+<% end %>
+
 <%= simple_form_for(@user) do |f| %>
   <%= f.error_notification %>
 
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
-      <a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Información básica</a>
-    </li>
-    <li role="presentation">
-      <a href="#extra" aria-controls="extra" role="tab" data-toggle="tab">Información Extra</a>
-    </li>
-  </ul>
-
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="basic">
-      <div class="form-inputs" style="width: 40%;padding: 20px 0px">
-        <%= f.input :code, label: false, required: true, autofocus: true, placeholder: "Código laboratoria" %><br>
-        <%= f.input :name, label: false, required: true, placeholder: "Nombre" %><br>
-        <%= f.input :lastname1, label: false, required: true, placeholder: "Primer apellido" %><br>
-        <%= f.input :lastname2, label: false, required: true, placeholder: "Segundo apellido" %><br>
-        <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %><br>
-        <%= f.input :avatar, as: :file %> <br>
-        <p> Seleccionar un grupo </p>
-        <%= f.association :group, label: false, collection: Branch.all, as: :grouped_select, group_method: :groups %><br>
-
-        <p>Elige el rol del usuario:</p>
-        <%= f.input :role, label: false, collection: User.roles.keys, label_method: lambda {|k| k.capitalize} %> <br>
-
-        <%= f.input :password,label: false, required: true, placeholder: "Contraseña" %><br>
-      </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Información básica del usuario</div>
+    <div class="panel-body">
+      <%= f.input :code, label: false, required: true, autofocus: true, placeholder: "Código laboratoria" %>
+      <%= f.input :name, label: false, required: true, placeholder: "Nombre" %>
+      <%= f.input :lastname1, label: false, required: true, placeholder: "Primer apellido" %>
+      <%= f.input :lastname2, label: false, required: true, placeholder: "Segundo apellido" %>
+      <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %>
+      <%= f.input :biography, label: false, placeholder: 'Una pequeña biografía' %>
     </div>
-    <div role="tabpanel" class="tab-pane" id="extra">
-      <div class="form-inputs" style="width:40%;padding: 20px 0px">
-        <%= f.input :dni, label: false, required: true, placeholder: "DNI" %><br>
-        <%= f.input :district, label: false, required: true, placeholder: "Distrito" %><br>
-        <%= f.input :age, label: false, required: true, placeholder: "Edad" %><br>
-        <%= f.input :facebook_username, label: false, required: true, placeholder: "Facebook User" %><br>
-        <%= f.input :biography, label: false, placeholder: 'Tell us about yourself' %><br>
-        <%= f.input :phone1, label: false, required: true, placeholder: "Teléfono" %><br>
-        <%= f.input :phone2, label: false, required: true, placeholder: "Otro teléfono" %><br>
-      </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Imagen del usuario</div>
+    <div class="panel-body">
+      <%= f.input :avatar, as: :file, label: false %>
+      <div id="target">
+        <%= image_tag @user.avatar.url(:profile) if @user.avatar.exists? %>  
+      </div>      
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Sede y grupo</div>
+    <div class="panel-body">
+      <%= f.association :group, label: false, collection: Branch.all, as: :grouped_select, group_method: :groups, :include_blank => "Seleccione un grupo" %>    
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Permisos y roles</div>
+    <div class="panel-body">
+      <%= f.input :role, label: false, collection: User.roles.keys, label_method: lambda {|k| k.capitalize} %>   
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Cambiar contraseña</div>
+    <div class="panel-body">
+      <%= f.input :password,label: false, required: true, placeholder: "Nueva contraseña" %>  
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Información de contacto</div>
+    <div class="panel-body">
+      <%= f.input :dni, label: false, required: true, placeholder: "DNI" %>
+      <%= f.input :district, label: false, required: true, placeholder: "Distrito" %>
+      <%= f.input :age, label: false, required: true, placeholder: "Edad" %>
+      <%= f.input :facebook_username, label: false, required: true, placeholder: "Facebook User" %>
+      <%= f.input :phone1, label: false, required: true, placeholder: "Teléfono" %>
+      <%= f.input :phone2, label: false, required: true, placeholder: "Otro teléfono" %>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Badges</div>
+    <div class="panel-body">
+      <% if @user.sprints.each_with_index do |sprint,index| %>
+        <label><%= "#{sprint.name} - #{sprint.description}" %></label>
+        <div style="margin-left:20px">
+          <%= f.association :sprint_badges,
+                          collection: sprint.sprint_badges, 
+                          as: :check_boxes, 
+                          label: false,
+                          label_method: :badge_name %>          
+        </div>
+        <hr>
+      <% end.empty? %>
+        <p>El grupo del usuario no tiene ningún sprint</p>
+      <% end %>
     </div>
   </div>
 
+
   <div class="form-actions">
-    <%= f.button :submit, :class => "btn btn-primary" %>
+    <%= f.button :submit,"Actualizar", :class => "btn btn-primary" %>
     <%= link_to 'Cancelar', users_path, :class => "btn btn-danger" %>
   </div>
 <% end %>

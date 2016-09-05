@@ -3,30 +3,28 @@
       <h1 class="pull-left">Detalles del sprint</h1>
     </div>
 
-  <p>
-    <strong>Nombre:</strong>
-    <%= @sprint.name %>
-  </p>
+  <div class="panel panel-default">
+    <div class="panel-heading">Información general</div>
+    <div class="panel-body">
+      <p>
+        <strong>Nombre:</strong>
+        <%= @sprint.name %>
+      </p>
 
-  <p>
-    <strong>Descripción:</strong>
-    <%= @sprint.description %>
-  </p>
-  <p>
-    <strong>Grupo:</strong>
-    <%= @sprint.group.name %>
-  </p>
-  <p>
-    <strong>Lecciones</strong>
-  </p>
-  <% if @lessons.empty? %>
-    <p> No hay lecciones asociadas a este sprint </p>
-  <% else %>
-    <div class="col-sm-12">
-      <% @lessons.each_with_index do |lesson, index| %>
-
-        <!-- To clear columns if one div is taller than other -->
-
+      <p>
+        <strong>Descripción:</strong>
+        <%= @sprint.description %>
+      </p>
+      <p>
+        <strong>Grupo:</strong>
+        <%= @sprint.group.name %>
+      </p>      
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Lecciones</div>
+    <div class="panel-body">
+      <% if @lessons.each_with_index do |lesson, index| %>
         <% if index % 3 == 0 %>
           <div class="clearfix visible-sm visible-md visible-lg"></div>
         <% end %>
@@ -34,9 +32,25 @@
         <div class="col-sm-4">
           <p> <%= lesson.title %></p>
         </div>
+      <% end.empty? %>
+        <p> No hay lecciones asociadas a este sprint </p>
       <% end %>
     </div>
-  <% end %>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Badges disponibles en este sprint</div>
+    <div class="panel-body">
+      <% if @sprint.badges.each do |badge| %>
+        <%= image_tag badge.image.url(:normal) %>
+      <% end.empty? %>
+        <p> No hay badges asociados a este sprint </p>
+      <% end %>
+
+    </div>
+  </div>
+
+
   <div class="form-actions">
     <%= link_to 'Editar', edit_sprint_path(@sprint), class: 'btn btn-primary' %>
     <%= link_to 'Atrás', sprints_path, class: 'btn btn-danger' %>
