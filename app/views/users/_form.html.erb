@@ -37,7 +37,7 @@
     <div class="panel-body">
       <%= f.input :avatar, as: :file, label: false %>
       <div id="target">
-        <%= image_tag @user.avatar.url(:normal) if @user.avatar.exists? %>  
+        <%= image_tag @user.avatar.url(:profile) if @user.avatar.exists? %>  
       </div>      
     </div>
   </div>

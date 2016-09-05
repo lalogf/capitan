@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
   has_many :pages, through: :submissions
   has_many :primary_reviews, :class_name => "Review", :foreign_key => "user_id"
   has_many :secondary_reviews, :class_name => "Review", :foreign_key => "reviewer_id"
-  has_and_belongs_to_many :sprint_badges
+  has_and_belongs_to_many :sprint_badges, :dependent => :destroy
 
   devise :database_authenticatable,
          :registerable,
@@ -88,10 +88,10 @@ class User < ActiveRecord::Base
   validates :group_id, presence: true
 
   has_attached_file :avatar,
-                    :styles => { :menu => "80x80", :navbar => "35x35" },
+                    :styles => { :profile => "128x128", :menu => "80x80", :navbar => "35x35" },
                     :url => "/system/:class/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension",
-                    :default_url => "/system/missing.png"
+                    :default_url => (self.student ? "/alumna.png" : "profesor.png") 
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
@@ -251,7 +251,6 @@ class User < ActiveRecord::Base
 
   def self.import_sprint_scores(file)
     spreadsheet = Roo::Spreadsheet.open(file)
-    header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = spreadsheet.row(i)
       user = User.where(code: row[0]).first

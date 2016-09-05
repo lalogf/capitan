@@ -3,6 +3,7 @@ class ProfileController < ApplicationController
     def myprofile
         @sprints = SprintSummary.uniq.pluck(:sprint_id)
         @user = current_user
+        @sprint_badges = @user.sprint_badges.group_by(&:badge).map { |key,value| {key => value.size} }
     end
 
     def codereview
