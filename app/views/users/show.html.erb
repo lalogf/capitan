@@ -1,56 +1,85 @@
 <div class="container-fluid p-20">
     <div class="page-header clearfix">
-        <h1 class="pull-left">Detalle de usuario</h1>
+        <h2 class="pull-left"><%= @user.full_name %> <small>(<%= @user.role %>)</small></h2>
     </div>
-    <div>
-      <p>
-        <strong>Código:</strong>
-        <%= @user.code %>
-      </p>
-      <p>
-        <strong>DNI:</strong>
-        <%= @user.dni %>
-      </p>
-      <p>
-        <strong>Nombres:</strong>
-        <%= @user.full_name %>
-      </p>
-      <p>
-        <strong>Email:</strong>
-        <%= @user.email %>
-      </p>
-      <p>
-        <strong>Sede:</strong>
-        <%= @branch.name %>
-      </p>
-      <p>
-        <strong>Distrito:</strong>
-        <%= @user.district %>
-      </p>
-      <p>
-        <strong>Edad:</strong>
-        <%= @user.age %>
-      </p>
-      <p>
-        <strong>Usuario de Facebook:</strong>
-        <%= @user.facebook_username %>
-      </p>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Información básica
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Código:</strong>
+          <%= @user.code %>
+        </p>
+        <p>
+          <strong>Sede / Grupo:</strong>
+          <%= @user.branch.name %> / <%= @user.group.name %>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </p>
+        <p>
+          <strong>Biography:</strong>
+          <%= @user.biography %>
+        </p>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Imágen del usuario
+      </div>
+      <div class="panel-body">
+        <%= image_tag @user.avatar.url(:menu) %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Información complementaria
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Dni:</strong>
+          <%= @user.dni %>
+        </p>
+        <p>
+          <strong>Distrito:</strong>
+          <%= @user.district %>
+        </p>
+        <p>
+          <strong>Edad:</strong>
+          <%= @user.age %>
+        </p>
+        <p>
+          <strong>Facebook Username:</strong>
+          <%= @user.facebook_username %>
+        </p>
+        <p>
+          <strong>Teléfonos:</strong>
+          <%= "#{@user.phone1} / #{@user.phone2}"  %>
+        </p>        
+      </div>
+    </div>    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Badges del usuario
+      </div>
+      <div class="panel-body">
 
-      <p>
-        <strong>Biography:</strong>
-        <%= @user.biography %>
-      </p>
-      <p>
-        <strong>Teléfono 1:</strong>
-        <%= @user.phone1 %>
-      </p>
-      <p>
-        <strong>Teléfono 2:</strong>
-        <%= @user.phone2 %>
-      </p>
+        <% if @user.sprint_badges != nil %>
+          <% @user.sprint_badges.group_by(&:sprint).each do |sprint,sprint_badges| %>
+            <h5><%= "#{sprint.name} - #{sprint.description}" %></h5>
+            <% sprint_badges.each do |sprint_badge| %>
+              <%= image_tag sprint_badge.badge.image.url(:normal) %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>El usuario no tiene ningún badge asignado</p>
+        <% end %>
+      </div>
     </div>
     <div class="form-actions">
-        <%= link_to 'Editar', edit_user_path(@user), :class => "btn btn-primary" %>
+          <%= link_to "Editar", edit_user_path(@user), :class => "btn btn-primary" %>
         <%= link_to 'Regresar', users_path, :class => "btn btn-danger" %>
     </div>
 </div>

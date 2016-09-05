@@ -1,4 +1,3 @@
-<%= @user.inspect %>
 <section>
   <div class="container-md pv-56">
     <div class="row">
@@ -32,38 +31,11 @@
         <h4 class="bold mv-7">reconocimientos</h4>
         <div class="hidden-xs mb-7 separator separator-primary separator-left"></div>
         <div class="row mt-21">
-          <div class="col-sm-2 minh-70 ph-7">
-              <%= image_tag "cuadro.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7">
-              <%= image_tag "tercio.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-        </div>
-        <div class="row mv-35">
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-            <%= image_tag "unicornio.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-            <%= image_tag "agile.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-            <%= image_tag "best.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-              <%= image_tag "agile.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-              <%= image_tag "best.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-              <%= image_tag "code.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7 mb-21">
-              <%= image_tag "agile.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
-          <div class="col-sm-2 minh-70 ph-7">
-              <%= image_tag "best.png",alt: "coder", class: "img-circle img-responsive", width: "90" %>
-          </div>
+          <% @user.sprint_badges.each do |sprint_badge| %>
+            <div class="col-sm-2 minh-70 ph-7">
+                <%= image_tag sprint_badge.badge.image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "70" %>
+            </div>          
+          <% end %>
         </div>
       </div>
     </div>

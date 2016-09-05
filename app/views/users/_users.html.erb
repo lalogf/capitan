@@ -20,15 +20,31 @@
         <td><%= number_to_phone(user.phone2, delimiter: " ") %></td>
 
         <% if user.disable? %>
-          <td><a href="#" class="enable-user" data-user-id="<%= user.id %>">Habilitar</a></td>
+          <td>
+            <a href="#" class="enable-user" data-user-id="<%= user.id %>">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </a>
+          </td>
         <% else %>
-          <td><%= link_to 'Editar', edit_user_path(user) %></td>
+          <td>
+            <%= link_to edit_user_path(user) do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %>  
+          </td>
         <% end %>
 
         <% if user.student? && !user.disable? %>
-          <td><a href="#" class="disable-user" data-user-id="<%= user.id %>">Deshabilitar</a></td>
+          <td>
+            <a href="#" class="disable-user" data-user-id="<%= user.id %>">
+              <i class="fa fa-ban" aria-hidden="true"></i>
+            </a>
+          </td>
         <% end %>
-        <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+        <td>
+          <%= link_to user, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>  
+        </td>
       </tr>
     <% end %>
   </tbody>

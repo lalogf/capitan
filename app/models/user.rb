@@ -43,6 +43,7 @@ require 'roo'
 #  avatar_updated_at           :datetime
 #  role                        :integer          default(0)
 #  group_id                    :integer
+#  biography                   :text(65535)
 #
 
 class User < ActiveRecord::Base
@@ -72,6 +73,7 @@ class User < ActiveRecord::Base
   has_many :pages, through: :submissions
   has_many :primary_reviews, :class_name => "Review", :foreign_key => "user_id"
   has_many :secondary_reviews, :class_name => "Review", :foreign_key => "reviewer_id"
+  has_and_belongs_to_many :sprint_badges
 
   devise :database_authenticatable,
          :registerable,
@@ -115,6 +117,10 @@ class User < ActiveRecord::Base
 
   def branch
     self.group.branch if group != nil
+  end
+
+  def sprints
+    self.group.sprints if group != nil
   end
 
   # METODOS DE CONSULTA PARA EL ADMINISTRADOR

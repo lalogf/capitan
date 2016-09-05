@@ -9,6 +9,7 @@
 #  image_content_type :string(255)
 #  image_file_size    :integer
 #  image_updated_at   :datetime
+#  name               :string(255)
 #
 
 class Badge < ActiveRecord::Base
