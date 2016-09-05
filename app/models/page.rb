@@ -58,6 +58,8 @@ class Page < ActiveRecord::Base
 
   scope :visible_page, -> (branch_id) { joins(:page_visibilities).where('page_visibilities.status = ? and page_visibilities.branch_id = ? ', true, branch_id) }
 
+  scope :with_points, -> { where.not(page_type: %w[material score solution]) }
+
 
   accepts_nested_attributes_for :question_groups,
                                  reject_if: proc { |attributes| attributes['sequence'].blank? },
