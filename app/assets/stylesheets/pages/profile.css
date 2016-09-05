@@ -877,3 +877,40 @@
 .c100.orange.dark:hover > span {
   color: #e08833;
 }
+/** End of CSS Percentage Circle **/
+
+.font-big {
+  font-size: 25px;
+}
+
+.gray-29 {
+  color: #4a4a4a;
+}
+
+.sprint-name {
+  font-weight: 500;
+}
+
+.sprint-dropdown {
+  text-align: right;
+}
+
+.sprint-dropdown > li> a {
+  font-weight: 300;
+}
+
+.sprint-dropdown > li> a:hover {
+  color: #fff;
+}
+
+.c100 > span {
+  color: #4a4a4a;
+}
+
+.score {
+  font-size: 18px;
+}
+
+.book.gray-29 {
+  font-weight: 500;
+}

@@ -5,15 +5,15 @@
     este es el detalle de tu avance hasta ahora en el
       <span class="dropdown header-arrow">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="text-uppercase bold">
-              <%= @sprint.name %>
+            <span class="text-uppercase sprint-name gray-29">
+              <%= "Sprint #{@sprint_index}" %>
             </span>
             <%= image_tag "arrow-up.png",alt: "Arrow up", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
             <%= image_tag "arrow-down.png",alt: "Arrow down", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
           </a>
-          <ul class="dropdown-menu">
-            <% @sprints.each_with_index do |sprint| %>
-              <li> <%= link_to sprint.name, '#', class: 'text-uppercase' %> </li>
+          <ul class="dropdown-menu sprint-dropdown">
+            <% @sprints.each_with_index do |sprint, index| %>
+              <li> <%= link_to "Sprint #{index+1}", '#', class: 'text-uppercase font-big' %> </li>
             <% end %>
           </ul>
       </span>
@@ -25,9 +25,9 @@
     <div class="col-md-6 pv-49 ph-35">
       <div class="row pl-70-md">
         <div class="col-sm-12">
-          <div class="c100 p80 big orange">
+          <div class="c100 big orange <%= "p#{percentage(@max_student_points, @max_total_points).round }"%>">
             <span>
-              <%= ((@max_student_points / @max_total_points.to_f) * 100 ).round(1) %>
+              <%= "#{percentage(@max_student_points, @max_total_points).round(1)}%" %>
             </span>
             <div class="slice">
               <div class="bar"></div>
@@ -38,8 +38,9 @@
       </div>
       <div class="row">
         <div class="col-sm-5 col-sm-offset-3 text-center">
-          <p>
-            <span class="book"><%= @max_student_points %>/</span>
+          <p class="score">
+            <span class="book gray-29"><%= @max_student_points %></span>
+            <span class="slash">/</span>
             <span class="thin h4"><%= @max_total_points %></span>
           </p>
           <h4 class="light">puntos</h4>
@@ -69,14 +70,16 @@
           style: {
             color: '#888',
             textAlign: 'center',
-            fontSize: '20px'
+            fontSize: '20px',
+            fontFamily: "museo-sans"
           }
         },
         credits: {
           enabled: false
        },
         tooltip: {
-          pointFormat: '{series.name}: <b>{point.student_marks}/{point.y}</b>'
+          pointFormat: '{series.name}: <b>{point.student_marks}</b>/{point.y}',
+          fontFamily: "museo-sans"
         },
         plotOptions: {
           pie: {
@@ -84,8 +87,11 @@
               enabled: true,
               distance: 25,
               style: {
-                color: '#999',
-                textShadow: 0
+                color: '#4a4a4a',
+                textShadow: 0,
+                fontSize: '14px',
+                fontFamily: "museo-sans",
+                fontWeight: 300
               }
             },
             center: ['50%', '55%']
@@ -94,7 +100,7 @@
         series: [{
           type: 'pie',
           name: "Quizzes",
-          innerSize: '60%',
+          innerSize: '80%',
           data: <%= raw @data.to_json %>,
           color: '#222',
           animation: {

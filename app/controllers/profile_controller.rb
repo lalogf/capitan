@@ -6,6 +6,9 @@ class ProfileController < ApplicationController
         @sprints = current_user.group.sprints
         @sprint = @sprints.first
 
+        # we need this in case if a AJAX request is received
+        @sprint_index = @sprints.index(@sprint) + 1
+
         @maximum_points = capitalize_page_type(@sprint.total_points)
         @student_points = @sprint.student_points(current_user.id)
         @student_points = capitalize_page_type(@student_points)
