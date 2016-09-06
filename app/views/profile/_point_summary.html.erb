@@ -13,7 +13,7 @@
           </a>
           <ul class="dropdown-menu sprint-dropdown">
             <% @sprints.each_with_index do |sprint, index| %>
-              <li> <%= link_to "Sprint #{index+1}", '#', class: 'text-uppercase font-big' %> </li>
+              <li> <%= link_to "Sprint #{index+1}", myprofile_path(sprint.id), remote: true, class: 'text-uppercase font-big' %> </li>
             <% end %>
           </ul>
       </span>
@@ -25,9 +25,10 @@
     <div class="col-md-6 pv-49 ph-35">
       <div class="row pl-70-md">
         <div class="col-sm-12">
-          <div class="c100 big orange <%= "p#{percentage(@max_student_points, @max_total_points).round }"%>">
+          <% student_percent = percent(@max_student_points, @max_total_points) %>
+          <div class="c100 big orange <%= "p#{ student_percent.round }"%>">
             <span>
-              <%= "#{percentage(@max_student_points, @max_total_points).round(1)}%" %>
+              <%= "#{ student_percent.round(1) }%" %>
             </span>
             <div class="slice">
               <div class="bar"></div>
@@ -52,74 +53,8 @@
 
 <% content_for :scripts do %>
   <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/no-data-to-display.js"></script>
   <script>
-    $(function () {
-      $('#container').highcharts({
-        chart: {
-          plotBackgroundColor: "#fcfcfc",
-          plotBorderWidth: 0,
-          plotShadow: false,
-          backgroundColor: "#fcfcfc",
-        },
-        title: {
-          text: '<div style="color:#444;font-size:24px"><%= @max_student_points %></div>puntos',
-          align: 'center',
-          verticalAlign: 'middle',
-          useHTML: true,
-          y: 10,
-          style: {
-            color: '#888',
-            textAlign: 'center',
-            fontSize: '20px',
-            fontFamily: "museo-sans"
-          }
-        },
-        credits: {
-          enabled: false
-       },
-        tooltip: {
-          pointFormat: '{series.name}: <b>{point.student_marks}</b>/{point.y}',
-          fontFamily: "museo-sans"
-        },
-        plotOptions: {
-          pie: {
-            dataLabels: {
-              enabled: true,
-              distance: 25,
-              style: {
-                color: '#4a4a4a',
-                textShadow: 0,
-                fontSize: '14px',
-                fontFamily: "museo-sans",
-                fontWeight: 300
-              }
-            },
-            center: ['50%', '55%']
-          }
-        },
-        series: [{
-          type: 'pie',
-          name: "Quizzes",
-          innerSize: '80%',
-          data: <%= raw @data.to_json %>,
-          color: '#222',
-          animation: {
-            duration: 1500,
-            easing: 'easeOutBounce'
-          }
-        }]
-      });
-
-      var chart = $('#container').highcharts();
-      var colors = ['#66B26D', '#4790C8', '#E2BA39',
-                    '#D2813A', '#CD5C48', '#795299',
-                    '#AC4937','#E09A37', '#BE5E29'
-                  ];
-      var i = 0;
-      chart.series[0].data.forEach(function(data){
-        data.update({color: colors[i]});
-        i++;
-      });
-    });
+    <%= render 'highchart.js.erb' %>
   </script>
 <% end %>

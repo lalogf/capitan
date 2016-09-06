@@ -14,4 +14,8 @@ module ProfileHelper
   def percentage(scored, total)
     (scored / total.to_f) * 100
   end
+
+  def percent(scored, total)
+    (scored.zero? or total.zero?) ? 0 : percentage(scored, total)
+  end
 end

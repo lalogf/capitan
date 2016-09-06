@@ -3,15 +3,15 @@ class ProfileController < ApplicationController
     def myprofile
         # @sprints = SprintSummary.uniq.pluck(:sprint_id)
         @user = current_user
-        @sprints = current_user.group.sprints
-        @sprint = @sprints.first
-
+        @sprints = current_user.group.sprints # can be empty if the user doesn't have any sprints and cause a bug(need to address this)
+        @sprint = params[:sprint_id].present? ? Sprint.find(params[:sprint_id]) : @sprints.first
+        
         # we need this in case if a AJAX request is received
         @sprint_index = @sprints.index(@sprint) + 1
 
-        @maximum_points = capitalize_page_type(@sprint.total_points)
+        @maximum_points = capitalize_page_type(@sprint.total_points) # can be an empty array
         @student_points = @sprint.student_points(current_user.id)
-        @student_points = capitalize_page_type(@student_points)
+        @student_points = capitalize_page_type(@student_points) # can be an empty array
 
         @max_total_points, @max_student_points = 0, 0
         @data = []
@@ -29,6 +29,11 @@ class ProfileController < ApplicationController
 
           @max_total_points = sum_points(@data, :y)
           @max_student_points = sum_points(@data, :student_marks)
+        end
+
+        respond_to do |format|
+          format.html
+          format.js
         end
     end
 
