@@ -18,7 +18,6 @@ require 'roo'
 #  updated_at                  :datetime         not null
 #  provider                    :string(255)
 #  uid                         :string(255)
-#  role                        :role             default(0)
 #  dni                         :string(255)
 #  code                        :string(255)
 #  name                        :string(255)      not null
@@ -29,7 +28,6 @@ require 'roo'
 #  facebook_username           :string(255)
 #  phone1                      :string(255)
 #  phone2                      :string(255)
-#  group_id                   :integer
 #  disable                     :boolean          default(FALSE)
 #  my_draft_comments_count     :integer          default(0)
 #  my_published_comments_count :integer          default(0)
@@ -39,6 +37,12 @@ require 'roo'
 #  deleted_comcoms_count       :integer          default(0)
 #  spam_comcoms_count          :integer          default(0)
 #  roles_mask                  :integer
+#  avatar_file_name            :string(255)
+#  avatar_content_type         :string(255)
+#  avatar_file_size            :integer
+#  avatar_updated_at           :datetime
+#  role                        :integer          default(0)
+#  group_id                    :integer
 #
 
 class User < ActiveRecord::Base
@@ -102,7 +106,7 @@ class User < ActiveRecord::Base
 
   #UTILITARIOS
   def full_name
-    "#{name} #{lastname1} #{lastname2}"
+    "#{name} #{lastname1} #{lastname2}".strip
   end
 
   def email_required?

@@ -27,3 +27,16 @@ es:
           attributes:
             video_url:
               blank: "URL del video no puede estar en blanco"
+        sprint:
+          attributes:
+            group_id:
+              blank:
+                'El nombre del grupo no puede estar en blanco'
+        badge:
+          attributes:
+            name:
+              blank:
+                'El nombre del badge no puede estar en blanco'
+            image:
+              blank:
+                'La image no puede quedar en blanco'

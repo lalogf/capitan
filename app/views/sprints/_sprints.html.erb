@@ -1,0 +1,12 @@
+<% @sprints.each do |sprint| %>
+    <tr>
+      <td>
+        <%= link_to sprint.name, sprint %>
+      </td>
+      <td><%= sprint.description %></td>
+      <td> <%= sprint.group.name %></td>
+      <td><%= link_to 'Mostrar', sprint %></td>
+      <td><%= link_to 'Editar', edit_sprint_path(sprint) %></td>
+      <td><%= link_to 'Eliminar', sprint, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+    </tr>
+<% end %>

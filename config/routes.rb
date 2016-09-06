@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
     get 'mycourses/:course_id/u/:unit_id/l/:id' => 'lessons#show', :as => :mycourse_unit_lesson
     get 'mycourses/:course_id/u/:unit_id/l/:lesson_id/p/:id' => 'pages#show', :as => :mycourse_unit_lesson_page
-    get 'myprofile' => 'profile#myprofile', :as => :myprofile
+    get 'codereview' => 'profile#codereview', :as => :codereview
+    get 'myprofile(/:sprint_id)' => 'profile#myprofile', :as => :myprofile
     get 'codereview' => 'profile#codereview', :as => :code_review
 
     scope "/admin" do
@@ -18,6 +19,11 @@ Rails.application.routes.draw do
       resources :groups
       resources :users, except: [:index]
       resources :reviews
+      resources :badges
+
+      resources :sprints do
+        get 'group/:group_id' => 'sprints#group_sprints', on: :collection
+      end
 
       resources :tracks do
         resources :courses do

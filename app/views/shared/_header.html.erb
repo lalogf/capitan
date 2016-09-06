@@ -28,33 +28,24 @@
           <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
               <li class="header-arrow">
-                <a href="#" class="dropdown-toggle " data-toggle=dropdown>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <%= current_user.full_name %>
                   <%= image_tag "arrow-up.png",alt: "Arrow up", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
                   <%= image_tag "arrow-down.png",alt: "Arrow down", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
                 </a>
                 <ul class="dropdown-menu">
-                  <% unless current_page?(myprofile_path) %>
+                  <li>
+                    <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
+                  </li>
+                  <% unless current_page?(codereview_path) %>
                     <li>
-                      <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
+                      <%= link_to('Code Review', codereview_path, :method => :get) %>
                     </li>
                   <% else %>
                     <li>
                       <%= link_to('Mis Cursos', root_path, :method => :get) %>
                     </li>
                   <% end %>
-                  <% unless current_page?(code_review_path) %>
-                    <li>
-                      <%= link_to('Code Review', code_review_path, :method => :get) %>
-                    </li>
-                  <% else %>
-                    <li>
-                      <%= link_to('Mis Cursos', root_path, :method => :get) %>
-                    </li>
-                  <% end %>
-
-                  <!-- Display admin panel link only if the user is not a student -->
-                  
                   <% unless current_user.student? %>
                     <li>
                       <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
