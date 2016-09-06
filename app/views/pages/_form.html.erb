@@ -10,8 +10,10 @@
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :sequence %><br>
-    <%= f.input :title %><br>
-    <%= f.input :points, label: "Points" %><br>
+    <%= f.input :title %>
+    <%= f.input :show_title %><br>
+    <%= f.input :points, label: "Points" %>
+    <%= f.input :optional, label: "Página opcional (los puntos de la página no contarán para los cálculos de la lección)" %><br>
     <%= f.input :page_type, 
       :collection => [['Material','material'],['Pre-work','prework'],['Quiz','quiz'],
       ['Exercise','exercise'],['Solution','solution'],['Retrospective','retrospective'], 
@@ -22,7 +24,6 @@
     <%= render :partial=> 'pages/form/solution_fields', :locals => {:f => f} %>
     <%= render :partial=> 'pages/form/peerreview_fields', :locals => {:f => f} %>
     <%= render :partial=> 'pages/form/html_fields', :locals => {:f => f} %>
-    <%= f.input :show_title %><br>
   </div>
   <div class="form-actions">
     <%= f.button :submit, :class => "btn btn-primary page-submit-form" %>
