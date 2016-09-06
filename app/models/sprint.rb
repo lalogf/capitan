@@ -15,6 +15,18 @@ class Sprint < ActiveRecord::Base
   has_many :badges, through: :sprint_badges
   has_many :sprint_badges
   belongs_to :group
-
+  has_many :pages, through: :lessons
+  has_many :submissions, through: :pages
   validates :group_id, presence: true
+
+  def total_points
+    pages.with_points.group(:page_type).pluck(:page_type, 'sum(pages.points)')
+  end
+
+  def student_points user_id
+    pages.with_points.includes(:submissions).
+          where('submissions.user_id = ?', user_id).
+          references(:submissions).group(:page_type).
+          pluck(:page_type, 'sum(submissions.points)')
+  end
 end
