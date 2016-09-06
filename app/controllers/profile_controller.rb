@@ -1,8 +1,11 @@
 class ProfileController < ApplicationController
 
     def myprofile
-        # @sprints = SprintSummary.uniq.pluck(:sprint_id)
         @user = current_user
+    
+        #Badges earned by this user
+        @sprint_badges = @user.sprint_badges.group_by(&:badge).map { |key,value| {key => value.size} }
+
         @sprints = current_user.group.sprints # can be empty if the user doesn't have any sprints and cause a bug(need to address this)
         @sprint = params[:sprint_id].present? ? Sprint.find(params[:sprint_id]) : @sprints.first
         

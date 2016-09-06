@@ -49,7 +49,7 @@ class SprintsController < ApplicationController
         format.json { render json: @sprint.errors, status: :unprocessable_entity }
       end
     end
-end
+  end
 
   def update
     respond_to do |format|

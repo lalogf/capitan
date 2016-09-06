@@ -1,10 +1,10 @@
 $(function () {
   $('#container').highcharts({
     chart: {
-      plotBackgroundColor: "#fcfcfc",
+      plotBackgroundColor: "#ededed",
       plotBorderWidth: 0,
       plotShadow: false,
-      backgroundColor: "#fcfcfc",
+      backgroundColor: "#ededed",
       events: {
           load: function () {
               var chart = this;
@@ -69,7 +69,7 @@ $(function () {
       enabled: false
    },
     tooltip: {
-      pointFormat: '{series.name}: <b>{point.student_marks}</b>/{point.y}',
+      pointFormat: '<b>{point.student_marks}</b>/{point.y}',
       fontFamily: "museo-sans"
     },
     plotOptions: {

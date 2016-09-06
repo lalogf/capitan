@@ -7,6 +7,7 @@
   = require codeMirror/simplescrollbars
   = require pagedown_bootstrap
   = require sweetalert
+  = require vendor/percentage-circle
   = require_self
   = require main
 */
