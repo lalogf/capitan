@@ -29,15 +29,15 @@ $(function () {
       data: [{
       	name: 'Promedio',
       	color: '#66B26D',
-      	y: <%= @avg_students_points %>
+      	y: <%= zero_or_number @avg_students_points %>
       },{
       	name: 'Yo',
       	color: '#4790C8',
-      	y: <%= @max_student_points %>
+      	y: <%= zero_or_number @max_student_points %>
       },{
       	name: 'Máximo puntaje',
       	color: '#E2BA39',
-      	y: <%= @max_total_points %>
+      	y: <%= zero_or_number @max_total_points %>
       }],
       animation: {
         duration: 1500,
