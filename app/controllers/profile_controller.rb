@@ -6,7 +6,7 @@ class ProfileController < ApplicationController
         #Badges earned by this user
         @sprint_badges = @user.sprint_badges.group_by(&:badge).map { |key,value| {key => value.size} }
 
-        @sprints = current_user.group.sprints # can be empty if the user doesn't have any sprints and cause a bug(need to address this)
+        @sprints = current_user.group.sprints # can be empty if the user doesn't have any sprints
 
         @max_total_points, @max_student_points = 0, 0
         @data = []
@@ -21,6 +21,8 @@ class ProfileController < ApplicationController
           @maximum_points = capitalize_page_type(@sprint.total_points) # can be an empty array
           @student_points = @sprint.student_points(current_user.id)
           @student_points = capitalize_page_type(@student_points) # can be an empty array
+
+          @max_total_points = @maximum_points.flatten.reject {|e| !e.is_a? Integer}.sum
 
           # If the second array's size is less than the first, nil values are supplied
           # For more, see http://apidock.com/ruby/Array/zip
