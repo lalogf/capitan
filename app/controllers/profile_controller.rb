@@ -10,6 +10,7 @@ class ProfileController < ApplicationController
 
         @max_total_points, @max_student_points = 0, 0
         @data = []
+        @data_point_comparative = []
 
         if @sprints.length > 0
           @sprint = params[:sprint_id].present? ? Sprint.find(params[:sprint_id]) : @sprints.first
@@ -34,6 +35,8 @@ class ProfileController < ApplicationController
 
             @max_total_points = sum_points(@data, :y)
             @max_student_points = sum_points(@data, :student_marks)
+            @avg_students_points = @sprint.avg_classroom_points
+
           end
         end
 

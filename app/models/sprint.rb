@@ -29,4 +29,12 @@ class Sprint < ActiveRecord::Base
           references(:submissions).group(:page_type).
           pluck(:page_type, 'sum(submissions.points)')
   end
+
+  def avg_classroom_points
+    pages.with_points.joins(:submissions).
+      includes(:submissions).
+      group(:user_id).
+      pluck('sum(submissions.points)').
+      reduce [ 0.0, 0 ] do |(s, c), e| [ s + e, c + 1 ] end.reduce :/      
+  end
 end

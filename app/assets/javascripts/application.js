@@ -22,6 +22,8 @@
 //= require jquery_nested_form
 //= require sweetalert.min
 //= require Markdown.Extra
+//= require highcharts.js
+//= require no-data-to-display.js
 //= require pages/form
 //= require pages/show
 //= require_self
