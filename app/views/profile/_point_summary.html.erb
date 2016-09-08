@@ -21,7 +21,7 @@
     </div>
     <div class="row pt-21">
       <div class="col-md-6">
-        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        <div id="point-summary-container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
       </div>
       <div class="col-md-6 pb-49 pt-90 ph-35">
         <div class="row pl-70-md">
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-5 col-sm-offset-3 text-center">
+          <div class="col-sm-5 col-sm-offset-2 text-center">
             <p class="score">
               <span class="book gray-29"><%= @max_student_points %></span>
               <span class="slash">/</span>
@@ -51,12 +51,4 @@
       </div>
     </div>
   </div>
-<% end %>
-
-<% content_for :scripts do %>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="http://code.highcharts.com/modules/no-data-to-display.js"></script>
-  <script>
-    <%= render 'highchart.js.erb' %>
-  </script>
 <% end %>

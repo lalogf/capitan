@@ -49,11 +49,9 @@
   </div>
 </section>
 <section class="bg-gray-light">
-
-    <div id="point-summary">
-      <%= render 'point_summary' %>
-    </div>
-
+  <div id="point-summary">
+    <%= render 'point_summary' %>
+  </div>
   <div class="container-md pv-56">
     <h4 class="light mb-7 text-center">nivel técnico</h4>
     <div class="row mt-28">
@@ -105,3 +103,12 @@
     </div>
   </div>
 </section>
+<section>
+  <div id="points-conprative">
+    <%= render 'point_comparative' %>
+  </div>  
+</section>
+<% content_for :scripts do %>
+  <script><%= render 'point_summary.js.erb' %></script>
+  <script><%= render 'point_comparative.js.erb' %></script>
+<% end %>
