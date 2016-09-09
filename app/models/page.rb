@@ -60,6 +60,8 @@ class Page < ActiveRecord::Base
 
   scope :with_points, -> { where.not(page_type: %w[material score]) }
 
+  scope :points, -> (page_type) { where(page_type: page_type).pluck(:points).map(&:to_i).sum }
+
 
   accepts_nested_attributes_for :question_groups,
                                  reject_if: proc { |attributes| attributes['sequence'].blank? },
