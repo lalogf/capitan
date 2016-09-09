@@ -124,6 +124,11 @@ class User < ActiveRecord::Base
   end
 
   # METODOS DE CONSULTA PARA EL ADMINISTRADOR
+
+  def skill_points page_type
+    self.pages.where(page_type: page_type).pluck('submissions.points').map(&:to_i).sum
+  end
+
   def self.total_score_by_course(course_id)
     User.select(:id,'courses.id as course_id','sum(answers.points) as score')
     .joins(answers: {page: {unit: :course}})

@@ -1,0 +1,18 @@
+<div class="container-md pv-56">
+  <h4 class="light mb-7 text-center">nivel técnico</h4>
+  <div class="row mt-49">
+    <% skill_points.each_with_index do |skill_point, index| %>
+      <div class="col-md-2 <%= "col-md-offset-1" if index == 0 %>">
+        <% points = percent(skill_point[:points], skill_point[:max_points]).round %>
+          <div class="c100 <%= "p#{points}" %> small gray">
+            <span> <%= points %>% </span>
+            <div class="slice">
+              <div class="bar"></div>
+              <div class="fill"></div>
+            </div>
+          </div>
+          <div class="page-type"> <%= skill_point[:name] %> </div>
+      </div>
+    <% end %>
+  </div>
+</div>

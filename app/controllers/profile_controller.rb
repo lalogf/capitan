@@ -6,6 +6,29 @@ class ProfileController < ApplicationController
         #Badges earned by this user
         @sprint_badges = @user.sprint_badges.group_by(&:badge).map { |key,value| {key => value.size} }
 
+        # Technical skill points of the student
+        exercise_points = current_user.skill_points('exercise')
+        prework_points = current_user.skill_points('prework')
+        solution_points = current_user.skill_points('solution')
+        codereview_points = current_user.skill_points('codereview')
+        retrospective_points = current_user.skill_points('retrospective')
+
+        # Maximum possible skill points
+
+        total_exercise_points = Page.points('exercise')
+        total_prework_points = Page.points('prework')
+        total_solution_points = Page.points('solution')
+        total_codereview_points = Page.points('codereview')
+        total_retrospective_points = Page.points('retrospective')
+
+        @skill_points = [
+          { name: 'Quizzes', points: exercise_points, max_points: total_exercise_points },
+          { name: 'Ejercicios', points: prework_points, max_points: total_prework_points },
+          { name: 'Solucionarios', points: solution_points, max_points: total_solution_points },
+          { name: 'Codereviews', points: codereview_points, max_points: total_codereview_points },
+          { name: 'Retrospective', points: retrospective_points, max_points: total_retrospective_points }
+        ]
+
         @sprints = current_user.group.sprints # can be empty if the user doesn't have any sprints
 
         @max_total_points, @max_student_points = 0, 0
