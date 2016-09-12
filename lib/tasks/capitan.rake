@@ -27,6 +27,11 @@ namespace :capitan do
     User.import_score(import_file, ENV['LESSON_ID'])
   end
 
+  task :import_soft_skills_scores => :environment do |t, args|
+    import_file = "#{Rails.root}/public/seed_data/#{ENV['FILE_NAME']}"
+    User.import_soft_skills_scores(import_file, ENV['SPRINT_ID'])
+  end
+
   # Borrar ASAP!!
   task :import_sprint_scores => :environment do |t, args|
     import_file = "#{Rails.root}/public/seed_data/#{ENV['FILE_NAME']}"

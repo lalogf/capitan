@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906145535) do
+ActiveRecord::Schema.define(version: 20160909220931) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -235,6 +235,26 @@ ActiveRecord::Schema.define(version: 20160906145535) do
   add_index "reviews", ["page_id"], name: "index_reviews_on_page_id", using: :btree
   add_index "reviews", ["question_id"], name: "index_reviews_on_question_id", using: :btree
 
+  create_table "soft_skill_submissions", force: :cascade do |t|
+    t.integer  "soft_skill_id", limit: 4
+    t.integer  "user_id",       limit: 4
+    t.integer  "sprint_id",     limit: 4
+    t.integer  "points",        limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "soft_skill_submissions", ["soft_skill_id"], name: "index_soft_skill_submissions_on_soft_skill_id", using: :btree
+  add_index "soft_skill_submissions", ["sprint_id"], name: "index_soft_skill_submissions_on_sprint_id", using: :btree
+  add_index "soft_skill_submissions", ["user_id"], name: "index_soft_skill_submissions_on_user_id", using: :btree
+
+  create_table "soft_skills", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "max_points", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "sprint_badges", force: :cascade do |t|
     t.integer  "sprint_id",  limit: 4
     t.integer  "badge_id",   limit: 4
@@ -382,6 +402,9 @@ ActiveRecord::Schema.define(version: 20160906145535) do
   add_foreign_key "pages", "lessons"
   add_foreign_key "question_groups", "pages"
   add_foreign_key "question_groups", "questions"
+  add_foreign_key "soft_skill_submissions", "soft_skills"
+  add_foreign_key "soft_skill_submissions", "sprints"
+  add_foreign_key "soft_skill_submissions", "users"
   add_foreign_key "sprint_badges", "badges"
   add_foreign_key "sprint_badges", "sprints"
   add_foreign_key "sprints", "groups"
