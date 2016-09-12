@@ -107,8 +107,10 @@ $(function () {
                 '#AC4937','#E09A37', '#BE5E29'
               ];
   var i = 0;
-  chart.series[0].data.forEach(function(data){
-    data.update({color: colors[i]});
-    i++;
-  });
+  if(chart) {
+    chart.series[0].data.forEach(function(data){
+      data.update({color: colors[i]});
+      i++;
+    });
+  }
 });
