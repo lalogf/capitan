@@ -104,7 +104,10 @@ class Page < ActiveRecord::Base
   scope :question_pages, -> { where(page_type: 'questions') }
 
   def self.total_points
-    Page.with_points.group(:page_type).pluck(:page_type, 'sum(pages.points)')
+    Page.with_points.
+         joins(:lesson => :sprints).
+         group(:page_type).
+         pluck(:page_type, 'sum(pages.points)')
   end
 
   def self.student_points user
