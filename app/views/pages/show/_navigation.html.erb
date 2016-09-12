@@ -47,7 +47,7 @@
             <div class="col-md-8">
               <ul class="pl-28 mb-0 bg-gray-dark">
                 <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "prework" %>">
-                  <%= link_to "Pretrabajo",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                  <%= link_to "Pretrabajo",lesson_page_details_path(@track,@course,@unit,page.lesson,page),class: "text-white" %>
                 </li>
               </ul>
             </div>
@@ -65,7 +65,7 @@
             <div class="col-md-8">
               <ul class="pl-28 mb-0 bg-gray-dark">
                 <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "quiz" %>">
-                  <%= link_to "quiz",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                  <%= link_to "quiz",lesson_page_details_path(@track,@course,@unit,page.lesson,page),class: "text-white" %>
                 </li>
               </ul>
             </div>
@@ -139,7 +139,7 @@
                 <div class="col-md-8">
                   <ul class="bg-gray-dark mb-0">
                     <li class="square-pages-list fz-14 ml-42 pv-7 <%="active" if page.id == @page.id %>">
-                      <%= link_to page.title,lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                      <%= link_to page.title,lesson_page_details_path(@track,@course,@unit,page.lesson,page),class: "text-white" %>
                     </li>
                   </ul>
                 </div>
@@ -164,7 +164,7 @@
             <div class="col-md-8">
               <ul class="pl-28 bg-gray-dark mb-0">
                 <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "retrospective" %>">
-                  <%= link_to "AUTOEVALUACIÓN",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                  <%= link_to "AUTOEVALUACIÓN",lesson_page_details_path(@track,@course,@unit,page.lesson,page),class: "text-white" %>
                 </li>
               </ul>
             </div>
@@ -182,7 +182,7 @@
             <div class="col-md-8">
               <ul class="pl-28 bg-gray-dark mb-0">
                 <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "codereview" %>">
-                  <%= link_to "Code Review",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                  <%= link_to "Code Review",lesson_page_details_path(@track,@course,@unit,page.lesson,page),class: "text-white" %>
                 </li>
               </ul>
             </div>
@@ -200,7 +200,7 @@
             <div class="col-md-8">
               <ul class="pl-28 bg-gray-dark mb-0">
                 <li class="square-pages text-uppercase pv-7 <%="active" if @page.page_type == "score" %>">
-                  <%= link_to "Puntos",lesson_page_details_path(@track,@course,@unit,page.lesson,page) %>
+                  <%= link_to "Puntos",lesson_page_details_path(@track,@course,@unit,page.lesson,page),class: "text-white" %>
                 </li>
               </ul>
             </div>

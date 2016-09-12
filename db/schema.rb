@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822230949) do
+ActiveRecord::Schema.define(version: 20160909220931) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20160822230949) do
   end
 
   add_index "authentication_providers", ["name"], name: "index_name_on_authentication_providers", using: :btree
+
+  create_table "badges", force: :cascade do |t|
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.string   "name",               limit: 255
+  end
 
   create_table "branches", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -123,6 +133,14 @@ ActiveRecord::Schema.define(version: 20160822230949) do
 
   add_index "lessons", ["unit_id"], name: "index_lessons_on_unit_id", using: :btree
 
+  create_table "lessons_sprints", id: false, force: :cascade do |t|
+    t.integer "lesson_id", limit: 4
+    t.integer "sprint_id", limit: 4
+  end
+
+  add_index "lessons_sprints", ["lesson_id", "sprint_id"], name: "index_lessons_sprints_on_lesson_id_and_sprint_id", using: :btree
+  add_index "lessons_sprints", ["sprint_id"], name: "fk_rails_a233759b7d", using: :btree
+
   create_table "options", force: :cascade do |t|
     t.string   "description", limit: 255
     t.integer  "question_id", limit: 4
@@ -182,6 +200,7 @@ ActiveRecord::Schema.define(version: 20160822230949) do
     t.string   "quiz_url",                   limit: 255
     t.boolean  "show_title",                 limit: 1,     default: true
     t.string   "video_url",                  limit: 255
+    t.boolean  "optional",                   limit: 1
   end
 
   add_index "pages", ["lesson_id"], name: "index_pages_on_lesson_id", using: :btree
@@ -216,6 +235,41 @@ ActiveRecord::Schema.define(version: 20160822230949) do
   add_index "reviews", ["page_id"], name: "index_reviews_on_page_id", using: :btree
   add_index "reviews", ["question_id"], name: "index_reviews_on_question_id", using: :btree
 
+  create_table "soft_skill_submissions", force: :cascade do |t|
+    t.integer  "soft_skill_id", limit: 4
+    t.integer  "user_id",       limit: 4
+    t.integer  "sprint_id",     limit: 4
+    t.integer  "points",        limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "soft_skill_submissions", ["soft_skill_id"], name: "index_soft_skill_submissions_on_soft_skill_id", using: :btree
+  add_index "soft_skill_submissions", ["sprint_id"], name: "index_soft_skill_submissions_on_sprint_id", using: :btree
+  add_index "soft_skill_submissions", ["user_id"], name: "index_soft_skill_submissions_on_user_id", using: :btree
+
+  create_table "soft_skills", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "max_points", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "sprint_badges", force: :cascade do |t|
+    t.integer  "sprint_id",  limit: 4
+    t.integer  "badge_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "sprint_badges", ["badge_id"], name: "index_sprint_badges_on_badge_id", using: :btree
+  add_index "sprint_badges", ["sprint_id"], name: "index_sprint_badges_on_sprint_id", using: :btree
+
+  create_table "sprint_badges_users", id: false, force: :cascade do |t|
+    t.integer "sprint_badge_id", limit: 4, null: false
+    t.integer "user_id",         limit: 4, null: false
+  end
+
   create_table "sprint_summaries", force: :cascade do |t|
     t.integer  "user_id",                limit: 4
     t.integer  "sprint_id",              limit: 4
@@ -228,6 +282,16 @@ ActiveRecord::Schema.define(version: 20160822230949) do
   end
 
   add_index "sprint_summaries", ["user_id"], name: "index_sprint_summaries_on_user_id", using: :btree
+
+  create_table "sprints", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "group_id",    limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "sprints", ["group_id"], name: "index_sprints_on_group_id", using: :btree
 
   create_table "submissions", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -277,45 +341,46 @@ ActiveRecord::Schema.define(version: 20160822230949) do
   add_index "user_authentications", ["user_id"], name: "index_user_authentications_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                       limit: 255, default: ""
-    t.string   "encrypted_password",          limit: 255, default: "",    null: false
+    t.string   "email",                       limit: 255,   default: ""
+    t.string   "encrypted_password",          limit: 255,   default: "",    null: false
     t.string   "reset_password_token",        limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",               limit: 4,   default: 0,     null: false
+    t.integer  "sign_in_count",               limit: 4,     default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",          limit: 255
     t.string   "last_sign_in_ip",             limit: 255
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.string   "provider",                    limit: 255
     t.string   "uid",                         limit: 255
     t.string   "dni",                         limit: 255
     t.string   "code",                        limit: 255
-    t.string   "name",                        limit: 255,                 null: false
-    t.string   "lastname1",                   limit: 255,                 null: false
+    t.string   "name",                        limit: 255,                   null: false
+    t.string   "lastname1",                   limit: 255,                   null: false
     t.string   "lastname2",                   limit: 255
     t.integer  "age",                         limit: 4
     t.string   "district",                    limit: 255
     t.string   "facebook_username",           limit: 255
     t.string   "phone1",                      limit: 255
     t.string   "phone2",                      limit: 255
-    t.boolean  "disable",                     limit: 1,   default: false
-    t.integer  "my_draft_comments_count",     limit: 4,   default: 0
-    t.integer  "my_published_comments_count", limit: 4,   default: 0
-    t.integer  "my_comments_count",           limit: 4,   default: 0
-    t.integer  "draft_comcoms_count",         limit: 4,   default: 0
-    t.integer  "published_comcoms_count",     limit: 4,   default: 0
-    t.integer  "deleted_comcoms_count",       limit: 4,   default: 0
-    t.integer  "spam_comcoms_count",          limit: 4,   default: 0
+    t.boolean  "disable",                     limit: 1,     default: false
+    t.integer  "my_draft_comments_count",     limit: 4,     default: 0
+    t.integer  "my_published_comments_count", limit: 4,     default: 0
+    t.integer  "my_comments_count",           limit: 4,     default: 0
+    t.integer  "draft_comcoms_count",         limit: 4,     default: 0
+    t.integer  "published_comcoms_count",     limit: 4,     default: 0
+    t.integer  "deleted_comcoms_count",       limit: 4,     default: 0
+    t.integer  "spam_comcoms_count",          limit: 4,     default: 0
     t.integer  "roles_mask",                  limit: 4
     t.string   "avatar_file_name",            limit: 255
     t.string   "avatar_content_type",         limit: 255
     t.integer  "avatar_file_size",            limit: 4
     t.datetime "avatar_updated_at"
-    t.integer  "role",                        limit: 4,   default: 0
+    t.integer  "role",                        limit: 4,     default: 0
     t.integer  "group_id",                    limit: 4
+    t.text     "biography",                   limit: 65535
   end
 
   add_index "users", ["code"], name: "index_users_on_code", unique: true, using: :btree
@@ -329,12 +394,20 @@ ActiveRecord::Schema.define(version: 20160822230949) do
   add_foreign_key "enrollments", "users"
   add_foreign_key "groups", "branches"
   add_foreign_key "lessons", "units"
+  add_foreign_key "lessons_sprints", "lessons"
+  add_foreign_key "lessons_sprints", "sprints"
   add_foreign_key "options", "questions"
   add_foreign_key "page_visibilities", "branches"
   add_foreign_key "page_visibilities", "pages"
   add_foreign_key "pages", "lessons"
   add_foreign_key "question_groups", "pages"
   add_foreign_key "question_groups", "questions"
+  add_foreign_key "soft_skill_submissions", "soft_skills"
+  add_foreign_key "soft_skill_submissions", "sprints"
+  add_foreign_key "soft_skill_submissions", "users"
+  add_foreign_key "sprint_badges", "badges"
+  add_foreign_key "sprint_badges", "sprints"
+  add_foreign_key "sprints", "groups"
   add_foreign_key "units", "courses"
   add_foreign_key "users", "groups"
 end

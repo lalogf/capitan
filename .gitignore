@@ -12,7 +12,8 @@ capybara-*.html
 /spec/reports/
 /test/tmp/
 /test/version_tmp/
-/public/system
+/public/system/
+/public/seed_data/
 
 ## Specific to RubyMotion:
 .dat*

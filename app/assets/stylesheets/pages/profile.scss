@@ -1,0 +1,93 @@
+.name {
+  font-size: 23px;
+  color: #0f0f0f;
+}
+
+.description {
+  font-size: 18px;
+  color: #525252;
+}
+
+.codigo {
+  font-weight: 700;
+  opacity: 0.83;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+.badge {
+  position:relative;
+  background-color: transparent;	
+}
+
+
+.badge-count {
+  width: 25px;
+  height: 25px;
+  background-color: #4a4a4a;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.badge-count p {
+  width: 12px;
+  height: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  text-align: left;
+  color: #ffffff;
+  position: relative;
+  top: 26%;
+  left: 27%;
+}
+
+.pt-90 {
+  padding-top: 90px;
+}
+.font-big {
+  font-size: 25px;
+}
+
+.gray-29 {
+  color: #4a4a4a;
+}
+
+.sprint-name {
+  font-weight: 500;
+}
+
+.sprint-dropdown {
+  text-align: right;
+}
+
+.sprint-dropdown > li> a {
+  font-weight: 300;
+}
+
+.sprint-dropdown > li> a:hover {
+  color: #fff;
+}
+
+.c100 > span {
+  color: #4a4a4a;
+}
+
+.score {
+  font-size: 18px;
+}
+
+.book.gray-29 {
+  font-weight: 500;
+}
+
+.page-type {
+  clear: both;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+}

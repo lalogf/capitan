@@ -8,6 +8,10 @@
     color: white;
   }
 
+  .btn-toolbar .btn {
+    color: #393d40;
+  }
+
   .container {
       margin: 0;
       padding:0;
@@ -114,10 +118,18 @@
       color: #fff;
       outline: none;
   }
-  #header-navbar .nav>li>a:hover, #header-navbar .nav>li>a:focus, #header-navbar .nav .open>a, #header-navbar .nav .open>a:hover, #header-navbar .nav .open>a:focus, .navbar-toggle:hover, .navbar-toggle:focus, .mobile-search.active>.btn {
+  #header-navbar .nav>li>a:hover, 
+  #header-navbar .nav>li>a:focus, 
+  #header-navbar .nav .open>a, 
+  #header-navbar .nav .open>a:hover, 
+  #header-navbar .nav .open>a:focus, 
+  .navbar-toggle:hover, 
+  .navbar-toggle:focus, 
+  .mobile-search.active>.btn {
       background: #3498db;
       color: #fff;
   }
+
   #header-navbar .nav>li>a:hover, #header-navbar .nav>li>a:focus, #header-navbar .nav .open>a, #header-navbar .nav .open>a:hover, #header-navbar .nav .open>a:focus {
       background-color: #3498db;
   }
@@ -238,6 +250,20 @@
       font-size: 18px;
       font-weight: normal;
   }
+
+  input[type=text],
+  input[type=number],
+  input[type=email],
+  input[type=tel],
+  textarea,
+  select {
+    margin-bottom: 10px;
+  }
+
+  #target img {
+    width: 75px;
+  }
+
 }
 
 /* styles for admin panel user tabs */

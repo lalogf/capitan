@@ -1,47 +1,71 @@
-<% @sprints.each do |sprint| %>
-<section class="container">
-  <h3>Resumen: Sprint <%= sprint %></h3>
-  <div class="table-responsive">
-    <% scores = SprintSummary.where(user_id: current_user.id, sprint_id: sprint) %>
-    <% if scores.count > 0 %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Puntos</th>
-          <th>% de Puntos Alcanzados</th>
-          <th>Promedio del Salón</th>
-        </tr>
-      </thead>
-      <tbody>
-          <% score = scores.first %>
-          <% percent_technical_skills = (score.total_technical_skills / score.max_technical_skills * 100).round(2) %>
-          <% percent_soft_skills = (score.total_soft_skills / score.max_soft_skills * 100).round(2) %>
-          <% avg_technical_skills = SprintSummary.where(sprint_id: sprint).average(:total_technical_skills).round(2) %> 
-          <% avg_soft_skills = SprintSummary.where(sprint_id: sprint).average(:total_soft_skills).round(2) %> 
-          <tr>
-            <th class="scope">Nivel Técnico</th>
-            <td><%= score.total_technical_skills %></td>
-            <td><%= percent_technical_skills %> %</td>
-            <td><%= avg_technical_skills %></td>
-          </tr>
-          <tr>
-            <th class="scope">Actitud Profesional</th>
-            <td><%= score.total_soft_skills %></td>
-            <td><%= percent_soft_skills%> %</td>
-            <td><%= avg_soft_skills %></td>
-          </tr>
-          <tr>
-            <th class="scope">Total</th>
-            <td><%= score.total_technical_skills + score.total_soft_skills %></td>
-            <td><%= ((percent_technical_skills + percent_soft_skills) / 2).round(2) %> %</td>
-            <td><%= avg_technical_skills +avg_soft_skills %></td>
-          </tr>
-      </tbody>
-    </table>
-    <% else %>
-      <p class="text-center">Aún no tiene puntos en este sprint.</p>
-    <% end %>
+<section>
+  <div class="container-md pv-56">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="row">
+          <div class="col-sm-4">
+            <%= image_tag @user.avatar.url(:menu), alt: "coder", class: "img-circle img-responsive", width: "130" %>
+          </div>
+          <div class="col-sm-7">
+            <h3 class="mv-7 light name">
+              <%= @user.full_name %>
+            </h3>
+            <p class="light mb-0 lh-profile description">
+              <%= "#{@user.age} años" %>
+            </p>
+            <p class="light lh-profile description">
+              <%= @user.branch.name %>
+            </p>
+            <p class="mb-0 lh-profile codigo">
+              <%= @user.code %>
+            </p>
+          </div>
+        </div>
+        <!-- We are hidding the biography until job placement -->
+        <!--div class="mt-56 pr-42-md">
+          <h4 class="bold mb-7">sobre mi</h4>
+          <div class="hidden-xs mb-7 separator separator-primary separator-left"></div>
+          <p class="light text-left">
+            <%= biography @user %>
+          </p>
+        </div-->
+      </div>
+      <div class="col-sm-6">
+        <h4 class="bold mv-7">reconocimientos</h4>
+        <div class="hidden-xs mb-7 separator separator-primary separator-left"></div>
+        <div class="mt-21">
+          <% if @sprint_badges.each do |sprint_badge| %>
+            <% sprint_badge.each do |key,count| %>
+              <div class="col-sm-2 minh-70 ph-7 badge">
+                  <%= image_tag key.image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "70" %>
+                  <div class="badge-count"><p><%= "x#{count}" %></p></div>
+              </div> 
+            <% end %>        
+          <% end.empty? %>
+            <p class="thin">Aún no tienes reconocimientos logrados, <br> ¡Sigue esforzándote!</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+<section class="bg-gray-light">
+  <div id="point-summary">
+    <%= render 'point_summary' %>
+  </div>
+  <div id="skills-points">
+   <%= render 'point_skills' %>
+  </div>
+  <div id="soft-skills-points">
+   <%= render 'point_soft_skills' %>
+  </div>
+</section>
+<section>
+  <div id="points-comparative">
+    <%= render 'point_comparative' %>
+  </div>  
+</section>
+<% content_for :scripts do %>
+  <script><%= render 'point_summary.js.erb' %></script>
+  <script><%= render 'point_comparative.js.erb' %></script>
 <% end %>

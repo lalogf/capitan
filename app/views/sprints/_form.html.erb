@@ -1,0 +1,43 @@
+<%= simple_form_for(@sprint) do |f| %>
+  <%= f.error_notification %>
+  <% if @sprint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sprint.errors.count, "error") %> prohibited this sprint from being saved:</h2>
+      <ul>
+      <% @sprint.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>  
+
+  <div class="form-inputs" style="margin-bottom:20px">
+    <fieldset>
+      <legend>Información general</legend>
+      <%= f.input :name, placeholder: "Ingresa el nombre del sprint", label: false %>
+      <%= f.input :description, placeholder: "Ingresa la descripción", label: false %>
+      <%= f.association :group, collection: Branch.all, as: :grouped_select,
+            group_method: :groups, label: false, :include_blank => "Seleccione un grupo" %>      
+    </fieldset><br>
+    <fieldset>
+      <legend>Lecciones asociadas</legend>
+      <%= f.association :lessons, 
+                        as: :check_boxes, 
+                        label: false,
+                        checked: @sprint.lesson_ids %>
+    </fieldset><br>
+    <fieldset>
+      <legend>Badges para este sprint</legend>
+      <%= f.association :badges, 
+                        as: :check_boxes, 
+                        label: false,
+                        label_method: :name,
+                        value_method: :id,
+                        checked: @sprint.badge_ids %>
+    </fieldset>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit,"Crear sprint", class: 'btn btn-primary' %>
+    <%= link_to 'Cancelar', sprints_path, class: 'btn btn-danger' %>
+  </div>
+<% end %>

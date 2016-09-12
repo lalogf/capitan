@@ -1,0 +1,55 @@
+<% if @sprints.length > 0 %>
+  <div class="container-md pv-56 puntos border-bottom-gray">
+    <h4 class="bold mb-7 text-center">puntos</h4>
+    <div class="hidden-xs mb-7 separator separator-primary separator-centered"></div>
+    <div class="light text-center mt-35 font-big">
+      este es el detalle de tu avance hasta ahora, estás viendo el 
+        <span class="dropdown header-arrow">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="text-uppercase sprint-name gray-29">
+                <%= @selected_sprint_name %>
+              </span>
+              <%= image_tag "arrow-up.png",alt: "Arrow up", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
+              <%= image_tag "arrow-down.png",alt: "Arrow down", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
+            </a>
+            <ul class="dropdown-menu sprint-dropdown">
+              <li><%= link_to "Total", myprofile_path, remote: true, class: 'text-uppercase font-big' %></li>
+              <% @sprints.each_with_index do |sprint, index| %>
+                <li> <%= link_to sprint.name, myprofile_path(sprint.id), remote: true, class: 'text-uppercase font-big' %> </li>
+              <% end %>
+            </ul>
+        </span>
+    </div>
+    <div class="row pt-21">
+      <div class="col-md-6">
+        <div id="point-summary-container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+      </div>
+      <div class="col-md-6 pb-49 pt-90 ph-35">
+        <div class="row pl-70-md">
+          <div class="col-sm-12">
+            <% student_percent = percent(@max_student_points, @max_total_points) %>
+            <div class="c100 big orange <%= "p#{ student_percent.round }"%>">
+              <span>
+                <%= "#{ student_percent.round(1) }%" %>
+              </span>
+              <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5 col-sm-offset-2 text-center">
+            <p class="score">
+              <span class="book gray-29"><%= @max_student_points %></span>
+              <span class="slash">/</span>
+              <span class="thin h4"><%= @max_total_points %></span>
+            </p>
+            <h4 class="light">puntos</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

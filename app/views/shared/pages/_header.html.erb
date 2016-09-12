@@ -4,41 +4,38 @@
   </script>
 <% end %>
 <div class="container-fluid pl-0">
-    <div class="bg-gray-dark w-347 pull-left">
-        <div class="text-center">
-          <%= link_to image_tag("laboratoria-white.svg",alt: "Laboratoria código que transforma", class: "mt-14", height: "63px"), root_path %>
-        </div>
+  <div class="bg-gray-dark w-347 pull-left">
+    <div class="text-center">
+      <%= link_to image_tag("laboratoria-white.svg",alt: "Laboratoria código que transforma", class: "mt-14", height: "63px"), root_path %>
     </div>
-    <div class="w-347 pt-7 pull-right">
-          <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right mt-14">
-              <li class="header-arrow">
-                <a href="#" class="dropdown-toggle user-pages" data-toggle=dropdown>
-                  <%= current_user.full_name %>
-                  <%= image_tag "arrow-up.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
-                  <%= image_tag "arrow-down.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
-                  </li>
-                  <li>
-                    <%= link_to('Code Review', code_review_path, :method => :get) %>
-                  </li>
-                  
-                  <!-- Display admin panel link only if the user is not a student -->
-
-                  <% unless current_user.student? %>
-                    <li>
-                      <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
-                    </li>
-                  <% end %>
-                  <li>
-                    <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
-                  </li>
-                </ul>
+  </div>
+  <div class="w-347 pt-7 pull-right">
+    <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right mt-14">
+        <li class="header-arrow">
+          <a href="#" class="dropdown-toggle user-pages" data-toggle="dropdown">
+            <%= current_user.full_name %>
+            <%= image_tag "arrow-up.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
+            <%= image_tag "arrow-down.png",alt: "Laboratoria código que transforma", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
+            </li>
+            <li>
+              <%= link_to('Code Review', code_review_path, :method => :get) %>
+            </li>
+            <% unless current_user.student? %>
+              <li>
+                <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
               </li>
-            </ul>
-          </div>
-        </div>
+            <% end %>
+            <li>
+              <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

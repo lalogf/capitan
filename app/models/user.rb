@@ -18,7 +18,6 @@ require 'roo'
 #  updated_at                  :datetime         not null
 #  provider                    :string(255)
 #  uid                         :string(255)
-#  role                        :role             default(0)
 #  dni                         :string(255)
 #  code                        :string(255)
 #  name                        :string(255)      not null
@@ -29,7 +28,6 @@ require 'roo'
 #  facebook_username           :string(255)
 #  phone1                      :string(255)
 #  phone2                      :string(255)
-#  group_id                   :integer
 #  disable                     :boolean          default(FALSE)
 #  my_draft_comments_count     :integer          default(0)
 #  my_published_comments_count :integer          default(0)
@@ -39,6 +37,13 @@ require 'roo'
 #  deleted_comcoms_count       :integer          default(0)
 #  spam_comcoms_count          :integer          default(0)
 #  roles_mask                  :integer
+#  avatar_file_name            :string(255)
+#  avatar_content_type         :string(255)
+#  avatar_file_size            :integer
+#  avatar_updated_at           :datetime
+#  role                        :integer          default(0)
+#  group_id                    :integer
+#  biography                   :text(65535)
 #
 
 class User < ActiveRecord::Base
@@ -68,6 +73,7 @@ class User < ActiveRecord::Base
   has_many :pages, through: :submissions
   has_many :primary_reviews, :class_name => "Review", :foreign_key => "user_id"
   has_many :secondary_reviews, :class_name => "Review", :foreign_key => "reviewer_id"
+  has_and_belongs_to_many :sprint_badges, :dependent => :destroy
 
   devise :database_authenticatable,
          :registerable,
@@ -82,10 +88,10 @@ class User < ActiveRecord::Base
   validates :group_id, presence: true
 
   has_attached_file :avatar,
-                    :styles => { :menu => "80x80", :navbar => "35x35" },
+                    :styles => { :profile => "128x128", :menu => "80x80", :navbar => "35x35" },
                     :url => "/system/:class/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension",
-                    :default_url => "/system/missing.png"
+                    :default_url => (self.student ? "/alumna.png" : "profesor.png") 
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
@@ -102,7 +108,7 @@ class User < ActiveRecord::Base
 
   #UTILITARIOS
   def full_name
-    "#{name} #{lastname1} #{lastname2}"
+    "#{name} #{lastname1} #{lastname2}".strip
   end
 
   def email_required?
@@ -113,7 +119,16 @@ class User < ActiveRecord::Base
     self.group.branch if group != nil
   end
 
+  def sprints
+    self.group.sprints if group != nil
+  end
+
   # METODOS DE CONSULTA PARA EL ADMINISTRADOR
+
+  def skill_points page_type
+    self.pages.where(page_type: page_type).pluck('submissions.points').map(&:to_i).sum
+  end
+
   def self.total_score_by_course(course_id)
     User.select(:id,'courses.id as course_id','sum(answers.points) as score')
     .joins(answers: {page: {unit: :course}})
@@ -239,9 +254,43 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.import_sprint_scores(file)
+  def self.import_soft_skills_scores(file, sprint_id)
     spreadsheet = Roo::Spreadsheet.open(file)
     header = spreadsheet.row(1)
+    sprint = Sprint.find(sprint_id)
+    (2..spreadsheet.last_row).each do |i|
+      row = spreadsheet.row(i)
+      user = User.where(code: row[0]).first
+      if user != nil
+        header.each_with_index do |h,index|
+          if h != "code"
+            soft_skill = SoftSkill.find_by_name(h)
+            if soft_skill != nil
+              subm = SoftSkillSubmission.where(user_id: user.id, sprint_id: sprint.id, soft_skill_id: soft_skill.id)
+              if subm.count == 0
+                subm = SoftSkillSubmission.new(user_id: user.id, sprint_id: sprint.id, soft_skill_id: soft_skill.id, points: row[index].to_f.round)
+              else
+                subm = subm.first
+                subm.points = row[index].to_f.round
+              end
+              if subm.save
+                p "User #{user.code} saved soft skill #{soft_skill.name} with grade #{row[index].to_f.round}"
+              else
+                p "User #{user.code} failed"
+              end
+            else
+              p "Soft skill ingresado en el header no existe"
+            end
+          end
+        end
+      else
+        p "User #{row[0]} no existe"
+      end           
+    end
+  end
+
+  def self.import_sprint_scores(file)
+    spreadsheet = Roo::Spreadsheet.open(file)
     (2..spreadsheet.last_row).each do |i|
       row = spreadsheet.row(i)
       user = User.where(code: row[0]).first
