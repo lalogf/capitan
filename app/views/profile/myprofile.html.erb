@@ -53,9 +53,13 @@
   <div id="point-summary">
     <%= render 'point_summary' %>
   </div>
-  <div id="skills-points">
-   <%= render 'point_skills' %>
-  </div>
+
+  <% unless @data.empty? %>
+    <div id="skills-points">
+      <%= render 'point_skills' %>
+    </div>
+  <% end %>
+
   <% if @soft_skills_points %>
     <div id="soft-skills-points">
      <%= render 'point_soft_skills' %>
