@@ -40,6 +40,7 @@
 #  quiz_url                   :string(255)
 #  show_title                 :boolean          default(TRUE)
 #  video_url                  :string(255)
+#  optional                   :boolean
 #
 
 class Page < ActiveRecord::Base
@@ -69,6 +70,8 @@ class Page < ActiveRecord::Base
 
   accepts_nested_attributes_for :answers
 
+  #Zip file with exercise materials
+  #TODO: This will be replace when the github integration is done
   has_attached_file :document
   validates :video_url, presence: true, if: :is_video_material?
   validates_attachment_content_type :document,
@@ -76,26 +79,50 @@ class Page < ActiveRecord::Base
                     'application/empty', 'application/octet-stream']
   validates_attachment_file_name :document, matches: /zip\Z/
 
+  #Zip file with the exercise solution
+  #TODO: This will be replace when the github integration is done
   has_attached_file :solution_file
   validates_attachment_content_type :solution_file,
   :content_type => ['application/zip','application/x-zip','application/x-zip-compressed',
                     'application/empty', 'application/octet-stream']
 
+  #Skip paperclip image convertion for zip files
+  #TODO: This will be replace when the github integration is done
   before_post_process :skip_for_zip
+  def skip_for_zip
+     type = %w(application/x-zip-compressed application/zip application/x-zip)
+     ! (type.include?(document_content_type) or type.include?(solution_file_content_type))
+  end
+
 
   # Checks whether the page is of type `video` material type
   def is_video_material?
     page_type == "material" and material_type == "video"
   end
 
-  def skip_for_zip
-     type = %w(application/x-zip-compressed application/zip application/x-zip)
-     ! (type.include?(document_content_type) or type.include?(solution_file_content_type))
-  end
-
   scope :editor_pages, -> { where(page_type: 'editor') }
   scope :question_pages, -> { where(page_type: 'questions') }
 
+  def self.total_points
+    Page.with_points.group(:page_type).pluck(:page_type, 'sum(pages.points)')
+  end
+
+  def self.student_points user
+    Page.with_points.joins(:submissions).joins(:lesson => :sprints).
+          where('submissions.user_id = ?', user.id).
+          references(:submissions).group(:page_type).
+          pluck(:page_type, 'sum(submissions.points)')    
+  end
+
+  def self.avg_classroom_points
+    Page.with_points.joins(:submissions).
+      includes(:submissions).
+      group(:user_id).
+      pluck('sum(submissions.points)').
+      reduce [ 0.0, 0 ] do |(s, c), e| [ s + e, c + 1 ] end.reduce :/      
+  end
+
+  #Legacy - We probably going to remove this methods
   def self.get_exercises_by_lesson(lesson_id)
     Page.where(page_type: "exercise", lesson_id: lesson_id)
   end

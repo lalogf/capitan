@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :soft_skills
   authenticate :user do
 
     get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track

@@ -254,6 +254,41 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.import_soft_skills_scores(file, sprint_id)
+    spreadsheet = Roo::Spreadsheet.open(file)
+    header = spreadsheet.row(1)
+    sprint = Sprint.find(sprint_id)
+    (2..spreadsheet.last_row).each do |i|
+      row = spreadsheet.row(i)
+      user = User.where(code: row[0]).first
+      if user != nil
+        header.each_with_index do |h,index|
+          if h != "code"
+            soft_skill = SoftSkill.find_by_name(h)
+            if soft_skill != nil
+              subm = SoftSkillSubmission.where(user_id: user.id, sprint_id: sprint.id, soft_skill_id: soft_skill.id)
+              if subm.count == 0
+                subm = SoftSkillSubmission.new(user_id: user.id, sprint_id: sprint.id, soft_skill_id: soft_skill.id, points: row[index].to_f.round)
+              else
+                subm = subm.first
+                subm.points = row[index].to_f.round
+              end
+              if subm.save
+                p "User #{user.code} saved soft skill #{soft_skill.name} with grade #{row[index].to_f.round}"
+              else
+                p "User #{user.code} failed"
+              end
+            else
+              p "Soft skill ingresado en el header no existe"
+            end
+          end
+        end
+      else
+        p "User #{row[0]} no existe"
+      end           
+    end
+  end
+
   def self.import_sprint_scores(file)
     spreadsheet = Roo::Spreadsheet.open(file)
     (2..spreadsheet.last_row).each do |i|

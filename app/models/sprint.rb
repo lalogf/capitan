@@ -17,15 +17,16 @@ class Sprint < ActiveRecord::Base
   belongs_to :group
   has_many :pages, through: :lessons
   has_many :submissions, through: :pages
+  has_many :soft_skill_submissions
   validates :group_id, presence: true
 
   def total_points
     pages.with_points.group(:page_type).pluck(:page_type, 'sum(pages.points)')
   end
 
-  def student_points user_id
+  def student_points user
     pages.with_points.includes(:submissions).
-          where('submissions.user_id = ?', user_id).
+          where('submissions.user_id = ?', user.id).
           references(:submissions).group(:page_type).
           pluck(:page_type, 'sum(submissions.points)')
   end

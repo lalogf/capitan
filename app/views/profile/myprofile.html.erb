@@ -53,11 +53,15 @@
   <div id="point-summary">
     <%= render 'point_summary' %>
   </div>
-
-   <%= render 'point_skills', skill_points: @skill_points %>
+  <div id="skills-points">
+   <%= render 'point_skills' %>
+  </div>
+  <div id="soft-skills-points">
+   <%= render 'point_soft_skills' %>
+  </div>
 </section>
 <section>
-  <div id="points-conprative">
+  <div id="points-comparative">
     <%= render 'point_comparative' %>
   </div>  
 </section>

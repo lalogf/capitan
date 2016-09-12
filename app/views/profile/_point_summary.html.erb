@@ -3,18 +3,19 @@
     <h4 class="bold mb-7 text-center">puntos</h4>
     <div class="hidden-xs mb-7 separator separator-primary separator-centered"></div>
     <div class="light text-center mt-35 font-big">
-      este es el detalle de tu avance hasta ahora en el
+      este es el detalle de tu avance hasta ahora, estás viendo el 
         <span class="dropdown header-arrow">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="text-uppercase sprint-name gray-29">
-                <%= "Sprint #{@sprint_index}" %>
+                <%= @selected_sprint_name %>
               </span>
               <%= image_tag "arrow-up.png",alt: "Arrow up", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
               <%= image_tag "arrow-down.png",alt: "Arrow down", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
             </a>
             <ul class="dropdown-menu sprint-dropdown">
+              <li><%= link_to "Total", myprofile_path, remote: true, class: 'text-uppercase font-big' %></li>
               <% @sprints.each_with_index do |sprint, index| %>
-                <li> <%= link_to "Sprint #{index+1}", myprofile_path(sprint.id), remote: true, class: 'text-uppercase font-big' %> </li>
+                <li> <%= link_to sprint.name, myprofile_path(sprint.id), remote: true, class: 'text-uppercase font-big' %> </li>
               <% end %>
             </ul>
         </span>
