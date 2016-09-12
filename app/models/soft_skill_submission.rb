@@ -16,5 +16,10 @@ class SoftSkillSubmission < ActiveRecord::Base
   belongs_to :user
   belongs_to :sprint
 
-  scope :for_user, -> (user) { where(user_id: user.id).joins(:soft_skill).pluck_to_hash(:name,:points,:max_points) }
+  scope :for_user, -> (user) { 
+  		where(user_id: user.id).
+  		joins(:soft_skill).
+  		group(:name).
+  		pluck_to_hash(:name,'sum(points) as points','sum(max_points) as max_points')
+  }
 end
