@@ -2,19 +2,26 @@
   <h3 class="light mb-7 text-center">nivel técnico</h3>
   <div class="row mt-49">
     <% @data.each_with_index do |skill_point, index| %>
-      <div class="col-md-2 <%= "col-md-offset-1" if index == 0 %>">
-        <% points = percent(skill_point[:student_marks], skill_point[:y]).round %>
-          <div class="c100 center <%= "p#{points}" %> small gray">
-            <span><%= points %>%
-            </span> 
-            <div class="slice">
-              <div class="bar"></div>
-              <div class="fill"></div>
+      <% if skill_point[:name] != "badges" %>
+        <div class="col-md-2 <%= "col-md-offset-1" if index == 0 %>">
+          <% points = percent(skill_point[:student_marks], skill_point[:y]).round %>
+            <div class="c100 center <%= "p#{points}" %> small gray">
+              <span><%= points %>%
+              </span> 
+              <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+              </div>
             </div>
-          </div>
-          <div class="page-type mt-14"> <%= skill_point[:name] %> </div>
-          <div class="page-type"><%=  skill_point[:student_marks] %> / <%= skill_point[:y] %></div>
-      </div>
+            <div class="page-type mt-14"> <%= skill_point[:name] %> </div>
+            <div class="page-type"><%=  skill_point[:student_marks] %> / <%= skill_point[:y] %></div>
+        </div>
+      <% end %>
     <% end %>
   </div>
+  <% if @badge_points != nil and @badge_points > 0 %>
+  <div class="row pt-28 text-center light font-17 gray-29">
+    <p><b><%= "+#{@badge_points}"%></b> puntos por badges ganados</p>
+  </div>
+  <% end %>
 </div>

@@ -69,7 +69,10 @@ $(function () {
       enabled: false
    },
     tooltip: {
-      pointFormat: '<b>{point.student_marks}</b>/{point.y}',
+      formatter: function() {
+        return "<b>" + this.point.student_marks + "</b> / " + 
+               (this.point.name != "badges" ? this.point.y : "N/A");
+      },
       fontFamily: "museo-sans"
     },
     plotOptions: {

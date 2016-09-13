@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
     create(attributes)
   end
 
-  #UTILITARIOS
+  #vUTILITARIOS
   def full_name
     "#{name} #{lastname1} #{lastname2}".strip
   end
@@ -123,12 +123,15 @@ class User < ActiveRecord::Base
     self.group.sprints if group != nil
   end
 
-  # METODOS DE CONSULTA PARA EL ADMINISTRADOR
-
   def skill_points page_type
     self.pages.where(page_type: page_type).pluck('submissions.points').map(&:to_i).sum
   end
 
+  def badge_points sprint
+    self.sprint_badges.where(sprint_id: sprint.id).joins(:badge).pluck('sum(badges.points)').first
+  end
+
+  #TODO: Legacy code, remove when grades are improved
   def self.total_score_by_course(course_id)
     User.select(:id,'courses.id as course_id','sum(answers.points) as score')
     .joins(answers: {page: {unit: :course}})
@@ -198,6 +201,7 @@ class User < ActiveRecord::Base
     questionsAnswers
   end
 
+  # Import data from manual grading system
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file)
     header = spreadsheet.row(1)
