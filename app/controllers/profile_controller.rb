@@ -25,7 +25,7 @@ class ProfileController < ApplicationController
             @student_points = Page.student_points(@user)
             @soft_skills_points = SoftSkillSubmission.for_user(@user)
             @avg_students_points = Page.avg_classroom_points
-            @badge_points = @user.sprint_badges.joins(:badge).pluck(:points).reduce(&:+)
+            @badge_points = @user.sprint_badges.joins(:badge).pluck('badges.points').reduce(&:+)
           end
 
           #Badge points should not add to the maximum points available

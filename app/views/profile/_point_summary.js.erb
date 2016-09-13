@@ -70,7 +70,8 @@ $(function () {
    },
     tooltip: {
       formatter: function() {
-        return "<b>" + this.point.student_marks + "</b> / " + 
+        return "" + this.point.name + "<br/>" + 
+               "<b>" + this.point.student_marks + "</b> / " + 
                (this.point.name != "badges" ? this.point.y : "N/A");
       },
       fontFamily: "museo-sans"
