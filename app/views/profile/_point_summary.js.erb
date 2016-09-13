@@ -69,7 +69,11 @@ $(function () {
       enabled: false
    },
     tooltip: {
-      pointFormat: '<b>{point.student_marks}</b>/{point.y}',
+      formatter: function() {
+        return "" + this.point.name + "<br/>" + 
+               "<b>" + this.point.student_marks + "</b> / " + 
+               (this.point.name != "badges" ? this.point.y : "N/A");
+      },
       fontFamily: "museo-sans"
     },
     plotOptions: {
@@ -107,8 +111,10 @@ $(function () {
                 '#AC4937','#E09A37', '#BE5E29'
               ];
   var i = 0;
-  chart.series[0].data.forEach(function(data){
-    data.update({color: colors[i]});
-    i++;
-  });
+  if(chart) {
+    chart.series[0].data.forEach(function(data){
+      data.update({color: colors[i]});
+      i++;
+    });
+  }
 });
