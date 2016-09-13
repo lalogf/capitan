@@ -18,14 +18,20 @@ class ProfileController < ApplicationController
             @student_points = @sprint.student_points(@user)
             @soft_skills_points = @sprint.soft_skill_submissions.for_user(@user)
             @avg_students_points = @sprint.avg_classroom_points
+            @badge_points = @user.badge_points(@sprint)
           else
             @selected_sprint_name = "Total"
             @maximum_points = capitalize_page_type(Page.total_points)
             @student_points = Page.student_points(@user)
             @soft_skills_points = SoftSkillSubmission.for_user(@user)
             @avg_students_points = Page.avg_classroom_points
+            @badge_points = @user.sprint_badges.joins(:badge).pluck(:points).reduce(&:+)
           end
 
+          #Badge points should not add to the maximum points available
+          #A student can get 2500 / 2000 if she gets all points and all badges
+          @maximum_points << ["badges", @badge_points != nil ? @badge_points : 0]
+          @student_points << ["badges", @badge_points != nil ? @badge_points : 0]
           @student_points = capitalize_page_type(@student_points) # can be an empty array
           @max_total_points = @maximum_points.flatten.reject {|e| !e.is_a? Integer}.sum
 
