@@ -12,7 +12,7 @@
 class Branch < ActiveRecord::Base
     has_many :groups
     has_many :users, through: :groups
-    has_many :pages, through: :page_visibility
+    has_many :pages, through: :page_visibilities
     has_many :page_visibilities
 
     def students
