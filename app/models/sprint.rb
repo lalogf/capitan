@@ -21,21 +21,21 @@ class Sprint < ActiveRecord::Base
   validates :group_id, presence: true
 
   def total_points
-    pages.with_points.group(:page_type).pluck(:page_type, 'sum(pages.points)')
+    pages.with_points.group(:page_type).pluck(:page_type, 'round(sum(pages.points))')
   end
 
   def student_points user
     pages.with_points.includes(:submissions).
           where('submissions.user_id = ?', user.id).
           references(:submissions).group(:page_type).
-          pluck(:page_type, 'sum(submissions.points)')
+          pluck(:page_type, 'round(sum(submissions.points))')
   end
 
   def avg_classroom_points
     pages.with_points.joins(:submissions).
       includes(:submissions).
       group(:user_id).
-      pluck('sum(submissions.points)').
+      pluck('round(sum(submissions.points))').
       reduce [ 0.0, 0 ] do |(s, c), e| [ s + e, c + 1 ] end.reduce :/      
   end
 end
