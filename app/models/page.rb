@@ -51,7 +51,7 @@ class Page < ActiveRecord::Base
   has_many :question_groups, :dependent => :destroy
   has_many :questions, through: :question_groups
   has_many :page_visibilities, :dependent => :destroy
-  has_many :branches, through: :page_visibility
+  has_many :branches, through: :page_visibilities
   has_many :submissions, :dependent => :destroy
   has_many :users, through: :submissions
   has_many :reviews, :dependent => :destroy
@@ -107,21 +107,21 @@ class Page < ActiveRecord::Base
     Page.with_points.
          joins(:lesson => :sprints).
          group(:page_type).
-         pluck(:page_type, 'sum(pages.points)')
+         pluck(:page_type, 'round(sum(pages.points))')
   end
 
   def self.student_points user
     Page.with_points.joins(:submissions).joins(:lesson => :sprints).
           where('submissions.user_id = ?', user.id).
           references(:submissions).group(:page_type).
-          pluck(:page_type, 'sum(submissions.points)')    
+          pluck(:page_type, 'round(sum(submissions.points))')    
   end
 
   def self.avg_classroom_points
     Page.with_points.joins(:submissions).
       includes(:submissions).
       group(:user_id).
-      pluck('sum(submissions.points)').
+      pluck('round(sum(submissions.points))').
       reduce [ 0.0, 0 ] do |(s, c), e| [ s + e, c + 1 ] end.reduce :/      
   end
 
