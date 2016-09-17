@@ -51,7 +51,7 @@ class Page < ActiveRecord::Base
   has_many :question_groups, :dependent => :destroy
   has_many :questions, through: :question_groups
   has_many :page_visibilities, :dependent => :destroy
-  has_many :branches, through: :page_visibility
+  has_many :branches, through: :page_visibilities
   has_many :submissions, :dependent => :destroy
   has_many :users, through: :submissions
   has_many :reviews, :dependent => :destroy
