@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912210621) do
+ActiveRecord::Schema.define(version: 20160913224237) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -298,9 +298,9 @@ ActiveRecord::Schema.define(version: 20160912210621) do
     t.integer  "page_id",    limit: 4
     t.integer  "user_id",    limit: 4
     t.string   "link",       limit: 255
-    t.integer  "points",     limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.decimal  "points",                 precision: 5, scale: 2
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   add_index "submissions", ["page_id"], name: "index_submissions_on_page_id", using: :btree
