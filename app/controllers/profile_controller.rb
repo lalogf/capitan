@@ -30,7 +30,6 @@ class ProfileController < ApplicationController
 
           #Badge points should not add to the maximum points available
           #A student can get 2500 / 2000 if she gets all points and all badges
-          @maximum_points << ["badges", @badge_points != nil ? @badge_points : 0]
           @student_points << ["badges", @badge_points != nil ? @badge_points : 0]
           @student_points = capitalize_page_type(@student_points) # can be an empty array
           @max_total_points = @maximum_points.flatten.reject {|e| !e.is_a? Integer}.sum
