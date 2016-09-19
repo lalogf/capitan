@@ -1,3 +1,18 @@
+<% content_for :scripts do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".lesson-checkbox input[type=checkbox]").change(function(e) {
+        var id = $(e.target).val();
+        $(".lesson-"+id+"-pages input[type=checkbox]").prop('checked', this.checked);
+      });
+
+      $(".check_boxes input[type=checkbox]").change(function(e) {
+
+        var lesson_checkbox = $("input[data-lesson=checkbox-]")
+      });
+    });
+  </script>
+<% end %>
 <%= simple_form_for(@sprint) do |f| %>
   <%= f.error_notification %>
   <% if @sprint.errors.any? %>
@@ -19,12 +34,25 @@
       <%= f.association :group, collection: Branch.all, as: :grouped_select,
             group_method: :groups, label: false, :include_blank => "Seleccione un grupo" %>      
     </fieldset><br>
-    <fieldset>
+    <fieldset class="lessons-panel">
       <legend>Lecciones asociadas</legend>
-      <%= f.association :lessons, 
-                        as: :check_boxes, 
-                        label: false,
-                        checked: @sprint.lesson_ids %>
+      <% @lessons.each do |lesson| %>
+        <span class="checkbox lesson-checkbox">
+          <label for="lesson-<%= lesson.id%>-checkbox">
+            <input type="checkbox" name="lesson" value="<%= lesson.id %>" class="check_boxes optional" data-lesson="checkbox-<% lesson.id %>"/>
+            <%= lesson.title %>  
+          </label>
+        </span>
+        <div style="margin-left: 30px;" class="lesson-<%= lesson.id %>-pages">
+          <%= f.association :pages,
+                            collection: lesson.pages,
+                            as: :check_boxes, 
+                            label: false,
+                            checked: @sprint.page_ids,
+                            input_html: { "lesson-id" => lesson.id} %>          
+        </div>
+      <% end %>
+
     </fieldset><br>
     <fieldset>
       <legend>Badges para este sprint</legend>

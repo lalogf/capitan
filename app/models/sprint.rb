@@ -15,9 +15,12 @@ class Sprint < ActiveRecord::Base
   has_many :badges, through: :sprint_badges
   has_many :sprint_badges
   belongs_to :group
-  has_many :pages, through: :lessons
+  has_many :pages
   has_many :submissions, through: :pages
   has_many :soft_skill_submissions
+  has_and_belongs_to_many :pages
+  has_many :lessons, through: :pages
+
   validates :group_id, presence: true
 
   def total_points

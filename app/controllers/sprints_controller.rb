@@ -10,7 +10,6 @@ class SprintsController < ApplicationController
     # Admin has to belong to a group;
     # otherwise the following statement won't works
     @group_id = current_user.group_id
-
     @sprints = Group.find(@group_id).sprints
   end
 
@@ -26,9 +25,11 @@ class SprintsController < ApplicationController
 
   def new
     @sprint = Sprint.new
+    @lessons = Lesson.all
   end
 
   def edit
+    @lessons = Lesson.all
   end
 
   def create
