@@ -56,6 +56,7 @@ class Page < ActiveRecord::Base
   has_many :users, through: :submissions
   has_many :reviews, :dependent => :destroy
   has_many :questions, through: :reviews
+  has_and_belongs_to_many :sprints
 
   scope :visible_page, -> (branch_id) { joins(:page_visibilities).where('page_visibilities.status = ? and page_visibilities.branch_id = ? ', true, branch_id) }
 
@@ -105,24 +106,17 @@ class Page < ActiveRecord::Base
 
   def self.total_points
     Page.with_points.
-         joins(:lesson => :sprints).
+         joins(:sprints).
          group(:page_type).
          pluck(:page_type, 'round(sum(pages.points))')
   end
 
   def self.student_points user
-    Page.with_points.joins(:submissions).joins(:lesson => :sprints).
-          where('submissions.user_id = ?', user.id).
-          references(:submissions).group(:page_type).
-          pluck(:page_type, 'round(sum(submissions.points))')    
-  end
-
-  def self.avg_classroom_points
     Page.with_points.joins(:submissions).
-      includes(:submissions).
-      group(:user_id).
-      pluck('round(sum(submissions.points))').
-      reduce [ 0.0, 0 ] do |(s, c), e| [ s + e, c + 1 ] end.reduce :/      
+         joins(:sprints).
+         where('submissions.user_id = ?', user.id).
+         references(:submissions).group(:page_type).
+         pluck(:page_type, 'round(sum(submissions.points))')
   end
 
   #Legacy - We probably going to remove this methods

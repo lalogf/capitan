@@ -1,3 +1,43 @@
+<% content_for :scripts do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $(".lesson-checkbox input[type=checkbox]").each(function(index,ck) {
+        var chks = $(this).parents(".lessons-panel").find(".lesson-"+this.value+"-pages").find("input[type=checkbox]").map(function() {
+          return this.checked;
+        }).get();
+        $(this).prop('checked',checked(chks));
+      });
+
+      $(".lesson-checkbox input[type=checkbox]").change(function(e) {
+        var id = $(e.target).val();
+        $(".lesson-"+id+"-pages input[type=checkbox]").prop('checked', this.checked);
+      });
+
+      $(".check_boxes input[type=checkbox]").change(function(e) {
+        var lessonId = $(this).attr('lesson-id');
+        var lessonCheckbox = $(this).parents(".lessons-panel").find("#lesson-"+lessonId+"-checkbox");
+        var lessonCheckboxes = $(this).parents(".lessons-panel").find(".lesson-"+lessonId+"-pages").find("input[type=checkbox]").map(function() { return this.checked }).get();
+
+        if (checked(lessonCheckboxes)) {
+          lessonCheckbox.prop('checked',true);
+        } else {
+          lessonCheckbox.prop('checked',false);
+        }
+      });
+    });
+
+    //Search for all checked values or all no checked
+    function checked(checkboxes) {
+      var checked = false;
+      $.each(checkboxes, function(index,ck) {
+        if (ck) checked = true;
+      });
+      return checked;
+    }
+
+  </script>
+<% end %>
 <%= simple_form_for(@sprint) do |f| %>
   <%= f.error_notification %>
   <% if @sprint.errors.any? %>
@@ -9,7 +49,7 @@
       <% end %>
       </ul>
     </div>
-  <% end %>  
+  <% end %>
 
   <div class="form-inputs" style="margin-bottom:20px">
     <fieldset>
@@ -17,19 +57,36 @@
       <%= f.input :name, placeholder: "Ingresa el nombre del sprint", label: false %>
       <%= f.input :description, placeholder: "Ingresa la descripción", label: false %>
       <%= f.association :group, collection: Branch.all, as: :grouped_select,
-            group_method: :groups, label: false, :include_blank => "Seleccione un grupo" %>      
+            group_method: :groups, label: false, :include_blank => "Seleccione un grupo" %>
     </fieldset><br>
-    <fieldset>
+    <fieldset class="lessons-panel">
       <legend>Lecciones asociadas</legend>
-      <%= f.association :lessons, 
-                        as: :check_boxes, 
-                        label: false,
-                        checked: @sprint.lesson_ids %>
+      <% @lessons.each do |lesson| %>
+        <span class="checkbox lesson-checkbox">
+          <label for="lesson-<%= lesson.id%>-checkbox">
+            <input id="lesson-<%= lesson.id%>-checkbox"
+                   type="checkbox" name="lesson"
+                   value="<%= lesson.id %>"
+                   class="check_boxes lesson-checkbox"
+                   data-lesson="checkbox-<% lesson.id %>"/>
+            <%= lesson.title %>
+          </label>
+        </span>
+        <div style="margin-left: 30px;" class="lesson-<%= lesson.id %>-pages">
+          <%= f.association :pages,
+                            collection: lesson.pages,
+                            as: :check_boxes,
+                            label: false,
+                            checked: @sprint.page_ids,
+                            input_html: { "lesson-id" => lesson.id } %>
+        </div>
+      <% end %>
+
     </fieldset><br>
     <fieldset>
       <legend>Badges para este sprint</legend>
-      <%= f.association :badges, 
-                        as: :check_boxes, 
+      <%= f.association :badges,
+                        as: :check_boxes,
                         label: false,
                         label_method: :name,
                         value_method: :id,
