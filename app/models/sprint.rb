@@ -19,7 +19,7 @@ class Sprint < ActiveRecord::Base
   has_many :submissions, through: :pages
   has_many :soft_skill_submissions
   has_and_belongs_to_many :pages
-  has_many :lessons, through: :pages
+  has_many :lessons, -> { distinct }, through: :pages
 
   validates :group_id, presence: true
 
@@ -39,6 +39,6 @@ class Sprint < ActiveRecord::Base
       includes(:submissions).
       group(:user_id).
       pluck('round(sum(submissions.points))').
-      reduce [ 0.0, 0 ] do |(s, c), e| [ s + e, c + 1 ] end.reduce :/      
+      reduce [ 0.0, 0 ] do |(s, c), e| [ s + e, c + 1 ] end.reduce :/
   end
 end
