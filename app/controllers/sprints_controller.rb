@@ -10,7 +10,6 @@ class SprintsController < ApplicationController
     # Admin has to belong to a group;
     # otherwise the following statement won't works
     @group_id = current_user.group_id
-
     @sprints = Group.find(@group_id).sprints
   end
 
@@ -26,9 +25,11 @@ class SprintsController < ApplicationController
 
   def new
     @sprint = Sprint.new
+    @lessons = Lesson.all
   end
 
   def edit
+    @lessons = Lesson.all
   end
 
   def create
@@ -79,6 +80,6 @@ class SprintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sprint_params
-      params.require(:sprint).permit(:name, :description, :group_id, lesson_ids: [], badge_ids: [])
+      params.require(:sprint).permit(:name, :description, :group_id, page_ids: [], badge_ids: [])
     end
 end

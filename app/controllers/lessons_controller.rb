@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
   
+  before_action :require_admin
   before_action :set_track
   before_action :set_course 
   before_action :set_unit
