@@ -65,7 +65,7 @@
         <span class="checkbox lesson-checkbox">
           <label for="lesson-<%= lesson.id%>-checkbox">
             <input id="lesson-<%= lesson.id%>-checkbox"
-                   type="checkbox" name="lesson"
+                   type="checkbox" name="lessons[]"
                    value="<%= lesson.id %>"
                    class="check_boxes lesson-checkbox"
                    data-lesson="checkbox-<% lesson.id %>"/>
@@ -73,12 +73,28 @@
           </label>
         </span>
         <div style="margin-left: 30px;" class="lesson-<%= lesson.id %>-pages">
-          <%= f.association :pages,
-                            collection: lesson.pages,
-                            as: :check_boxes,
-                            label: false,
-                            checked: @sprint.page_ids,
-                            input_html: { "lesson-id" => lesson.id } %>
+          <% lesson.pages.each do |page| %>
+            <span class="checkbox">
+              <label for="sprint_page_ids_<%= page.id %>">
+                <input lesson-id="<%= lesson.id %>"
+                       class="check_boxes optional"
+                       type="checkbox"
+                       value="<%= page.id %>"
+                       <%= @sprint.page_ids.include?(page.id) ? "checked" : "" %>
+                       name="sprint_pages[<%= page.id %>[page_id]]"
+                       id="sprint_page_ids_<%= page.id %>">
+                       <%= page.title %>
+                       <% if page.page_type != "material" %>
+                         <input type="number"
+                                min="0"
+                                style="width:60px;"
+                                name="sprint_pages[<%= page.id %>[points]]"
+                                value="<%= select_sprint_page(@sprint_pages_ids, page.id) %>"/>
+                         <%= "Default: #{page.points} puntos" %>
+                       <% end %>
+                </label>
+              </span>
+          <% end %>
         </div>
       <% end %>
 

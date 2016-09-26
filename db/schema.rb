@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919173646) do
+ActiveRecord::Schema.define(version: 20160925160734) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -198,11 +198,6 @@ ActiveRecord::Schema.define(version: 20160919173646) do
 
   add_index "pages", ["lesson_id"], name: "index_pages_on_lesson_id", using: :btree
 
-  create_table "pages_sprints", id: false, force: :cascade do |t|
-    t.integer "sprint_id", limit: 4, null: false
-    t.integer "page_id",   limit: 4, null: false
-  end
-
   create_table "question_groups", force: :cascade do |t|
     t.integer  "page_id",     limit: 4
     t.integer  "question_id", limit: 4
@@ -266,6 +261,14 @@ ActiveRecord::Schema.define(version: 20160919173646) do
   create_table "sprint_badges_users", id: false, force: :cascade do |t|
     t.integer "sprint_badge_id", limit: 4, null: false
     t.integer "user_id",         limit: 4, null: false
+  end
+
+  create_table "sprint_pages", force: :cascade do |t|
+    t.integer  "sprint_id",  limit: 4
+    t.integer  "page_id",    limit: 4
+    t.integer  "points",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "sprint_summaries", force: :cascade do |t|
