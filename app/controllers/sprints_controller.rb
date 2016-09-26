@@ -29,6 +29,7 @@ class SprintsController < ApplicationController
   end
 
   def edit
+    @sprint_pages_ids = @sprint.sprint_pages.pluck(:page_id,:points)
     @lessons = Lesson.all
   end
 
@@ -54,6 +55,14 @@ class SprintsController < ApplicationController
 
   def update
     respond_to do |format|
+      @sprint.sprint_pages.delete_all
+      params[:sprint_pages].map do |k,sp|
+        puts sp
+        if sp[:page_id] != nil
+          SprintPage.create(sprint:@sprint,page_id: sp[:page_id],points: sp[:points])
+        end
+      end
+      params[:sprint].delete(:sprint_pages)
       if @sprint.update(sprint_params)
         format.html { redirect_to @sprint, notice: 'Sprint was successfully updated.' }
         format.json { render :show, status: :ok, location: @sprint }
