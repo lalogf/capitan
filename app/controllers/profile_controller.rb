@@ -21,8 +21,8 @@ class ProfileController < ApplicationController
             @badge_points = @user.badge_points(@sprint)
           else
             @selected_sprint_name = "Total"
-            @maximum_points = capitalize_page_type(Page.total_points)
-            @student_points = Page.student_points(@user)
+            @maximum_points = capitalize_page_type(SprintPage.total_points)
+            @student_points = SprintPage.student_points(@user)
             @soft_skills_points = SoftSkillSubmission.for_user(@user)
             @avg_students_points = Submission.avg_all_classroom_points(current_user.group_id)
             @badge_points = @user.sprint_badges.joins(:badge).pluck('badges.points').reduce(&:+)

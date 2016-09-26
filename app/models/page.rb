@@ -56,7 +56,8 @@ class Page < ActiveRecord::Base
   has_many :users, through: :submissions
   has_many :reviews, :dependent => :destroy
   has_many :questions, through: :reviews
-  has_and_belongs_to_many :sprints
+  has_many :sprint_pages
+  has_many :sprints, through: :sprint_pages
 
   scope :visible_page, -> (branch_id) { joins(:page_visibilities).where('page_visibilities.status = ? and page_visibilities.branch_id = ? ', true, branch_id) }
 
@@ -103,21 +104,6 @@ class Page < ActiveRecord::Base
 
   scope :editor_pages, -> { where(page_type: 'editor') }
   scope :question_pages, -> { where(page_type: 'questions') }
-
-  def self.total_points
-    Page.with_points.
-         joins(:sprints).
-         group(:page_type).
-         pluck(:page_type, 'round(sum(pages.points))')
-  end
-
-  def self.student_points user
-    Page.with_points.joins(:submissions).
-         joins(:sprints).
-         where('submissions.user_id = ?', user.id).
-         references(:submissions).group(:page_type).
-         pluck(:page_type, 'round(sum(submissions.points))')
-  end
 
   #Legacy - We probably going to remove this methods
   def self.get_exercises_by_lesson(lesson_id)

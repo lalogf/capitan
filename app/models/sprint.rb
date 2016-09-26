@@ -18,25 +18,32 @@ class Sprint < ActiveRecord::Base
   has_many :pages
   has_many :submissions, through: :pages
   has_many :soft_skill_submissions
-  has_and_belongs_to_many :pages
+  has_many :sprint_pages
+  has_many :pages, through: :sprint_pages
   has_many :lessons, -> { distinct }, through: :pages
+
+  accepts_nested_attributes_for :sprint_pages
 
   validates :group_id, presence: true
 
   def total_points
-    pages.with_points.group(:page_type).pluck(:page_type, 'round(sum(pages.points))')
+    sprint_pages.with_points.
+    joins(:page).
+    group("pages.page_type").
+    pluck("pages.page_type","round(sum(coalesce(sprint_pages.points,pages.points)))")
   end
 
   def student_points user
-    pages.with_points.includes(:submissions).
-          where('submissions.user_id = ?', user.id).
-          references(:submissions).group(:page_type).
-          pluck(:page_type, 'round(sum(submissions.points))')
+    sprint_pages.with_points.
+    includes({page: :submissions}).
+    where('submissions.user_id = ?', user.id).
+    references(:submissions).group(:page_type).
+    pluck(:page_type, 'round(sum(submissions.points))')
   end
 
   def avg_classroom_points
-    pages.with_points.joins(:submissions).
-      includes(:submissions).
+      sprint_pages.with_points.
+      includes({page: :submissions}).
       group(:user_id).
       pluck('round(sum(submissions.points))').
       reduce [ 0.0, 0 ] do |(s, c), e| [ s + e, c + 1 ] end.reduce :/
