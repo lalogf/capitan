@@ -14,9 +14,6 @@ class TracksController < ApplicationController
 
   def show_user_track
     @track = Track.find(params[:id] || 1)
-    @teachers = [{name: "Giancarlo Corzo", image: "gian.jpg", title: "Full Stack Developer", mail: "gian@laboratoria.la"},
-                 {name: "Elizabeth Portilla", image: "eli.jpg", title: "Full Stack Developer", mail: "elizabeth@laboratoria.la"},
-                 {name: "Iván Medina", image: "ivan.jpg", title: "Back End Developer", mail: "ivan@laboratoria.la"}]
   end
 
   def new
