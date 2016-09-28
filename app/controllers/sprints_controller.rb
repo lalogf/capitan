@@ -43,6 +43,7 @@ class SprintsController < ApplicationController
     @sprint = Sprint.new(sprint_params)
 
     respond_to do |format|
+      update_sprint_pages
       if @sprint.save
         format.html { redirect_to @sprint, notice: 'Sprint was successfully created.' }
         format.json { render :show, status: :created, location: @sprint }
@@ -55,14 +56,7 @@ class SprintsController < ApplicationController
 
   def update
     respond_to do |format|
-      @sprint.sprint_pages.delete_all
-      params[:sprint_pages].map do |k,sp|
-        puts sp
-        if sp[:page_id] != nil
-          SprintPage.create(sprint:@sprint,page_id: sp[:page_id],points: sp[:points])
-        end
-      end
-      params[:sprint].delete(:sprint_pages)
+      update_sprint_pages
       if @sprint.update(sprint_params)
         format.html { redirect_to @sprint, notice: 'Sprint was successfully updated.' }
         format.json { render :show, status: :ok, location: @sprint }
@@ -71,6 +65,16 @@ class SprintsController < ApplicationController
         format.json { render json: @sprint.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def update_sprint_pages
+    @sprint.sprint_pages.delete_all
+    params[:sprint_pages].map do |k,sp|
+      if sp[:page_id] != nil
+        SprintPage.create(sprint:@sprint,page_id: sp[:page_id],points: sp[:points])
+      end
+    end
+    params[:sprint].delete(:sprint_pages)
   end
 
   def destroy

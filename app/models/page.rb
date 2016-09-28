@@ -41,6 +41,7 @@
 #  show_title                 :boolean          default(TRUE)
 #  video_url                  :string(255)
 #  optional                   :boolean
+#  code                       :string(255)
 #
 
 class Page < ActiveRecord::Base

@@ -13,7 +13,7 @@
       <p>
         <strong>Sequence:</strong>
         <%= @lesson.sequence %>
-      </p>  
+      </p>
       <p>
         <strong>Title:</strong>
         <%= @lesson.title %>
@@ -28,22 +28,24 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>Código</th>
           <th>Título</th>
-          <th>Lección</th>
           <th>Tipo</th>
+          <th>Puntos</th>
           <th></th>
         </tr>
       </thead>
-    
+
       <tbody>
         <% @lesson.pages.order(:sequence).each do |page| %>
           <tr>
             <td><%= link_to page.sequence, track_course_unit_lesson_page_path(@track,@course,@unit,@lesson,page) %></td>
+            <td><%= page.code %></td>
             <td><%= page.title %></td>
-            <td><%= page.lesson.title %></td>
-            <td><%= page.page_type %></td>
+            <td><%= "#{page.page_type}"%><%= " - #{page.material_type}" if page.material_type != nil %></td>
+            <td><%= page.points %></td>
             <td>
-              <%= link_to 'Editar', edit_track_course_unit_lesson_page_path(@track,@course,@unit,@lesson,page) %>  |  
+              <%= link_to 'Editar', edit_track_course_unit_lesson_page_path(@track,@course,@unit,@lesson,page) %>  |
               <%= link_to 'Eliminar', [@track,@course,@unit,@lesson,page], method: :delete, data: { confirm: '¿Está seguro?' } %>
             </td>
           </tr>

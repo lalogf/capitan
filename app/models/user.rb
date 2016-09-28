@@ -60,9 +60,6 @@ class User < ActiveRecord::Base
 
   enum role: [:student, :assistant, :teacher, :admin]
 
-  #TODO: ESTO DEBE SALIR PORQUE VAMOS A USAR DISCOURSE U OTRO SISTEMA DE COMENTARIOS
-  include TheComments::User
-
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :group
   has_many :answers , :dependent => :destroy
@@ -91,7 +88,7 @@ class User < ActiveRecord::Base
                     :styles => { :profile => "128x128", :menu => "80x80", :navbar => "35x35" },
                     :url => "/system/:class/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension",
-                    :default_url => (self.student ? "/alumna.png" : "profesor.png") 
+                    :default_url => (self.student ? "/alumna.png" : "profesor.png")
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
@@ -201,7 +198,7 @@ class User < ActiveRecord::Base
     questionsAnswers
   end
 
-  # Import data from manual grading system
+  #User system: import user information from xls files
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file)
     header = spreadsheet.row(1)
@@ -216,45 +213,46 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.import_score(file, lesson_id)
-    spreadsheet = Roo::Spreadsheet.open(file)
-    header = spreadsheet.row(1)
-    lesson = Lesson.find(lesson_id)
-    (2..spreadsheet.last_row).each do |i|
-      row = spreadsheet.row(i)
-      user = User.where(code: row[0]).first
-      if user != nil
-        exercise_index = 0
-        solution_index = 0
-        header.each_with_index do |h,index|
-          if h != "code"
-            h = "prework" if h == "quiz"
-            if h == "exercise"
-              page = lesson.pages.where(page_type: h).order(:sequence)[exercise_index]
-              exercise_index += 1
-            elsif h == "solution"
-              page = lesson.pages.where(page_type: h).order(:sequence)[solution_index]
-              solution_index += 1
-            else
-              page = lesson.pages.where(page_type: h).first
+  # Grading system: import score manually from xls files
+  def self.import_scores(file, lesson_id)
+    begin
+      spreadsheet = Roo::Spreadsheet.open(file)
+
+      header = spreadsheet.row(1)
+      lesson = Lesson.find(lesson_id)
+
+      if lesson
+        (2..spreadsheet.last_row).each do |i|
+          row = spreadsheet.row(i)
+          user = User.where(code: row[0]).first
+          if user
+            header.each_with_index do |h,index|
+              if h != "code"
+                page = Page.find_by_code(h)
+                if page
+                  subm = Submission.where(page_id: page.id, user_id: user.id)
+                  if subm.count == 0
+                    subm = Submission.new(page_id: page.id, user_id: user.id, points: row[index].to_f.round(2))
+                  else
+                    subm = subm.first
+                    subm.points = row[index].to_f.round
+                  end
+                  p subm.save ? "Grade saved for user #{user.code}. Grade: #{row[index].to_f.round(2)}, Page: #{page.title}" : "User #{user.code} failed"
+                else
+                  p "Couldn't find a valid page for #{h} code"
+                end
+              end
             end
-            subm = Submission.where(page_id: page.id, user_id: user.id)
-            if subm.count == 0
-              subm = Submission.new(page_id: page.id, user_id: user.id, points: row[index].to_f.round(2))
-            else
-              subm = subm.first
-              subm.points = row[index].to_f.round
-            end
-            if subm.save
-              p "User #{user.code} saved with grade #{row[index].to_f.round(2)}"
-            else
-              p "User #{user.code} failed"
-            end
+          else
+            p "Couldn't find a valid user for #{row[0]} code"
           end
         end
       else
-        p "User #{row[0]} no existe"
+        p "Couldn't find a valid lesson ID"
       end
+
+    rescue Exception => e
+      p e.message
     end
   end
 
@@ -289,39 +287,6 @@ class User < ActiveRecord::Base
         end
       else
         p "User #{row[0]} no existe"
-      end           
-    end
-  end
-
-  def self.import_sprint_scores(file)
-    spreadsheet = Roo::Spreadsheet.open(file)
-    (2..spreadsheet.last_row).each do |i|
-      row = spreadsheet.row(i)
-      user = User.where(code: row[0]).first
-      if user != nil
-        sprint_id = row[1]
-        total_technical_skills = row[2].to_f.round(2)
-        total_soft_skills = row[3].to_f.round(2)
-        max_technical_skills = row[4].to_f.round(2)
-        max_soft_skills = row[5].to_f.round(2)
-        user_sprint = SprintSummary.where(user_id: user.id, sprint_id: sprint_id)
-        if user_sprint.count > 0
-          user_sprint = user_sprint.first
-          user_sprint.total_technical_skills = total_technical_skills
-          user_sprint.total_soft_skills = total_soft_skills
-          user_sprint.max_technical_skills = max_technical_skills
-          user_sprint.max_soft_skills = max_soft_skills
-        else
-          user_sprint = SprintSummary.new(user_id: user.id, sprint_id: sprint_id, total_technical_skills: total_technical_skills,
-            total_soft_skills: total_soft_skills, max_technical_skills: max_technical_skills, max_soft_skills: max_soft_skills)
-        end
-        if user_sprint.save
-          puts "#{user.code} saved!"
-        else
-          puts "Error with user #{user.code}"
-        end
-      else
-        puts "#{row[0]} is not a user!"
       end
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925160734) do
+ActiveRecord::Schema.define(version: 20160928164315) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(version: 20160925160734) do
     t.boolean  "show_title",                 limit: 1,     default: true
     t.string   "video_url",                  limit: 255
     t.boolean  "optional",                   limit: 1
+    t.string   "code",                       limit: 255
   end
 
   add_index "pages", ["lesson_id"], name: "index_pages_on_lesson_id", using: :btree

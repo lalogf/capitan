@@ -6,7 +6,7 @@
 #  page_id    :integer
 #  user_id    :integer
 #  link       :string(255)
-#  points     :integer
+#  points     :decimal(5, 2)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
