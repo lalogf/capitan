@@ -9,14 +9,14 @@
 <%= simple_nested_form_for([@track,@course,@unit,@lesson,@page]) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
-    <%= f.input :sequence %><br>
+    <%= f.input :sequence %><br/>
     <%= f.input :title %>
-    <%= f.input :show_title %><br>
+    <%= f.input :show_title %><br/>
+    <%= f.input :code %><br/>
     <%= f.input :points, label: "Points" %>
-    <%= f.input :optional, label: "Página opcional (los puntos de la página no contarán para los cálculos de la lección)" %><br>
-    <%= f.input :page_type, 
+    <%= f.input :page_type,
       :collection => [['Material','material'],['Pre-work','prework'],['Quiz','quiz'],
-      ['Exercise','exercise'],['Solution','solution'],['Retrospective','retrospective'], 
+      ['Exercise','exercise'],['Solution','solution'],['Retrospective','retrospective'],
       ['Code Review', 'codereview'], ['Notas', 'score']] %><br>
     <%= render :partial=> 'pages/form/material_fields', :locals => {:f => f} %>
     <%= render :partial=> 'pages/form/quiz_fields', :locals => {:f => f} %>
@@ -27,6 +27,6 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit, :class => "btn btn-primary page-submit-form" %>
-    <%= link_to 'Cancelar', [@track,@course,@unit,@lesson],:class => "btn btn-danger" %>  
+    <%= link_to 'Cancelar', [@track,@course,@unit,@lesson],:class => "btn btn-danger" %>
   </div>
 <% end %>

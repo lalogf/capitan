@@ -37,26 +37,26 @@
     <div class="panel-body">
       <%= f.input :avatar, as: :file, label: false %>
       <div id="target">
-        <%= image_tag @user.avatar.url(:profile) if @user.avatar.exists? %>  
-      </div>      
+        <%= image_tag @user.avatar.url(:profile) if @user.avatar.exists? %>
+      </div>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">Sede y grupo</div>
     <div class="panel-body">
-      <%= f.association :group, label: false, collection: Branch.all, as: :grouped_select, group_method: :groups, :include_blank => "Seleccione un grupo" %>    
+      <%= f.association :group, label: false, collection: Branch.all, as: :grouped_select, group_method: :groups, :include_blank => "Seleccione un grupo" %>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">Permisos y roles</div>
     <div class="panel-body">
-      <%= f.input :role, label: false, collection: User.roles.keys, label_method: lambda {|k| k.capitalize} %>   
+      <%= f.input :role, label: false, collection: User.roles.keys, label_method: lambda {|k| k.capitalize} %>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">Cambiar contraseña</div>
     <div class="panel-body">
-      <%= f.input :password,label: false, required: true, placeholder: "Nueva contraseña" %>  
+      <%= f.input :password,label: false, required: true, placeholder: "Nueva contraseña" %>
     </div>
   </div>
   <div class="panel panel-default">
@@ -70,23 +70,25 @@
       <%= f.input :phone2, label: false, required: true, placeholder: "Otro teléfono" %>
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">Badges</div>
-    <div class="panel-body">
-      <% if @user.sprints.each_with_index do |sprint,index| %>
-        <label><%= "#{sprint.name} - #{sprint.description}" %></label>
-        <div style="margin-left:20px">
-          <%= f.association :sprint_badges,
-                          collection: sprint.sprint_badges, 
-                          as: :check_boxes, 
-                          label: false,
-                          label_method: :badge_name %>          
-        </div>
-        <hr>
-      <% end.empty? %>
-        <p>El grupo del usuario no tiene ningún sprint</p>
-      <% end %>
-    </div>
+  <% if @user.sprints != nil %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Badges</div>
+      <div class="panel-body">
+        <% if @user.sprints.each_with_index do |sprint,index| %>
+          <label><%= "#{sprint.name} - #{sprint.description}" %></label>
+          <div style="margin-left:20px">
+            <%= f.association :sprint_badges,
+                            collection: sprint.sprint_badges,
+                            as: :check_boxes,
+                            label: false,
+                            label_method: :badge_name %>
+          </div>
+          <hr>
+        <% end.empty? %>
+          <p>El grupo del usuario no tiene ningún sprint</p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
 
