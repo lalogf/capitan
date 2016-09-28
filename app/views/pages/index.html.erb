@@ -9,21 +9,23 @@
     <thead>
       <tr>
         <th>#</th>
+        <th>Código</th>
         <th>Título</th>
         <th>Tipo</th>
         <th></th>
       </tr>
     </thead>
-  
+
     <tbody>
       <% @pages.order(:sequence).each do |page| %>
         <tr>
           <td><%= page.sequence %></td>
+          <td><%= page.code %></td>
           <td><%= page.title %></td>
           <td><%= page.page_type %></td>
           <td>
-            <%= link_to 'Ver página', mycourse_unit_page_path(@course,@unit,page) %>  |  
-            <%= link_to 'Editar', edit_course_unit_page_path(@course,@unit,page) %>  |  
+            <%= link_to 'Ver página', mycourse_unit_page_path(@course,@unit,page) %>  |
+            <%= link_to 'Editar', edit_course_unit_page_path(@course,@unit,page) %>  |
             <%= link_to 'Eliminar', [@track,@course,@unit,page], method: :delete, data: { confirm: '¿Está seguro?' } %>
           </td>
         </tr>
