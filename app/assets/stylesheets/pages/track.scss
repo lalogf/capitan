@@ -1,4 +1,19 @@
 @media (max-width: 480px) {
+	#principal-hero {
+		padding: 25px 10px;
+		p, .linea-divisora {
+			display: none;
+		}
+		h1 {
+			font-size: 40px;
+			font-weight: 300;
+			margin-top: 0px;
+			margin-bottom: 20px!important;
+		}
+	}
+	.bg-tracks {
+		height: auto;
+	}
 	#equipo {
 		display: none;
 	}

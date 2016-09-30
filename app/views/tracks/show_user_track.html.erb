@@ -1,9 +1,9 @@
-<section class="bg-tracks bg-gray-dark">
+<section id="principal-hero" class="bg-tracks bg-gray-dark">
   <div class="text-left text-white">
     <div class="container-md">
       <p class="small pb-0 mb-0 pt-35"><%= "CURSO INTENSIVO DE "%><%= pluralize @track.duration, "SEMANA" %></p>
   		<h1 class="thin fz-44 mb-0"><%= @track.name %></h1>
-  		<%= image_tag "linea-amarilla.png",alt: "Línea divisora", class: "ho" %>
+  		<%= image_tag "linea-amarilla.png",alt: "Línea divisora", class: "ho linea-divisora" %>
   		<p class="light pt-14"><%= @track.description %></p>
   		<a href="<%= @track.syllabus %>" target="_blank" class="text-white">
         <%= image_tag "bullet-down.png",alt: "Syllabus" %>
