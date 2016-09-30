@@ -15,10 +15,9 @@ class Sprint < ActiveRecord::Base
   has_many :badges, through: :sprint_badges
   has_many :sprint_badges
   belongs_to :group
-  has_many :pages
   has_many :submissions, through: :pages
   has_many :soft_skill_submissions
-  has_many :sprint_pages
+  has_many :sprint_pages, dependent: :destroy 
   has_many :pages, through: :sprint_pages
   has_many :lessons, -> { distinct }, through: :pages
 

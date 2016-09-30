@@ -69,6 +69,7 @@ class SprintsController < ApplicationController
 
   def update_sprint_pages
     @sprint.sprint_pages.delete_all
+    @sprint.save
     params[:sprint_pages].map do |k,sp|
       if sp[:page_id] != nil
         SprintPage.create(sprint:@sprint,page_id: sp[:page_id],points: sp[:points])
