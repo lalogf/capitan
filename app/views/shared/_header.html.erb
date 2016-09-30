@@ -7,25 +7,49 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="row pv-7">
-        <!-- <div class="col-md-4">
+        <div class="col-md-4">
           <div class="navbar-header">
+            <%= link_to image_tag("logo.svg",alt: "Laboratoria código que transforma", class: "logo-laboratoria-movil", width: "190"), root_path %>
             <button type="button"
-                    class="navbar-toggle collapsed"
+                    class="navbar-toggle collapsed mr-0"
                     data-toggle="collapse"
                     data-target="#menu-navbar-collapse-1"
                     aria-expanded="false">
-
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
           </div>
-        </div> -->
-        <div class="col-md-4 text-center">
+          <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
+              </li>
+              <% unless current_page?(codereview_path) %>
+                <li>
+                  <%= link_to('Code Review', codereview_path, :method => :get) %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to('Mis Cursos', root_path, :method => :get) %>
+                </li>
+              <% end %>
+              <% unless current_user.student? %>
+                <li>
+                  <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
+                </li>
+              <% end %>
+              <li>
+                <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 text-center hidden-xs">
           <%= link_to image_tag("logo.svg",alt: "Laboratoria código que transforma", class: "logo-laboratoria", width: "190"), root_path %>
         </div>
-        <div class="col-md-4 pt-7">
-          <div class="collapse navbar-collapse in" id="menu-navbar-collapse-1">
+        <div class="dropdown-container col-md-4 pt-7">
+          <div class="collapse navbar-collapse in">
             <ul class="nav navbar-nav navbar-right">
               <li class="header-arrow">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
