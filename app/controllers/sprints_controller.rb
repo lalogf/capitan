@@ -69,6 +69,7 @@ class SprintsController < ApplicationController
 
   def update_sprint_pages
     @sprint.sprint_pages.delete_all
+    @sprint.save
     params[:sprint_pages].map do |k,sp|
       if sp[:page_id] != nil
         SprintPage.create(sprint:@sprint,page_id: sp[:page_id],points: sp[:points])
@@ -93,6 +94,6 @@ class SprintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sprint_params
-      params.require(:sprint).permit(:name, :description, :group_id, page_ids: [], badge_ids: [])
+      params.require(:sprint).permit(:name, :description, :sequence, :group_id, page_ids: [], badge_ids: [])
     end
 end

@@ -1,19 +1,22 @@
 <% @sprints.each do |sprint| %>
-    <tr>
-      <td>
+<tr>
+    <td>
+      <%= sprint.sequence %>
+    </td>
+    <td>
         <%= link_to sprint.name, sprint %>
-      </td>
-      <td><%= sprint.description %></td>
-      <td>
+    </td>
+    <td><%= sprint.description %></td>
+    <td>
         <%= link_to sprint do %>
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        <i class="fa fa-info-circle" aria-hidden="true"></i>
         <% end %>
         <%= link_to edit_sprint_path(sprint) do %>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
         <% end %>
         <%= link_to sprint, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
-          <i class="fa fa-trash" aria-hidden="true"></i>
+        <i class="fa fa-trash" aria-hidden="true"></i>
         <% end %>
-      </td>
-    </tr>
+    </td>
+</tr>
 <% end %>
