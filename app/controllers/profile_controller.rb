@@ -7,7 +7,7 @@ class ProfileController < ApplicationController
         @sprint_index = 0
         @user = current_user
 
-        @sprints = current_user.group.sprints.joins(:pages).where("pages.points > 0").order(:sequence).distinct
+        @sprints = current_user.group.sprints.joins(:pages).where("pages.points > 0 or sprint_pages.points > 0").order(:sequence).distinct
         @sprint_badges = @user.sprint_badges.group_by(&:badge).map { |key,value| {key => value.size} }
 
         if @sprints.length > 0
