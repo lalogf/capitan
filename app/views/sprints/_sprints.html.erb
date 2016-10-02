@@ -7,15 +7,18 @@
         <%= link_to sprint.name, sprint %>
     </td>
     <td><%= sprint.description %></td>
-    <td>
+    <td class="pull-right">
         <%= link_to sprint do %>
-        <i class="fa fa-info-circle" aria-hidden="true"></i>
+          <button class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Show</button>
         <% end %>
+
         <%= link_to edit_sprint_path(sprint) do %>
-        <i class="fa fa-pencil" aria-hidden="true"></i>
+          <button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit</button>
         <% end %>
+
         <%= link_to sprint, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
-        <i class="fa fa-trash" aria-hidden="true"></i>
+          <button class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</button>
+
         <% end %>
     </td>
 </tr>
