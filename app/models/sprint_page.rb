@@ -31,4 +31,16 @@ class SprintPage < ActiveRecord::Base
     pluck(:page_type, 'round(sum(submissions.points))')
   end
 
+  def self.lessons_for_group group
+    SprintPage.with_points.
+    joins(:sprint,{:page => :lesson}).
+    order("pages.sequence").
+    distinct.
+    pluck_to_hash("sprints.id as sprint_id","sprints.name as sprint_name",
+                  "sprints.description as sprint_description",
+                  "lessons.unit_id as unit_id","lessons.id as lesson_id","lessons.title as title",
+                  "pages.id as page_id",
+                  "round(sum(coalesce(sprint_pages.points, pages.points))) as points")
+  end
+
 end

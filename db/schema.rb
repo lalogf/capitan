@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928164315) do
+ActiveRecord::Schema.define(version: 20160929212726) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -291,6 +291,7 @@ ActiveRecord::Schema.define(version: 20160928164315) do
     t.integer  "group_id",    limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "sequence",    limit: 4
   end
 
   add_index "sprints", ["group_id"], name: "index_sprints_on_group_id", using: :btree
