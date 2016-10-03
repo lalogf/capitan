@@ -27,7 +27,7 @@
 		font-size: 25px;
 	}
 }
-@media (min-width: 480px) {
+@media (min-width: 760px) {
 	#menu-navbar-collapse-1,
 	.logo-laboratoria-movil {
 		display: none!important;
@@ -37,5 +37,8 @@
 	.container-md {
 		width: 100%;
     	padding: 0px 50px;
+	}
+	.dropdown-container {
+		display: none;
 	}
 }
