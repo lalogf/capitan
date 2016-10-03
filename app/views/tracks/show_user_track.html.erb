@@ -1,9 +1,23 @@
-<section class="bg-tracks bg-gray-dark">
+<% content_for :scripts do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var heightMax=0;
+      $(".content-box-courses").each(function(){
+        var heightBox = $(this).find(".content-cursos").height();
+        if (heightBox > heightMax){
+          heightMax= heightBox;
+        }
+      }); 
+      $(".content-box-courses").find(".content-cursos").height(heightMax);
+    });
+  </script>
+<% end %>
+<section id="principal-hero" class="bg-tracks bg-gray-dark">
   <div class="text-left text-white">
-    <div class="container-md">
+    <div class="container-md container-sm">
       <p class="small pb-0 mb-0 pt-35"><%= "CURSO INTENSIVO DE "%><%= pluralize @track.duration, "SEMANA" %></p>
   		<h1 class="thin fz-44 mb-0"><%= @track.name %></h1>
-  		<%= image_tag "linea-amarilla.png",alt: "Línea divisora", class: "ho" %>
+  		<%= image_tag "linea-amarilla.png",alt: "Línea divisora", class: "ho linea-divisora" %>
   		<p class="light pt-14"><%= @track.description %></p>
   		<a href="<%= @track.syllabus %>" target="_blank" class="text-white">
         <%= image_tag "bullet-down.png",alt: "Syllabus" %>
@@ -15,10 +29,10 @@
 <section class="pt-35 pb-56">
   <div class="container-md">
     <h3 class="thin fz-xs lh-sub thin h2">plan de estudios</h3>
-    <div class="hidden-xs mb-7 separator separator-primary separator-left separator-sm"></div>
+    <div class="mb-7 separator separator-primary separator-left separator-sm"></div>
     <div class="row mt-42">
       <% @track.courses.each_with_index do |course,index| %>
-        <div class="col-md-4">
+        <div class="content-box-courses col-sm-4 mb-28-xs">
           <div class="grid-cursos text-center">
             <div class="bg-gray-dark header-grid p-21 light">
               <small class="text-primary lh-xs"><%= "Unidad #{index + 1}" %></small>
