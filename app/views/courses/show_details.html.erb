@@ -1,9 +1,9 @@
 <div class="course-header clearfix bg-gray-dark">
     <div class="content container">
         <div class="row">
-          <div class="col-md-5 col-md-offset-1 pr-49">
+          <div class="col-md-5 col-md-offset-1 pr-49 ph-0-xs">
             <h1 class="light text-uppercase"><%= @course.name %></h1>
-            <p class="thin lh-md mb-42-md fz-21"><%= @course.description %></p>
+            <p class="thin lh-md mb-42-md fz-21 hidden-xs"><%= @course.description %></p>
             <% if @course.course_plan %>
               <a href="<%= @course.course_plan %>" target="_blank" class="text-white ml-7">
                 <i class="fa fa-chevron-right text-primary" aria-hidden="true"></i>
@@ -22,10 +22,10 @@
         </div>
     </div>
 </div>
-<div class="container sprints-container">
+<div class="container sprints-container ph-42-xs ph-56-sm">
   <div class="row">
-    <div class="col-xs-10 col-md-offset-1">
-      <h2 class="lh-21 light text-left mt-42 mb-0">contenido</h2>
+    <div class="col-md-10 col-xs-12 col-md-offset-1">
+      <h2 class="subtitulo-curso lh-21 light text-left mt-42 mb-0 mt-14-xs">contenido</h2>
       <div class="separator separator-sm separator-primary separator-left mb-28"></div>
       <div class="sprints">
         <% @sprints.each do |sprint| %>
