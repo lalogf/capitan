@@ -68,7 +68,7 @@ class SprintsController < ApplicationController
   end
 
   def update_sprint_pages
-    @sprint.sprint_pages.delete_all
+    @sprint.sprint_pages.destroy_all
     @sprint.save
     params[:sprint_pages].map do |k,sp|
       if sp[:page_id] != nil

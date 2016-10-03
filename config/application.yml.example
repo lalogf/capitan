@@ -1,22 +1,21 @@
-# Agrega los valores de configuracion para cada uno de los ambientes 
-# del capitan
+# Environment configuration file
+# ===============================
+# Place all your custom keys, database configuration, an any extra environment
+# configuration into this file.
 #
-# production:
-#   database: micapitan
-#   database_username: capitan
-# 
-# Development y test tienen la configuracion para C9
+# This example configuration assume you are working on Cloud9 site so
+# everything is setup for it. Change it according to your dev configuration.
 
 development:
     host: <%= ENV['IP'] %>
     database: capitan_development
     database_username: <%= ENV['C9_USER'] %>
-    database_password: 
+    database_password:
 test:
     host: <%= ENV['IP'] %>
     database: capitan_test
     database_username: <%= ENV['C9_USER'] %>
-    database_password: 
+    database_password:
 production:
     host: ~
     database: capitan
