@@ -1,7 +1,4 @@
 @media (max-width: 480px) {
-	.dropdown-container {
-		display: none;
-	}
 	.logo-laboratoria-movil {
 		width: 145px;
 	}
@@ -27,18 +24,26 @@
 		font-size: 25px;
 	}
 }
+@media (max-width: 780px) {
+	.dropdown-container {
+		display: none;
+	}
+	.bg-tracks {
+		height: auto;
+	}
+}
 @media (min-width: 760px) {
 	#menu-navbar-collapse-1,
 	.logo-laboratoria-movil {
 		display: none!important;
 	}
 }
-@media only screen and (min-width: 480px) and (max-width: 768px) {
+@media only screen and (min-width: 480px) and (max-width: 980px) {
 	.container-md {
 		width: 100%;
     	padding: 0px 50px;
 	}
-	.dropdown-container {
-		display: none;
+	.bg-tracks {
+		padding-bottom: 42px;
 	}
 }
