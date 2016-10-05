@@ -15,14 +15,9 @@ class CoursesController < ApplicationController
   end
 
   def show_details
-    @sprints = current_user.
-               group.
-               sprints.
-               joins(:pages).
-               order(:sequence).
-               distinct.pluck_to_hash(:id,:name,:description)
-
-    @lessons = SprintPage.lessons_for_group current_user.group
+    #@sprints = current_user.group.sprints.joins(:pages).order(:sequence).distinct.pluck_to_hash(:id,:name,:description)
+    #@lessons = SprintPage.lessons_for_group current_user.group
+    @week_start = 1
   end
 
   def new
