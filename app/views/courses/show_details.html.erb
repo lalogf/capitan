@@ -39,7 +39,7 @@
             <div class="col-sm-6 pl-49">
               <div class="content-box clearfix">
                 <ol>
-                  <% @lessons.each do |lesson| %>
+                  <% sprint_lessons(sprint[:id],@lessons).each do |lesson| %>
                   <li class="progress-item">
                     <%= link_to lesson_page_details_path(@track,@course,lesson[:unit_id],lesson[:lesson_id], lesson[:page_id]),
                           :class => "viewed" do %>

@@ -32,9 +32,10 @@ class SprintPage < ActiveRecord::Base
   end
 
   def self.lessons_for_group group
-    SprintPage.with_points.
+    SprintPage.
     joins(:sprint,{:page => :lesson}).
-    order("pages.sequence").
+    order("sprints.name").
+    group("lessons.id").
     distinct.
     pluck_to_hash("sprints.id as sprint_id","sprints.name as sprint_name",
                   "sprints.description as sprint_description",
