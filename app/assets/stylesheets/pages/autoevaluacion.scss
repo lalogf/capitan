@@ -1,3 +1,7 @@
+
+.select {
+	border: 2px solid #f9a91a;
+}
 #autoevaluacion {
 	h2 {
 		font-size: 12px;
@@ -8,5 +12,20 @@
 	}
 	.texto-introductorio {
 		font-size: 12px;
+	}
+	.list-icons-feeling li {
+		border: 1px solid #ddd;
+		padding: 15px;
+		&:nth-child(2) {
+			margin: 0px 40px;
+		}
+		img {
+			transition: all 0.25s ease;
+			&:hover {
+				-ms-transform: 	   scale(1.1);
+			    -webkit-transform: scale(1.1);
+			    transform: 		   scale(1.1);	
+			}
+		}
 	}
 }

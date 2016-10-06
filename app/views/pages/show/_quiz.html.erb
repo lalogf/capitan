@@ -9,6 +9,20 @@
 				<p class="texto-introductorio">Recuerda responder con total honestidad estas preguntas para poder ayudar a que te conviertas en una super frontend designer.</p>
 			</div>
 		</div>
+		<form class="pt-49">
+			<ol>
+				<li>
+					<label>Asi me he sentido sobre el tema que acabo deaprender</label>
+					<ul class="list-inline list-icons-feeling mt-21">
+						<li class="p-5"><input type="radio" name="feeling" for=""><%= link_to image_tag("insatisfecho.png",alt: "insatisfecho", class: "logo-feeling"), root_path %></li>
+						<li class="p-5"><input type="radio" name="feeling" for=""><%= link_to image_tag("cool.png",alt: "insatisfecho", class: "logo-feeling"), root_path %></li>
+						<li class="p-5"><input type="radio" name="feeling" for=""><%= link_to image_tag("satisfecho.png",alt: "insatisfecho", class: "logo-feeling"), root_path %></li>
+					</ul>
+				</li>
+				<li></li>
+				<li></li>
+			</ol>
+		</form>
     </div>
 </div>
 <!-- <script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'widget.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()</script>
