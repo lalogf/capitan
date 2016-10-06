@@ -17,13 +17,16 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'quiet_assets'
 end
 
 gem 'devise', "4.2.0"
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'devise-i18n'
 gem "font-awesome-rails"
 gem 'annotate'
@@ -49,3 +52,4 @@ gem 'awesome_nested_set'
 gem 'figaro'
 gem 'bourbon'
 gem 'pluck_to_hash'
+gem 'mandrill-api'

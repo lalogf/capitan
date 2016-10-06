@@ -18,12 +18,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:dni, :code, :name, :lastname1, :lastname2, :group_id, :district, :age, :facebook_username,
-      :email, :phone1, :phone2, :password)
+      u.permit(:dni, :code, :name, :lastname1, :lastname2,
+               :group_id, :district, :age, :facebook_username,
+               :email, :phone1, :phone2, :password)
     end
     devise_parameter_sanitizer.permit(:account_update) do |u|
-      u.permit(:dni, :code, :name, :lastname1, :lastname2, :group_id, :district, :age, :facebook_username,
-        :email, :phone1, :phone2, :password, :current_password)
+      u.permit(:dni, :code, :name, :lastname1, :lastname2,
+               :group_id, :district, :age, :facebook_username,
+               :email, :phone1, :phone2, :password, :current_password)
     end
   end
 

@@ -11,14 +11,26 @@ development:
     database: capitan_development
     database_username: <%= ENV['C9_USER'] %>
     database_password:
+    smtp_address:
+    smtp_domain:
+    smtp_username:
+    smtp_password:
 test:
     host: <%= ENV['IP'] %>
     database: capitan_test
     database_username: <%= ENV['C9_USER'] %>
     database_password:
+    smtp_address:
+    smtp_domain:
+    smtp_username:
+    smtp_password:
 production:
     host: ~
     database: capitan
     database_username: capitan
     database_password: capitan
+    smtp_address:
+    smtp_domain:
+    smtp_username: 
+    smtp_password:
     SECRET_KEY_BASE: your_only_secret_is_mine
