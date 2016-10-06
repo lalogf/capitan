@@ -54,6 +54,7 @@
   <div class="form-inputs" style="margin-bottom:20px">
     <fieldset>
       <legend>Información general</legend>
+      <%= f.input :sequence %>
       <%= f.input :name, placeholder: "Ingresa el nombre del sprint", label: false %>
       <%= f.input :description, placeholder: "Ingresa la descripción", label: false %>
       <%= f.association :group, collection: Branch.all, as: :grouped_select,
