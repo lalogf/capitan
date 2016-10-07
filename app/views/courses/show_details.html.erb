@@ -27,31 +27,34 @@
     <div class="col-md-10 col-xs-12 col-md-offset-1">
       <h2 class="subtitulo-curso lh-21 light text-left mt-42 mb-0 mt-14-xs">contenido</h2>
       <div class="separator separator-sm separator-primary separator-left mb-28"></div>
-      <div class="sprints">
-        <% @sprints.each do |sprint| %>
-          <div class="row sprint">
+      <div class="units">
+        <% @course.units.order(:sequence).each_with_index do |unit,index| %>
+          <% if unit.has_pages(current_user.branch.id) %>
+          <div class="row unit">
             <div class="col-sm-6 pr-49">
               <div class="overview">
-                <h2><%= sprint[:name] %></h2>
-                <p><%= sprint[:description] %></p>
+                <small class="thin">Semana <%= week_couting(@week_start,unit.duration) %></small>
+                <% @week_start += unit.duration %>
+                <h2><%= unit.title %></h2>
+                <p><%= unit.description %></p>
               </div>
             </div>
             <div class="col-sm-6 pl-49">
               <div class="content-box clearfix">
                 <ol>
-                  <% @lessons.each do |lesson| %>
-                  <li class="progress-item">
-                    <%= link_to lesson_page_details_path(@track,@course,lesson[:unit_id],lesson[:lesson_id], lesson[:page_id]),
-                          :class => "viewed" do %>
-                        <span><%= lesson[:title] %></span>
-                        <span>(<%= lesson[:points] %> pts)</span>
-                    <% end %>
-                  </li>
+                  <% unit.lessons.order(:sequence).each do |lesson| %>
+                   <li class="progress-item">
+                     <%= link_to lesson_page_details_path(@track,@course,unit,lesson.id, lesson.pages.order(:sequence).first.id),:class => "viewed" do %>
+                       <span><%= lesson.title %></span>
+                       <span>(<%= lesson.total_points %> pts)</span>
+                     <% end %>
+                   </li>
                   <% end %>
                 </ol>
               </div>
             </div>
           </div>
+          <% end %>
         <% end %>
       </div>
     </div>

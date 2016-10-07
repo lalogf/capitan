@@ -18,7 +18,7 @@ html,body {
 	padding:0;
 	height:100%;
 }
- 
+
  body {
   font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -40,7 +40,7 @@ h2 {
   width: 28px;
   width: 1.75rem;
   height: 1px;
-  height: 0.0625rem;   
+  height: 0.0625rem;
 }
 
 .separator-centered {
@@ -86,20 +86,20 @@ footer h5 {
   color: #fff;
   background-color: #F9A91A;
   border-color: #f39e06;
-}    
-    
-    
+}
+
+
 .btn-amarillo-lab:hover {
   background-color: #b37405;
   color: #f7f7f7;
-  border-color: #f9a30b;  
+  border-color: #f9a30b;
 }
 
 .control-label {
   display: block;
   font-size: 120%;
   font-weight: bold;
-  margin-bottom: 5px;    
+  margin-bottom: 5px;
 }
 
 .form-control {
@@ -112,29 +112,33 @@ footer h5 {
   box-shadow: none;
 }
 
+.checkbox input {
+  top:3px;
+}
+
 @media only screen and (min-width: 768px) {
   .container-xs,
   .container-sm,
   .container-md {
     padding-left: 14px;
     padding-right: 14px;
-    margin: 0 auto; 
-    
+    margin: 0 auto;
+
   }
 
   .container-xs {
-    width: 508px; 
+    width: 508px;
   }
 
   .container-sm {
-    width: 748px; 
+    width: 748px;
   }
 
   .container-md {
-    width: 968px; 
+    width: 968px;
   }
 }
-    
+
 @media only screen and (max-width: 480px) {
   .container-xs,
   .container-sm,
@@ -144,7 +148,7 @@ footer h5 {
     padding-right: 14px;
     margin: 0 auto;
   }
-  
+
   .login-container {
     padding: 0px 28px;
   }  

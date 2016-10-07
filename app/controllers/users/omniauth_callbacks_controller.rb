@@ -1,9 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  def facebook
-    create
-  end
-
   def github
     create
   end

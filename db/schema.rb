@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929212726) do
+ActiveRecord::Schema.define(version: 20161005173011) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -272,6 +272,9 @@ ActiveRecord::Schema.define(version: 20160929212726) do
     t.datetime "updated_at",           null: false
   end
 
+  add_index "sprint_pages", ["page_id"], name: "fk_rails_8890087a83", using: :btree
+  add_index "sprint_pages", ["sprint_id"], name: "fk_rails_c85ff44138", using: :btree
+
   create_table "sprint_summaries", force: :cascade do |t|
     t.integer  "user_id",                limit: 4
     t.integer  "sprint_id",              limit: 4
@@ -408,6 +411,8 @@ ActiveRecord::Schema.define(version: 20160929212726) do
   add_foreign_key "soft_skill_submissions", "users"
   add_foreign_key "sprint_badges", "badges"
   add_foreign_key "sprint_badges", "sprints"
+  add_foreign_key "sprint_pages", "pages"
+  add_foreign_key "sprint_pages", "sprints"
   add_foreign_key "sprints", "groups"
   add_foreign_key "units", "courses"
   add_foreign_key "users", "groups"

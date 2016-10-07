@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
+  remote: https://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: d3776ddd0b89d28fdebfd6e1c1541348cc90e5cc
   specs:
     twitter-bootstrap-rails (3.2.2)
@@ -59,6 +59,10 @@ GEM
     awesome_nested_set (3.1.1)
       activerecord (>= 4.0.0, < 5.1)
     bcrypt (3.1.11)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bourbon (4.2.7)
@@ -70,6 +74,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -89,6 +94,7 @@ GEM
     devise-i18n (1.1.0)
     domp (0.0.7)
     erubis (2.7.0)
+    excon (0.53.0)
     execjs (2.7.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
@@ -127,6 +133,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    mandrill-api (1.0.53)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -171,6 +180,8 @@ GEM
     pluck_to_hash (1.0.0)
       activerecord (>= 4.0.2)
       activesupport (>= 4.0.2)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -267,6 +278,8 @@ PLATFORMS
 DEPENDENCIES
   annotate
   awesome_nested_set
+  better_errors
+  binding_of_caller
   bourbon
   byebug
   coffee-rails (~> 4.1.0)
@@ -280,6 +293,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
+  mandrill-api
   mysql2 (~> 0.3.20)
   nested_form
   nokogiri
@@ -290,6 +304,7 @@ DEPENDENCIES
   paperclip (~> 4.3)
   paperclip-i18n!
   pluck_to_hash
+  quiet_assets
   rails (= 4.2.1)
   roo
   rubyzip
@@ -311,4 +326,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.1

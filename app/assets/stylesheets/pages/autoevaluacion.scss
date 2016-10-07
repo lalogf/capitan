@@ -1,6 +1,10 @@
 
-.select {
-	border: 2px solid #f9a91a;
+.checked {
+	outline: 2px solid #f9a91a;
+	border-color: transparent!important;
+}
+.btn-autoevaluacion.submit {
+	background-color: #f9a91a!important;
 }
 #autoevaluacion {
 	h2 {
@@ -11,21 +15,44 @@
    		margin-top: 0px;
 	}
 	.texto-introductorio {
-		font-size: 12px;
+		font-size: 13px;
+	}
+	label {
+		font-size: 15px;
 	}
 	.list-icons-feeling li {
 		border: 1px solid #ddd;
 		padding: 15px;
+		cursor: pointer;
 		&:nth-child(2) {
 			margin: 0px 40px;
 		}
 		img {
 			transition: all 0.25s ease;
-			&:hover {
+		}
+		&:hover {
+			img {
 				-ms-transform: 	   scale(1.1);
 			    -webkit-transform: scale(1.1);
 			    transform: 		   scale(1.1);	
 			}
 		}
+	}
+	.respuesta {
+		border: none;
+	    font-style: italic;
+	    font-size: 15px;
+	    padding-left: 14px;
+	    padding-top: 10px;
+	    &:focus {
+	    	outline: none;
+	    }
+	}
+	button {
+		border: none;
+	    border-radius: 2px;
+	    width: 150px;
+	    height: 50px;
+	    color: white;
 	}
 }

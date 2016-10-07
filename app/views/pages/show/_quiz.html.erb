@@ -1,3 +1,40 @@
+<% content_for :scripts do %>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		$(".btn-autoevaluacion").attr("disabled", "true");
+  		var disabled = function() {
+	  		$(".btn-autoevaluacion").removeClass("submit");
+	  		$(".btn-autoevaluacion").attr("disabled", "true");
+	  	}
+	  	var submitAutoevaluacion = function() {
+	  		$(".btn-autoevaluacion").addClass("submit");
+	  		$(".btn-autoevaluacion").removeAttr("disabled");
+	  	}
+  		var containerFeeling = $(".input-feeling").parent();
+	  	containerFeeling.click(function(e){
+	  		var inputFeeling = $(this).find(".input-feeling");
+	  		containerFeeling.removeClass("checked");
+	  		containerFeeling.find(".input-feeling").removeAttr("checked");
+	  		inputFeeling.prop("checked", "true");
+	  		if ( inputFeeling.is(":checked") ) {
+	  			$(this).addClass("checked");
+	  		}
+	  		if($(".respuesta").val() != "") {
+	  			submitAutoevaluacion();
+	  		} else {
+	  			disabled();
+	  		}
+	  	});
+	  	$(".respuesta").change(function(){
+	  		if ($("li.checked").length != 0 && $(this).val() != "") {
+	  			submitAutoevaluacion();
+	  		} else {
+	  			disabled();
+	  		}	
+	  	});
+  	});
+  </script>
+<% end %>
 <div id="autoevaluacion" class="outer-container  <%="hidden" unless ["quiz","retrospective","codereview"].include?(@page.page_type) %>">
     <div class="container-sm text-left">
     	<h2 class="text-uppercase fz-12">Autoevaluación</h2>
@@ -13,15 +50,22 @@
 			<ol>
 				<li>
 					<label>Asi me he sentido sobre el tema que acabo deaprender</label>
-					<ul class="list-inline list-icons-feeling mt-21">
-						<li class="p-5"><input type="radio" name="feeling" for=""><%= link_to image_tag("insatisfecho.png",alt: "insatisfecho", class: "logo-feeling"), root_path %></li>
-						<li class="p-5"><input type="radio" name="feeling" for=""><%= link_to image_tag("cool.png",alt: "insatisfecho", class: "logo-feeling"), root_path %></li>
-						<li class="p-5"><input type="radio" name="feeling" for=""><%= link_to image_tag("satisfecho.png",alt: "insatisfecho", class: "logo-feeling"), root_path %></li>
+					<ul class="list-inline list-icons-feeling mt-21 mb-70">
+						<li class="p-5">
+							<input type="radio" name="feeling" for="" class="input-feeling sr-only"><%= image_tag("insatisfecho.png",alt: "insatisfecho", class: "logo-feeling") %>
+						</li>
+						<li class="p-5">
+							<input type="radio" name="feeling" for="" class="input-feeling sr-only"><%= image_tag("cool.png",alt: "insatisfecho", class: "logo-feeling") %>
+						</li>
+						<li class="p-5">
+							<input type="radio" name="feeling" for="" class="input-feeling sr-only"><%= image_tag("satisfecho.png",alt: "insatisfecho", class: "logo-feeling") %>
+						</li>
 					</ul>
+					<label class="btn-block">&#8226 ¿Por qué sientes así?</label>
+					<input type="texto" placeholder="Escribe por qué" class="respuesta"></input>
 				</li>
-				<li></li>
-				<li></li>
 			</ol>
+			<button type="submit" class="btn-autoevaluacion bg-gray-lighter mv-70">enviar <span class="pl-14">&#8594;</span></button>
 		</form>
     </div>
 </div>

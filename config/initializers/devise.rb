@@ -6,17 +6,17 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  
+
   config.secret_key = 'd788d58485968431cb45e4a4e5154753c5f9c80e88b6561a8245aeefe5d07d18e8d3ddd4ba9b99bcb0f96163cc3218c4e1347a47afe9c5424af9e6e904ea987c'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'sumate@laboratoria.la'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'MandrillDeviseMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -264,5 +264,4 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :github, 'dfc1b560422a9a5e42c2', '72728709b32c5b5fe71ebff2125ce457d0fff9c5', :scope => 'user:email'
-  config.omniauth :facebook, '648776228595741', 'b995b71ab1decff71ac421579bf4b10a', :scope => 'user.email'
 end

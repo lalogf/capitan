@@ -2,7 +2,7 @@
   <h2 class="hidden-xs thin center">ingresa</h2>
   <div class="hidden-xs separator separator-primary separator-centered"></div>
   <h4 class="thin pv-21 lh-28 center">Bienvenido al capitán <br>Ingresa a tu cuenta </h4>
-  
+
   <div class="container-xs form-container ph-56 pt-21">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
@@ -11,6 +11,9 @@
       </div>
       <div class="form-actions mb-20">
         <%= f.button :submit, "Ingresar", :class => "btn btn-amarillo-lab btn-block btn-lg" %>
+      </div>
+      <div class="remember_me">
+        <%= f.input  :remember_me, :as => :boolean if devise_mapping.rememberable? %>
       </div>
     <% end %>
   </div>
