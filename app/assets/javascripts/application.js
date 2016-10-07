@@ -39,4 +39,8 @@ $(document).ready(function() {
         elem.toggleClass("hide");
         elem.siblings("." + elemClass).toggleClass("hide");
     });
+    $(".switch").click(function() {
+      $(".switch").toggleClass("on");
+      $(".navigation").toggleClass("active");
+    });
 });

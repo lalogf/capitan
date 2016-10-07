@@ -1,6 +1,16 @@
 
-  <div class="navigation full-height">
-    <div class="breadcrumb">
+  <div class="navigation full-height pb-70-xs ph-21-xs">
+    <div class="clearfix switch-movil">
+      <div class="pull-left">
+        <%= link_to image_tag("laboratoria-white.svg",alt: "Laboratoria código que transforma", class: "mt-14", width: "150px"), root_path %>
+      </div>
+      <div class="pull-right">
+        <div class="switch">
+          <div class="menu-toggle"></div>
+        </div>
+      </div>
+    </div>
+    <div class="breadcrumb mt-21-xs">
       <%= link_to course_details_path(@track,@course) do %>
         <i class="fa fa-arrow-circle-o-left"></i> Volver
       <% end %>

@@ -79,9 +79,12 @@
 	}
 	#autoevaluacion {
 		.list-icons-feeling {
-			text-align: center;;
+			text-align: center;
 			li:nth-child(2) {
 				margin: 0px;
+			}
+			li img {
+				width: 45px;
 			}
 		}
 		ol {
