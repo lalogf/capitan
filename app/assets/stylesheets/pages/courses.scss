@@ -139,16 +139,16 @@ a:-webkit-any-link {
   min-height: 100px;
 }
 
-.sprints-container .sprints ol {
+.sprints-container .units ol {
   list-style:none;
 }
 
-.sprints-container .sprints .sprint:nth-child(n-1) {
+.sprints-container .units .unit:nth-child(n-1) {
   margin-bottom: 60px;
   border-bottom: 1px dashed #eee;
 }
 
-.sprints-container .sprints ol .progress-item {
+.sprints-container .units ol .progress-item {
   font-size: 17px;
   font-weight: 300;
   line-height: 45px;

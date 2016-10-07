@@ -6,7 +6,7 @@
 	  		$(".btn-autoevaluacion").removeClass("submit");
 	  		$(".btn-autoevaluacion").attr("disabled", "true");
 	  	}
-	  	var submitAutoevaluacion = function() {
+	  	var removeDisabled = function() {
 	  		$(".btn-autoevaluacion").addClass("submit");
 	  		$(".btn-autoevaluacion").removeAttr("disabled");
 	  	}
@@ -20,14 +20,14 @@
 	  			$(this).addClass("checked");
 	  		}
 	  		if($(".respuesta").val() != "") {
-	  			submitAutoevaluacion();
+	  			removeDisabled();
 	  		} else {
 	  			disabled();
 	  		}  
 	  	});
 	  	$(".respuesta").change(function(){
 	  		if ($("li.checked").length != 0 && $(this).val() != "") {
-	  			submitAutoevaluacion();
+	  			removeDisabled();
 	  		} else {
 	  			disabled();
 	  		}	
@@ -46,7 +46,7 @@
 				<p class="texto-introductorio">Recuerda responder con total honestidad estas preguntas para poder ayudar a que te conviertas en una super frontend designer.</p>
 			</div>
 		</div>
-		<form class="pt-49">
+		<form id="#autoevaluacion-form'" class="pt-49">
 			<ol>
 				<li>
 					<label>Asi me he sentido sobre el tema que acabo deaprender</label>
