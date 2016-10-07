@@ -1,6 +1,13 @@
 <% content_for :scripts do %>
   <script type="text/javascript">
   	$(document).ready(function(){
+  		$(".second-part").fadeOut("fast");
+  		$(".btn-empezar").click(function(e){
+  			e.preventDefault();
+  			$(".first-part").fadeOut("fast");
+  			$(".second-part").fadeIn("low");
+  		});
+  		/*Validation*/
   		$(".btn-autoevaluacion").attr("disabled", "true");
   		var disabled = function() {
 	  		$(".btn-autoevaluacion").removeClass("submit");
@@ -36,6 +43,16 @@
   </script>
 <% end %>
 <div id="autoevaluacion" class="outer-container  <%="hidden" unless ["quiz","retrospective","codereview"].include?(@page.page_type) %>">
+	<div class="first-part">
+		<%= image_tag("coder.png",alt: "coder",) %>
+		<h2 class="text-uppercase fz-12 mt-42">Autoevaluación</h2>
+		<h3 class="text-primary">lección 101</h3>
+		<div class="row mt-35">
+			<p class="col-md-8 col-md-offset-2">Recuerda responder con total honestidad estas preguntas para poder ayudar a que te conviertas en una super frontend designer.</p>
+		</div>
+		<button type="submit" class="btn-empezar bg-primary mv-28">empezar <span class="pl-14">&#8594;</span></button>
+	</div>
+	<div class="second-part">
     <div class="container-sm text-left">
     	<h2 class="text-uppercase fz-12">Autoevaluación</h2>
     	<div class="row">
@@ -65,9 +82,10 @@
 					<input type="texto" placeholder="Escribe por qué" class="respuesta"></input>
 				</li>
 			</ol>
-			<button type="submit" class="btn-autoevaluacion bg-gray-lighter mv-70">enviar <span class="pl-14">&#8594;</span></button>
+			<button type="submit" class="btn-autoevaluacion bg-gray mv-70">enviar <span class="pl-14">&#8594;</span></button>
 		</form>
     </div>
+  </div>
 </div>
 <!-- <script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'widget.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()</script>
 <div style="font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;">Powered by <a href="https://www.typeform.com/examples/forms/?utm_campaign=zA6MmD&amp;utm_source=typeform.com-3765453-Basic&amp;utm_medium=typeform&amp;utm_content=typeform-embedded-poweredbytypeform&amp;utm_term=ES" style="color: #999" target="_blank">Typeform</a></div> -->
