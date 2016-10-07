@@ -1,10 +1,13 @@
 
 .checked {
-	outline: 2px solid #f9a91a;
-	border-color: transparent!important;
+	border: 1px solid #f6b618;
+	background-color: #f6b618;
 }
 .btn-autoevaluacion.submit {
-	background-color: #f9a91a!important;
+	background-color: #f6b618!important;
+	&:hover {
+		background-color: #d59600!important;
+	}
 }
 #autoevaluacion {
 	h2 {
@@ -24,6 +27,7 @@
 		border: 1px solid #ddd;
 		padding: 15px;
 		cursor: pointer;
+		border-radius: 2px;
 		&:nth-child(2) {
 			margin: 0px 40px;
 		}
@@ -31,6 +35,7 @@
 			transition: all 0.25s ease;
 		}
 		&:hover {
+			border: 1px solid #f9a91a;
 			img {
 				-ms-transform: 	   scale(1.1);
 			    -webkit-transform: scale(1.1);
