@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: family_incomes
+#
+#  id         :integer          not null, primary key
+#  branch_id  :integer
+#  name       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  branch_id: 
+  name: MyString
+
+two:
+  branch_id: 
+  name: MyString

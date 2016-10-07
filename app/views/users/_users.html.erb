@@ -16,8 +16,8 @@
         <td><%= link_to user.code, user %></td>
         <td><%= user.full_name %></td>
         <td><%= user.email %></td>
-        <td><%= number_to_phone(user.phone1, delimiter: " ") %></td>
-        <td><%= number_to_phone(user.phone2, delimiter: " ") %></td>
+        <td><%= number_to_phone(user.profile.phone1, delimiter: " ") %></td>
+        <td><%= number_to_phone(user.profile.phone2, delimiter: " ") %></td>
 
         <% if user.disable? %>
           <td>
@@ -29,7 +29,7 @@
           <td>
             <%= link_to edit_user_path(user) do %>
               <i class="fa fa-pencil" aria-hidden="true"></i>
-            <% end %>  
+            <% end %>
           </td>
         <% end %>
 
@@ -43,7 +43,7 @@
         <td>
           <%= link_to user, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
             <i class="fa fa-trash" aria-hidden="true"></i>
-          <% end %>  
+          <% end %>
         </td>
       </tr>
     <% end %>

@@ -1,7 +1,7 @@
 <div id="user-left-box" class="clearfix hidden-sm hidden-xs">
 	<%= image_tag current_user.avatar.url(:menu) %>
 	<div class="user-box">
-		<span class="name"><%= "#{current_user.name} #{current_user.lastname1}" %></span>
+		<span class="name"><%= current_user.full_name %></span>
 		<span class="roles"><%= current_user.role.capitalize %></span>
 	</div>
 </div>
@@ -31,7 +31,7 @@
         <%= link_to soft_skills_path do %>
           <i class="fa fa-heart"></i>Soft skills
         <% end %>
-      </li>     
+      </li>
       <li>
         <%= link_to enrollments_path do %>
           <i class="fa fa-envelope"></i>Inscripciones
