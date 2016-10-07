@@ -43,7 +43,7 @@
 			}
 		}
 	}
-	.respuesta {
+	.input-respuesta {
 		border: none;
     font-style: italic;
     font-size: 15px;
@@ -65,5 +65,27 @@
     width: 150px;
     height: 50px;
     color: white;
+	}
+	@media (max-width: 480px) {
+		.row {
+			width: 100%;
+		}
+	}
+}
+@media (max-width: 480px) {
+	.w-347 {
+		min-width: 100%;
+		max-width: 100%;
+	}
+	#autoevaluacion {
+		.list-icons-feeling {
+			text-align: center;;
+			li:nth-child(2) {
+				margin: 0px;
+			}
+		}
+		ol {
+			text-align: center;
+		}
 	}
 }
