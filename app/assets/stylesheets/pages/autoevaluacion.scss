@@ -92,3 +92,28 @@
 		}
 	}
 }
+@media (min-width: 681px) and (max-width: 980px) {
+	#autoevaluacion {
+		.first-part {
+			width: 100%;
+			.row {
+				margin: 0px!important;
+			}
+		}
+		.second-part {
+			.container-sm {
+				width: 100%;
+				padding-left: 28px !important;
+			    padding-right: 28px !important;
+			    padding-left: rem(28) !important;
+			    padding-right: rem(28) !important;
+			    form {
+			    	padding-left: 21px !important;
+				    padding-right: 21px !important;
+				    padding-left: rem(21) !important;
+				    padding-right: rem(21) !important;
+			    }
+			}
+		}
+	}
+}
