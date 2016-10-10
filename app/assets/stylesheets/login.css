@@ -150,9 +150,9 @@ footer h5 {
   }
 
   .login-container {
-    padding-top: 0%;
-  }
-
+    padding: 0px 28px;
+  }  
+  
   .login-container .form-container {
     padding: 0px;
   }

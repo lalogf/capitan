@@ -57,7 +57,7 @@
     <div class="hidden-xs mb-7 separator separator-primary separator-left separator-sm"></div>
     <div class="row mt-42">
       <% @track.teachers(current_user.branch).each do |teacher| %>
-        <div class="col-md-4 text-center">
+        <div class="col-sm-4 text-center">
           <div class="content-equipo">
             <div class="bg-img-block">
               <%= image_tag teacher[:image],alt: teacher[:name], width: "200" %>
