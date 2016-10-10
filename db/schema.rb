@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007151547) do
+ActiveRecord::Schema.define(version: 20161010160536) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -265,6 +265,7 @@ ActiveRecord::Schema.define(version: 20161007151547) do
     t.integer  "computer_use",                  limit: 4
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.date     "birth_date"
   end
 
   add_index "profiles", ["district_id"], name: "index_profiles_on_district_id", using: :btree

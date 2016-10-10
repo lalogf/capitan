@@ -1,7 +1,7 @@
 #branches
 lima     = Branch.find_or_create_by(name: "Lima", code:"LIM20161")
 mexico   = Branch.find_or_create_by(name: "México", code: "MEX20161")
-chile    = Branch.find_or_create_by(name: "Chile", code: "CHI20161")
+santiago = Branch.find_or_create_by(name: "Chile", code: "CHI20161")
 arequipa = Branch.find_or_create_by(name: "Arequipa", code: "AQP20161")
 
 #groups
@@ -10,9 +10,9 @@ Group.find_or_create_by(name: "LIM20151", description: "Promoción LIM20151", br
 Group.find_or_create_by(name: "LIM20152", description: "Promoción LIM20152", branch: lima)
 Group.find_or_create_by(name: "LIM20161", description: "Promoción LIM20161", branch: lima)
 Group.find_or_create_by(name: "LIM20162", description: "Promoción LIM20162", branch: lima)
-Group.find_or_create_by(name: "SCL20151", description: "Promoción SCL20151", branch: chile)
-Group.find_or_create_by(name: "SCL20161", description: "Promoción SCL20161", branch: chile)
-Group.find_or_create_by(name: "SCL20162", description: "Promoción SCL20162", branch: chile)
+Group.find_or_create_by(name: "SCL20151", description: "Promoción SCL20151", branch: santiago)
+Group.find_or_create_by(name: "SCL20161", description: "Promoción SCL20161", branch: santiago)
+Group.find_or_create_by(name: "SCL20162", description: "Promoción SCL20162", branch: santiago)
 Group.find_or_create_by(name: "MEX20151", description: "Promoción MEX20151", branch: mexico)
 Group.find_or_create_by(name: "MEX20161", description: "Promoción MEX20161", branch: mexico)
 Group.find_or_create_by(name: "MEX20162", description: "Promoción MEX20162", branch: mexico)
@@ -165,7 +165,7 @@ District.find_or_create_by(name: "Tiabaya", branch:arequipa)
 District.find_or_create_by(name: "Vitor", branch:arequipa)
 District.find_or_create_by(name: "Yura", branch:arequipa)
 District.find_or_create_by(name: "Tacna", branch:arequipa)
-District.find_or_create_by(name: "Otra distrito / cuidad", branch:santiago)
+District.find_or_create_by(name: "Otra distrito / cuidad", branch:arequipa)
 
 #Education types
 Education.find_or_create_by(name: "Primaria incompleta", branch:lima)

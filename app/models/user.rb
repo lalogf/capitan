@@ -30,6 +30,8 @@ require 'roo'
 
 class User < ActiveRecord::Base
 
+  after_initialize :build_default_profile
+
   enum role: [:student, :assistant, :teacher, :admin]
 
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
@@ -84,6 +86,9 @@ class User < ActiveRecord::Base
     self.group.branch if group != nil
   end
 
+  def signup_branch
+  end
+  
   def sprints
     self.group.sprints if group != nil
   end
@@ -164,6 +169,13 @@ class User < ActiveRecord::Base
     end
 
     questionsAnswers
+  end
+
+  private
+
+  def build_default_profile
+    build_profile
+    true
   end
 
 end

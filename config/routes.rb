@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :soft_skills
   authenticate :user do
 
     get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
       resources :users, except: [:index]
       resources :reviews
       resources :badges
+      resources :soft_skills
 
       resources :sprints do
         get 'group/:group_id' => 'sprints#group_sprints', on: :collection
@@ -56,10 +56,7 @@ Rails.application.routes.draw do
     post 'changeUserStatus' => 'users#change_user_status'
 
     root :to => 'tracks#show_user_track'
-
   end
-
-  get 'editor' => 'editor#video', :as => :video_editor
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',

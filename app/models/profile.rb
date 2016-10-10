@@ -35,6 +35,7 @@
 #  computer_use                  :integer
 #  created_at                    :datetime         not null
 #  updated_at                    :datetime         not null
+#  birth_date                    :date
 #
 
 class Profile < ActiveRecord::Base
@@ -42,4 +43,5 @@ class Profile < ActiveRecord::Base
   belongs_to :district
   belongs_to :job_salary
   belongs_to :family_income
+  
 end

@@ -22,6 +22,7 @@ group :development, :test do
   gem 'quiet_assets'
 end
 
+gem 'rails-i18n'
 gem 'devise', "4.2.0"
 gem 'omniauth'
 gem 'omniauth-github'
