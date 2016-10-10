@@ -98,6 +98,9 @@ a:-webkit-any-link {
   border-top: 1px solid;
   padding: 4em 50px 0em;
   margin-bottom: 30px;
+  .container {
+    width: 100%;
+  }
 }
 
 .course-header .content {
@@ -137,6 +140,12 @@ a:-webkit-any-link {
 
 .sprints-container {
   min-height: 100px;
+  @media (max-height: 780px) {
+    padding-left: 56px !important;
+    padding-right: 56px !important;
+    padding-left: rem(56) !important;
+    padding-right: rem(56) !important;
+  }
 }
 
 .sprints-container .units ol {
@@ -220,6 +229,9 @@ a:-webkit-any-link {
     left: -30px;
     margin-top: 14px;
     background: white;
+    @media (max-width: 480px) {
+      margin-top: 3px;
+    }
   }
   &.active {
     &:before {

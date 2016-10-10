@@ -30,6 +30,9 @@
     vertical-align: top;
     z-index: 10;
     background-color: #3E3F40;
+    .panel, .panel-heading {
+      border-radius: 0px;
+    }
     @media (max-width: 680px) {
       position: fixed;
       width: 100%;
