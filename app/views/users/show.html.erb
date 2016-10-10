@@ -19,10 +19,6 @@
           <strong>Email:</strong>
           <%= @user.email %>
         </p>
-        <p>
-          <strong>Biography:</strong>
-          <%= @user.biography %>
-        </p>
       </div>
     </div>
     <div class="panel panel-default">
@@ -39,27 +35,27 @@
       </div>
       <div class="panel-body">
         <p>
+          <strong>Biografía:</strong>
+          <%= @user.profile.biography %>
+        </p>
+        <p>
           <strong>Dni:</strong>
-          <%= @user.dni %>
+          <%= @user.profile.dni %>
         </p>
         <p>
           <strong>Distrito:</strong>
-          <%= @user.district %>
+          <%= !@user.profile.district.nil? ? @user.profile.district.name : "" %>
         </p>
         <p>
-          <strong>Edad:</strong>
-          <%= @user.age %>
-        </p>
-        <p>
-          <strong>Facebook Username:</strong>
-          <%= @user.facebook_username %>
+          <strong>Facebook:</strong>
+          <%= @user.profile.facebook_link %>
         </p>
         <p>
           <strong>Teléfonos:</strong>
-          <%= "#{@user.phone1} / #{@user.phone2}"  %>
-        </p>        
+          <%= "#{@user.profile.phone1} / #{@user.profile.phone2}"  %>
+        </p>
       </div>
-    </div>    
+    </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         Badges del usuario
@@ -79,7 +75,7 @@
       </div>
     </div>
     <div class="form-actions">
-          <%= link_to "Editar", edit_user_path(@user), :class => "btn btn-primary" %>
-        <%= link_to 'Regresar', users_path, :class => "btn btn-danger" %>
+      <%= link_to "Editar", edit_user_path(@user), :class => "btn btn-primary" %>
+      <%= link_to 'Regresar', users_path, :class => "btn btn-danger" %>
     </div>
 </div>

@@ -1,31 +1,35 @@
-<div class="content">
-  <div class="center">
-    <h3 class="update-field-title light">Lo primero que debes hacer es completar el formulario a continuación:</h3>
-  </div>
-  <div class="form form-session">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-      <div class="form-inputs">
-        <%= f.input :code, label: false, required: true, autofocus: true, placeholder: "Código laboratoria" %>
-        <%= f.input :dni, label: false, required: true, placeholder: "DNI" %>
-        <%= f.input :name, label: false, required: true, placeholder: "Nombre" %>
-        <%= f.input :lastname1, label: false, required: true, placeholder: "Primer apellido" %>
-        <%= f.input :lastname2, label: false, required: true, placeholder: "Segundo apellido" %>
-        <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %>
-        <%= f.association :group, label: false, collection: Branch.all, as: :grouped_select, group_method: :groups %><br>
-        <%= f.input :district, label: false, required: true, placeholder: "Distrito" %>
-        <%= f.input :age, label: false, required: true, placeholder: "Edad" %>
-        <%= f.input :facebook_username, label: false, required: true, placeholder: "Facebook User" %>
-        <%= f.input :phone1, label: false, required: true, placeholder: "Teléfono" %>
-        <%= f.input :phone2, label: false, required: true, placeholder: "Otro teléfono" %>
-        <%= f.input :password,label: false, required: true, placeholder: "Contraseña" %>
-      </div>
+  <%= f.simple_fields_for :profile do |p| %>
+    <div class="container">
+      <div class="form form-session">
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <!-- Datos iniciales -->
+            <%= p.input :name, label: false, required: true, placeholder: "Nombres" %>
+            <%= p.input :lastname, label: false, required: true, placeholder: "Apellidos" %>
+            <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Registrarte", :class => "btn btn-primary" %>
-        <%= link_to "Cancelar", new_user_session_path, :class => "btn btn-default btn-danger" %>
+            <!-- Datos generales -->
+            <%= p.input :dni, label: false, required: true, placeholder: "DNI" %>
+            <%= p.input :birth_date, label: false, required: true %>
+            <%= f.input :signup_branch, label:false, collection: Branch.all, :include_blank => "Seleccione una sede" %>
+            <%= p.input :district,collection: [],label: false, input_html: { style: "display:none;"} %>
+            <%= p.input :phone1, label: false, required: true, placeholder: "Celular" %>
+            <%= p.input :phone2, label: false, required: true, placeholder: "Teléfono" %>
+
+            <%= p.input :facebook_link, label: false, required: true, placeholder: "Facebook link" %>
+            <%= p.input :major, label: false, required: true, placeholder: "" %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Registrarte", :class => "btn btn-primary" %>
+            <%= link_to "Cancelar", new_user_session_path, :class => "btn btn-default btn-danger" %>
+          </div>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
+  <% end %>
+<% end %>
+<% content_for :scripts do %>
+  <script><%= render 'dynamic_states.js.erb' %></script>
+<% end %>

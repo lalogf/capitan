@@ -22,6 +22,7 @@ group :development, :test do
   gem 'quiet_assets'
 end
 
+gem 'rails-i18n'
 gem 'devise', "4.2.0"
 gem 'omniauth'
 gem 'omniauth-github'
@@ -46,7 +47,6 @@ gem 'nokogiri'
 gem 'roo'
 gem 'handlebars_assets'
 gem 'wannabe_bool'
-gem 'the_comments', '~> 2.2.1'
 
 gem 'awesome_nested_set'
 gem 'figaro'

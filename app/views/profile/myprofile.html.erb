@@ -10,9 +10,6 @@
             <h3 class="mv-7 light name">
               <%= @user.full_name %>
             </h3>
-            <p class="light mb-0 lh-profile description">
-              <%= "#{@user.age} años" %>
-            </p>
             <p class="light lh-profile description">
               <%= @user.branch.name %>
             </p>
@@ -39,8 +36,8 @@
               <div class="col-sm-2 minh-70 ph-7 badge">
                   <%= image_tag key.image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "70" %>
                   <div class="badge-count"><p><%= "x#{count}" %></p></div>
-              </div> 
-            <% end %>        
+              </div>
+            <% end %>
           <% end.empty? %>
             <p class="thin">Aún no tienes reconocimientos logrados, <br> ¡Sigue esforzándote!</p>
           <% end %>
@@ -69,7 +66,7 @@
 <section>
   <div id="points-comparative">
     <%= render 'point_comparative' %>
-  </div>  
+  </div>
 </section>
 <% content_for :scripts do %>
   <script><%= render 'point_summary.js.erb' %></script>

@@ -1,0 +1,24 @@
+var districts = [];
+
+<% District.all.each do |district| %>
+  districts.push([<%= district.branch_id %>,"<%= district.name %>",<%= district.id %>]);
+<% end %>
+
+window.addEventListener('load',function() {
+  branchSelected();
+  $('#user_signup_branch').on("change",branchSelected);
+});
+
+function branchSelected() {
+  var branchId = parseInt($('#user_signup_branch').val());
+  districtSelect = $('#user_profile_attributes_district');
+
+  districtSelect.empty();
+  districtSelect.append('<option>Seleccione un distrito</option>');
+  districts.forEach(function(district) {
+    if (district[0] == branchId) {
+      districtSelect.append('<option value="'+district[2]+'">'+district[1]+'</option>');
+    }
+  });
+  districtSelect.find('option').size() == 1 ? districtSelect.hide() : districtSelect.show();
+}

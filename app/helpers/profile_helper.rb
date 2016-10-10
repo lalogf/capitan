@@ -8,7 +8,7 @@ module ProfileHelper
   end
 
   def biography(user)
-    user.biography.blank? ? 'Soy un estudiante en Laboratoria' : user.biography
+    user.profile.biography.blank? ? 'Soy un estudiante en Laboratoria' : user.profile.biography
   end
 
   def percentage(scored, total)
