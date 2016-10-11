@@ -5,21 +5,23 @@
       <div class="form form-session">
           <%= f.error_notification %>
           <div class="form-inputs">
-            <!-- Datos iniciales -->
-            <%= p.input :name, label: false, required: true, placeholder: "Nombres" %>
-            <%= p.input :lastname, label: false, required: true, placeholder: "Apellidos" %>
-            <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %>
+            <!-- User information -->
+            <%= p.input :name, label: "1. Nombre y Apellidos", required: true, placeholder: "Nombre" %>
+            <%= f.input :email,label: "3. Correo electrónico", required: true, placeholder: "ej: ejemplo@gmail.com" %>
 
-            <!-- Datos generales -->
-            <%= p.input :dni, label: false, required: true, placeholder: "DNI" %>
-            <%= p.input :birth_date, label: false, required: true %>
-            <%= f.input :signup_branch, label:false, collection: Branch.all, :include_blank => "Seleccione una sede" %>
-            <%= p.input :district,collection: [],label: false, input_html: { style: "display:none;"} %>
-            <%= p.input :phone1, label: false, required: true, placeholder: "Celular" %>
+            <!-- General Information -->
+            <%= p.input :dni, label: "4. Documento de identidad", required: true, placeholder: "ej: 95749345" %>
+            <%= p.input :birth_date, label: "Fecha de nacimiento", required: true %>
+            <%= f.input :signup_branch, label: "¿En qué ciudad vives? / ¿A qué ciudad estás postulando?", collection: Branch.all, :include_blank => "Selecciona una ciudad" %>
+            <%= p.input :district,collection: [],label: false %>
+            <%= p.input :phone1, label: false, required: true, placeholder: "ej: 9945568345" %>
             <%= p.input :phone2, label: false, required: true, placeholder: "Teléfono" %>
+            <%= p.input :facebook_link, label: false, required: true, placeholder: "Pega aquí el link" %>
 
-            <%= p.input :facebook_link, label: false, required: true, placeholder: "Facebook link" %>
+            <!-- School Information -->
+            <%= p.input :education, label:false, collection: [] %>
             <%= p.input :major, label: false, required: true, placeholder: "" %>
+
           </div>
 
           <div class="form-actions">
@@ -31,5 +33,5 @@
   <% end %>
 <% end %>
 <% content_for :scripts do %>
-  <script><%= render 'dynamic_states.js.erb' %></script>
+  <script><%= render 'dynamic_profile.js.erb' %></script>
 <% end %>
