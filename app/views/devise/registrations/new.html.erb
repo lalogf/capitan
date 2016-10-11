@@ -12,21 +12,26 @@
             </div>
             <%= p.input :name, label: "1. Nombre y Apellidos", required: true, placeholder: "Nombre" %>
             <%= f.input :email,label: "2. Correo electrónico", required: true, placeholder: "ej: ejemplo@gmail.com" %>
-
-            <!-- General Information -->
             <%= p.input :dni, label: "3. Documento de identidad", required: true, placeholder: "ej: 95749345" %>
             <%= p.input :birth_date, label: "4. Fecha de nacimiento", required: true %>
             <%= f.input :signup_branch, label: "5. ¿En qué ciudad vives? / ¿A qué ciudad estás postulando?", collection: Branch.all, :include_blank => "Selecciona una ciudad" %>
             <%= p.input :district,collection: [],label: "6. ¿Cuál es la colonia/distrito/comuna donde vives?" %>
             <%= p.input :phone1, label: "7. Celular / Teléfono", required: true, placeholder: "ej: 9945568345" %>
             <%= p.input :facebook_link, required: true, placeholder: "Pega aquí el link",:label => "8. Link al perfil en Facebook <br/><span>(en caso no podamos comunicarnos contigo ni por teléfono o correo, intentaremos contactarte por Facebook)</span>".html_safe %>
-          <div class="subtitulo mb-35">
-            <img src="">
-            <h2 class="text-uppercase">DEducación</h2>
-          </div>
             <!-- School Information -->
+            <div class="subtitulo mb-35">
+              <img src="">
+              <h2 class="text-uppercase">Educación</h2>
+            </div>
             <%= p.input :education, collection: [], label: "9. ¿Cuál es tu grado de educación?", :include_blank => "Elige tu grado de educación" %>
             <%= p.input :major, label: "10. ¿Qué carrera estudiaste / estás estudiando?", required: true, placeholder: "ej. Diseño de interiores" %>
+            <%= p.input :school, label: "11. ¿Donde?", required: true, placeholder: "ej. Universidad de Piura" %>
+            <%= p.input :semesters_left, collection: [], label: "¿Qué te falta para terminar?", :include_blank => "Elige una opción" %>
+            <%= p.input :reasons_school_not_done, label: "¿Por qué no has terminado?",collection: Profile.reasons_school_not_done_labels, :include_blank => "Elige una opción" %>
+            <div class="subtitulo mb-35">
+              <img src="">
+              <h2 class="text-uppercase">Trabajo</h2>
+            </div>
 
           </div>
 

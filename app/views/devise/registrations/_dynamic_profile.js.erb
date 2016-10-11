@@ -1,5 +1,6 @@
 var districts = [];
 var educations = [];
+var semestersLeft = [];
 
 <% District.all.each do |district| %>
   districts.push([<%= district.branch_id %>,"<%= district.name %>",<%= district.id %>]);
@@ -9,12 +10,17 @@ var educations = [];
   educations.push([<%= education.branch_id %>,"<%= education.name %>",<%= education.id %>]);
 <% end %>
 
+<% SemestersLeft.all.each do |semester| %>
+  semestersLeft.push([<%= semester.branch_id %>,"<%= semester.name %>",<%= semester.id %>]);
+<% end %>
+
+
 window.addEventListener('load',function() {
-  branchSelected();
   $('#user_signup_branch').on("change",function() {
     var branchId = parseInt($(this).val());
     changeSelect(branchId,'#user_profile_attributes_district','Elige colonia/distrito/comuna',districts);
     changeSelect(branchId,'#user_profile_attributes_education','Elige tu grado de educación',educations);
+    changeSelect(branchId,'#user_profile_attributes_semesters_left','Elige una opción',semestersLeft);
   });
 });
 

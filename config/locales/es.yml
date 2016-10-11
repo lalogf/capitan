@@ -1,5 +1,13 @@
 es:
   activerecord:
+    attributes:
+      profile:
+        reasons_school_not_done:
+          studing: "Sigo estudiando"
+          economic_problems: "Problemas económicos"
+          health_problems: "Problemas de salud"
+          dont_like_it: "No me gustó lo que estaba estudiando"
+          others: "Otros"
     errors:
       models:
         user:

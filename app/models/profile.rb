@@ -5,7 +5,6 @@
 #  id                            :integer          not null, primary key
 #  user_id                       :integer
 #  name                          :string(255)
-#  lastname                      :string(255)
 #  biography                     :string(255)
 #  dni                           :string(255)
 #  district_id                   :integer
@@ -14,7 +13,6 @@
 #  facebook_link                 :string(255)
 #  major                         :string(255)
 #  school                        :string(255)
-#  semesters_left                :integer
 #  reasons_school_not_done       :integer
 #  job_status                    :integer
 #  work_for                      :integer
@@ -37,6 +35,7 @@
 #  updated_at                    :datetime         not null
 #  birth_date                    :date
 #  education_id                  :integer
+#  semesters_left_id             :integer
 #
 
 class Profile < ActiveRecord::Base
@@ -45,5 +44,13 @@ class Profile < ActiveRecord::Base
   belongs_to :job_salary
   belongs_to :family_income
   belongs_to :education
+  belongs_to :semesters_left
 
+  enum reasons_school_not_done: [:studing,:economic_problems,:health_problems,:dont_like_it,:others]
+
+  def self.reasons_school_not_done_labels
+    reasons_school_not_dones.map do |reason, _|
+      [I18n.t("activerecord.attributes.#{model_name.i18n_key}.reasons_school_not_done.#{reason}"), reason]
+    end
+  end
 end
