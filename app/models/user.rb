@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    profile.name.blank? ? profile.email : "#{profile.name} #{profile.lastname}".strip
+    profile.name.blank? ? self.email : "#{profile.name} #{profile.lastname}".strip
   end
 
   def email_required?
