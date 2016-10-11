@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010160536) do
+ActiveRecord::Schema.define(version: 20161011140213) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -235,7 +235,6 @@ ActiveRecord::Schema.define(version: 20161010160536) do
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",                       limit: 4
     t.string   "name",                          limit: 255
-    t.string   "lastname",                      limit: 255
     t.string   "biography",                     limit: 255
     t.string   "dni",                           limit: 255
     t.integer  "district_id",                   limit: 4
@@ -266,9 +265,11 @@ ActiveRecord::Schema.define(version: 20161010160536) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.date     "birth_date"
+    t.integer  "education_id",                  limit: 4
   end
 
   add_index "profiles", ["district_id"], name: "index_profiles_on_district_id", using: :btree
+  add_index "profiles", ["education_id"], name: "index_profiles_on_education_id", using: :btree
   add_index "profiles", ["family_income_id"], name: "index_profiles_on_family_income_id", using: :btree
   add_index "profiles", ["job_salary_id"], name: "index_profiles_on_job_salary_id", using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -465,6 +466,7 @@ ActiveRecord::Schema.define(version: 20161010160536) do
   add_foreign_key "page_visibilities", "pages"
   add_foreign_key "pages", "lessons"
   add_foreign_key "profiles", "districts"
+  add_foreign_key "profiles", "educations"
   add_foreign_key "profiles", "family_incomes"
   add_foreign_key "profiles", "job_salaries"
   add_foreign_key "profiles", "users"

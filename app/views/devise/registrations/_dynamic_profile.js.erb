@@ -1,0 +1,30 @@
+var districts = [];
+var educations = [];
+
+<% District.all.each do |district| %>
+  districts.push([<%= district.branch_id %>,"<%= district.name %>",<%= district.id %>]);
+<% end %>
+
+<% Education.all.each do |education| %>
+  educations.push([<%= education.branch_id %>,"<%= education.name %>",<%= education.id %>]);
+<% end %>
+
+window.addEventListener('load',function() {
+  branchSelected();
+  $('#user_signup_branch').on("change",function() {
+    var branchId = parseInt($(this).val());
+    changeSelect(branchId,'#user_profile_attributes_district','Elige colonia/distrito/comuna',districts);
+    changeSelect(branchId,'#user_profile_attributes_education','Elige tu grado de educación',educations);
+  });
+});
+
+function changeSelect(branchId,selectId,blankText,options) {
+  var select = $(selectId);
+  select.empty();
+  select.append('<option>'+blankText+'</option>');
+  options.forEach(function(option) {
+    if (option[0] == branchId) {
+      select.append('<option value="'+option[2]+'">'+option[1]+'</option>');
+    }
+  });
+}

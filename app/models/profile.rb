@@ -36,6 +36,7 @@
 #  created_at                    :datetime         not null
 #  updated_at                    :datetime         not null
 #  birth_date                    :date
+#  education_id                  :integer
 #
 
 class Profile < ActiveRecord::Base
@@ -43,5 +44,6 @@ class Profile < ActiveRecord::Base
   belongs_to :district
   belongs_to :job_salary
   belongs_to :family_income
-  
+  belongs_to :education
+
 end
