@@ -1,6 +1,6 @@
 <div class="outer-container <%="hidden" if @page.page_type != "material" %>">
     <div class="inner-container text-center">
-        <div id="slide-container" class="<%="hidden" if @page.material_type != "slide" %>">
+        <div id="slide-container" class="ph-28 <%="hidden" if @page.material_type != "slide" %>">
             <iframe
             src="<%= @page.slide_url %>"
             frameborder="0"

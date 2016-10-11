@@ -557,3 +557,9 @@ video {
     background: none !important;
   }
 }
+
+#slide-container iframe {
+  @media (max-width: 1140px) {
+    width: 100%!important;
+  }
+}
