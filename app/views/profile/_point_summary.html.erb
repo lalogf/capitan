@@ -12,7 +12,7 @@
               <%= image_tag "arrow-up.png",alt: "Arrow up", class: "minh-icon-arrow arrow up hide", data: { el: "down" } %>
               <%= image_tag "arrow-down.png",alt: "Arrow down", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
             </a>
-            <ul class="dropdown-menu sprint-dropdown">
+            <ul class="dropdown-menu sprint-dropdown text-center">
               <li><%= link_to "Total", myprofile_path, remote: true, class: 'text-uppercase font-big' %></li>
               <% @sprints.each_with_index do |sprint, index| %>
                 <li> <%= link_to sprint.name, myprofile_path(sprint.id), remote: true, class: 'text-uppercase font-big' %> </li>
@@ -24,11 +24,11 @@
       <div class="col-md-6">
         <div id="point-summary-container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
       </div>
-      <div class="col-md-6 pb-49 pt-90 ph-35">
+      <div class="col-md-6 pb-49 pt-90 ph-35 pv-0-xs">
         <div class="row pl-70-md">
           <div class="col-sm-12">
             <% student_percent = percent(@max_student_points, @max_total_points) %>
-            <div class="c100 big orange <%= "p#{ student_percent.round }"%>">
+            <div class="porcentaje-puntos c100 big orange <%= "p#{ student_percent.round }"%>">
               <span>
                 <%= "#{ student_percent.round(1) }%" %>
               </span>
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-5 col-sm-offset-2 text-center">
+          <div class="col-sm-6 col-sm-offset-3 col-md-offset-2 col-md-5 text-center">
             <p class="score">
               <span class="book gray-29"><%= @max_student_points %></span>
               <span class="slash">/</span>

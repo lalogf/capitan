@@ -1,0 +1,119 @@
+
+.checked {
+	border: 1px solid #f6b618;
+	background-color: #f6b618;
+}
+.btn-autoevaluacion.submit {
+	background-color: #f6b618!important;
+	&:hover {
+		background-color: #d59600!important;
+	}
+}
+#autoevaluacion {
+	h2 {
+		font-size: 12px;
+	}
+	h3 {
+		font-size: 30px;
+   		margin-top: 0px;
+	}
+	.texto-introductorio {
+		font-size: 13px;
+	}
+	label {
+		font-size: 15px;
+	}
+	.list-icons-feeling li {
+		border: 1px solid #ddd;
+		padding: 15px;
+		cursor: pointer;
+		border-radius: 2px;
+		&:nth-child(2) {
+			margin: 0px 40px;
+		}
+		img {
+			transition: all 0.25s ease;
+		}
+		&:hover {
+			border: 1px solid #f9a91a;
+			img {
+				-ms-transform: 	   scale(1.1);
+			    -webkit-transform: scale(1.1);
+			    transform: 		   scale(1.1);	
+			}
+		}
+	}
+	.input-respuesta {
+		border: none;
+    font-style: italic;
+    font-size: 15px;
+    padding-left: 14px;
+    padding-top: 10px;
+    &:focus {
+    	outline: none;
+    }
+	}
+	.btn-empezar {
+		background: #f6b618;
+		&:hover {
+			background-color: #d59600!important;
+		}
+	}
+	button {
+		border: none;
+    border-radius: 2px;
+    width: 150px;
+    height: 50px;
+    color: white;
+	}
+	@media (max-width: 480px) {
+		.row {
+			width: 100%;
+		}
+	}
+}
+@media (max-width: 480px) {
+	.w-347 {
+		min-width: 100%;
+		max-width: 100%;
+	}
+	#autoevaluacion {
+		.list-icons-feeling {
+			text-align: center;
+			li:nth-child(2) {
+				margin: 0px;
+			}
+			li img {
+				width: 45px;
+			}
+		}
+		ol {
+			text-align: center;
+		}
+	}
+}
+@media (min-width: 681px) and (max-width: 980px) {
+	#autoevaluacion {
+		.first-part {
+			width: 100%;
+			.row {
+				margin: 0px!important;
+			}
+		}
+		.second-part {
+			.container-sm {
+				width: 100%;
+				padding-left: 28px !important;
+			    padding-right: 28px !important;
+			    padding-left: rem(28) !important;
+			    padding-right: rem(28) !important;
+			    form {
+			    	padding-left: 21px !important;
+				    padding-right: 21px !important;
+				    padding-left: rem(21) !important;
+				    padding-right: rem(21) !important;
+			    }
+			}
+		}
+	}
+}
