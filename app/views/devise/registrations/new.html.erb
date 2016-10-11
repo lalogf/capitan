@@ -7,20 +7,19 @@
           <div class="form-inputs">
             <!-- User information -->
             <%= p.input :name, label: "1. Nombre y Apellidos", required: true, placeholder: "Nombre" %>
-            <%= f.input :email,label: "3. Correo electrónico", required: true, placeholder: "ej: ejemplo@gmail.com" %>
+            <%= f.input :email,label: "2. Correo electrónico", required: true, placeholder: "ej: ejemplo@gmail.com" %>
 
             <!-- General Information -->
-            <%= p.input :dni, label: "4. Documento de identidad", required: true, placeholder: "ej: 95749345" %>
-            <%= p.input :birth_date, label: "Fecha de nacimiento", required: true %>
-            <%= f.input :signup_branch, label: "¿En qué ciudad vives? / ¿A qué ciudad estás postulando?", collection: Branch.all, :include_blank => "Selecciona una ciudad" %>
-            <%= p.input :district,collection: [],label: false %>
-            <%= p.input :phone1, label: false, required: true, placeholder: "ej: 9945568345" %>
-            <%= p.input :phone2, label: false, required: true, placeholder: "Teléfono" %>
-            <%= p.input :facebook_link, label: false, required: true, placeholder: "Pega aquí el link" %>
+            <%= p.input :dni, label: "3. Documento de identidad", required: true, placeholder: "ej: 95749345" %>
+            <%= p.input :birth_date, label: "4. Fecha de nacimiento", required: true %>
+            <%= f.input :signup_branch, label: "5. ¿En qué ciudad vives? / ¿A qué ciudad estás postulando?", collection: Branch.all, :include_blank => "Selecciona una ciudad" %>
+            <%= p.input :district,collection: [],label: "6. ¿Cuál es la colonia/distrito/comuna donde vives?" %>
+            <%= p.input :phone1, label: "7. Celular / Teléfono", required: true, placeholder: "ej: 9945568345" %>
+            <%= p.input :facebook_link, required: true, placeholder: "Pega aquí el link",:label => "8. Link al perfil en Facebook <br/><span>(en caso no podamos comunicarnos contigo ni por teléfono o correo, intentaremos contactarte por Facebook)</span>".html_safe %>
 
             <!-- School Information -->
-            <%= p.input :education, label:false, collection: [] %>
-            <%= p.input :major, label: false, required: true, placeholder: "" %>
+            <%= p.input :education, collection: [], label: "9. ¿Cuál es tu grado de educación?", :include_blank => "Elige tu grado de educación" %>
+            <%= p.input :major, label: "10. ¿Qué carrera estudiaste / estás estudiando?", required: true, placeholder: "ej. Diseño de interiores" %>
 
           </div>
 
