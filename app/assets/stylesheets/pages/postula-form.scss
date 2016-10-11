@@ -26,8 +26,14 @@
 	    abbr {
 	    	display: none;
 	    }
+	    span {
+	    	font-size: 13px;
+	    	font-style: italic;
+	    	color: #3c3c3c;
+	    	font-weight: 100;
+	    }
 		}
-		input {
+		input, select {
 			border: none;
 	    border-bottom: 1px solid #ccc;
 	    border-radius: 0px;
@@ -42,11 +48,17 @@
 	    	border-color: #ccc;
 	    }
 		}
+		select {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			background-image: url("../images/flecha-desactivada.png");
+		}
 	}
 	.user_profile_birth_date {
 		select {
 			display: inline-block;
-    	width: 64px;
+    	width: auto;
 		}
 	}
 } 
