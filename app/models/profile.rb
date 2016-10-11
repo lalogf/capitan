@@ -47,10 +47,13 @@ class Profile < ActiveRecord::Base
   belongs_to :semesters_left
 
   enum reasons_school_not_done: [:studing,:economic_problems,:health_problems,:dont_like_it,:others]
+  enum job_status: [:working, :work_before_not_working_now,:never_work_before]
+  enum work_for: [:company,:independent,:other]
+  enum job_type: [:partime,:fulltime,:intership]
 
-  def self.reasons_school_not_done_labels
-    reasons_school_not_dones.map do |reason, _|
-      [I18n.t("activerecord.attributes.#{model_name.i18n_key}.reasons_school_not_done.#{reason}"), reason]
+  def self.enum_labels profile_enum, profile_enum_name
+    profile_enum.map do |option, _|
+      [I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{profile_enum_name}.#{option}"), option]
     end
   end
 end

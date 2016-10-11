@@ -27,12 +27,22 @@
             <%= p.input :major, label: "10. ¿Qué carrera estudiaste / estás estudiando?", required: true, placeholder: "ej. Diseño de interiores" %>
             <%= p.input :school, label: "11. ¿Donde?", required: true, placeholder: "ej. Universidad de Piura" %>
             <%= p.input :semesters_left, collection: [], label: "¿Qué te falta para terminar?", :include_blank => "Elige una opción" %>
-            <%= p.input :reasons_school_not_done, label: "¿Por qué no has terminado?",collection: Profile.reasons_school_not_done_labels, :include_blank => "Elige una opción" %>
+            <%= p.input :reasons_school_not_done, label: "¿Por qué no has terminado?",collection: Profile.enum_labels(Profile.reasons_school_not_dones,"reasons_school_not_done"), :include_blank => "Elige una opción",required: true %>
             <div class="subtitulo mb-35">
               <img src="">
               <h2 class="text-uppercase">Trabajo</h2>
             </div>
-
+            <%= p.input :job_status, label:"16. ¿Has trabajado antes?", collection: Profile.enum_labels(Profile.job_statuses,"job_status"), as: :radio_buttons, required: true %>
+            <div>Considera tu último trabajo para responder. Si aún estas trabajando, responde con los datos de tu actual trabajo</div>
+            <%= p.input :work_for, label: "17. ¿Trabajabas para una empresa o de manera independiente?", collection: Profile.enum_labels(Profile.work_fors,"work_for"), as: :radio_buttons,required: true %>
+            <%= p.input :job_title, label: "18. ¿Cuál es/era tu rol?", required: true, placeholder: "ej. administradora de ventas" %>
+            <%= p.input :job_payroll, label: "19. ¿Es/Era un trabajo formal? - Se considera formal si es que cuando recibiste el pago giraste recibos por honorarios o te encontrabas en planilla.", as: :radio_buttons, required: true %>
+            <%= p.input :job_type, label: "20. ¿Cuál es tu horario?", collection: Profile.enum_labels(Profile.job_types,"job_type"),as: :radio_buttons, required: true %>
+            <%= p.input :job_salary, label: "21. ¿Cuánto recibes/recibías de sueldo al mes?<br/><span>Este sueldo es libre de impuestos, es lo que tú percibes al final del mes</span>", collection: [], placeholder: "Elige una opción" %>
+            <div class="subtitulo mb-35">
+              <img src="">
+              <h2 class="text-uppercase">Contexto Familiar</h2>
+            </div>
           </div>
 
           <div class="form-actions">
