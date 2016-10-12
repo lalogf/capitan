@@ -36,6 +36,7 @@
 #  birth_date                    :date
 #  education_id                  :integer
 #  semesters_left_id             :integer
+#  spot_id                       :integer
 #
 
 class Profile < ActiveRecord::Base
@@ -45,11 +46,14 @@ class Profile < ActiveRecord::Base
   belongs_to :family_income
   belongs_to :education
   belongs_to :semesters_left
+  belongs_to :spot
 
   enum reasons_school_not_done: [:studing,:economic_problems,:health_problems,:dont_like_it,:others]
   enum job_status: [:working, :work_before_not_working_now,:never_work_before]
   enum work_for: [:company,:independent,:other]
   enum job_type: [:partime,:fulltime,:intership]
+  enum tech_related_activities: [:videogames, :animations, :virtual_reality, :design, :social_networks, :not_related_to_tech, :other_techs]
+  enum computer_use: [:every_day,:few_week,:few_month,:almost_never]
 
   def self.enum_labels profile_enum, profile_enum_name
     profile_enum.map do |option, _|

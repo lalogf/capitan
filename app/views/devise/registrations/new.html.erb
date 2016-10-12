@@ -38,16 +38,41 @@
             <%= p.input :job_title, label: "18. ¿Cuál es/era tu rol?", required: true, placeholder: "ej. administradora de ventas" %>
             <%= p.input :job_payroll, label: "19. ¿Es/Era un trabajo formal? - Se considera formal si es que cuando recibiste el pago giraste recibos por honorarios o te encontrabas en planilla.", as: :radio_buttons, required: true %>
             <%= p.input :job_type, label: "20. ¿Cuál es tu horario?", collection: Profile.enum_labels(Profile.job_types,"job_type"),as: :radio_buttons, required: true %>
-            <%= p.input :job_salary, label: "21. ¿Cuánto recibes/recibías de sueldo al mes?<br/><span>Este sueldo es libre de impuestos, es lo que tú percibes al final del mes</span>", collection: [], placeholder: "Elige una opción" %>
+            <%= p.input :job_salary, label: "21. ¿Cuánto recibes/recibías de sueldo al mes?<br/><span>Este sueldo es libre de impuestos, es lo que tú percibes al final del mes</span>".html_safe, collection: [], placeholder: "Elige una opción" %>
             <div class="subtitulo mb-35">
               <img src="">
               <h2 class="text-uppercase">Contexto Familiar</h2>
             </div>
+            <%= p.input :family_income, collection:[], required: true, label:"22. ¿Cuál es el ingreso mensual de tu familia?<br/><span>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, inclue el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá</span>".html_safe %>
+            <%= p.input :relatives, label: "23. ¿Cuántas personas más viven en tu casa (sin contarte)?", placeholder: "ej: 5" %>
+            <%= p.input :childs, label: "24. ¿Tienes hijos?", as: :radio_buttons %>
+            <div class="subtitulo mb-35">
+              <img src="">
+              <h2 class="text-uppercase">Intereses</h2>
+            </div>
+            <%= p.input :tech_savy, label: "25. ¿Con qué puntaje calificarías tu interés por la tecnología?",collection:[["",1],["",2],["",3],["",4],["",5]], as: :radio_buttons,:item_wrapper_class => 'checkbox-inline' %>
+            <%= p.input :tech_related_activities, label: "29. ¿Qué tipo de actividades relacionadas a la tecnología te gustan hacer?", collection: Profile.enum_labels(Profile.tech_related_activities,"tech_related_activities"), as: :check_boxes %>
+            <%= p.input :other_tech_related_activities %>
+            <%= p.input :computer_at_home, label: "30. ¿Tienes una computadora/un computador funcional en casa?", as: :radio_buttons %>
+            <%= p.input :internet_access, label: "31. ¿Tienes una conexión a internet en casa?", as: :radio_buttons %>
+            <%= p.input :smartphone, label: "32. ¿Tienes un smartphone?", as: :radio_buttons %>
+            <%= p.input :computer_use ,label: "33. ¿Con qué frecuencia usas computadoras/el computador?", collection: Profile.enum_labels(Profile.computer_uses,"computer_use"), as: :radio_buttons %>
+            <%= p.input :biography, label: "34. Descríbete a ti misma en 100 palabras como máximo",as: :text %>
           </div>
-
+          <div class="spots">
+            <h2>Elige tu turno</h2>
+            <p>El siguiente paso es asistir a una jornada de exámenes presenciales
+              en Laboratoria que se realizará desde el martes 22 de noviembre al
+              jueves 01 de diciembre. El tiempo aproximado de duración es de 3 horas
+              y no es necesario estudiar ya que son pruebas de razonamiento lógico
+              y habilidades emocionales. Por favor, elige un turno en el que puedas
+              asistir puntualmente.
+            </p>
+            <%= p.input :spot, label: "Elige tu turno", placeholder: "Elige una opción", collection: [] %>
+          </div>
+          <p>Revisa tus respuestas antes de dar clic en enviar. No podrás modificarlas luego.</p>
           <div class="form-actions">
-            <%= f.button :submit, "Registrarte", :class => "btn btn-primary" %>
-            <%= link_to "Cancelar", new_user_session_path, :class => "btn btn-default btn-danger" %>
+            <%= f.button :submit, "Enviar", :class => "btn btn-primary" %>
           </div>
       </div>
     </div>
