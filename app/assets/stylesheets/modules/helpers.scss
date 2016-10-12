@@ -1,5 +1,29 @@
+.center {
+  text-align: center;
+}
+
+.mtp-10 {
+  margin-top: 10%;
+}
+
 .mt-20 {
   margin-top:20px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
 }
 
 .p-20 {
@@ -12,10 +36,6 @@
 
 .w-135 {
     width: 135px;
-}
-
-.mr-20 {
-  margin-right: 20px;
 }
 
 .bg-gray-lighter {
@@ -32,4 +52,18 @@
 
 .minh-210 {
   min-height: 210px;
+}
+
+.lh-28 {
+    line-height: 28px;
+}
+
+/* TODO: Remove when improve */
+.ph-56 {
+    padding-left: 56px;
+    padding-right: 56px;
+}
+
+.block {
+  display: block;
 }
