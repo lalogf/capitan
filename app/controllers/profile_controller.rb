@@ -59,7 +59,7 @@ class ProfileController < ApplicationController
     @pages = Page.where(page_type: "codereview").order(:lesson_id)
   end
 
-  def admision
+  def admission
     render :layout => "devise"
   end
 
