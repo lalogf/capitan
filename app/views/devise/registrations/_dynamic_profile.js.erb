@@ -3,6 +3,7 @@ var educations = [];
 var semestersLeft = [];
 var familyIncome = [];
 var spots = [];
+var salaries = [];
 
 <% District.all.each do |district| %>
   districts.push([<%= district.branch_id %>,"<%= district.name %>",<%= district.id %>]);
@@ -24,14 +25,19 @@ var spots = [];
   spots.push([<%= spot.branch_id %>,"<%= spot.name %>",<%= spot.id %>]);
 <% end %>
 
+<% JobSalary.all.each do |salary| %>
+  salaries.push([<%= salary.branch_id %>,"<%= salary.name %>",<%= salary.id %>]);
+<% end %>
+
 window.addEventListener('load',function() {
   $('#user_signup_branch').on("change",function() {
     var branchId = parseInt($(this).val());
-    changeSelect(branchId,'#user_profile_attributes_district','Elige colonia/distrito/comuna',districts);
-    changeSelect(branchId,'#user_profile_attributes_education','Elige tu grado de educación',educations);
-    changeSelect(branchId,'#user_profile_attributes_semesters_left','Elige una opción',semestersLeft);
-    changeSelect(branchId,'#user_profile_attributes_family_income','Elige una opción',familyIncome);
-    changeSelect(branchId,'#user_profile_attributes_spot','Elige una opción',spots);
+    changeSelect(branchId,'#user_profile_attributes_district_id','Elige colonia/distrito/comuna',districts);
+    changeSelect(branchId,'#user_profile_attributes_education_id','Elige tu grado de educación',educations);
+    changeSelect(branchId,'#user_profile_attributes_semesters_left_id','Elige una opción',semestersLeft);
+    changeSelect(branchId,'#user_profile_attributes_family_income_id','Elige una opción',familyIncome);
+    changeSelect(branchId,'#user_profile_attributes_spot_id','Elige una opción',spots);
+    changeSelect(branchId,'#user_profile_attributes_job_salary_id','Elige una opción',salaries);
   });
 });
 
