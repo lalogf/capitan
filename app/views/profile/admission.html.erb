@@ -1,0 +1,54 @@
+<% content_for :scripts do %>
+  <script>
+    $(function() {
+      $("#terms-conditions").change(function() {
+
+      });
+    });
+  </script>
+<% end %>
+
+<!-- TODO: Crear el css adecuado para esta pagina, aqui solo pongo las clases
+como referencia, al final eliminar este comentario -->
+<section class="admission-banner">
+  <h1>!Bienvenida al proceso de selección para ser parte de Laboratoria!</h1>
+</section>
+<section class="admission-instructions"
+  <p>Estas son algunos aspectos importantes que debes considerar:</p>
+  <ul>
+    <li><b>Este es el primer paso para iniciar la primera etapa de selección</b>.
+      Solo debes llenar este formulario que consta de 34 preguntas, el
+      <b>tiempo aproximado para completarlo es de 20 minutos</b>.
+      Cuando termines, tendrás que elegir el turno en el que asistirás a la
+      sesión de exámenes en Laboratoria. Finalmente, al darle clic a
+      "Enviar respuestas", se generará tu código de postulante. Tanto tu código
+      como el turno que elegiste llegarán automáticamente al correo electrónico
+      que proporcionaste en el formulario junto con más información sobre el
+      siguiente paso.</li>
+    <li>Es importante que llenes este formulario inmediatamente después de
+      inscribirte en nuestra página web. Es simple y <b>es indispensable que hayas
+      completado este paso para poder rendir los exámenes presenciales en Laboratoria</b>.
+      Sin embargo, si por alguna razón no puedes completarlo en este momento te
+      hemos enviado el enlace a esta página al correo electrónico que
+      proporcionaste para que lo puedas hacer luego.</li>
+    <li><b>Toda información que nos brindes es confidencial</b> y aportará mucho
+      valor al estudio de impacto que realizamos desde Laboratoria,ya que nos
+      permite conocer el perfil de todas las postulantes al programa y
+      hacer mejoras constantemente.</li>
+    <li>Finalmente, queremos agradecerte por animarte a dar el primer paso y postular
+      a nuestro programa. Estamos seguros de tu talento y nos alegra saber que haya
+      jóvenes como tú que buscan llevar su potencial al máximo.</li>
+  </ul>
+</section>
+<section class="admission-terms">
+  <input id="terms-conditions" type="checkbox"/>
+  <!-- inhabilitar el link a empezar y habilitarlo cuando se hace check en este checkbox -->
+  <p>
+    Me comprometo a ser totalmente sincera con mis respuestas y completar este
+    formulario con información veraz, con el fin de lograr un proceso de selección
+    transparente. Entiendo que la honestidad es uno de los valores más importantes
+    de la cultura Laboratoria; y en caso de no respetarlo, estoy al tanto de que
+    podría afectar mi postulación.
+  </p>
+</section>
+<a id="sign-up-link" href="/users/sign_up">empezar</a>

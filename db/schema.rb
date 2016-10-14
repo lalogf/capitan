@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011140213) do
+ActiveRecord::Schema.define(version: 20161012172904) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -243,7 +243,6 @@ ActiveRecord::Schema.define(version: 20161011140213) do
     t.string   "facebook_link",                 limit: 255
     t.string   "major",                         limit: 255
     t.string   "school",                        limit: 255
-    t.integer  "semesters_left",                limit: 4
     t.integer  "reasons_school_not_done",       limit: 4
     t.integer  "job_status",                    limit: 4
     t.integer  "work_for",                      limit: 4
@@ -266,12 +265,16 @@ ActiveRecord::Schema.define(version: 20161011140213) do
     t.datetime "updated_at",                                null: false
     t.date     "birth_date"
     t.integer  "education_id",                  limit: 4
+    t.integer  "semesters_left_id",             limit: 4
+    t.integer  "spot_id",                       limit: 4
   end
 
   add_index "profiles", ["district_id"], name: "index_profiles_on_district_id", using: :btree
   add_index "profiles", ["education_id"], name: "index_profiles_on_education_id", using: :btree
   add_index "profiles", ["family_income_id"], name: "index_profiles_on_family_income_id", using: :btree
   add_index "profiles", ["job_salary_id"], name: "index_profiles_on_job_salary_id", using: :btree
+  add_index "profiles", ["semesters_left_id"], name: "index_profiles_on_semesters_left_id", using: :btree
+  add_index "profiles", ["spot_id"], name: "index_profiles_on_spot_id", using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "question_groups", force: :cascade do |t|
@@ -304,6 +307,15 @@ ActiveRecord::Schema.define(version: 20161011140213) do
   add_index "reviews", ["page_id"], name: "index_reviews_on_page_id", using: :btree
   add_index "reviews", ["question_id"], name: "index_reviews_on_question_id", using: :btree
 
+  create_table "semesters_lefts", force: :cascade do |t|
+    t.integer  "branch_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "semesters_lefts", ["branch_id"], name: "index_semesters_lefts_on_branch_id", using: :btree
+
   create_table "soft_skill_submissions", force: :cascade do |t|
     t.integer  "soft_skill_id", limit: 4
     t.integer  "user_id",       limit: 4
@@ -323,6 +335,15 @@ ActiveRecord::Schema.define(version: 20161011140213) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "spots", force: :cascade do |t|
+    t.integer  "branch_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "spots", ["branch_id"], name: "index_spots_on_branch_id", using: :btree
 
   create_table "sprint_badges", force: :cascade do |t|
     t.integer  "sprint_id",  limit: 4
@@ -469,12 +490,16 @@ ActiveRecord::Schema.define(version: 20161011140213) do
   add_foreign_key "profiles", "educations"
   add_foreign_key "profiles", "family_incomes"
   add_foreign_key "profiles", "job_salaries"
+  add_foreign_key "profiles", "semesters_lefts"
+  add_foreign_key "profiles", "spots"
   add_foreign_key "profiles", "users"
   add_foreign_key "question_groups", "pages"
   add_foreign_key "question_groups", "questions"
+  add_foreign_key "semesters_lefts", "branches"
   add_foreign_key "soft_skill_submissions", "soft_skills"
   add_foreign_key "soft_skill_submissions", "sprints"
   add_foreign_key "soft_skill_submissions", "users"
+  add_foreign_key "spots", "branches"
   add_foreign_key "sprint_badges", "badges"
   add_foreign_key "sprint_badges", "sprints"
   add_foreign_key "sprint_pages", "pages"

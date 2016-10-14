@@ -58,6 +58,8 @@ Rails.application.routes.draw do
     root :to => 'tracks#show_user_track'
   end
 
+  get 'admission' => 'profile#admission', :as => :admission
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: "users/registrations",

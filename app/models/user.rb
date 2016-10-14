@@ -31,6 +31,8 @@ require 'roo'
 class User < ActiveRecord::Base
 
   after_initialize :build_default_profile
+  before_create :generate_code
+  before_create :generate_password
 
   enum role: [:student, :assistant, :teacher, :admin]
 
@@ -49,7 +51,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-  devise :database_authenticatable,:registerable,:recoverable,:rememberable,:trackable,:omniauthable,:omniauth_providers => [:github]
+  devise :database_authenticatable,:registerable,:recoverable,:rememberable,
+         :trackable,:omniauthable,:omniauth_providers => [:github]
 
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, on: :create
@@ -88,7 +91,11 @@ class User < ActiveRecord::Base
 
   def signup_branch
   end
-  
+
+  def signup_branch=(branch_id)
+    self.group = Group.where(branch_id: branch_id).order("name desc").first
+  end
+
   def sprints
     self.group.sprints if group != nil
   end
@@ -176,6 +183,22 @@ class User < ActiveRecord::Base
   def build_default_profile
     build_profile
     true
+  end
+
+  def generate_code
+    if self.code.nil?
+      self.code = User.where(role: 0,group_id:self.group.id).
+                  where("code like 'LIM%' or code like 'SCL%' or code like 'MEX' or code like 'AQP'").
+                  order("code desc").pluck("code").first
+    end
+  end
+
+  def generate_password
+    if self.password.nil?
+      self.password = User.where(role: 0,group_id:self.group.id).
+                      where("code like 'LIM%' or code like 'SCL%' or code like 'MEX' or code like 'AQP'").
+                      order("code desc").pluck("code").first
+    end
   end
 
 end
