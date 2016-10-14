@@ -63,6 +63,9 @@ class ProfileController < ApplicationController
     render :layout => "devise"
   end
 
+  def admission_success
+    render :layout => "devise"
+  end
 
   private
 

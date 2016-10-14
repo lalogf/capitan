@@ -15,6 +15,9 @@
   	position: absolute;
   	font-size: 30px;
     width: 680px;
+  	-webkit-transform: translate(-50%, -30%);
+  	-moz-transform: translate(-50%, -30%);
+  	-ms-transform: translate(-50%, -30%);
   	transform: translate(-50%, -30%);
     top: 60%;
     left: 50%;
