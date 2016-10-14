@@ -17,6 +17,12 @@
 		}
 	}
 
+	.indicaciones {
+		font-size: 13px;
+  	font-style: italic;
+  	color: #3c3c3c;
+  	font-weight: 100;
+	}
 	.form-group {
 		padding-bottom: 40px;
 		label {
@@ -26,8 +32,14 @@
 	    abbr {
 	    	display: none;
 	    }
+	    p {
+	    	font-size: 13px;
+	    	font-style: italic;
+	    	color: #3c3c3c;
+	    	font-weight: 100;
+	    }
 		}
-		input {
+		input[type='text'], input[type='tel'], input[type='number'], input[type='email'], select {
 			border: none;
 	    border-bottom: 1px solid #ccc;
 	    border-radius: 0px;
@@ -42,11 +54,79 @@
 	    	border-color: #ccc;
 	    }
 		}
+		select {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			background-image: url("/assets/flecha-desactivada.png");
+	    background-repeat: no-repeat;
+	    background-position: 99% 50%;
+		}
+		label.radio_buttons {
+			padding-bottom: 4px;
+		}
+		span.radio, span.checkbox {
+			label {
+				position: relative;
+    		padding-left: 30px;
+    		color: #a7a7a7;
+    		padding-bottom: 5px;
+    		input {
+					width: 14px;
+					width: 14px;
+					position: absolute;
+					left: 20px;
+				}
+			}
+		}
+		span.radio.checkbox-inline {
+			margin-top: 20px;
+			&:last-child:after {
+				content: "MUCHO";
+				position: absolute;
+				top: 0px;
+		    left: 80px;
+		    font-size: 12px;
+		    font-weight: 300;
+			}
+			&:first-of-type {
+				margin-left: 65px;
+				&:before {
+					content: "POCO";
+					position: absolute;
+					top: 0px;
+			    right: 80px;
+			    font-size: 12px;
+			    font-weight: 300;
+				}
+			}
+		}
 	}
 	.user_profile_birth_date {
 		select {
 			display: inline-block;
-    	width: 64px;
+    	width: auto;
+		}
+	}
+	#elige-turno {
+		background-color: #f7f7f7;
+		.form-group {
+			margin-top: 56px;
+			margin-bottom: 14px;
+			p {
+				line-height: 1.6;
+			}
+			select {
+				background-color: #f7f7f7;
+				background-image: url("/assets/flecha-activa.png");
+			}
+		}
+		.form-actions input {
+			background-color: #f7b617;
+			border: transparent;
+			font-size: 20px;
+			font-weight: 300;
+			color: white;
 		}
 	}
 } 

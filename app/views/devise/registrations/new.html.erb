@@ -5,8 +5,9 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
   <%= f.simple_fields_for :profile do |p| %>
-    <div class="container-sm form-postula ph-70 pt-56">
+    <div class="form-postula">
       <div class="form form-session">
+        <div class="container-sm ph-42 pv-56">
           <%= f.error_notification %>
           <div class="form-inputs">
             <!-- User information -->
@@ -21,9 +22,9 @@
             <%= f.input :signup_branch, label: "5. ¿En qué ciudad vives? / ¿A qué ciudad estás postulando?", collection: Branch.all, :include_blank => "Selecciona una ciudad" %>
             <%= p.association :district,collection: [],label: "6. ¿Cuál es la colonia/distrito/comuna donde vives?" %>
             <%= p.input :phone1, label: "7. Celular / Teléfono", required: true, placeholder: "ej: 9945568345" %>
-            <%= p.input :facebook_link, required: true, placeholder: "Pega aquí el link",:label => "8. Link al perfil en Facebook <br/><span>(en caso no podamos comunicarnos contigo ni por teléfono o correo, intentaremos contactarte por Facebook)</span>".html_safe %>
+            <%= p.input :facebook_link, required: true, placeholder: "Pega aquí el link",:label => "8. Link al perfil en Facebook <br/><p>(en caso no podamos comunicarnos contigo ni por teléfono o correo, intentaremos contactarte por Facebook)</p>".html_safe %>
             <!-- School Information -->
-            <div class="subtitulo mb-35">
+            <div class="subtitulo mb-35 pt-70 mt-21">
               <img src="">
               <h2 class="text-uppercase">Educación</h2>
             </div>
@@ -32,25 +33,25 @@
             <%= p.input :school, label: "11. ¿Donde?", required: true, placeholder: "ej. Universidad de Piura" %>
             <%= p.association :semesters_left, collection: [], label: "¿Qué te falta para terminar?", :include_blank => "Elige una opción" %>
             <%= p.input :reasons_school_not_done, label: "¿Por qué no has terminado?",collection: Profile.enum_labels(Profile.reasons_school_not_dones,"reasons_school_not_done"), :include_blank => "Elige una opción",required: true %>
-            <div class="subtitulo mb-35">
+            <div class="subtitulo mb-35 pt-70 mt-21">
               <img src="">
               <h2 class="text-uppercase">Trabajo</h2>
             </div>
             <%= p.input :job_status, label:"16. ¿Has trabajado antes?", collection: Profile.enum_labels(Profile.job_statuses,"job_status"), as: :radio_buttons, required: true %>
-            <div>Considera tu último trabajo para responder. Si aún estas trabajando, responde con los datos de tu actual trabajo</div>
+            <div class="indicaciones mb-49">Considera tu último trabajo para responder. Si aún estas trabajando, responde con los datos de tu actual trabajo</div>
             <%= p.input :work_for, label: "17. ¿Trabajabas para una empresa o de manera independiente?", collection: Profile.enum_labels(Profile.work_fors,"work_for"), as: :radio_buttons,required: true %>
             <%= p.input :job_title, label: "18. ¿Cuál es/era tu rol?", required: true, placeholder: "ej. administradora de ventas" %>
             <%= p.input :job_payroll, label: "19. ¿Es/Era un trabajo formal? - Se considera formal si es que cuando recibiste el pago giraste recibos por honorarios o te encontrabas en planilla.", as: :radio_buttons, required: true %>
             <%= p.input :job_type, label: "20. ¿Cuál es tu horario?", collection: Profile.enum_labels(Profile.job_types,"job_type"),as: :radio_buttons, required: true %>
-            <%= p.association :job_salary, label: "21. ¿Cuánto recibes/recibías de sueldo al mes?<br/><span>Este sueldo es libre de impuestos, es lo que tú percibes al final del mes</span>".html_safe, collection: [], placeholder: "Elige una opción" %>
-            <div class="subtitulo mb-35">
+            <%= p.association :job_salary, label: "21. ¿Cuánto recibes/recibías de sueldo al mes?<br/><p>Este sueldo es libre de impuestos, es lo que tú percibes al final del mes</p>".html_safe, collection: [], placeholder: "Elige una opción" %>
+            <div class="subtitulo mb-35 pt-70 mt-21">
               <img src="">
               <h2 class="text-uppercase">Contexto Familiar</h2>
             </div>
-            <%= p.association :family_income, collection:[], required: true, label:"22. ¿Cuál es el ingreso mensual de tu familia?<br/><span>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, inclue el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá</span>".html_safe %>
+            <%= p.association :family_income, collection:[], required: true, label:"22. ¿Cuál es el ingreso mensual de tu familia?<br/><p>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, inclue el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá</p>".html_safe %>
             <%= p.input :relatives, label: "23. ¿Cuántas personas más viven en tu casa (sin contarte)?", placeholder: "ej: 5" %>
             <%= p.input :childs, label: "24. ¿Tienes hijos?", as: :radio_buttons %>
-            <div class="subtitulo mb-35">
+            <div class="subtitulo mb-35 pt-70 mt-21">
               <img src="">
               <h2 class="text-uppercase">Intereses</h2>
             </div>
@@ -63,21 +64,21 @@
             <%= p.input :computer_use ,label: "33. ¿Con qué frecuencia usas computadoras/el computador?", collection: Profile.enum_labels(Profile.computer_uses,"computer_use"), as: :radio_buttons %>
             <%= p.input :biography, label: "34. Descríbete a ti misma en 100 palabras como máximo",as: :text %>
           </div>
-          <div class="spots">
-            <h2>Elige tu turno</h2>
-            <p>El siguiente paso es asistir a una jornada de exámenes presenciales
-              en Laboratoria que se realizará desde el martes 22 de noviembre al
-              jueves 01 de diciembre. El tiempo aproximado de duración es de 3 horas
-              y no es necesario estudiar ya que son pruebas de razonamiento lógico
-              y habilidades emocionales. Por favor, elige un turno en el que puedas
-              asistir puntualmente.
-            </p>
-            <%= p.association :spot, label: "Elige tu turno", placeholder: "Elige una opción", collection: [] %>
+        </div>
+        <div id="elige-turno">
+          <div class="container-sm ph-42 pv-70">
+            <div class="spots">
+              <h2 class="text-center light mb-42">Elige tu turno</h2>
+              <p class="text-justify">Gracias por contestar estas preguntas. Ahora tu próximo paso es asistir a Laboratoria para una sesión de pruebas que durará 4 horas. Esta sesión se dividirá en dos partes: primero te haremos varias preguntas para conocerte mejor y descubrir tus habilidades socio emocionales. Luego, mediremos tu potencial por la programación. Te haremos preguntas de lógica y abstracción y te presentaremos una lectura sencilla sobre desarrollo web front end, para que luego contestes preguntas sobre lo que leíste. No hace falta estudiar, pero si venir con mucha energía y concentrarte en tus respuestas.</p>
+              <p>Por favor escoge el turno en el cual vas a venir a tomar la prueba a finales de noviembre y principios de diciembre:</p>              
+              <%= p.association :spot, label: "Elige tu turno", placeholder: "Elige una opción", collection: [] %>
+            </div>
+            <p><i>Revisa tus respuestas antes de dar clic en enviar. No podrás modificarlas luego.</i></p>
+            <div class="form-actions">
+              <%= f.button :submit, "enviar →", :class => "btn-block pv-21 mv-56" %>
+            </div>
           </div>
-          <p>Revisa tus respuestas antes de dar clic en enviar. No podrás modificarlas luego.</p>
-          <div class="form-actions">
-            <%= f.button :submit, "Enviar", :class => "btn btn-primary" %>
-          </div>
+        </div>
       </div>
     </div>
   <% end %>
