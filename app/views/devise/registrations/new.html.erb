@@ -56,7 +56,7 @@
               <h2 class="text-uppercase">Intereses</h2>
             </div>
             <%= p.input :tech_savy, label: "25. ¿Con qué puntaje calificarías tu interés por la tecnología?",collection:[["",1],["",2],["",3],["",4],["",5]], as: :radio_buttons,:item_wrapper_class => 'checkbox-inline' %>
-            <%= p.input :tech_related_activities, label: "29. ¿Qué tipo de actividades relacionadas a la tecnología te gustan hacer?", collection: Profile.enum_labels(Profile.tech_related_activities,"tech_related_activities"), as: :check_boxes %>
+            <%= p.association :tech_related_activities,collection: TechRelatedActivity.all, as: :check_boxes, label: "29. ¿Qué tipo de actividades relacionadas a la tecnología te gustan hacer?" %>
             <%= p.input :other_tech_related_activities %>
             <%= p.input :computer_at_home, label: "30. ¿Tienes una computadora/un computador funcional en casa?", as: :radio_buttons %>
             <%= p.input :internet_access, label: "31. ¿Tienes una conexión a internet en casa?", as: :radio_buttons %>

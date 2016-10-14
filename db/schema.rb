@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012172904) do
+ActiveRecord::Schema.define(version: 20161014154217) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -277,6 +277,11 @@ ActiveRecord::Schema.define(version: 20161012172904) do
   add_index "profiles", ["spot_id"], name: "index_profiles_on_spot_id", using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "profiles_tech_related_activities", id: false, force: :cascade do |t|
+    t.integer "profile_id",               limit: 4, null: false
+    t.integer "tech_related_activity_id", limit: 4, null: false
+  end
+
   create_table "question_groups", force: :cascade do |t|
     t.integer  "page_id",     limit: 4
     t.integer  "question_id", limit: 4
@@ -406,6 +411,12 @@ ActiveRecord::Schema.define(version: 20161012172904) do
 
   add_index "submissions", ["page_id"], name: "index_submissions_on_page_id", using: :btree
   add_index "submissions", ["user_id"], name: "index_submissions_on_user_id", using: :btree
+
+  create_table "tech_related_activities", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "tracks", force: :cascade do |t|
     t.string   "name",        limit: 255
