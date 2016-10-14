@@ -343,3 +343,11 @@ Spot.find_or_create_by(name: "Domingo 27 de noviembre - 2:00 a 5:00 pm", branch:
 Spot.find_or_create_by(name: "Martes 29 de noviembre - 6:00 a 9:00 pm", branch:lima)
 Spot.find_or_create_by(name: "Miércoles 30 de noviembre - 6:00 a 9:00 pm", branch:lima)
 Spot.find_or_create_by(name: "Jueves 01 de diciembre - 6:00 a 9:00 pm", branch:lima)
+
+TechRelatedActivity.find_or_create_by(name: "VideoJuegos")
+TechRelatedActivity.find_or_create_by(name: "Animaciones")
+TechRelatedActivity.find_or_create_by(name: "Realidad Virtual")
+TechRelatedActivity.find_or_create_by(name: "Diseño")
+TechRelatedActivity.find_or_create_by(name: "Redes sociales")
+TechRelatedActivity.find_or_create_by(name: "Otras actividades relacionadas a la tecnlogía")
+TechRelatedActivity.find_or_create_by(name: "Me interesan otro tipo de actividades no relacionadas a la tecnlogía")

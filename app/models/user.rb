@@ -31,8 +31,8 @@ require 'roo'
 class User < ActiveRecord::Base
 
   after_initialize :build_default_profile
-  before_create :generate_code
-  before_create :generate_password
+  before_validation :generate_code
+  before_validation :generate_password
 
   enum role: [:student, :assistant, :teacher, :admin]
 
@@ -187,18 +187,21 @@ class User < ActiveRecord::Base
 
   def generate_code
     if self.code.nil?
-      self.code = User.where(role: 0,group_id:self.group.id).
-                  where("code like 'LIM%' or code like 'SCL%' or code like 'MEX' or code like 'AQP'").
-                  order("code desc").pluck("code").first
+      self.code = next_code
     end
   end
 
   def generate_password
     if self.password.nil?
-      self.password = User.where(role: 0,group_id:self.group.id).
-                      where("code like 'LIM%' or code like 'SCL%' or code like 'MEX' or code like 'AQP'").
-                      order("code desc").pluck("code").first
+      self.password = next_code.gsub(/\D/,'')
     end
+  end
+
+  def next_code
+    last_code = User.where(role: 0,group_id:self.group.id).
+                    where("code like 'LIM%' or code like 'SCL%' or code like 'MEX%' or code like 'AQP%'").
+                    order("code desc").pluck("code").first
+    last_code.gsub(/[0-9]+/,'') + (last_code.gsub(/\D/,'').to_i + 1).to_s
   end
 
 end
