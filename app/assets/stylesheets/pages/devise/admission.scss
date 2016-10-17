@@ -1,0 +1,53 @@
+.admission-banner {
+	height: 340px;
+  background-size: 120%;
+  background-position: 10% 50%;
+  position: relative;
+  .opacity {
+  	position: absolute;
+  	top: 0px;
+  	left: 0;
+  	bottom: 0;
+  	right: 0;
+  	background-color: rgba(0,0,0,0.5);
+  }
+  h1 {
+  	position: absolute;
+  	font-size: 30px;
+    width: 680px;
+  	-webkit-transform: translate(-50%, -30%);
+  	-moz-transform: translate(-50%, -30%);
+  	-ms-transform: translate(-50%, -30%);
+  	transform: translate(-50%, -30%);
+    top: 60%;
+    left: 50%;
+  }
+}
+.admission-instructions {
+	p {
+		line-height: 1.6;
+	}
+}
+.admission-terms {
+	> div > div {
+		position: relative;
+		input {
+			position: absolute;
+			top: 40%;
+    	margin-top: 0px;
+		}
+		p {
+			padding-left: 30px;
+			font-size: 13px;
+			color: #a7a7a7;
+    	font-style: italic;
+		}
+	}
+	a.btn {
+		background-color: #f7b617;
+		border: transparent;
+		font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+	}
+}

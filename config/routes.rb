@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   end
 
   get 'admission' => 'profile#admission', :as => :admission
+  get 'admission_success' => 'profile#admission_success', :as => :admission_success
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
