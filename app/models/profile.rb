@@ -25,7 +25,6 @@
 #  relatives                     :integer
 #  childs                        :boolean
 #  tech_savy                     :integer
-#  tech_related_activities       :integer
 #  other_tech_related_activities :string(255)
 #  computer_at_home              :boolean
 #  internet_access               :boolean
@@ -48,7 +47,6 @@ class Profile < ActiveRecord::Base
   belongs_to :semesters_left
   belongs_to :spot
   has_and_belongs_to_many :tech_related_activities
-
 
   enum reasons_school_not_done: [:studing,:economic_problems,:health_problems,:dont_like_it,:others]
   enum job_status: [:working, :work_before_not_working_now,:never_work_before]

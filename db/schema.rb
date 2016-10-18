@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014154217) do
+ActiveRecord::Schema.define(version: 20161014203915) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -255,7 +255,6 @@ ActiveRecord::Schema.define(version: 20161014154217) do
     t.integer  "relatives",                     limit: 4
     t.boolean  "childs",                        limit: 1
     t.integer  "tech_savy",                     limit: 4
-    t.integer  "tech_related_activities",       limit: 4
     t.string   "other_tech_related_activities", limit: 255
     t.boolean  "computer_at_home",              limit: 1
     t.boolean  "internet_access",               limit: 1

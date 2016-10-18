@@ -57,6 +57,8 @@ class User < ActiveRecord::Base
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, on: :create
   validates :group_id, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates_format_of :email,:with => Devise::email_regexp
 
   has_attached_file :avatar,
                     :styles => { :profile => "128x128", :menu => "80x80", :navbar => "35x35" },
@@ -78,7 +80,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    profile.name.blank? ? self.email : "#{profile.name} #{profile.lastname}".strip
+    profile.nil? or profile.name.blank? ? self.email : profile.name.strip
   end
 
   def email_required?
@@ -181,8 +183,7 @@ class User < ActiveRecord::Base
   private
 
   def build_default_profile
-    build_profile
-    true
+      self.profile ||= Profile.new if self.new_record?
   end
 
   def generate_code
@@ -193,15 +194,18 @@ class User < ActiveRecord::Base
 
   def generate_password
     if self.password.nil?
-      self.password = next_code.gsub(/\D/,'')
+      code = next_code
+      self.password = code.gsub(/\D/,'') if !next_code.nil?
     end
   end
 
   def next_code
-    last_code = User.where(role: 0,group_id:self.group.id).
-                    where("code like 'LIM%' or code like 'SCL%' or code like 'MEX%' or code like 'AQP%'").
-                    order("code desc").pluck("code").first
-    last_code.gsub(/[0-9]+/,'') + (last_code.gsub(/\D/,'').to_i + 1).to_s
+    if !self.group.nil?
+      last_code = User.where(role: 0,group_id:self.group.id).
+                      where("code like 'LIM%' or code like 'SCL%' or code like 'MEX%' or code like 'AQP%'").
+                      order("code desc").pluck("code").first
+      last_code.gsub(/[0-9]+/,'') + (last_code.gsub(/\D/,'').to_i + 1).to_s
+    end
   end
 
 end

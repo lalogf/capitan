@@ -30,24 +30,70 @@ var salaries = [];
 <% end %>
 
 window.addEventListener('load',function() {
-  $('#user_signup_branch').on("change",function() {
-    var branchId = parseInt($(this).val());
-    changeSelect(branchId,'#user_profile_attributes_district_id','Elige colonia/distrito/comuna',districts);
-    changeSelect(branchId,'#user_profile_attributes_education_id','Elige tu grado de educación',educations);
-    changeSelect(branchId,'#user_profile_attributes_semesters_left_id','Elige una opción',semestersLeft);
-    changeSelect(branchId,'#user_profile_attributes_family_income_id','Elige una opción',familyIncome);
-    changeSelect(branchId,'#user_profile_attributes_spot_id','Elige una opción',spots);
-    changeSelect(branchId,'#user_profile_attributes_job_salary_id','Elige una opción',salaries);
-  });
+  $('#user_signup_branch').on("change",onChangeBranchSelect);
+  $('#user_profile_attributes_education_id').on("change",onChangeEducationSelect);
+  $('input[type=radio][name="user[profile_attributes][job_status]"]').on("change",onChangeJobStatusRadio)
 });
 
-function changeSelect(branchId,selectId,blankText,options) {
+function onChangeBranchSelect() {
+  var branchId = parseInt($(this).val());
+  changeSelectOptions(branchId,'#user_profile_attributes_district_id','Elige colonia/distrito/comuna',districts);
+  changeSelectOptions(branchId,'#user_profile_attributes_education_id','Elige tu grado de educación',educations);
+  changeSelectOptions(branchId,'#user_profile_attributes_semesters_left_id','Elige una opción',semestersLeft);
+  changeSelectOptions(branchId,'#user_profile_attributes_family_income_id','Elige una opción',familyIncome);
+  changeSelectOptions(branchId,'#user_profile_attributes_spot_id','Elige una opción',spots);
+  changeSelectOptions(branchId,'#user_profile_attributes_job_salary_id','Elige una opción',salaries);
+}
+
+function changeSelectOptions(branchId,selectId,blankText,options) {
   var select = $(selectId);
   select.empty();
-  select.append('<option>'+blankText+'</option>');
+  select.append('<option value="">'+blankText+'</option>');
   options.forEach(function(option) {
     if (option[0] == branchId) {
       select.append('<option value="'+option[2]+'">'+option[1]+'</option>');
     }
   });
+}
+
+function onChangeEducationSelect() {
+  var educationId = parseInt($(this).val());
+
+  var q10 = $("#user_profile_attributes_major");
+  var q11 = $("#user_profile_attributes_school");
+  var q12 = $("#user_profile_attributes_semesters_left_id");
+  var q13 = $("#user_profile_attributes_reasons_school_not_done");
+
+  q10.attr("disabled",true);
+  q11.attr("disabled",true);
+  q12.attr("disabled",true);
+  q13.attr("disabled",true);
+
+  switch (educationId) {
+    case 5:
+    case 7:
+      q12.attr("disabled",false);
+      q13.attr("disabled",false);
+    case 6:
+    case 8:
+      q10.attr("disabled",false);
+      q11.attr("disabled",false);
+  }
+}
+
+function onChangeJobStatusRadio() {
+  var jobStatus = $(this).val();
+
+  var q15 = $('input[type=radio][name="user[profile_attributes][work_for]"]');
+  var q16 = $('#user_profile_attributes_job_title');
+  var q17 = $('input[type=radio][name="user[profile_attributes][job_payroll]"]');
+  var q18 = $('input[type=radio][name="user[profile_attributes][job_type]"]');
+  var q19 = $('#user_profile_attributes_job_salary_id');
+
+  q15.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
+  q16.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
+  q17.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
+  q18.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
+  q19.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
+
 }

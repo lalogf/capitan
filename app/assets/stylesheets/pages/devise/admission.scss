@@ -24,19 +24,43 @@
   }
 }
 .admission-instructions {
-	p {
+  ul {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+	ul li {
+    list-style: disc;
 		line-height: 1.6;
 	}
 }
 .admission-terms {
 	> div > div {
 		position: relative;
-		input {
+		input[type="checkbox"] {
 			position: absolute;
 			top: 40%;
     	margin-top: 0px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 2px;
+      border: solid 1px #979797;
 		}
-		p {
+    input[type="checkbox"]:focus {
+      border-color: #ACACB8;
+    	color: #2E3236;
+    	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18)!important;
+    	   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18)!important;
+    	        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18)!important;
+    }
+    input[type="checkbox"]:checked {
+      background-color: #f7b617;
+    }
+
+		label {
 			padding-left: 30px;
 			font-size: 13px;
 			color: #a7a7a7;
@@ -50,4 +74,10 @@
     font-weight: 300;
     letter-spacing: 0.5px;
 	}
+
+  a.btn.disabled {
+    background-color: #d5d5d5;
+    opacity: 1;
+  }
+
 }

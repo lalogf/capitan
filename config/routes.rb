@@ -61,8 +61,15 @@ Rails.application.routes.draw do
   get 'admission' => 'profile#admission', :as => :admission
   get 'admission_success' => 'profile#admission_success', :as => :admission_success
 
-  devise_for :users, controllers: {
+  devise_for :users, :skip => [:sessions,:registrations], controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: "users/registrations",
     sessions: "users/sessions" }
+  as :user do
+    get "/signin" => "devise/sessions#new", :as => :new_user_session
+    post "/signin" => "devise/sessions#create", :as => :user_session
+    delete "/signout" => "devise/sessions#destroy", :as => :destroy_user_session
+    get "/signup" => "devise/registrations#new", :as => :new_user_registration
+    post '/signup' => 'devise/registrations#create', :as => :user_registration
+  end
 end

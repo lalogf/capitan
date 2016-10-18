@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>El Capitan</title>
-  <%= stylesheet_link_tag 'application', 'data-turbolinks-track'=> true %>
+  <%= stylesheet_link_tag 'application' %>
   <%= csrf_meta_tags %>
-  <%= favicon_link_tag 'favicon.ico' %>
+  <%= favicon_link_tag 'favicon.png' %>
   <script src="//use.typekit.net/owh6gyt.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
 
@@ -18,7 +18,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body data-no-turbolink="true">
+<body>
   <%= google_tag_manager %>
   <%= render "shared/login/header" %>
   <%= bootstrap_flash %>

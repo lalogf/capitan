@@ -1,7 +1,6 @@
-//= require jquery-1.11.3.min
+//= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
 //= require codemirror
 //= require jquery.mousewheel-min
 //= require mode/xml
@@ -35,7 +34,7 @@ $(document).ready(function() {
     $(".header-arrow a").on("click", function(e) {
         e.preventDefault();
         var elem = $(this).find(".hide");
-        var elemClass = elem.attr("data-el"); 
+        var elemClass = elem.attr("data-el");
         elem.toggleClass("hide");
         elem.siblings("." + elemClass).toggleClass("hide");
     });

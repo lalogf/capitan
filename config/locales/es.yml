@@ -12,6 +12,7 @@ es:
           working: "Sí, estoy trabajando"
           work_before_not_working_now: "Sí, trabajé antes y no estoy trabajando actualmente"
           never_work_before: "No, nunca he trabajado"
+          one: "Uno"
         work_for:
           company: "En una empresa"
           independent: "De manera independiente"
@@ -33,6 +34,7 @@ es:
           few_week: "Unas veces a la semana"
           few_month: "Unas veces al mes"
           almost_never: "Casi nunca"
+          one: "Uno"
     errors:
       models:
         user:
@@ -55,7 +57,57 @@ es:
               blank: "El código laboratoria no puede estar en blanco"
               taken: "El código de usuario ya existe"
             group_id:
-              blank: "El nombre del grupo de Laboratoria no puede estar en blanco"
+              blank: "Tu ciudad no puede estar en blanco"
+        profile:
+          attributes:
+            name:
+              blank: "Ingresa un nombre válido"
+              invalid: "Ingresa un nombre válido"
+            dni:
+              blank: "Ingresa un documento de identidad válido"
+              invalid: "Ingresa un documento de identidad válido"
+            birth_date:
+              blank: "Ingresa una fecha de nacimiento válido"
+              invalid: "Ingresa una fecha de nacimiento válido"
+            district_id:
+              blank: "Ingresa un distrito válido"
+              invalid: "Ingresa un distrito válido"
+            phone1:
+              blank: "Ingresa un teléfono/celular válido"
+              invalid: "Ingresa un teléfono/celular válido"
+            education_id:
+              blank: "Ingresa un grado académico válido"
+              invalid: "Ingresa un grado académico válido"
+            job_status:
+              blank: "Ingresa un estado trabajo válido"
+              invalid: "Ingresa un estado trabajo válido"
+            family_income_id:
+              blank: "Ingresa un ingreso familiar válido"
+              invalid: "Ingresa un ingreso familiar válido"
+            relatives:
+              blank: "Ingresa la cantidad de familia válida"
+              invalid: "Ingresa la cantidad de familia válida"
+            tech_savy:
+              blank: "Ingresa tu interés por la tecnología válido"
+              invalid: "Ingresa tu interés por la tecnología válido"
+            computer_at_home:
+              blank: "Ingresa si tienes computadora válido"
+              invalid: "Ingresa si tienes computadora válido"
+            internet_access:
+              blank: "Ingresa internet_access válido"
+              invalid: "Ingresa internet_access válido"
+            smartphone:
+              blank: "Ingresa un distrito válido"
+              invalid: "Ingresa un distrito válido"
+            computer_use:
+              blank: "Ingresa si tienes casa válido"
+              invalid: "Ingresa si tienes casa válido"
+            biography:
+              blank: "Ingresa tu biography válido"
+              invalid: "Ingresa tu biography válido"
+            spot_id:
+              blank: "Ingresa un turno válido"
+              invalid: "Ingresa un turno válido"
         page:
           attributes:
             video_url:

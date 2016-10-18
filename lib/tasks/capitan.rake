@@ -20,7 +20,12 @@ namespace :capitan do
       (2..spreadsheet.last_row).each do |i|
         row = Hash[[header, spreadsheet.row(i)].transpose]
         user = User.find_or_initialize_by(code: row["code"])
-        if user.update(row.to_hash)
+        profile_attributes = Hash.new
+        row.select { |key| key.include?("profile") }.map { |key,value| profile_attributes[key.sub("profile/","")] = value }
+        row = row.delete_if { |key| key.include?("profile") }
+        row["profile_attributes"] = profile_attributes
+        user.update_attributes(row)
+        if user.save(validate: false)
           p "#{user.code} updated"
         else
           p "Errors for #{user.code}: #{user.errors.full_messages}"
