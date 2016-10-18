@@ -92,6 +92,7 @@ class User < ActiveRecord::Base
   end
 
   def signup_branch
+    self.group.branch_id if group != nil
   end
 
   def signup_branch=(branch_id)
