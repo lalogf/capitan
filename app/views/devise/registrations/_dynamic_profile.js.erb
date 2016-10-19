@@ -275,6 +275,15 @@ function addValidations() {
         case "user[profile_attributes][computer_use]":
           $("#user_profile_attributes_computer_use_almost_never").parents(".radio").after(error);
           break;
+        case "user[profile_attributes][work_for]":
+          $("#user_profile_attributes_work_for_other").parents(".radio").after(error);
+          break;
+        case "user[profile_attributes][job_payroll]":
+          $("#user_profile_attributes_job_payroll_false").parents(".radio").after(error);
+          break;
+        case "user[profile_attributes][job_type]":
+          $("#user_profile_attributes_job_type_intership").parents(".radio").after(error);
+          break;
         default:
           error.insertAfter(element);
       }
