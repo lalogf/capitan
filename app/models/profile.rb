@@ -36,6 +36,9 @@
 #  education_id                  :integer
 #  semesters_left_id             :integer
 #  spot_id                       :integer
+#  reasons_to_enter              :string(255)
+#  how_you_find_out              :string(255)
+#  what_is_laboratoria           :string(255)
 #
 
 class Profile < ActiveRecord::Base

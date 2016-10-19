@@ -59,6 +59,9 @@
             <%= p.input :smartphone, label: "27. ¿Tienes un smartphone?", as: :radio_buttons %>
             <%= p.input :computer_use ,label: "28. ¿Con qué frecuencia usas computadoras/el computador?", collection: Profile.enum_labels(Profile.computer_uses,"computer_use"), as: :radio_buttons %>
             <%= p.input :biography, label: "29. Descríbete a ti misma en 100 palabras como máximo",as: :text %>
+            <%= p.input :reasons_to_enter, label: "30. ¿Por qué quieres ingresar a Laboratoria?", as: :text %>
+            <%= p.input :how_you_find_out, label: "31. ¿Cómo te enteraste de Laboratoria?", as: :text %>
+            <%= p.input :what_is_laboratoria, label: "32. En tus propias palabras, ¿qué crees que es Laboratoria?", as: :text %>
           </div>
         </div>
         <div id="elige-turno">

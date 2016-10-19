@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014203915) do
+ActiveRecord::Schema.define(version: 20161019210701) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -266,6 +266,9 @@ ActiveRecord::Schema.define(version: 20161014203915) do
     t.integer  "education_id",                  limit: 4
     t.integer  "semesters_left_id",             limit: 4
     t.integer  "spot_id",                       limit: 4
+    t.string   "reasons_to_enter",              limit: 255
+    t.string   "how_you_find_out",              limit: 255
+    t.string   "what_is_laboratoria",           limit: 255
   end
 
   add_index "profiles", ["district_id"], name: "index_profiles_on_district_id", using: :btree
