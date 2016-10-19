@@ -202,10 +202,12 @@ function addValidations() {
       },
       "user[profile_attributes][education_id]" : "required",
       "user[profile_attributes][major]" : {
-        required_education: true
+        required_education: true,
+        letter_and_space: true
       },
       "user[profile_attributes][school]": {
-        required_education: true
+        required_education: true,
+        letter_and_space: true
       },
       "user[profile_attributes][semesters_left_id]": {
         required_education: true
@@ -218,7 +220,8 @@ function addValidations() {
         required_job_status: true
       },
       "user[profile_attributes][job_title]": {
-        required_job_status: true
+        required_job_status: true,
+        letter_and_space: true
       },
       "user[profile_attributes][job_payroll]": {
         required_job_status: true
