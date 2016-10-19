@@ -11,40 +11,40 @@
               <%= image_tag "admission/datos_personales.png", alt: "Datos Generales" %>
               <h2 class="text-uppercase">Datos Generales</h2>
             </div>
-            <%= p.input :name, label: "1. Nombre y Apellidos", required: true, placeholder: "Nombre" %>
-            <%= f.input :email,label: "2. Correo electrónico", required: true, placeholder: "ej: ejemplo@gmail.com" %>
-            <%= p.input :dni, label: "3. Documento de identidad", required: true, placeholder: "ej: 95749345" %>
-            <%= p.input :birth_date, label: "4. Fecha de nacimiento", required: true, start_year: Date.today.year - 17, end_year: 1975 %>
+            <%= p.input :name, label: "1. Nombre y Apellidos", placeholder: "Nombre" %>
+            <%= f.input :email,label: "2. Correo electrónico", placeholder: "ej: ejemplo@gmail.com", required:false %>
+            <%= p.input :dni, label: "3. Documento de identidad <br /><p>Indica el número de tu DNI/CURP/Cédula de identidad o documento de extranjería</p>".html_safe, placeholder: "ej: 95749345" %>
+            <%= p.input :birth_date, label: "4. Fecha de nacimiento", start_year: Date.today.year - 17, end_year: 1975 %>
             <%= f.input :signup_branch, label: "5. ¿En qué ciudad vives? / ¿A qué ciudad estás postulando?", collection: Branch.all, :include_blank => "Selecciona una ciudad" %>
-            <%= p.association :district,collection: District.by_branch(resource.signup_branch),label: "6. ¿Cuál es la colonia/distrito/comuna donde vives?", :include_blank => "Elige colonia/distrito/comuna" %>
-            <%= p.input :phone1, label: "7. Celular / Teléfono", required: true, placeholder: "ej: 9945568345" %>
-            <%= p.input :facebook_link, required: true, placeholder: "Pega aquí el link",:label => "8. Link al perfil en Facebook <br/><p>(en caso no podamos comunicarnos contigo ni por teléfono o correo, intentaremos contactarte por Facebook)</p>".html_safe %>
+            <%= p.association :district, label: "6. ¿Cuál es la colonia/distrito/comuna donde vives?", collection: District.by_branch(resource.signup_branch), :include_blank => "Elige colonia/distrito/comuna" %>
+            <%= p.input :phone1, label: "7. Celular / Teléfono", placeholder: "ej: 9945568345" %>
+            <%= p.input :facebook_link,:label => "8. Link al perfil en Facebook <br/><p>(en caso no podamos comunicarnos contigo ni por teléfono o correo, intentaremos contactarte por Facebook)</p>".html_safe, placeholder: "Pega aquí el link" %>
             <!-- School Information -->
             <div class="subtitulo mb-35 pt-70 mt-21">
               <%= image_tag "admission/blackboard.png", alt: "Educación" %>
               <h2 class="text-uppercase">Educación</h2>
             </div>
-            <%= p.association :education, collection: Education.by_branch(resource.signup_branch), label: "9. ¿Cuál es tu grado de educación?", :include_blank => "Elige tu grado de educación" %>
-            <%= p.input :major, label: "10. ¿Qué carrera estudiaste / estás estudiando?", required: true, placeholder: "ej. Diseño de interiores", disabled: true %>
-            <%= p.input :school, label: "11. ¿Donde?", required: true, placeholder: "ej. Universidad de Piura", disabled: true %>
-            <%= p.association :semesters_left, collection: SemestersLeft.by_branch(resource.signup_branch), label: "12. ¿Qué te falta para terminar?", :include_blank => "Elige una opción", disabled: true %>
-            <%= p.input :reasons_school_not_done, label: "13. ¿Por qué no has terminado?",collection: Profile.enum_labels(Profile.reasons_school_not_dones,"reasons_school_not_done"), :include_blank => "Elige una opción",required: true, disabled: true %>
+            <%= p.association :education, label: "9. ¿Cuál es tu grado de educación?", collection: Education.by_branch(resource.signup_branch), :include_blank => "Elige tu grado de educación" %>
+            <%= p.input :major, label: "10. ¿Qué carrera estudiaste / estás estudiando?", placeholder: "ej. Diseño de interiores", disabled: true %>
+            <%= p.input :school, label: "11. ¿Donde?", placeholder: "ej. Universidad de Piura", disabled: true %>
+            <%= p.association :semesters_left, label: "12. ¿Qué te falta para terminar?", collection: SemestersLeft.by_branch(resource.signup_branch), :include_blank => "Elige una opción", disabled: true %>
+            <%= p.input :reasons_school_not_done, label: "13. ¿Por qué no has terminado?",collection: Profile.enum_labels(Profile.reasons_school_not_dones,"reasons_school_not_done"), :include_blank => "Elige una opción", disabled: true %>
             <div class="subtitulo mb-35 pt-70 mt-21">
               <%= image_tag "admission/experiencia_laboral.png", alt: "Trabajo" %>
               <h2 class="text-uppercase">Trabajo</h2>
             </div>
-            <%= p.input :job_status, label:"14. ¿Has trabajado antes?", collection: Profile.enum_labels(Profile.job_statuses,"job_status"), as: :radio_buttons, required: true %>
+            <%= p.input :job_status, label:"14. ¿Has trabajado antes?", collection: Profile.enum_labels(Profile.job_statuses,"job_status"), as: :radio_buttons %>
             <div class="indicaciones mb-49">Considera tu último trabajo para responder. Si aún estas trabajando, responde con los datos de tu actual trabajo</div>
-            <%= p.input :work_for, label: "15. ¿Trabajabas para una empresa o de manera independiente?", collection: Profile.enum_labels(Profile.work_fors,"work_for"), as: :radio_buttons,required: true, disabled: true %>
-            <%= p.input :job_title, label: "16. ¿Cuál es/era tu rol?", required: true, placeholder: "ej. administradora de ventas", disabled: true %>
-            <%= p.input :job_payroll, label: "17. ¿Es/Era un trabajo formal? - Se considera formal si es que cuando recibiste el pago giraste recibos por honorarios o te encontrabas en planilla.", as: :radio_buttons, required: true, disabled: true %>
-            <%= p.input :job_type, label: "18. ¿Cuál es tu horario?", collection: Profile.enum_labels(Profile.job_types,"job_type"),as: :radio_buttons, required: true, disabled: true %>
+            <%= p.input :work_for, label: "15. ¿Trabajabas para una empresa o de manera independiente?", collection: Profile.enum_labels(Profile.work_fors,"work_for"), as: :radio_buttons, disabled: true %>
+            <%= p.input :job_title, label: "16. ¿Cuál es/era tu rol?", placeholder: "ej. administradora de ventas", disabled: true %>
+            <%= p.input :job_payroll, label: "17. ¿Es/Era un trabajo formal? - Se considera formal si es que cuando recibiste el pago giraste recibos por honorarios o te encontrabas en planilla.", as: :radio_buttons, disabled: true %>
+            <%= p.input :job_type, label: "18. ¿Cuál es tu horario?", collection: Profile.enum_labels(Profile.job_types,"job_type"),as: :radio_buttons, disabled: true %>
             <%= p.association :job_salary, label: "19. ¿Cuánto recibes/recibías de sueldo al mes?<br/><p>Este sueldo es libre de impuestos, es lo que tú percibes al final del mes</p>".html_safe, collection: JobSalary.by_branch(resource.signup_branch), placeholder: "Elige una opción", disabled: true %>
             <div class="subtitulo mb-35 pt-70 mt-21">
               <%= image_tag "admission/familia.png", alt: "Contexto Familiar" %>
               <h2 class="text-uppercase">Contexto Familiar</h2>
             </div>
-            <%= p.association :family_income, collection: FamilyIncome.by_branch(resource.signup_branch), required: true, label:"20. ¿Cuál es el ingreso mensual de tu familia?<br/><p>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, inclue el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá</p>".html_safe %>
+            <%= p.association :family_income, collection: FamilyIncome.by_branch(resource.signup_branch), label:"20. ¿Cuál es el ingreso mensual de tu familia?<br/><p>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, inclue el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá</p>".html_safe %>
             <%= p.input :relatives, label: "21. ¿Cuántas personas más viven en tu casa (sin contarte)?", placeholder: "ej: 5" %>
             <%= p.input :childs, label: "22. ¿Tienes hijos?", as: :radio_buttons %>
             <div class="subtitulo mb-35 pt-70 mt-21">

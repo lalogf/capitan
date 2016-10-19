@@ -44,13 +44,14 @@ window.addEventListener('load',function() {
   });
 
   otherTechActivities();
+  addValidations();
 });
 
 function init() {
   educationId = parseInt($('#user_profile_attributes_education_id').val());
   onChangeEducationSelect();
 
-  jobStatus = $('input[type=radio][name="user[profile_attributes][job_status]"]').val();
+  jobStatus = $('input[type=radio][name="user[profile_attributes][job_status]"]:checked').val();
   onChangeJobStatusRadio();
 }
 
@@ -87,6 +88,11 @@ function onChangeEducationSelect() {
   q12.attr("disabled",true);
   q13.attr("disabled",true);
 
+  $("#user_profile_attributes_major-error").remove();
+  $("#user_profile_attributes_school-error").remove();
+  $("#user_profile_attributes_semesters_left_id-error").remove();
+  $("#user_profile_attributes_reasons_school_not_done-error").remove();
+
   switch (educationId) {
     case 5:
     case 7:
@@ -100,7 +106,6 @@ function onChangeEducationSelect() {
 }
 
 function onChangeJobStatusRadio() {
-
 
   var q15 = $('input[type=radio][name="user[profile_attributes][work_for]"]');
   var q16 = $('#user_profile_attributes_job_title');
@@ -125,4 +130,157 @@ function otherTechActivities() {
     var checked = $(this).is(":checked") || $('#user_profile_attributes_tech_related_activity_ids_6').is(":checked");
     $("#user_profile_attributes_other_tech_related_activities").attr("disabled",!checked);
   });
+}
+
+
+function addValidations() {
+
+  $.validator.addMethod('letter_and_space', function (value, element, param) {
+      return value.match(/^[a-zA-Z\s]*$/);
+  }, 'Este campo debe contener letras.');
+
+  $.validator.addMethod('required_education',function(value,element,param) {
+    var educationId = parseInt($("#user_profile_attributes_education_id").val());
+    if (($(element).attr("name") == "user[profile_attributes][major]" ||
+         $(element).attr("name") == "user[profile_attributes][school]") &&
+        (educationId == 5 || educationId == 6 || educationId == 7 || educationId == 8)) {
+      return value != "";
+    }
+    if (($(element).attr("name") == "user[profile_attributes][semesters_left_id]" ||
+        $(element).attr("name") == "user[profile_attributes][reasons_school_not_done]") &&
+       (educationId == 5 || educationId == 7)) {
+      return value != "";
+    }
+
+    return true;
+  },'Debes completar este campo para continuar.');
+
+  $.validator.addMethod('required_job_status',function(value,element,param) {
+    var jobStatus = $('input[type=radio][name="user[profile_attributes][job_status]"]:checked').val();
+    if (($(element).attr("name") == "user[profile_attributes][work_for]" ||
+         $(element).attr("name") == "user[profile_attributes][job_title]" ||
+         $(element).attr("name") == "user[profile_attributes][job_payroll]" ||
+         $(element).attr("name") == "user[profile_attributes][job_type]" ||
+         $(element).attr("name") == "user[profile_attributes][job_salary_id]") &&
+        (jobStatus == "working" || jobStatus == "work_before_not_working_now")) {
+      return value != undefined && value != "";
+    }
+    return true;
+  },'Debes completar este campo para continuar.');
+
+  $("form").validate({
+    rules: {
+      "user[profile_attributes][name]": {
+        required: true,
+        letter_and_space: true
+      },
+      "user[email]": {
+        required: true,
+        email: true
+      },
+      "user[profile_attributes][dni]" : "required",
+      "user[profile_attributes][birth_date(1i)]" : "required",
+      "user[signup_branch]" : "required",
+      "user[profile_attributes][district_id]" : "required",
+      "user[profile_attributes][phone1]" : {
+        required: true,
+        digits: true
+      },
+      "user[profile_attributes][facebook_link]" : {
+        url: true,
+        normalizer: function( value ) {
+          var url = value;
+
+          if ( url && url.substr( 0, 7 ) !== "http://"
+                  && url.substr( 0, 8 ) !== "https://"
+                  && url.substr( 0, 6 ) !== "ftp://" ) {
+            url = "http://" + url;
+          }
+
+          return url;
+        }
+      },
+      "user[profile_attributes][education_id]" : "required",
+      "user[profile_attributes][major]" : {
+        required_education: true
+      },
+      "user[profile_attributes][school]": {
+        required_education: true
+      },
+      "user[profile_attributes][semesters_left_id]": {
+        required_education: true
+      },
+      "user[profile_attributes][reasons_school_not_done]": {
+        required_education: true
+      },
+      "user[profile_attributes][job_status]" : "required",
+      "user[profile_attributes][work_for]": {
+        required_job_status: true
+      },
+      "user[profile_attributes][job_title]": {
+        required_job_status: true
+      },
+      "user[profile_attributes][job_payroll]": {
+        required_job_status: true
+      },
+      "user[profile_attributes][job_type]": {
+        required_job_status: true
+      },
+      "user[profile_attributes][job_salary_id]": {
+        required_job_status: true
+      },
+      "user[profile_attributes][family_income_id]" : "required",
+      "user[profile_attributes][relatives]" : {
+        required: true,
+        digits: true
+      },
+      "user[profile_attributes][childs]" : "required",
+      "user[profile_attributes][tech_savy]" : "required",
+      "user[profile_attributes][tech_related_activity_ids][]" : "required",
+      "user[profile_attributes][computer_at_home]" : "required",
+      "user[profile_attributes][internet_access]" : "required",
+      "user[profile_attributes][smartphone]" : "required",
+      "user[profile_attributes][computer_use]" : "required",
+      "user[profile_attributes][biography]" : "required",
+      "user[profile_attributes][spot_id]" : "required"
+    },
+    errorPlacement: function(error, element) {
+      switch (element.attr("name")) {
+        case "user[profile_attributes][birth_date(1i)]":
+        case "user[profile_attributes][birth_date(2i)]":
+        case "user[profile_attributes][birth_date(3i)]":
+          error.insertAfter("#user_profile_attributes_birth_date_1i");
+          break;
+        case "user[profile_attributes][job_status]":
+          $("#user_profile_attributes_job_status_never_work_before").parents(".radio").after(error);
+          break;
+        case "user[profile_attributes][childs]":
+          $("#user_profile_attributes_childs_false").parents(".radio").after(error);
+          break;
+        case "user[profile_attributes][tech_savy]":
+          $("#user_profile_attributes_tech_savy_5").parents(".radio").after(error);
+          break;
+        case "user[profile_attributes][tech_related_activity_ids][]":
+          $("#user_profile_attributes_tech_related_activity_ids_7").parents(".checkbox").after(error);
+          break;
+        case "user[profile_attributes][computer_at_home]":
+          $("#user_profile_attributes_computer_at_home_false").parents(".radio").after(error);
+          break;
+        case "user[profile_attributes][internet_access]":
+          $("#user_profile_attributes_internet_access_true").parents(".radio").after(error);
+          break;
+        case "user[profile_attributes][smartphone]":
+          $("#user_profile_attributes_smartphone_false").parents(".radio").after(error);
+          break;
+        case "user[profile_attributes][computer_use]":
+          $("#user_profile_attributes_computer_use_almost_never").parents(".radio").after(error);
+          break;
+        default:
+          error.insertAfter(element);
+      }
+    },
+    submitHandler: function(form) {
+      form.submit();
+    }
+  })
 }

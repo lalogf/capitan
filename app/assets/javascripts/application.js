@@ -23,6 +23,8 @@
 //= require Markdown.Extra
 //= require highcharts.js
 //= require no-data-to-display.js
+//= require jquery.validate.min
+//= require messages_es
 //= require pages/form
 //= require pages/show
 //= require_self
