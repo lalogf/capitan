@@ -1,3 +1,16 @@
+<% content_for :scripts do %>
+  <script>
+    var input = $(".form-postula").find("input");
+    $(input).click(function(){
+      $(this).parents(".radio_buttons").find("label").removeClass("highlight");
+      if ($(this).is(":checked")) {
+        $(this).parent().addClass("highlight");
+      } else {
+        $(this).parent().removeClass("highlight");
+      }
+    });
+  </script>
+<% end %>
 <%= bootstrap_flash %>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.simple_fields_for :profile do |p| %>

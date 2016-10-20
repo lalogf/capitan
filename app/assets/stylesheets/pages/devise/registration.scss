@@ -61,6 +61,9 @@
 			background-image: url("/assets/flecha-desactivada.png");
 	    background-repeat: no-repeat;
 	    background-position: 99% 50%;
+	    &:hover {
+	    	background-image: url("/assets/flecha-activa.png");
+	    }
 		}
 		label.radio_buttons {
 			padding-bottom: 4px;
@@ -131,4 +134,7 @@
 			color: white;
 		}
 	}
+}
+.highlight {
+	color: #3c3c3c !important;
 } 
