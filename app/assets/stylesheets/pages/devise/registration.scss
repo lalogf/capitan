@@ -18,7 +18,7 @@
 	}
 
 	.indicaciones {
-		font-size: 13px;
+		font-size: 15px;
   	font-style: italic;
   	color: #3c3c3c;
   	font-weight: 100;
@@ -33,7 +33,7 @@
 	    	display: none;
 	    }
 	    p {
-	    	font-size: 13px;
+	    	font-size: 15px;
 	    	font-style: italic;
 	    	color: #3c3c3c;
 	    	font-weight: 100;
@@ -61,6 +61,9 @@
 			background-image: url("/assets/flecha-desactivada.png");
 	    background-repeat: no-repeat;
 	    background-position: 99% 50%;
+	    &:hover {
+	    	background-image: url("/assets/flecha-activa.png");
+	    }
 		}
 		label.radio_buttons {
 			padding-bottom: 4px;
@@ -73,9 +76,23 @@
     		padding-bottom: 5px;
     		input {
 					width: 14px;
-					width: 14px;
+					height: 14px;
 					position: absolute;
 					left: 20px;
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+					border: solid 1px #979797;
+					border-radius: 100%;
+					&.checked {
+						background-color: #f7b617;
+					}
+					&:focus {
+						outline: none;
+					}
+				}
+				input[type="checkbox"] {
+					border-radius: 2px;
 				}
 			}
 		}
@@ -106,6 +123,8 @@
 		select {
 			display: inline-block;
     	width: auto;
+    	margin-right: 15px;
+    	padding-right: 30px;
 		}
 	}
 	#elige-turno {
@@ -129,4 +148,7 @@
 			color: white;
 		}
 	}
+}
+.highlight {
+	color: #3c3c3c !important;
 } 
