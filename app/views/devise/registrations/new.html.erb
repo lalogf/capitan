@@ -2,10 +2,13 @@
   <script>
     var input = $(".form-postula").find("input");
     $(input).click(function(){
+      $(this).parents(".radio_buttons").find("input").removeClass("checked");
       $(this).parents(".radio_buttons").find("label").removeClass("highlight");
       if ($(this).is(":checked")) {
+        $(this).addClass("checked");
         $(this).parent().addClass("highlight");
       } else {
+        $(this).removeClass("checked");
         $(this).parent().removeClass("highlight");
       }
     });

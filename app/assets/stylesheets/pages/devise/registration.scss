@@ -76,9 +76,23 @@
     		padding-bottom: 5px;
     		input {
 					width: 14px;
-					width: 14px;
+					height: 14px;
 					position: absolute;
 					left: 20px;
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+					border: solid 1px #979797;
+					border-radius: 100%;
+					&.checked {
+						background-color: #f7b617;
+					}
+					&:focus {
+						outline: none;
+					}
+				}
+				input[type="checkbox"] {
+					border-radius: 2px;
 				}
 			}
 		}
