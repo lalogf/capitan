@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   before_validation :generate_code
   before_validation :generate_password
 
-  enum role: [:student, :assistant, :teacher, :admin]
+  enum role: [:applicant, :student, :assistant, :teacher, :admin]
 
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :group
@@ -115,7 +115,7 @@ class User < ActiveRecord::Base
   def self.total_score_by_course(course_id)
     User.select(:id,'courses.id as course_id','sum(answers.points) as score')
     .joins(answers: {page: {unit: :course}})
-    .where('pages.page_type in (?,?) and courses.id = ? and users.role = 0','editor','questions',course_id)
+    .where('pages.page_type in (?,?) and courses.id = ? and users.role = 1','editor','questions',course_id)
     .group('answers.user_id')
     .order('answers.user_id')
   end
@@ -133,7 +133,7 @@ class User < ActiveRecord::Base
              join units u on p.unit_id = u.id
              join courses c on u.course_id = c.id
              join users us on a.user_id = us.id
-             where p.page_type in ('editor','questions') and c.id = #{course_id} and us.role = 0 and us.id = #{self.id}
+             where p.page_type in ('editor','questions') and c.id = #{course_id} and us.role = 1 and us.id = #{self.id}
              order by a.user_id, p.page_type)tb2 on tb2.page_id = p.id
              where p.page_type in ('editor','questions') and c.id = #{course_id}"
 
@@ -202,7 +202,7 @@ class User < ActiveRecord::Base
 
   def next_code
     if !self.group.nil?
-      last_code = User.where(role: 0,group_id:self.group.id).
+      last_code = User.where(role: [0,1],group_id:self.group.id).
                       where("code like 'LIM%' or code like 'SCL%' or code like 'MEX%' or code like 'AQP%'").
                       order("code desc").pluck("code").first
       last_code.gsub(/[0-9]+/,'') + (last_code.gsub(/\D/,'').to_i + 1).to_s

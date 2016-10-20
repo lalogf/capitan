@@ -16,11 +16,11 @@ class Group < ActiveRecord::Base
   has_many :sprints, dependent: :destroy
 
   def students
-    self.users.where(role: 0, disable: 0)
+    self.users.where(role: 1, disable: 0)
   end
 
   def admins
-    self.users.where.not(role: 0).where(disable: 0)
+    self.users.where.not(role: [0,1]).where(disable: 0)
   end
 
   def disables

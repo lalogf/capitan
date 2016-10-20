@@ -16,15 +16,15 @@ class Branch < ActiveRecord::Base
     has_many :page_visibilities
 
     def students
-      self.users.where(role: 0, disable: 0)
+      self.users.where(role: 1, disable: 0)
     end
 
     def admins
-      self.users.where.not(role:0).where(disable: 0)
+      self.users.where.not(role: [0,1]).where(disable: 0)
     end
 
     def students_and_admins
-      self.students.where(disable: 0)
+      self.students.where(role:[1,2,3,4],disable: 0)
     end
 
     def disables
