@@ -51,10 +51,10 @@ class Profile < ActiveRecord::Base
   belongs_to :spot
   has_and_belongs_to_many :tech_related_activities
 
-  enum reasons_school_not_done: [:studing,:economic_problems,:health_problems,:dont_like_it,:others]
+  enum reasons_school_not_done: [:studing,:economic_problems,:health_problems,:dont_like_it,:dont_was_what_i_expected,:others]
   enum job_status: [:working, :work_before_not_working_now,:never_work_before]
   enum work_for: [:company,:independent,:other]
-  enum job_type: [:partime,:fulltime,:intership]
+  enum job_type: [:fulltime,:partime,:intership]
   enum computer_use: [:every_day,:few_week,:few_month,:almost_never]
 
   def self.enum_labels profile_enum, profile_enum_name
