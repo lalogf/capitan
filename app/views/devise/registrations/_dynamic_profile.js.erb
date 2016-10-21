@@ -78,15 +78,15 @@ function changeSelectOptions(branchId,selectId,blankText,options) {
 
 function onChangeEducationSelect() {
 
-  var q10 = $("#user_profile_attributes_major");
-  var q11 = $("#user_profile_attributes_school");
-  var q12 = $("#user_profile_attributes_semesters_left_id");
-  var q13 = $("#user_profile_attributes_reasons_school_not_done");
+  var q10 = $("#user_profile_attributes_major").parent();
+  var q11 = $("#user_profile_attributes_school").parent();
+  var q12 = $("#user_profile_attributes_semesters_left_id").parent();
+  var q13 = $("#user_profile_attributes_reasons_school_not_done").parent();
 
-  q10.attr("disabled",true);
-  q11.attr("disabled",true);
-  q12.attr("disabled",true);
-  q13.attr("disabled",true);
+  q10.addClass("hidden");
+  q11.addClass("hidden");
+  q12.addClass("hidden");
+  q13.addClass("hidden");
 
   $("#user_profile_attributes_major-error").remove();
   $("#user_profile_attributes_school-error").remove();
@@ -96,28 +96,38 @@ function onChangeEducationSelect() {
   switch (educationId) {
     case 5:
     case 7:
-      q12.attr("disabled",false);
-      q13.attr("disabled",false);
+      q12.removeClass("hidden");
+      q13.removeClass("hidden");
     case 6:
     case 8:
-      q10.attr("disabled",false);
-      q11.attr("disabled",false);
+      q10.removeClass("hidden");
+      q11.removeClass("hidden");
   }
 }
 
 function onChangeJobStatusRadio() {
 
-  var q15 = $('input[type=radio][name="user[profile_attributes][work_for]"]');
-  var q16 = $('#user_profile_attributes_job_title');
-  var q17 = $('input[type=radio][name="user[profile_attributes][job_payroll]"]');
-  var q18 = $('input[type=radio][name="user[profile_attributes][job_type]"]');
-  var q19 = $('#user_profile_attributes_job_salary_id');
+  var q15 = $('input[type=radio][name="user[profile_attributes][work_for]"]').parents(".form-group");
+  var q16 = $('#user_profile_attributes_job_title').parents(".form-group");
+  var q17 = $('input[type=radio][name="user[profile_attributes][job_payroll]"]').parents(".form-group");
+  var q18 = $('input[type=radio][name="user[profile_attributes][job_type]"]').parents(".form-group");
+  var q19 = $('#user_profile_attributes_job_salary_id').parents(".form-group");
 
-  q15.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
-  q16.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
-  q17.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
-  q18.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
-  q19.attr("disabled",!(jobStatus == "working" || jobStatus == "work_before_not_working_now"));
+  if(!(jobStatus == "working" || jobStatus == "work_before_not_working_now")) {
+    q15.addClass("hidden");
+    q16.addClass("hidden");
+    q17.addClass("hidden");
+    q18.addClass("hidden");
+    q19.addClass("hidden");
+    $(".indicacion-trabajo").addClass("hidden");
+  } else {
+    q15.removeClass("hidden");
+    q16.removeClass("hidden");
+    q17.removeClass("hidden");
+    q18.removeClass("hidden");
+    q19.removeClass("hidden");
+    $(".indicacion-trabajo").removeClass("hidden");
+  }
 }
 
 function otherTechActivities() {
