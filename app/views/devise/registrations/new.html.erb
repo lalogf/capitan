@@ -60,7 +60,7 @@
               <%= image_tag "admission/familia.png", alt: "Contexto Familiar" %>
               <h2 class="text-uppercase">Contexto Familiar</h2>
             </div>
-            <%= p.association :family_income, collection: FamilyIncome.by_branch(resource.signup_branch), label:"20. ¿Cuál es el ingreso mensual de tu familia?<br/><p>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, inclue el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá</p>".html_safe %>
+            <%= p.association :family_income, collection: FamilyIncome.by_branch(resource.signup_branch), label:"20. ¿Cuál es el ingreso mensual de tu familia?<br/><p>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, inclue el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá.</p>".html_safe %>
             <%= p.input :relatives, label: "21. ¿Cuántas personas más viven en tu casa (sin contarte)?", placeholder: "ej: 5" %>
             <%= p.input :childs, label: "22. ¿Tienes hijos?", as: :radio_buttons %>
             <div class="subtitulo mb-35 pt-70 mt-21">

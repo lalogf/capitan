@@ -7,7 +7,7 @@ es:
           economic_problems: "Problemas económicos"
           health_problems: "Problemas de salud"
           dont_like_it: "No me gustó lo que estaba estudiando"
-          dont_was_what_i_expected: "La calidad de la educación no era la que esperaba"
+          it_wasnt_what_i_expected: "La calidad de la educación no era la que esperaba"
           others: "Otros"
         job_status:
           working: "Sí, estoy trabajando"
@@ -22,7 +22,6 @@ es:
           partime: "Medio tiempo (Entre 20 y 39 horas)"
           fulltime: "Tiempo completo (40 horas o más)"
           intership: "Menos de 20 horas"
-        tech_related_activities:
         computer_use:
           every_day: "Todos los días"
           few_week: "Unas veces a la semana"
