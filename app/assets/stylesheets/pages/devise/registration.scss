@@ -38,6 +38,13 @@
 	    	color: #3c3c3c;
 	    	font-weight: 100;
 	    }
+	    &.error {
+	    	color: #e74c3c;
+		    font-size: 14px;
+		    font-style: italic;
+		    padding-top: 7px;
+    		line-height: 1.2;
+	    }
 		}
 		input[type='text'], input[type='tel'], input[type='number'], input[type='email'], select {
 			border: none;
@@ -116,6 +123,12 @@
 			    font-size: 12px;
 			    font-weight: 300;
 				}
+			}
+		}
+		select, input {
+			&.error {
+				border-bottom: 1px solid #e74c3c;
+    		color: #e74c3c;
 			}
 		}
 	}
