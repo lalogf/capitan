@@ -43,7 +43,10 @@ window.addEventListener('load',function() {
     onChangeJobStatusRadio();
   });
 
-  otherTechActivities();
+  $('#user_profile_attributes_tech_related_activity_ids_8').on("change",function() {
+    otherTechActivities();
+  });
+
   addValidations();
 });
 
@@ -53,6 +56,8 @@ function init() {
 
   jobStatus = $('input[type=radio][name="user[profile_attributes][job_status]"]:checked').val();
   onChangeJobStatusRadio();
+
+  otherTechActivities();
 }
 
 function changeAllSelectOptions() {
@@ -131,15 +136,13 @@ function onChangeJobStatusRadio() {
 }
 
 function otherTechActivities() {
-  $('#user_profile_attributes_tech_related_activity_ids_6').on("change",function() {
-    var checked = $(this).is(":checked") || $('#user_profile_attributes_tech_related_activity_ids_7').is(":checked");
-    $("#user_profile_attributes_other_tech_related_activities").attr("disabled",!checked);
-  });
-
-  $('#user_profile_attributes_tech_related_activity_ids_7').on("change",function() {
-    var checked = $(this).is(":checked") || $('#user_profile_attributes_tech_related_activity_ids_6').is(":checked");
-    $("#user_profile_attributes_other_tech_related_activities").attr("disabled",!checked);
-  });
+  var checked = $('#user_profile_attributes_tech_related_activity_ids_8').is(':checked');
+  var q20 = $("#user_profile_attributes_other_tech_related_activities").parents(".form-group");
+  if (checked) {
+    q20.removeClass("hidden");
+  } else {
+    q20.addClass("hidden");
+  }
 }
 
 
@@ -179,6 +182,7 @@ function addValidations() {
   },'Debes completar este campo para continuar.');
 
   $("form").validate({
+    debug: true,
     rules: {
       "user[profile_attributes][name]": {
         required: true,
@@ -189,7 +193,15 @@ function addValidations() {
         email: true
       },
       "user[profile_attributes][dni]" : "required",
-      "user[profile_attributes][birth_date(1i)]" : "required",
+      "user[profile_attributes][birth_date(1i)]" : {
+        require_from_group: [3,".birth_date"]
+      },
+      "user[profile_attributes][birth_date(2i)]" : {
+        require_from_group: [3,".birth_date"]
+      },
+      "user[profile_attributes][birth_date(3i)]" : {
+        require_from_group: [3,".birth_date"]
+      },
       "user[signup_branch]" : "required",
       "user[profile_attributes][district_id]" : "required",
       "user[profile_attributes][phone1]" : {
@@ -260,6 +272,9 @@ function addValidations() {
       "user[profile_attributes][what_is_laboratoria]": "required",
       "user[profile_attributes][spot_id]" : "required"
     },
+    groups: {
+        group: "user[profile_attributes][birth_date(1i)] user[profile_attributes][birth_date(2i)] user[profile_attributes][birth_date(3i)]"
+    },
     errorPlacement: function(error, element) {
       switch (element.attr("name")) {
         case "user[profile_attributes][birth_date(1i)]":
@@ -277,7 +292,7 @@ function addValidations() {
           $("#user_profile_attributes_tech_savy_5").parents(".radio").after(error);
           break;
         case "user[profile_attributes][tech_related_activity_ids][]":
-          $("#user_profile_attributes_tech_related_activity_ids_7").parents(".checkbox").after(error);
+          $("#user_profile_attributes_tech_related_activity_ids_8").parents(".checkbox").after(error);
           break;
         case "user[profile_attributes][computer_at_home]":
           $("#user_profile_attributes_computer_at_home_false").parents(".radio").after(error);

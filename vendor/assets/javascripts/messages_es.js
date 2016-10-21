@@ -32,7 +32,8 @@ $.extend( $.validator.messages, {
 	min: $.validator.format( "Por favor, escribe un valor mayor o igual a {0}." ),
 	nifES: "Por favor, escribe un NIF válido.",
 	nieES: "Por favor, escribe un NIE válido.",
-	cifES: "Por favor, escribe un CIF válido."
+	cifES: "Por favor, escribe un CIF válido.",
+	require_from_group: "Este campo debe contener una fecha válida."
 } );
 
 }));

@@ -30,7 +30,7 @@
             <%= p.input :name, label: "1. Nombre y Apellidos", placeholder: "Nombre" %>
             <%= f.input :email,label: "2. Correo electrónico", placeholder: "ej: ejemplo@gmail.com", required:false %>
             <%= p.input :dni, label: "3. Documento de identidad <br /><p>Indica el número de tu DNI/CURP/Cédula de identidad o documento de extranjería</p>".html_safe, placeholder: "ej: 95749345" %>
-            <%= p.input :birth_date, label: "4. Fecha de nacimiento", start_year: Date.today.year - 17, end_year: 1975 %>
+            <%= p.input :birth_date, label: "4. Fecha de nacimiento", start_year: Date.today.year - 17, end_year: 1975, :include_blank => true, :input_html => {:class => "birth_date"} %>
             <%= f.input :signup_branch, label: "5. ¿En qué ciudad vives? / ¿A qué ciudad estás postulando?", collection: Branch.all, :include_blank => "Selecciona una ciudad" %>
             <%= p.association :district, label: "6. ¿Cuál es la colonia/distrito/comuna donde vives?", collection: District.by_branch(resource.signup_branch), :include_blank => "Elige colonia/distrito/comuna" %>
             <%= p.input :phone1, label: "7. Necesitamos que nos brindes un número personal al que podamos contactarte directamente:", placeholder: "ej: 9945568345" %>
@@ -69,7 +69,7 @@
             </div>
             <%= p.input :tech_savy, label: "14. ¿Con qué puntaje calificarías tu interés por la tecnología?",collection:[["",1],["",2],["",3],["",4],["",5]], as: :radio_buttons,:item_wrapper_class => 'checkbox-inline' %>
             <%= p.association :tech_related_activities,collection: TechRelatedActivity.all, as: :check_boxes, label: "15. ¿Qué tipo de actividades relacionadas a la tecnología te gustan hacer?" %>
-            <%= p.input :other_tech_related_activities, label: "Especifica  las actividades que realizas", disabled: true %>
+            <%= p.input :other_tech_related_activities, label: "Especifica  las actividades que realizas" %>
             <%= p.input :computer_at_home, label: "16. ¿Tienes una computadora/un computador funcional en casa?", as: :radio_buttons %>
             <%= p.input :internet_access, label: "17. ¿Tienes una conexión a internet en casa?", as: :radio_buttons %>
             <%= p.input :smartphone, label: "18. ¿Tienes un smartphone?", as: :radio_buttons %>
