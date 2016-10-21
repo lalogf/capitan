@@ -33,8 +33,15 @@
     list-style: disc;
 		line-height: 1.6;
 	}
+  h2 {
+    font-size: 16px;
+  }
 }
 .admission-terms {
+  h3 {
+    font-size: 15px;
+    font-weight: 400;
+  }
 	> div > div {
 		position: relative;
 		input[type="checkbox"] {
@@ -62,10 +69,16 @@
 
 		label {
 			padding-left: 30px;
-			font-size: 13px;
-			color: #a7a7a7;
-    	font-style: italic;
+			font-size: 15px;
+      font-weight: 300;
+      color: #4a4a4a;
+      line-height: 1.4;
 		}
+    p {
+      span {
+        font-weight: 400;
+      }
+    }
 	}
 	a.btn {
 		background-color: #f7b617;
