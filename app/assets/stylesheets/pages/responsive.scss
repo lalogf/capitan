@@ -55,7 +55,7 @@
         background: transparent !important ;
     }
     #sidebar > ul > li > ul.sub > li > a:hover {
-        
+
     }
 
 
@@ -110,15 +110,15 @@
         background-color: #ccc;
         border-color:#ccc ;
     }
-    
+
     .pr-15-xs {
         padding-right: 15px;
     }
-    
+
     .course-header .content h1 {
         font-size: 31px;
     }
-    
+
     .units-container .units ol .progress-item {
       line-height: 1.1;
     }
@@ -166,5 +166,39 @@
 @media (min-width: 1200px) {
   .hidden-lg {
     display: none !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container-xs,
+  .container-sm,
+  .container-md {
+    padding-left: 14px;
+    padding-right: 14px;
+    margin: 0 auto;
+
+  }
+
+  .container-xs {
+    width: 508px;
+  }
+
+  .container-sm {
+    width: 748px;
+  }
+
+  .container-md {
+    width: 968px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container-xs,
+  .container-sm,
+  .container-md {
+    width: 100%;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin: 0 auto;
   }
 }

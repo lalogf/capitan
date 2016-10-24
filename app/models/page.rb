@@ -31,9 +31,6 @@
 #  solution_file_content_type :string(255)
 #  solution_file_file_size    :integer
 #  solution_file_updated_at   :datetime
-#  draft_comments_count       :integer          default(0)
-#  published_comments_count   :integer          default(0)
-#  deleted_comments_count     :integer          default(0)
 #  solution_visibility        :string(255)
 #  lesson_id                  :integer
 #  material_type              :string(255)
@@ -45,7 +42,6 @@
 #
 
 class Page < ActiveRecord::Base
-  include TheComments::Commentable
   belongs_to :lesson
   has_many :answers, :dependent => :destroy
   has_many :users, through: :answers

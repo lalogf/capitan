@@ -6,6 +6,18 @@ class MandrillDeviseMailer < Devise::Mailer
     reply_to: ENV.fetch("email_reply_to")
   )
 
+  def new_registration(user)
+    subject = "Bienvenido a laboratoria"
+    merge_vars = {
+      FNAME: user.profile.name || user.email,
+      CPOSTULANTE: user.code,
+      TEXAMEN: user.profile.spot.name
+    }
+
+    body = mandrill_template("admission-success-template",merge_vars)
+    send_mail(user.email,subject,body)
+  end
+
   def reset_password_instructions(record, token, opts={})
     subject = "Instrucciones para reiniciar tu password"
 

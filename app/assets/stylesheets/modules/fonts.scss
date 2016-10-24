@@ -1,0 +1,32 @@
+@mixin thin {
+  font-family: $font-family-base;
+  font-weight: 100;
+  font-style: normal;
+}
+.thin {
+  @include thin;
+}
+@mixin light {
+  font-family: $font-family-base;
+  font-weight: 300;
+  font-style: normal;
+}
+.light {
+  @include light;
+}
+@mixin medium {
+  font-family: $font-family-base;
+  font-weight: 500;
+  font-style: normal;
+}
+.medium {
+  @include medium;
+}
+@mixin bold {
+  font-family: $font-family-base;
+  font-weight: 700;
+  font-style: normal;
+}
+.bold {
+  @include bold;
+}

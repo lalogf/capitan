@@ -1,0 +1,96 @@
+.admission-banner {
+	height: 340px;
+  background-size: 120%;
+  background-position: 10% 50%;
+  position: relative;
+  .opacity {
+  	position: absolute;
+  	top: 0px;
+  	left: 0;
+  	bottom: 0;
+  	right: 0;
+  	background-color: rgba(0,0,0,0.5);
+  }
+  h1 {
+  	position: absolute;
+  	font-size: 30px;
+    width: 680px;
+  	-webkit-transform: translate(-50%, -30%);
+  	-moz-transform: translate(-50%, -30%);
+  	-ms-transform: translate(-50%, -30%);
+  	transform: translate(-50%, -30%);
+    top: 60%;
+    left: 50%;
+  }
+}
+.admission-instructions {
+  ul {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+	ul li {
+    list-style: disc;
+		line-height: 1.6;
+	}
+  h2 {
+    font-size: 16px;
+  }
+}
+.admission-terms {
+  h3 {
+    font-size: 15px;
+    font-weight: 400;
+  }
+	> div > div {
+		position: relative;
+		input[type="checkbox"] {
+			position: absolute;
+			top: 40%;
+    	margin-top: 0px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 2px;
+      border: solid 1px #979797;
+		}
+    input[type="checkbox"]:focus {
+      border-color: #ACACB8;
+    	color: #2E3236;
+    	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18)!important;
+    	   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18)!important;
+    	        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18)!important;
+    }
+    input[type="checkbox"]:checked {
+      background-color: #f7b617;
+    }
+
+		label {
+			padding-left: 30px;
+			font-size: 15px;
+      font-weight: 300;
+      color: #4a4a4a;
+      line-height: 1.4;
+		}
+    p {
+      span {
+        font-weight: 400;
+      }
+    }
+	}
+	a.btn {
+		background-color: #f7b617;
+		border: transparent;
+		font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+	}
+
+  a.btn.disabled {
+    background-color: #d5d5d5;
+    opacity: 1;
+  }
+
+}

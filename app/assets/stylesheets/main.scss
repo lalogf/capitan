@@ -1,10 +1,10 @@
+@import "modules/variables.scss";
 @import "modules/mixins.scss";
+@import "modules/fonts.scss";
 @import "modules/globals.scss";
 @import "modules/helpers.scss";
 @import "modules/base.scss";
-@import "modules/variables.scss";
 @import "modules/container-control.scss";
-@import "modules/setup-text.scss";
 @import "modules/separators.scss";
 @import "modules/box-model-control.scss";
 @import "modules/breakpoints-model-control.scss";
@@ -17,3 +17,7 @@
 @import "pages/profile.scss";
 @import "pages/track.scss";
 @import "pages/autoevaluacion.scss";
+@import "pages/devise/registration.scss";
+@import "pages/devise/session.scss";
+@import "pages/devise/admission.scss";
+@import "pages/devise/admission_success.scss";

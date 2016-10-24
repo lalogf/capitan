@@ -7,13 +7,11 @@ class UsersController < ApplicationController
 
   layout "admin"
 
-  # GET /users
-  # GET /users.json
   def index
     @branches = Branch.all
 
-    # An admin has to belong to a group for the below statement to work properly
-
+    #FIX_QUICKLY: An admin has to belong to a group
+    #for the below statement to work properly
     @branch_id = params[:branch_id] || current_user.branch.id
     @branch = Branch.find(@branch_id)
 
@@ -24,23 +22,18 @@ class UsersController < ApplicationController
     @disables = @branch.disables
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
     @branch = @user.branch
   end
 
-  # GET /users/new
   def new
     @user = User.new
+    @user.build_profile
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
 
@@ -55,8 +48,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -69,8 +60,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|
@@ -103,15 +92,12 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:code, :dni, :name, :lastname1, :lastname2,
-      :email, :group_id, :district, :age,:facebook_username,:biography, :phone1,:phone2,:password,
-      :avatar, :role, sprint_badge_ids: [])
+      params.require(:user).permit(:code, :email, :group_id,:password, :avatar, :role, sprint_badge_ids: [],
+      profile_attributes: [:name, :lastname])
     end
 end

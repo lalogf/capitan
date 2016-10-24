@@ -8,7 +8,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'therubyracer'
@@ -22,6 +21,7 @@ group :development, :test do
   gem 'quiet_assets'
 end
 
+gem 'rails-i18n'
 gem 'devise', "4.2.0"
 gem 'omniauth'
 gem 'omniauth-github'
@@ -46,10 +46,10 @@ gem 'nokogiri'
 gem 'roo'
 gem 'handlebars_assets'
 gem 'wannabe_bool'
-gem 'the_comments', '~> 2.2.1'
 
 gem 'awesome_nested_set'
 gem 'figaro'
 gem 'bourbon'
 gem 'pluck_to_hash'
 gem 'mandrill-api'
+gem 'google-tag-manager-rails'

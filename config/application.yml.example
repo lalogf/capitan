@@ -15,6 +15,9 @@ development:
     smtp_domain:
     smtp_username:
     smtp_password:
+    email_from:
+    email_reply_to:
+    google_tag_manager: ~
 test:
     host: <%= ENV['IP'] %>
     database: capitan_test
@@ -24,6 +27,9 @@ test:
     smtp_domain:
     smtp_username:
     smtp_password:
+    email_from:
+    email_reply_to:
+    google_tag_manager: ~
 production:
     host: ~
     database: capitan
@@ -31,6 +37,9 @@ production:
     database_password: capitan
     smtp_address:
     smtp_domain:
-    smtp_username: 
+    smtp_username:
     smtp_password:
+    email_from:
+    email_reply_to:
+    google_tag_manager:
     SECRET_KEY_BASE: your_only_secret_is_mine

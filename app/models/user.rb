@@ -3,62 +3,38 @@ require 'roo'
 #
 # Table name: users
 #
-#  id                          :integer          not null, primary key
-#  email                       :string(255)      default("")
-#  encrypted_password          :string(255)      default(""), not null
-#  reset_password_token        :string(255)
-#  reset_password_sent_at      :datetime
-#  remember_created_at         :datetime
-#  sign_in_count               :integer          default(0), not null
-#  current_sign_in_at          :datetime
-#  last_sign_in_at             :datetime
-#  current_sign_in_ip          :string(255)
-#  last_sign_in_ip             :string(255)
-#  created_at                  :datetime         not null
-#  updated_at                  :datetime         not null
-#  provider                    :string(255)
-#  uid                         :string(255)
-#  dni                         :string(255)
-#  code                        :string(255)
-#  name                        :string(255)      not null
-#  lastname1                   :string(255)      not null
-#  lastname2                   :string(255)
-#  age                         :integer
-#  district                    :string(255)
-#  facebook_username           :string(255)
-#  phone1                      :string(255)
-#  phone2                      :string(255)
-#  disable                     :boolean          default(FALSE)
-#  my_draft_comments_count     :integer          default(0)
-#  my_published_comments_count :integer          default(0)
-#  my_comments_count           :integer          default(0)
-#  draft_comcoms_count         :integer          default(0)
-#  published_comcoms_count     :integer          default(0)
-#  deleted_comcoms_count       :integer          default(0)
-#  spam_comcoms_count          :integer          default(0)
-#  roles_mask                  :integer
-#  avatar_file_name            :string(255)
-#  avatar_content_type         :string(255)
-#  avatar_file_size            :integer
-#  avatar_updated_at           :datetime
-#  role                        :integer          default(0)
-#  group_id                    :integer
-#  biography                   :text(65535)
+#  id                     :integer          not null, primary key
+#  email                  :string(255)      default("")
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  provider               :string(255)
+#  uid                    :string(255)
+#  code                   :string(255)
+#  disable                :boolean          default(FALSE)
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
+#  role                   :integer          default(0)
+#  group_id               :integer
 #
 
 class User < ActiveRecord::Base
 
-  # Adds a enum data type which maps to integers in the users Table
-  # Eventhough enum is simple to use, there are some weird
-  # behaviours when querying.
-  # For more, see  https://hackhands.com/ruby-on-enums-queries-and-rails-4-1/
+  after_initialize :build_default_profile
+  before_validation :generate_code
+  before_validation :generate_password
 
-  # Student maps to 0 in the users table. assistant to 1 and so on
-  # Use user.student! to set the user role to student
-  # user.role => "student"
-  # use user.admin? to check if the user is an admin
-
-  enum role: [:student, :assistant, :teacher, :admin]
+  enum role: [:applicant, :student, :assistant, :teacher, :admin]
 
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :group
@@ -71,18 +47,18 @@ class User < ActiveRecord::Base
   has_many :primary_reviews, :class_name => "Review", :foreign_key => "user_id"
   has_many :secondary_reviews, :class_name => "Review", :foreign_key => "reviewer_id"
   has_and_belongs_to_many :sprint_badges, :dependent => :destroy
+  has_one :profile
 
-  devise :database_authenticatable,
-         :registerable,
-         :recoverable,
-         :rememberable,
-         :trackable,
-         :omniauthable,
-         :omniauth_providers => [:github,:facebook]
+  accepts_nested_attributes_for :profile
+
+  devise :database_authenticatable,:registerable,:recoverable,:rememberable,
+         :trackable,:omniauthable,:omniauth_providers => [:github]
 
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, on: :create
   validates :group_id, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates_format_of :email,:with => Devise::email_regexp
 
   has_attached_file :avatar,
                     :styles => { :profile => "128x128", :menu => "80x80", :navbar => "35x35" },
@@ -103,9 +79,8 @@ class User < ActiveRecord::Base
     create(attributes)
   end
 
-  #vUTILITARIOS
   def full_name
-    "#{name} #{lastname1} #{lastname2}".strip
+    profile.nil? or profile.name.blank? ? self.email : profile.name.strip
   end
 
   def email_required?
@@ -114,6 +89,14 @@ class User < ActiveRecord::Base
 
   def branch
     self.group.branch if group != nil
+  end
+
+  def signup_branch
+    self.group.branch_id if group != nil
+  end
+
+  def signup_branch=(branch_id)
+    self.group = Group.where(branch_id: branch_id).order("name desc").first
   end
 
   def sprints
@@ -132,7 +115,7 @@ class User < ActiveRecord::Base
   def self.total_score_by_course(course_id)
     User.select(:id,'courses.id as course_id','sum(answers.points) as score')
     .joins(answers: {page: {unit: :course}})
-    .where('pages.page_type in (?,?) and courses.id = ? and users.role = 0','editor','questions',course_id)
+    .where('pages.page_type in (?,?) and courses.id = ? and users.role = 1','editor','questions',course_id)
     .group('answers.user_id')
     .order('answers.user_id')
   end
@@ -150,7 +133,7 @@ class User < ActiveRecord::Base
              join units u on p.unit_id = u.id
              join courses c on u.course_id = c.id
              join users us on a.user_id = us.id
-             where p.page_type in ('editor','questions') and c.id = #{course_id} and us.role = 0 and us.id = #{self.id}
+             where p.page_type in ('editor','questions') and c.id = #{course_id} and us.role = 1 and us.id = #{self.id}
              order by a.user_id, p.page_type)tb2 on tb2.page_id = p.id
              where p.page_type in ('editor','questions') and c.id = #{course_id}"
 
@@ -198,96 +181,31 @@ class User < ActiveRecord::Base
     questionsAnswers
   end
 
-  #User system: import user information from xls files
-  def self.import(file)
-    spreadsheet = Roo::Spreadsheet.open(file)
-    header = spreadsheet.row(1)
-    (2..spreadsheet.last_row).each do |i|
-      row = Hash[[header, spreadsheet.row(i)].transpose]
-      user = User.find_or_initialize_by(code: row["code"])
-      if user.update(row.to_hash)
-        p "Usuario con codigo #{user.code} actualizado"
-      else
-        p "USER CODE #{user.code}: #{user.errors.full_messages}"
-      end
+  private
+
+  def build_default_profile
+      self.profile ||= Profile.new if self.new_record?
+  end
+
+  def generate_code
+    if self.code.nil?
+      self.code = next_code
     end
   end
 
-  # Grading system: import score manually from xls files
-  def self.import_scores(file, lesson_id)
-    begin
-      spreadsheet = Roo::Spreadsheet.open(file)
-
-      header = spreadsheet.row(1)
-      lesson = Lesson.find(lesson_id)
-
-      if lesson
-        (2..spreadsheet.last_row).each do |i|
-          row = spreadsheet.row(i)
-          user = User.where(code: row[0]).first
-          if user
-            header.each_with_index do |h,index|
-              if h != "code"
-                page = Page.find_by_code(h)
-                if page
-                  subm = Submission.where(page_id: page.id, user_id: user.id)
-                  if subm.count == 0
-                    subm = Submission.new(page_id: page.id, user_id: user.id, points: row[index].to_f.round(2))
-                  else
-                    subm = subm.first
-                    subm.points = row[index].to_f.round
-                  end
-                  p subm.save ? "Grade saved for user #{user.code}. Grade: #{row[index].to_f.round(2)}, Page: #{page.title}" : "User #{user.code} failed"
-                else
-                  p "Couldn't find a valid page for #{h} code"
-                end
-              end
-            end
-          else
-            p "Couldn't find a valid user for #{row[0]} code"
-          end
-        end
-      else
-        p "Couldn't find a valid lesson ID"
-      end
-
-    rescue Exception => e
-      p e.message
+  def generate_password
+    if self.password.nil?
+      code = next_code
+      self.password = code.gsub(/\D/,'') if !next_code.nil?
     end
   end
 
-  def self.import_soft_skills_scores(file, sprint_id)
-    spreadsheet = Roo::Spreadsheet.open(file)
-    header = spreadsheet.row(1)
-    sprint = Sprint.find(sprint_id)
-    (2..spreadsheet.last_row).each do |i|
-      row = spreadsheet.row(i)
-      user = User.where(code: row[0]).first
-      if user != nil
-        header.each_with_index do |h,index|
-          if h != "code"
-            soft_skill = SoftSkill.find_by_name(h)
-            if soft_skill != nil
-              subm = SoftSkillSubmission.where(user_id: user.id, sprint_id: sprint.id, soft_skill_id: soft_skill.id)
-              if subm.count == 0
-                subm = SoftSkillSubmission.new(user_id: user.id, sprint_id: sprint.id, soft_skill_id: soft_skill.id, points: row[index].to_f.round)
-              else
-                subm = subm.first
-                subm.points = row[index].to_f.round
-              end
-              if subm.save
-                p "User #{user.code} saved soft skill #{soft_skill.name} with grade #{row[index].to_f.round}"
-              else
-                p "User #{user.code} failed"
-              end
-            else
-              p "Soft skill ingresado en el header no existe"
-            end
-          end
-        end
-      else
-        p "User #{row[0]} no existe"
-      end
+  def next_code
+    if !self.group.nil?
+      last_code = User.where(role: [0,1],group_id:self.group.id).
+                      where("code like 'LIM%' or code like 'SCL%' or code like 'MEX%' or code like 'AQP%'").
+                      order("code desc").pluck("code").first
+      last_code.gsub(/[0-9]+/,'') + (last_code.gsub(/\D/,'').to_i + 1).to_s
     end
   end
 

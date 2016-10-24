@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005173011) do
+ActiveRecord::Schema.define(version: 20161019225746) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -101,6 +101,24 @@ ActiveRecord::Schema.define(version: 20161005173011) do
 
   add_index "courses", ["track_id"], name: "index_courses_on_track_id", using: :btree
 
+  create_table "districts", force: :cascade do |t|
+    t.integer  "branch_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "districts", ["branch_id"], name: "index_districts_on_branch_id", using: :btree
+
+  create_table "educations", force: :cascade do |t|
+    t.integer  "branch_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "educations", ["branch_id"], name: "index_educations_on_branch_id", using: :btree
+
   create_table "enrollments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "course_id",  limit: 4
@@ -112,6 +130,15 @@ ActiveRecord::Schema.define(version: 20161005173011) do
   add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id", using: :btree
   add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
 
+  create_table "family_incomes", force: :cascade do |t|
+    t.integer  "branch_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "family_incomes", ["branch_id"], name: "index_family_incomes_on_branch_id", using: :btree
+
   create_table "groups", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "description", limit: 255
@@ -121,6 +148,15 @@ ActiveRecord::Schema.define(version: 20161005173011) do
   end
 
   add_index "groups", ["branch_id"], name: "index_groups_on_branch_id", using: :btree
+
+  create_table "job_salaries", force: :cascade do |t|
+    t.integer  "branch_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "job_salaries", ["branch_id"], name: "index_job_salaries_on_branch_id", using: :btree
 
   create_table "lessons", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -184,9 +220,6 @@ ActiveRecord::Schema.define(version: 20161005173011) do
     t.string   "solution_file_content_type", limit: 255
     t.integer  "solution_file_file_size",    limit: 4
     t.datetime "solution_file_updated_at"
-    t.integer  "draft_comments_count",       limit: 4,     default: 0
-    t.integer  "published_comments_count",   limit: 4,     default: 0
-    t.integer  "deleted_comments_count",     limit: 4,     default: 0
     t.string   "solution_visibility",        limit: 255
     t.integer  "lesson_id",                  limit: 4
     t.string   "material_type",              limit: 255
@@ -198,6 +231,58 @@ ActiveRecord::Schema.define(version: 20161005173011) do
   end
 
   add_index "pages", ["lesson_id"], name: "index_pages_on_lesson_id", using: :btree
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id",                       limit: 4
+    t.string   "name",                          limit: 255
+    t.string   "biography",                     limit: 255
+    t.string   "dni",                           limit: 255
+    t.integer  "district_id",                   limit: 4
+    t.string   "phone1",                        limit: 255
+    t.string   "phone2",                        limit: 255
+    t.string   "facebook_link",                 limit: 255
+    t.string   "major",                         limit: 255
+    t.string   "school",                        limit: 255
+    t.integer  "reasons_school_not_done",       limit: 4
+    t.integer  "job_status",                    limit: 4
+    t.integer  "work_for",                      limit: 4
+    t.string   "work_for_details",              limit: 255
+    t.string   "job_title",                     limit: 255
+    t.boolean  "job_payroll",                   limit: 1
+    t.integer  "job_type",                      limit: 4
+    t.integer  "job_salary_id",                 limit: 4
+    t.integer  "family_income_id",              limit: 4
+    t.integer  "relatives",                     limit: 4
+    t.boolean  "childs",                        limit: 1
+    t.integer  "tech_savy",                     limit: 4
+    t.string   "other_tech_related_activities", limit: 255
+    t.boolean  "computer_at_home",              limit: 1
+    t.boolean  "internet_access",               limit: 1
+    t.boolean  "smartphone",                    limit: 1
+    t.integer  "computer_use",                  limit: 4
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.date     "birth_date"
+    t.integer  "education_id",                  limit: 4
+    t.integer  "semesters_left_id",             limit: 4
+    t.integer  "spot_id",                       limit: 4
+    t.string   "reasons_to_enter",              limit: 255
+    t.string   "how_you_find_out",              limit: 255
+    t.string   "what_is_laboratoria",           limit: 255
+  end
+
+  add_index "profiles", ["district_id"], name: "index_profiles_on_district_id", using: :btree
+  add_index "profiles", ["education_id"], name: "index_profiles_on_education_id", using: :btree
+  add_index "profiles", ["family_income_id"], name: "index_profiles_on_family_income_id", using: :btree
+  add_index "profiles", ["job_salary_id"], name: "index_profiles_on_job_salary_id", using: :btree
+  add_index "profiles", ["semesters_left_id"], name: "index_profiles_on_semesters_left_id", using: :btree
+  add_index "profiles", ["spot_id"], name: "index_profiles_on_spot_id", using: :btree
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "profiles_tech_related_activities", id: false, force: :cascade do |t|
+    t.integer "profile_id",               limit: 4, null: false
+    t.integer "tech_related_activity_id", limit: 4, null: false
+  end
 
   create_table "question_groups", force: :cascade do |t|
     t.integer  "page_id",     limit: 4
@@ -229,6 +314,15 @@ ActiveRecord::Schema.define(version: 20161005173011) do
   add_index "reviews", ["page_id"], name: "index_reviews_on_page_id", using: :btree
   add_index "reviews", ["question_id"], name: "index_reviews_on_question_id", using: :btree
 
+  create_table "semesters_lefts", force: :cascade do |t|
+    t.integer  "branch_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "semesters_lefts", ["branch_id"], name: "index_semesters_lefts_on_branch_id", using: :btree
+
   create_table "soft_skill_submissions", force: :cascade do |t|
     t.integer  "soft_skill_id", limit: 4
     t.integer  "user_id",       limit: 4
@@ -248,6 +342,15 @@ ActiveRecord::Schema.define(version: 20161005173011) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "spots", force: :cascade do |t|
+    t.integer  "branch_id",  limit: 4
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "spots", ["branch_id"], name: "index_spots_on_branch_id", using: :btree
 
   create_table "sprint_badges", force: :cascade do |t|
     t.integer  "sprint_id",  limit: 4
@@ -311,6 +414,12 @@ ActiveRecord::Schema.define(version: 20161005173011) do
   add_index "submissions", ["page_id"], name: "index_submissions_on_page_id", using: :btree
   add_index "submissions", ["user_id"], name: "index_submissions_on_user_id", using: :btree
 
+  create_table "tech_related_activities", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.datetime "created_at",              null: false
@@ -347,46 +456,28 @@ ActiveRecord::Schema.define(version: 20161005173011) do
   add_index "user_authentications", ["user_id"], name: "index_user_authentications_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                       limit: 255,   default: ""
-    t.string   "encrypted_password",          limit: 255,   default: "",    null: false
-    t.string   "reset_password_token",        limit: 255
+    t.string   "email",                  limit: 255, default: ""
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",               limit: 4,     default: 0,     null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",          limit: 255
-    t.string   "last_sign_in_ip",             limit: 255
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
-    t.string   "provider",                    limit: 255
-    t.string   "uid",                         limit: 255
-    t.string   "dni",                         limit: 255
-    t.string   "code",                        limit: 255
-    t.string   "name",                        limit: 255,                   null: false
-    t.string   "lastname1",                   limit: 255,                   null: false
-    t.string   "lastname2",                   limit: 255
-    t.integer  "age",                         limit: 4
-    t.string   "district",                    limit: 255
-    t.string   "facebook_username",           limit: 255
-    t.string   "phone1",                      limit: 255
-    t.string   "phone2",                      limit: 255
-    t.boolean  "disable",                     limit: 1,     default: false
-    t.integer  "my_draft_comments_count",     limit: 4,     default: 0
-    t.integer  "my_published_comments_count", limit: 4,     default: 0
-    t.integer  "my_comments_count",           limit: 4,     default: 0
-    t.integer  "draft_comcoms_count",         limit: 4,     default: 0
-    t.integer  "published_comcoms_count",     limit: 4,     default: 0
-    t.integer  "deleted_comcoms_count",       limit: 4,     default: 0
-    t.integer  "spam_comcoms_count",          limit: 4,     default: 0
-    t.integer  "roles_mask",                  limit: 4
-    t.string   "avatar_file_name",            limit: 255
-    t.string   "avatar_content_type",         limit: 255
-    t.integer  "avatar_file_size",            limit: 4
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "code",                   limit: 255
+    t.boolean  "disable",                limit: 1,   default: false
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
     t.datetime "avatar_updated_at"
-    t.integer  "role",                        limit: 4,     default: 0
-    t.integer  "group_id",                    limit: 4
-    t.text     "biography",                   limit: 65535
+    t.integer  "role",                   limit: 4,   default: 0
+    t.integer  "group_id",               limit: 4
   end
 
   add_index "users", ["code"], name: "index_users_on_code", unique: true, using: :btree
@@ -396,19 +487,32 @@ ActiveRecord::Schema.define(version: 20161005173011) do
   add_foreign_key "answers", "pages"
   add_foreign_key "answers", "users"
   add_foreign_key "courses", "tracks"
+  add_foreign_key "districts", "branches"
+  add_foreign_key "educations", "branches"
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
+  add_foreign_key "family_incomes", "branches"
   add_foreign_key "groups", "branches"
+  add_foreign_key "job_salaries", "branches"
   add_foreign_key "lessons", "units"
   add_foreign_key "options", "questions"
   add_foreign_key "page_visibilities", "branches"
   add_foreign_key "page_visibilities", "pages"
   add_foreign_key "pages", "lessons"
+  add_foreign_key "profiles", "districts"
+  add_foreign_key "profiles", "educations"
+  add_foreign_key "profiles", "family_incomes"
+  add_foreign_key "profiles", "job_salaries"
+  add_foreign_key "profiles", "semesters_lefts"
+  add_foreign_key "profiles", "spots"
+  add_foreign_key "profiles", "users"
   add_foreign_key "question_groups", "pages"
   add_foreign_key "question_groups", "questions"
+  add_foreign_key "semesters_lefts", "branches"
   add_foreign_key "soft_skill_submissions", "soft_skills"
   add_foreign_key "soft_skill_submissions", "sprints"
   add_foreign_key "soft_skill_submissions", "users"
+  add_foreign_key "spots", "branches"
   add_foreign_key "sprint_badges", "badges"
   add_foreign_key "sprint_badges", "sprints"
   add_foreign_key "sprint_pages", "pages"
