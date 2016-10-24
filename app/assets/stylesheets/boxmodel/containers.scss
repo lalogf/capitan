@@ -1,17 +1,9 @@
-/*
-	Containers-custom
-*/
-
-@mixin clearfix() {
-  &:before,
-  &:after {
-    content: " "; // 1
-    display: table; // 2
-  }
-  &:after {
-    clear: both;
-  }
-}
+//------------------------------------
+// Extended containers to boostrap
+//
+// Description: Other type of containers that bootstrap doesn't provide by default
+//
+//------------------------------------
 
 
 @mixin make-container($gutter: $grid-gutter-width) {
@@ -42,10 +34,10 @@
 	}
 	.container-sm {
 		width: $container-sm;
-	}	
+	}
 	.container-md {
 		width: $container-md;
-	}	
+	}
 }
 @media #{$xs-only} {
 	.container-xs,
@@ -56,6 +48,6 @@
 		padding-right: $container-fluid;
 		margin: 0 auto;
 	}
-	.container-sm {}	
-	.container-md {}		
+	.container-sm {}
+	.container-md {}
 }
