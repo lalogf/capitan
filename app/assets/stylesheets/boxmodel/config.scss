@@ -14,13 +14,13 @@ $container-md:            $container-desktop !default;
 $container-large-desktop: (1140px + $grid-gutter-width) !default;
 $container-lg:            $container-large-desktop !default;
 
-$breakpoints-sufixes: 'xs', 'sm', 'md', 'lg';
-$grid-breakpoints:    ( xs: 0, sm: 34em, md: 48em, lg: 62em, xl: 75em) !default;
-$screen:              "only screen" !default;
-$screen-phone:        map-get($grid-breakpoints, sm);
-$screen-tablet:       map-get($grid-breakpoints, md);
-$screen-desktop:      map-get($grid-breakpoints, lg);
-$screen-lg-desktop:   map-get($grid-breakpoints, xl);
+$breakpoints-sufix-list:  'xs', 'sm', 'md', 'lg';
+$grid-breakpoints:        ( xs: 0, sm: 34em, md: 48em, lg: 62em, xl: 75em) !default;
+$screen:                  "only screen" !default;
+$screen-phone:            map-get($grid-breakpoints, sm);
+$screen-tablet:           map-get($grid-breakpoints, md);
+$screen-desktop:          map-get($grid-breakpoints, lg);
+$screen-lg-desktop:       map-get($grid-breakpoints, xl);
 
 $landscape: "#{$screen} and (orientation: landscape)" !default;
 $portrait:  "#{$screen} and (orientation: portrait)" !default;
@@ -41,3 +41,21 @@ $media-only-list:    $xs-only, $sm-only, $md-only, $lg-only;
 $media-down-list:    $sm-down, $md-down, $lg-down;
 $media-up-list:      $xs-up, $sm-up, $md-up, $lg-up;
 $media-control-list: $xs-only, $sm-up, $md-up, $lg-up;
+
+$brand-primary:  #F9A91A !default;
+$brand-success:  #b5bd00 !default;
+$brand-info:     #00C1D5 !default;
+$brand-warning:  #f0ad4e !default;
+$brand-danger:   #d9534f !default;
+
+$gray-dark:      #333333 !default;
+$gray:           #3C4145 !default;
+$gray-light:     #9B9B9B !default;
+$gray-lighter:   #ECEEEF !default;
+$gray-lightest:  #F7F7F9 !default;
+
+$brand-colors-sufix-list: 'primary', 'success', 'info', 'warning', 'danger';
+$grayscale-list: $gray-dark, $gray, $gray-light, $gray-lighter, $gray-lightest, #fff;
+$grayscale-sufix-list: 'gray-dark','gray','gray-light','gray-lighter','gray-lightest','white';
+$bluescale-sufix-list: 'blue-darker', 'blue-dark', 'blue', 'blue-light', 'blue-lighter';
+$brand-colors-list: $brand-primary, $brand-success, $brand-info, $brand-warning, $brand-danger;

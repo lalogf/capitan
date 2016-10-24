@@ -71,9 +71,9 @@ $box-models: 'padding', 'padding-top', 'padding-right',
 // Responsive Box Model
 @for $i from 0 through $loop-limit {
   @for $j from 1 through length($box-models) {
-    @for $k from 1 through length($breakpoints-sufixes) {
+    @for $k from 1 through length($breakpoints-sufix-list) {
       @media #{nth($media-control-list, $k)} {
-        .#{nth($box-models-abbr, $j)}-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+        .#{nth($box-models-abbr, $j)}-#{$i*$multiple}-#{nth($breakpoints-sufix-list, $k)} {
           // For <IE8
           #{nth($box-models, $j)}: ($i*$multiple) + px;
           // REMs for modern browsers
@@ -88,9 +88,9 @@ $box-models: 'padding', 'padding-top', 'padding-right',
 
 // PADDING VERTICAL & HORIZONTAL
 @for $i from 0 through $loop-limit {
-  @for $k from 1 through length($breakpoints-sufixes) {
+  @for $k from 1 through length($breakpoints-sufix-list) {
     @media #{nth($media-control-list, $k)} {
-      .pv-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+      .pv-#{$i*$multiple}-#{nth($breakpoints-sufix-list, $k)} {
         padding-top: ($i*$multiple) + px;
         padding-bottom: ($i*$multiple) + px;
         padding-top: ($i * $multiple / $default-font-size) + rem;
@@ -101,9 +101,9 @@ $box-models: 'padding', 'padding-top', 'padding-right',
 }
 
 @for $i from 0 through $loop-limit {
-  @for $k from 1 through length($breakpoints-sufixes) {
+  @for $k from 1 through length($breakpoints-sufix-list) {
     @media #{nth($media-control-list, $k)} {
-      .ph-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+      .ph-#{$i*$multiple}-#{nth($breakpoints-sufix-list, $k)} {
         padding-left: ($i*$multiple) + px;
         padding-right: ($i*$multiple) + px;
         padding-left: ($i * $multiple / $default-font-size) + rem;
@@ -115,9 +115,9 @@ $box-models: 'padding', 'padding-top', 'padding-right',
 
 // MARGIN VERTICAL & HORIZONTAL
 @for $i from 0 through $loop-limit {
-  @for $k from 1 through length($breakpoints-sufixes) {
+  @for $k from 1 through length($breakpoints-sufix-list) {
     @media #{nth($media-control-list, $k)} {
-      .mv-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+      .mv-#{$i*$multiple}-#{nth($breakpoints-sufix-list, $k)} {
         margin-top: ($i*$multiple) + px;
         margin-bottom: ($i*$multiple) + px;
         margin-top: ($i * $multiple / $default-font-size) + rem;
@@ -128,9 +128,9 @@ $box-models: 'padding', 'padding-top', 'padding-right',
 }
 
 @for $i from 0 through $loop-limit {
-  @for $k from 1 through length($breakpoints-sufixes) {
+  @for $k from 1 through length($breakpoints-sufix-list) {
     @media #{nth($media-control-list, $k)} {
-      .mh-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+      .mh-#{$i*$multiple}-#{nth($breakpoints-sufix-list, $k)} {
         margin-left: ($i*$multiple) + px;
         margin-right: ($i*$multiple) + px;
         margin-left: ($i * $multiple / $default-font-size) + rem;

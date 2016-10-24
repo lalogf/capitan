@@ -10,7 +10,8 @@
 @import "base/common.scss";
 
 //Box Model
-@import "boxmodel/grid.scss";
+@import "boxmodel/config.scss";
+@import "boxmodel/containers.scss";
 @import "boxmodel/padding-margins.scss";
 @import "boxmodel/separators.scss";
 
