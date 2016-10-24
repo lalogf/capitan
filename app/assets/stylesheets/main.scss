@@ -1,23 +1,34 @@
-@import "modules/variables.scss";
-@import "modules/mixins.scss";
-@import "modules/fonts.scss";
-@import "modules/globals.scss";
-@import "modules/helpers.scss";
-@import "modules/base.scss";
-@import "modules/container-control.scss";
-@import "modules/separators.scss";
-@import "modules/box-model-control.scss";
-@import "modules/breakpoints-model-control.scss";
+@charset "utf-8";
+
+//Helpers
+@import "helpers/mixins.scss";
+@import "helpers/functions.scss";
+
+//Base
+@import "base/colors.scss";
+@import "base/fonts.scss";
+@import "base/common.scss";
+
+//Box Model
+@import "boxmodel/grid.scss";
+@import "boxmodel/padding-margins.scss";
+@import "boxmodel/separators.scss";
+
+//Layout
 @import "pages/layouts/header.scss";
 @import "pages/layouts/footer.scss";
+
+//Devise
+@import "pages/devise/registration.scss";
+@import "pages/devise/session.scss";
+@import "pages/devise/admission.scss";
+@import "pages/devise/admission_success.scss";
+
+//Pages
 @import "pages/courses.scss";
 @import "pages/pages.scss";
 @import "pages/dashboard.scss";
 @import "pages/responsive.scss";
 @import "pages/profile.scss";
 @import "pages/track.scss";
-@import "pages/autoevaluacion.scss";
-@import "pages/devise/registration.scss";
-@import "pages/devise/session.scss";
-@import "pages/devise/admission.scss";
-@import "pages/devise/admission_success.scss";
+@import "pages/self-assessment.scss";

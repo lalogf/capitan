@@ -1,0 +1,141 @@
+//------------------------------------
+// Functions related to Box Model
+//
+// Description: You can use single class to quickly align elements in the code,
+// it's based on multiple of 7, it can be changed though to any base number
+//
+// Usage:
+//
+// <p class="mt-21"></p>
+// <div class="mr-7"></div>
+//
+//------------------------------------
+
+$loop-limit: 10;
+$multiple: 7;
+$box-models-abbr: 'p', 'pt', 'pr', 'pb', 'pl', 'm', 'mt', 'mr', 'mb', 'ml';
+$box-models: 'padding', 'padding-top', 'padding-right',
+             'padding-bottom', 'padding-left', 'margin',
+             'margin-top', 'margin-right', 'margin-bottom',
+             'margin-left';
+
+@for $i from 0 through $loop-limit {
+  @for $j from 1 through length($box-models) {
+    .#{nth($box-models-abbr, $j)}-#{$i * $multiple} {
+      #{nth($box-models, $j)}: $i * $multiple + px; // For <IE8
+      @if $use-rem == true {
+        #{nth($box-models, $j)}: ($i * $multiple / $default-font-size) + rem; // REMs for modern browsers
+      }
+    }
+  }
+}
+
+// PADDING VERTICAL & HORIZONTAL
+@for $i from 0 through $loop-limit {
+  .pv-#{$i * $multiple} {
+    padding-top: ($i * $multiple) + px;
+    padding-bottom: ($i * $multiple) + px;
+    padding-top: ($i * $multiple / $default-font-size) + rem;
+    padding-bottom: ($i * $multiple / $default-font-size) + rem;
+  }
+}
+
+@for $i from 0 through $loop-limit {
+  .ph-#{$i * $multiple} {
+    padding-left: ($i * $multiple) + px;
+    padding-right: ($i * $multiple) + px;
+    padding-left: ($i * $multiple / $default-font-size) + rem;
+    padding-right: ($i * $multiple / $default-font-size) + rem;
+  }
+}
+
+// MARGIN VERTICAL & HORIZONTAL
+@for $i from 0 through $loop-limit {
+  .mv-#{$i * $multiple} {
+    margin-top: ($i * $multiple) + px;
+    margin-bottom: ($i * $multiple) + px;
+    margin-top: ($i * $multiple / $default-font-size) + rem;
+    margin-bottom: ($i * $multiple / $default-font-size) + rem;
+  }
+}
+
+@for $i from 0 through $loop-limit {
+  .mh-#{$i*$multiple} {
+    margin-left: ($i*$multiple) + px;
+    margin-right: ($i*$multiple) + px;
+    margin-left: ($i * $multiple / $default-font-size) + rem;
+    margin-right: ($i * $multiple / $default-font-size) + rem;
+  }
+}
+
+// Responsive Box Model
+@for $i from 0 through $loop-limit {
+  @for $j from 1 through length($box-models) {
+    @for $k from 1 through length($breakpoints-sufixes) {
+      @media #{nth($media-control-list, $k)} {
+        .#{nth($box-models-abbr, $j)}-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+          // For <IE8
+          #{nth($box-models, $j)}: ($i*$multiple) + px;
+          // REMs for modern browsers
+          @if $use-rem == true {
+            #{nth($box-models, $j)}: ($i * $multiple / $default-font-size) + rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// PADDING VERTICAL & HORIZONTAL
+@for $i from 0 through $loop-limit {
+  @for $k from 1 through length($breakpoints-sufixes) {
+    @media #{nth($media-control-list, $k)} {
+      .pv-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+        padding-top: ($i*$multiple) + px;
+        padding-bottom: ($i*$multiple) + px;
+        padding-top: ($i * $multiple / $default-font-size) + rem;
+        padding-bottom: ($i * $multiple / $default-font-size) + rem;
+      }
+    }
+  }
+}
+
+@for $i from 0 through $loop-limit {
+  @for $k from 1 through length($breakpoints-sufixes) {
+    @media #{nth($media-control-list, $k)} {
+      .ph-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+        padding-left: ($i*$multiple) + px;
+        padding-right: ($i*$multiple) + px;
+        padding-left: ($i * $multiple / $default-font-size) + rem;
+        padding-right: ($i * $multiple / $default-font-size) + rem;
+      }
+    }
+  }
+}
+
+// MARGIN VERTICAL & HORIZONTAL
+@for $i from 0 through $loop-limit {
+  @for $k from 1 through length($breakpoints-sufixes) {
+    @media #{nth($media-control-list, $k)} {
+      .mv-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+        margin-top: ($i*$multiple) + px;
+        margin-bottom: ($i*$multiple) + px;
+        margin-top: ($i * $multiple / $default-font-size) + rem;
+        margin-bottom: ($i * $multiple / $default-font-size) + rem;
+      }
+    }
+  }
+}
+
+@for $i from 0 through $loop-limit {
+  @for $k from 1 through length($breakpoints-sufixes) {
+    @media #{nth($media-control-list, $k)} {
+      .mh-#{$i*$multiple}-#{nth($breakpoints-sufixes, $k)} {
+        margin-left: ($i*$multiple) + px;
+        margin-right: ($i*$multiple) + px;
+        margin-left: ($i * $multiple / $default-font-size) + rem;
+        margin-right: ($i * $multiple / $default-font-size) + rem;
+      }
+    }
+  }
+}
