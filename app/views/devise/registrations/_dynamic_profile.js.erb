@@ -37,6 +37,10 @@ window.addEventListener('load',function() {
   $('#user_profile_attributes_education_id').on("change",function() {
     educationId = parseInt($(this).val());
     onChangeEducationSelect();
+    $("#user_profile_attributes_major").val("");
+    $("#user_profile_attributes_school").val("");
+    $("#user_profile_attributes_semesters_left_id").val("");
+    $("#user_profile_attributes_reasons_school_not_done").val("");
   });
   $('input[type=radio][name="user[profile_attributes][job_status]"]').on("change",function() {
     jobStatus = $(this).val();
