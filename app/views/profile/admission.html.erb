@@ -1,6 +1,8 @@
 <% content_for :scripts do %>
   <script>
     $(function() {
+      $("#terms-conditions").prop("checked",false);
+      $("#sign-up-link").removeClass("disabled").addClass("disabled");
       $("#terms-conditions").change(function() {
         $("#sign-up-link").toggleClass("disabled");
       });
