@@ -7,7 +7,7 @@ class ProfileController < ApplicationController
     @sprint_index = 0
     @user = current_user
 
-    @sprints = current_user.group.sprints.joins(:pages).where("pages.points > 0 or sprint_pages.points > 0").order(:sequence).distinct
+    @sprints = @user.group.sprints.joins(:pages).where("pages.points > 0 or sprint_pages.points > 0").order(:sequence).distinct
     @sprint_badges = @user.sprint_badges.group_by(&:badge).map { |key,value| {key => value.size} }
 
     if @sprints.length > 0
@@ -21,7 +21,7 @@ class ProfileController < ApplicationController
         @badge_points = @user.badge_points(@sprint)
       else
         @selected_sprint_name = "Total"
-        @maximum_points = capitalize_page_type(SprintPage.total_points)
+        @maximum_points = capitalize_page_type(SprintPage.total_points(@user.group_id))
         @student_points = SprintPage.student_points(@user)
         @soft_skills_points = SoftSkillSubmission.for_user(@user)
         @avg_students_points = Submission.avg_all_classroom_points(current_user.group_id)
@@ -41,6 +41,7 @@ class ProfileController < ApplicationController
             student_marks: arr.last.last
           }
         }
+        @data = @data.select{ |x| x[:y] > 0 }
 
         @max_total_points = sum_points(@data, :y) - (@badge_points != nil ? @badge_points : 0)
         @max_student_points = sum_points(@data, :student_marks)

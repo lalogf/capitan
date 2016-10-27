@@ -16,17 +16,18 @@ class SprintPage < ActiveRecord::Base
 
   scope :with_points, -> { where("sprint_pages.points > ? or pages.points > ?",0,0).where("pages.page_type not in (?)",%w[material score]) }
 
-  def self.total_points
+  def self.total_points group_id
     SprintPage.with_points.
-    joins(:sprint, :page).
+    joins({:sprint => :group}, :page).
+    where("groups.id = ?",group_id).
     group(:page_type).
     pluck(:page_type, 'round(sum(coalesce(sprint_pages.points,pages.points)))')
   end
 
   def self.student_points user
     SprintPage.with_points.
-    joins(:sprint, {page: :submissions}).
-    where('submissions.user_id = ?', user.id).
+    joins({sprint: :group}, {page: :submissions}).
+    where('submissions.user_id = ? and groups.id = ?', user.id, user.group_id).
     references(:submissions).group(:page_type).
     pluck(:page_type, 'round(sum(submissions.points))')
   end

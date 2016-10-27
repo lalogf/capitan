@@ -9,7 +9,7 @@
 }
 #point-summary {
   .font-big {
-    
+
   }
 }
 .name {
@@ -32,7 +32,7 @@
 
 .badge {
   position:relative;
-  background-color: transparent;	
+  background-color: transparent;
 }
 
 
@@ -115,13 +115,4 @@
 
 .lessons-panel .lesson-checkbox label {
   font-weight: normal;
-}
-.porcentaje-puntos {
-  @media (max-width: 980px) {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
 }

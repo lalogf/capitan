@@ -3,7 +3,7 @@
     <h4 class="bold mb-7 text-center">puntos</h4>
     <div class="hidden-xs mb-7 separator separator-primary separator-centered"></div>
     <div class="light text-center mt-35 font-big">
-      este es el detalle de tu avance hasta ahora, estás viendo el 
+      este es el detalle de tu avance hasta ahora, estás viendo el
         <span class="dropdown header-arrow">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="text-uppercase sprint-name gray-29">
@@ -25,7 +25,7 @@
         <div id="point-summary-container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
       </div>
       <div class="col-md-6 pb-49 pt-90 ph-35 pv-0-xs">
-        <div class="row pl-70-md">
+        <div class="row">
           <div class="col-sm-12">
             <% student_percent = percent(@max_student_points, @max_total_points) %>
             <div class="porcentaje-puntos c100 big orange <%= "p#{ student_percent.round }"%>">
@@ -37,16 +37,14 @@
                 <div class="fill"></div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 col-sm-offset-3 col-md-offset-2 col-md-5 text-center">
-            <p class="score">
-              <span class="book gray-29"><%= @max_student_points %></span>
-              <span class="slash">/</span>
-              <span class="thin h4"><%= @max_total_points %></span>
-            </p>
-            <h4 class="light">puntos</h4>
+            <div class="col-sm-12 text-center">
+              <p class="score">
+                <span class="book gray-29"><%= @max_student_points %></span>
+                <span class="slash">/</span>
+                <span class="thin h4"><%= @max_total_points %></span>
+              </p>
+              <h4 class="light">puntos</h4>
+            </div>
           </div>
         </div>
       </div>
