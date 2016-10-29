@@ -1,4 +1,4 @@
-<div class="outer-container">
+<div class="outer-container score-pages">
     <div class="inner-container text-center">
       <div class="text-center mt-20">
         <% if Submission.where(user_id: current_user.id).count > 0 %>
@@ -7,36 +7,27 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th>Puntos Alcanzados</th>
-                  <th>% del Total de Puntos Disponibles</th>
-                  <th>Promedio Salón</th>
+                  <th style="text-align:center;">Puntos Alcanzados</th>
+                  <th style="text-align:center;">% del Total de Puntos Disponibles</th>
+                  <th style="text-align:center;">Promedio Salón</th>
                 </tr>
               </thead>
               <tbody>
-                <% total_average = 0 %>
-                <% total_points = 0 %>
-                <% @lesson.pages.where("points > 0").each do |page| %>
-                  <% my_points = page.submissions.where(user_id: current_user.id).first.points.to_f %>
-                  <% total = page.submissions.sum(:points).round(2) %>
-                  <% count = page.submissions.where("points > 0").count %>
-                  <% average = ((total.to_f/count).nan?) ? 0 : (total.to_f/count).round(2) %>
-                  <% topic = {"prework" => "Quiz ", "exercise" => "", "solution" => "", "retrospective" => "", "codereview" => ""} %>
+                <% @pages_points.each do |page| %>
                   <tr>
-                    <th class="scope"><%= topic[page.page_type] + page.title %></th>
-                    <td><%= my_points %></td>
-                    <td><%= (my_points/page.points*100).round(2) %> %</td>
-                    <td><%= average %></td>
+                    <td style="text-align:left;font-weight:bold;"><%= page[:page_title] %></td>
+                    <td><%= "#{page[:student_points].round(2)} / #{page[:page_points].round(2)}" %></td>
+                    <td><%= (page[:student_points] / page[:page_points]*100).round(2) %> %</td>
+                    <td><%= page[:average_points].round(2) %></td>
                   </tr>
-                  <% total_average += average %>
-                  <% total_points += my_points %>
                 <% end %>
               </tbody>
               <tfooter>
                 <tr>
-                  <th class="scope">Total</th>
-                  <td><%= total_points.round(2) %></td>
-                  <td><%= (total_points/@lesson.pages.sum(:points)*100).round(2) %> %</td>
-                  <td><%= total_average.round(2) %></td>
+                  <th style="text-align:left;font-weight:bold;">Total</th>
+                  <td><%= "#{@total_student_points.round(2)} / #{@total_page_points.round(2)}" %></td>
+                  <td><%= (@total_student_points / @total_page_points * 100).round(2) %> %</td>
+                  <td><%= @total_average_points.round(2) %></td>
                 </tr>
               </tfooter>
             </table>

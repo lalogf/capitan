@@ -11,14 +11,6 @@
 //
 //------------------------------------
 
-$loop-limit: 10;
-$multiple: 7;
-$box-models-abbr: 'p', 'pt', 'pr', 'pb', 'pl', 'm', 'mt', 'mr', 'mb', 'ml';
-$box-models: 'padding', 'padding-top', 'padding-right',
-             'padding-bottom', 'padding-left', 'margin',
-             'margin-top', 'margin-right', 'margin-bottom',
-             'margin-left';
-
 @for $i from 0 through $loop-limit {
   @for $j from 1 through length($box-models) {
     .#{nth($box-models-abbr, $j)}-#{$i * $multiple} {

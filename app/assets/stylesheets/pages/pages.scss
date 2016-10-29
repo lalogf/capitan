@@ -3,7 +3,7 @@
   padding: 0 0 53px 0;
   width: 100%;
   position: relative;
-  
+
   .blog{
     h1, h2, h3, h4,  h5, h6 {
       	text-decoration:underline;
@@ -15,12 +15,12 @@
     h1, .blog h2 {
     	margin-bottom: 20px;
     }
-      
+
     pre, code {
       display:inline;
     }
   }
-  
+
   .navigation {
     display: table-cell;
     width: 347px;
@@ -68,18 +68,18 @@
         background-color: #3E3F40;
         min-width: 100%;
         width: 100%;
-      } 
+      }
     }
-    
+
     .content {
       padding: 0;
       position: relative;
       background-color: white;
       display: table-cell;
       width: 100%;
-      z-index: 1;    
+      z-index: 1;
     }
-    
+
     .breadcrumb {
       display: block;
       line-height: 1.3;
@@ -168,7 +168,7 @@
 }
 
 .page .navigation .breadcrumb h2 {
-  margin-bottom: 0;  
+  margin-bottom: 0;
 }
 
 .page .navigation .breadcrumb a {
@@ -339,7 +339,7 @@ video {
 .instructions ol {
     counter-reset: item;
 }
-.instructions ol li { 
+.instructions ol li {
   display: block }
 
 .instructions ol li:before {
@@ -411,7 +411,7 @@ video {
   font-size: 20px;
   text-transform: uppercase;
   color: #fff;
-  font-size: 18px;  
+  font-size: 18px;
 }
 
 .editors {
@@ -468,7 +468,7 @@ video {
   border: 1px solid #F5A829;
   width: 20px;
   margin: 0px auto;
-} 
+}
 
 // COLLAPSE PAGES
 
@@ -555,6 +555,13 @@ video {
   color: #3e3f40;
   &:hover {
     background: none !important;
+  }
+}
+
+.score-pages {
+  .table {
+    width: 90%;
+    margin:0px auto;
   }
 }
 

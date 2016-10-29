@@ -58,7 +58,10 @@ class Page < ActiveRecord::Base
 
   scope :visible_page, -> (branch_id) { joins(:page_visibilities).where('page_visibilities.status = ? and page_visibilities.branch_id = ? ', true, branch_id) }
 
-  scope :with_points, -> { where("pages.points > ?",0).where.not(page_type: %w[material score]) }
+  scope :with_points, -> (group_id) { 
+    joins({sprint_pages: :sprint}).
+    where("(sprint_pages.points is not null and sprint_pages.points > 0) or (sprint_pages.points is null and pages.points > 0) and sprints.group_id = ?",group_id).
+    where.not(page_type: %w[material score]) }
 
   scope :points, -> (page_type) { where(page_type: page_type).pluck(:points).map(&:to_i).sum }
 

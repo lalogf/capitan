@@ -27,6 +27,28 @@ class PagesController < ApplicationController
     if @page.load_from_previous
       @page.initial_state = @previous_page.answers.where(user_id: current_user.id).first.result
     end
+    if @page.page_type == "score"
+      topic = {"prework" => "Quiz ", "exercise" => "Ejercicio", "solution" => "Solución", "retrospective" => "Retrospectiva", "codereview" => "Code Review"}
+      @scoreable_pages = @lesson.pages.with_points(current_user.group_id).
+                         pluck_to_hash("pages.id as id","pages.title as title","pages.page_type as page_type",
+                                       "coalesce(sprint_pages.points,pages.points) as points")
+      @pages_points = Array.new
+      @scoreable_pages.each { |page|
+        if page["points"] > 0
+          @pages_points.push({
+            student_points: Submission.where(user_id: current_user.id,page_id: page["id"]).first.try(:points).to_f,
+            average_points: Submission.joins(:user).where("submissions.page_id = ? and users.group_id = ?",page["id"],current_user.group_id).pluck("avg(points)").first.try(:to_f),
+            page_points: page["points"],
+            page_title: "#{topic[page["page_type"]]}: #{page["title"]}",
+            page_type: page["page_type"]
+          })
+        end
+      }
+
+      @total_student_points = @pages_points.map { |p| p[:student_points] }.reduce(:+)
+      @total_page_points = @pages_points.map { |p| p[:page_points] }.reduce(:+)
+      @total_average_points = @pages_points.map { |p| p[:average_points] }.reduce(:+)
+    end
   end
 
   def new
@@ -156,7 +178,7 @@ class PagesController < ApplicationController
       :auto_corrector, :grade, :points, :question_points, :selfLearning,
       :success_message, :instructions, :document, :excercise_instructions,
       :solution_file, :video_solution, :show_solution, :solution_visibility,
-      :show_title, :video_url, :code, 
+      :show_title, :video_url, :code,
       question_groups_attributes: [ :id,:sequence, :question_id, :points, :_destroy])
     end
 end

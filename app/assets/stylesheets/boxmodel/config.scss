@@ -59,3 +59,12 @@ $grayscale-list: $gray-dark, $gray, $gray-light, $gray-lighter, $gray-lightest, 
 $grayscale-sufix-list: 'gray-dark','gray','gray-light','gray-lighter','gray-lightest','white';
 $bluescale-sufix-list: 'blue-darker', 'blue-dark', 'blue', 'blue-light', 'blue-lighter';
 $brand-colors-list: $brand-primary, $brand-success, $brand-info, $brand-warning, $brand-danger;
+
+$loop-limit: 10;
+$multiple: 7;
+$use-rem: false;
+$box-models-abbr: 'p', 'pt', 'pr', 'pb', 'pl', 'm', 'mt', 'mr', 'mb', 'ml';
+$box-models: 'padding', 'padding-top', 'padding-right',
+             'padding-bottom', 'padding-left', 'margin',
+             'margin-top', 'margin-right', 'margin-bottom',
+             'margin-left';
