@@ -33,10 +33,20 @@ var jobStatus = null;
 
 window.addEventListener('load',function() {
   init();
-  $('#user_signup_branch').on("change",changeAllSelectOptions);
+  $('#user_signup_branch').on("change", changeAllSelectOptions);
+  $('#user_signup_branch').on("change", function(){
+    $("#user_profile_attributes_major").parent().addClass("hidden");
+    $("#user_profile_attributes_school").parent().addClass("hidden");
+    $("#user_profile_attributes_semesters_left_id").parent().addClass("hidden");
+    $("#user_profile_attributes_reasons_school_not_done").parent().addClass("hidden");
+  });
   $('#user_profile_attributes_education_id').on("change",function() {
     educationId = parseInt($(this).val());
     onChangeEducationSelect();
+    $("#user_profile_attributes_major").val("");
+    $("#user_profile_attributes_school").val("");
+    $("#user_profile_attributes_semesters_left_id").val("");
+    $("#user_profile_attributes_reasons_school_not_done").val("");
   });
   $('input[type=radio][name="user[profile_attributes][job_status]"]').on("change",function() {
     jobStatus = $(this).val();
