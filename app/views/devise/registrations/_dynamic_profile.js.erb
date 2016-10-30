@@ -111,10 +111,22 @@ function onChangeEducationSelect() {
   switch (educationId) {
     case 5:
     case 7:
+    case 15:
+    case 17:
+    case 23:
+    case 25:
+    case 31:
+    case 33:
       q12.removeClass("hidden");
       q13.removeClass("hidden");
     case 6:
     case 8:
+    case 16:
+    case 18:
+    case 24:
+    case 26:
+    case 32:
+    case 34:
       q10.removeClass("hidden");
       q11.removeClass("hidden");
   }
@@ -166,12 +178,16 @@ function addValidations() {
     var educationId = parseInt($("#user_profile_attributes_education_id").val());
     if (($(element).attr("name") == "user[profile_attributes][major]" ||
          $(element).attr("name") == "user[profile_attributes][school]") &&
-        (educationId == 5 || educationId == 6 || educationId == 7 || educationId == 8)) {
+        (educationId == 5 || educationId == 6 || educationId == 7 || educationId == 8 ||
+         educationId == 15 || educationId == 16 || educationId == 17 || educationId == 18 ||
+         educationId == 23 || educationId == 24 || educationId == 25 || educationId == 26 ||
+         educationId == 31 || educationId == 32 || educationId == 33 || educationId == 34)) {
       return value != "";
     }
     if (($(element).attr("name") == "user[profile_attributes][semesters_left_id]" ||
         $(element).attr("name") == "user[profile_attributes][reasons_school_not_done]") &&
-       (educationId == 5 || educationId == 7)) {
+       (educationId == 5 || educationId == 7 || educationId == 15 || educationId == 17 ||
+        educationId == 23 || educationId == 25 || educationId == 31 || educationId == 33)) {
       return value != "";
     }
 
