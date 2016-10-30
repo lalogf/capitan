@@ -65,11 +65,11 @@
 			-moz-appearance: none;
 			-webkit-appearance: none;
 			appearance: none;
-			background-image: url(image-url('flecha-desactivada.png'));
+			background-image: image-url('flecha-desactivada.png');
 	    background-repeat: no-repeat;
 	    background-position: 99% 50%;
 	    &:hover {
-	    	background-image: url(image-url('flecha-activa.png'));
+	    	background-image: image-url('flecha-activa.png');
 	    }
 		}
 		label.radio_buttons {
@@ -150,7 +150,7 @@
 			}
 			select {
 				background-color: #f7f7f7;
-				background-image: url(image-url('flecha-activa.png'));
+				background-image: image-url('flecha-activa.png');
 			}
 		}
 		.form-actions input {
