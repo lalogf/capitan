@@ -1,13 +1,9 @@
-<% content_for :scripts do %>
-  <script>
-    $(function() {
-      $("#terms-conditions").prop("checked",false);
-      $("#sign-up-link").removeClass("disabled").addClass("disabled");
-      $("#terms-conditions").change(function() {
-        $("#sign-up-link").toggleClass("disabled");
-      });
-    });
-  </script>
+<% content_for :head do %>
+  <meta content='http://capitan-dev.laboratoria.la/admission' property='og:url'>
+  <meta content='website' property='og:type'>
+  <meta content='Se parte de la próxima promoción de laboratoria' property='og:title'>
+  <meta content='Ingresa a la siguiente dirección para inscribirte para ser parte de la siguiente promoción de laboratoria' property='og:description'>
+  <meta content='http://capitan-dev.laboratoria.la/assets/hero-img-postula-2ab99126d194334cb4c9d2f7acea1d1be6461d56ce029b7772516a8922a5d44c.jpg' property='og:image'>
 <% end %>
 <section class="admission-banner">
   <div class="opacity"></div>
@@ -64,3 +60,14 @@
     <a id="sign-up-link" class="btn btn-default btn-block text-white pv-21 mt-28 disabled" href="/signup">empezar →</a>
   </div>
 </section>
+<% content_for :scripts do %>
+  <script>
+    $(function() {
+      $("#terms-conditions").prop("checked",false);
+      $("#sign-up-link").removeClass("disabled").addClass("disabled");
+      $("#terms-conditions").change(function() {
+        $("#sign-up-link").toggleClass("disabled");
+      });
+    });
+  </script>
+<% end %>
