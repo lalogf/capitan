@@ -208,7 +208,6 @@ function addValidations() {
   },'Debes completar este campo para continuar.');
 
   $("form").validate({
-    debug: true,
     rules: {
       "user[profile_attributes][name]": {
         required: true,
@@ -220,13 +219,16 @@ function addValidations() {
       },
       "user[profile_attributes][dni]" : "required",
       "user[profile_attributes][birth_date(1i)]" : {
-        require_from_group: [3,".birth_date"]
+        require_from_group: [3,".birth_date"],
+        date: false
       },
       "user[profile_attributes][birth_date(2i)]" : {
-        require_from_group: [3,".birth_date"]
+        require_from_group: [3,".birth_date"],
+        date: false
       },
       "user[profile_attributes][birth_date(3i)]" : {
-        require_from_group: [3,".birth_date"]
+        require_from_group: [3,".birth_date"],
+        date: false
       },
       "user[signup_branch]" : "required",
       "user[profile_attributes][district_id]" : "required",

@@ -1,5 +1,5 @@
 # Traducciones adicionales en https://github.com/plataformatec/devise/wiki/I18n
- 
+
 es:
   devise:
     confirmations:
@@ -16,6 +16,7 @@ es:
       timeout: "Tu sesión ha expirado, por favor identifícate de nuevo para continuar."
       unauthenticated: "Necesitas iniciar sesión o registrarte para continuar."
       unconfirmed: "Debes confirmar tu cuenta para continuar."
+      not_approved: 'Tu cuenta no ha sido aprobada aún por el administrador del sistema.'
     mailer:
       confirmation_instructions:
         subject: "Instrucciones de confirmación"
@@ -38,6 +39,7 @@ es:
       signed_up_but_inactive: "Te has registrado correctamente, pero no has podido iniciar sesión porque no has activado tu cuenta."
       signed_up_but_locked: "Te has registrado correctamente, pero no has podido iniciar sesión porque tu cuenta está bloqueada."
       signed_up_but_unconfirmed: "Se te ha enviado un mensaje con un enlace de confirmación. Por favor visita el enlace para activar tu cuenta."
+      signed_up_but_not_approved: 'Tu cuenta es válida pero aún no ha sido aprobada por el administrador del sistema'
       update_needs_confirmation: "Actualizaste tu cuenta correctamente, sin embargo necesitamos verificar tu nueva cuenta de correo. Por favor revisa tu correo electrónico y visita el enlace para finalizar la confirmación de tu nueva dirección de correo electrónico."
       updated: "Has actualizado tu cuenta correctamente."
     sessions:

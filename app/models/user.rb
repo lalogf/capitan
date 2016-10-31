@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, on: :create
   validates :group_id, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true
   validates_format_of :email,:with => Devise::email_regexp
 
   has_attached_file :avatar,
@@ -83,8 +83,17 @@ class User < ActiveRecord::Base
     profile.nil? or profile.name.blank? ? self.email : profile.name.strip
   end
 
+  #Devise custom methods
   def email_required?
     false
+  end
+
+  def active_for_authentication?
+    super && !applicant?
+  end
+
+  def inactive_message
+    applicant? ? :not_approved : super
   end
 
   def branch
