@@ -159,7 +159,7 @@ function otherTechActivities() {
 function addValidations() {
 
   $.validator.addMethod('letter_and_space', function (value, element, param) {
-      return value.match(/^[a-zA-Z\s]*$/);
+      return value.match(/^[A-Za-z\s\u00C0-\u017F]+$/);
   }, 'Este campo debe contener letras.');
 
   $.validator.addMethod('required_education',function(value,element,param) {
