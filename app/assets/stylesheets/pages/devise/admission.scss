@@ -44,11 +44,11 @@
     font-size: 15px;
     font-weight: 400;
   }
-	> div > div {
+	> div > div > div {
 		position: relative;
 		input[type="checkbox"] {
 			position: absolute;
-			top: 40%;
+			top: 25%;
     	margin-top: 0px;
       -webkit-appearance: none;
       -moz-appearance: none;
