@@ -36,6 +36,7 @@
             <%= p.input :job_status, label:"10. ¿Has trabajado antes?", collection: Profile.enum_labels(Profile.job_statuses,"job_status"), as: :radio_buttons %>
             <div class="indicaciones indicacion-trabajo mb-49">Para las próximas preguntas de esta sección, considera tu trabajo actual para responder. Si no estás trabajando, considera los datos de tu último trabajo.</div>
             <%= p.input :work_for, label: "¿Trabajas/Trabajabas para una empresa o de manera independiente?", collection: Profile.enum_labels(Profile.work_fors,"work_for"), as: :radio_buttons %>
+            <%= p.input :work_for_details, label: false, placeholder: "Especifica tu otra forma de trabajo" %>
             <%= p.input :job_title, label: "¿Cuál es/era tu rol?", placeholder: "ej. administradora de ventas" %>
             <%= p.input :job_payroll, label: "¿Es/Era un trabajo formal? - Se considera formal si es que cuando recibiste el pago giraste recibos por honorarios o te encontrabas en planilla.", as: :radio_buttons %>
             <%= p.input :job_type, label: "¿Cuál es/era tu horario?", collection: Profile.enum_labels(Profile.job_types,"job_type"),as: :radio_buttons %>
@@ -44,20 +45,20 @@
               <%= image_tag "admission/familia.png", alt: "Contexto Familiar" %>
               <h2 class="text-uppercase">Contexto Familiar</h2>
             </div>
-            <%= p.association :family_income, collection: FamilyIncome.by_branch(resource.signup_branch), label:"11. ¿Cuál es el ingreso mensual de tu familia?<br/><p>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, inclue el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá.</p>".html_safe %>
-            <%= p.input :relatives, label: "12. ¿Cuántas personas más viven en tu casa (sin contarte)?", placeholder: "ej: 5" %>
+            <%= p.association :family_income, collection: FamilyIncome.by_branch(resource.signup_branch), label:"11. ¿Cuál es el ingreso mensual de tu familia?<br/><p>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, incluye el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá.</p>".html_safe %>
+            <%= p.input :relatives, label: "12. ¿Cuántas personas más viven en tu casa (sin contarte)?", placeholder: "ej: 5", :input_html => { min: 0 } %>
             <%= p.input :childs, label: "13. ¿Tienes hijos?", as: :radio_buttons %>
             <div class="subtitulo mb-35 pt-70 mt-21">
               <%= image_tag "admission/intereses.png", alt: "Intereses" %>
               <h2 class="text-uppercase">Intereses</h2>
             </div>
             <%= p.input :tech_savy, label: "14. ¿Con qué puntaje calificarías tu interés por la tecnología?",collection:[["",1],["",2],["",3],["",4],["",5]], as: :radio_buttons,:item_wrapper_class => 'checkbox-inline' %>
-            <%= p.association :tech_related_activities,collection: TechRelatedActivity.all, as: :check_boxes, label: "15. ¿Qué tipo de actividades relacionadas a la tecnología te gustan hacer?" %>
-            <%= p.input :other_tech_related_activities, label: "Especifica  las actividades que realizas" %>
             <%= p.input :computer_at_home, label: "16. ¿Tienes una computadora/un computador funcional en casa?", as: :radio_buttons %>
             <%= p.input :internet_access, label: "17. ¿Tienes una conexión a internet en casa?", as: :radio_buttons %>
             <%= p.input :smartphone, label: "18. ¿Tienes un smartphone?", as: :radio_buttons %>
             <%= p.input :computer_use ,label: "19. ¿Con qué frecuencia usas computadoras/el computador?", collection: Profile.enum_labels(Profile.computer_uses,"computer_use"), as: :radio_buttons %>
+            <%= p.association :tech_related_activities,collection: TechRelatedActivity.all, as: :check_boxes, label: "15. ¿Qué tipo de actividades relacionadas a la tecnología sueles hacer?" %>
+            <%= p.input :other_tech_related_activities, label: "Especifica  las actividades que realizas" %>
             <%= p.input :biography, label: "20. Descríbete a ti misma en 100 palabras como máximo",as: :text %>
             <%= p.input :reasons_to_enter, label: "21. ¿Por qué quieres ingresar a Laboratoria?", as: :text %>
             <%= p.input :how_you_find_out, label: "22. ¿Cómo te enteraste de Laboratoria?", as: :text %>
@@ -68,9 +69,14 @@
           <div class="container-sm ph-42 pv-70">
             <div class="spots">
               <h2 class="text-center light mb-42">Elige tu turno</h2>
-              <p class="text-justify">Gracias por contestar estas preguntas. Ahora tu próximo paso es asistir a Laboratoria para una sesión de pruebas que durará 4 horas. Esta sesión se dividirá en dos partes: primero te haremos varias preguntas para conocerte mejor y descubrir tus habilidades socio emocionales. Luego, mediremos tu potencial por la programación. Te haremos preguntas de lógica y abstracción y te presentaremos una lectura sencilla sobre desarrollo web front end, para que luego contestes preguntas sobre lo que leíste. No hace falta estudiar, pero si venir con mucha energía y concentrarte en tus respuestas.</p>
-              <p>Por favor escoge el turno en el cual vas a venir a tomar la prueba a finales de noviembre y principios de diciembre:</p>
-              <%= p.association :spot, label: "Elige tu turno", placeholder: "Elige una opción", collection: Spot.by_branch(resource.signup_branch) %>
+              <p class="text-justify">Muchas gracias por contestar estas preguntas. Tu próximo paso es asistir a Laboratoria
+                para una sesión de pruebas que durará aproximadamente 4 horas. Abajo podrás escoger el turno
+                en el cual quieres venir. Esta sesión tiene como objetivo conocerte mejor, descubrir tus
+                habilidades socio emocionales y cognitivas y medir tu capacidad para aprender a programar.
+                No es necesario estudiar, así que no te preocupes por eso. Solamente pedimos que
+                vengas con mucha energía y que te concentres durante las pruebas.</p>
+              <%= p.association :spot, label: "Por favor escoge el turno en el cual vas a venir a tomar las pruebas a finales
+              de noviembre o principios de diciembre:", placeholder: "Elige una opción", collection: Spot.by_branch(resource.signup_branch) %>
             </div>
             <p><i>Revisa tus respuestas antes de dar clic en enviar. No podrás modificarlas luego.</i></p>
             <div class="form-actions">
