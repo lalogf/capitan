@@ -346,15 +346,14 @@ Spot.find_or_create_by(name: "Jueves 01 de diciembre - 6:00 a 9:00 pm", branch:l
 
 Spot.find_or_create_by(name: "Sábado 3 de diciembre - 8:30am a 1:00 pm", branch:mexico)
 Spot.find_or_create_by(name: "Sábado 3 de diciembre - 12:30pm a 5:00 pm", branch:mexico)
-Spot.find_or_create_by(name: "Domingo 4 de diciembre - 8:30am a 9:00 pm", branch:mexico)
+Spot.find_or_create_by(name: "Domingo 4 de diciembre - 8:30am a 1:00 pm", branch:mexico)
 Spot.find_or_create_by(name: "Domingo 4 de diciembre - 12:30pm a 5:00 pm", branch:mexico)
-Spot.find_or_create_by(name: "Martes 6 de diciembre - 5:30pm a 10:00 pm", branch:mexico)
-Spot.find_or_create_by(name: "Miércoles 7 de diciembre - 5:30pm a 10:00 pm", branch:mexico)
+Spot.find_or_create_by(name: "Jueves 8 de diciembre - 5:30pm a 10:00 pm", branch:mexico)
+Spot.find_or_create_by(name: "Viernes 9 de diciembre - 5:30pm a 10:00 pm", branch:mexico)
 Spot.find_or_create_by(name: "Sábado 10 de diciembre - 8:30am a 1:00 pm", branch:mexico)
 Spot.find_or_create_by(name: "Sábado 10 de diciembre - 12:30pm a 5:00 pm", branch:mexico)
-Spot.find_or_create_by(name: "Domingo 11 de diciembre - 8:30am a 9:00 pm", branch:mexico)
+Spot.find_or_create_by(name: "Domingo 11 de diciembre - 8:30am a 1:00 pm", branch:mexico)
 Spot.find_or_create_by(name: "Domingo 11 de diciembre - 12:30pm a 5:00 pm", branch:mexico)
-
 
 TechRelatedActivity.find_or_create_by(name: "Juego videojuegos")
 TechRelatedActivity.find_or_create_by(name: "Hago diseño digital")
