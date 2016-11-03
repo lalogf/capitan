@@ -7,7 +7,7 @@ class MandrillDeviseMailer < Devise::Mailer
   )
 
   def new_registration(user)
-    subject = "Bienvenido a laboratoria"
+    subject = "Este es tu código de postulante y turno para exámenes"
     merge_vars = {
       FNAME: user.profile.name || user.email,
       CPOSTULANTE: user.code,
