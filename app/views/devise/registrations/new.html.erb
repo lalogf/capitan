@@ -40,12 +40,12 @@
             <%= p.input :job_title, label: "¿Cuál es/era tu rol?", placeholder: "ej. administradora de ventas" %>
             <%= p.input :job_payroll, label: "¿Es/Era un trabajo formal? - Se considera formal si es que cuando recibiste el pago giraste recibos por honorarios o te encontrabas en planilla.", as: :radio_buttons %>
             <%= p.input :job_type, label: "¿Cuál es/era tu horario?", collection: Profile.enum_labels(Profile.job_types,"job_type"),as: :radio_buttons %>
-            <%= p.association :job_salary, label: "¿Cuánto recibes/recibías de sueldo al mes?<br/><p>Después de todos los descuentos del mes (impuestos, seguros, etc.), el sueldo neto es el monto que recibes/recibías en efectivo o en tu cuenta bancaria al final del mes.</p>".html_safe, collection: JobSalary.by_branch(resource.signup_branch), placeholder: "Elige una opción" %>
+            <%= p.association :job_salary, label: "¿Cuánto recibes/recibías de sueldo al mes?<br/><p>Por favor indica tu  sueldo neto, lo que recibes/recibías en efectivo o en tu cuenta al final de cada mes, después de todos los descuentos (impuestos, seguros, etc).</p>".html_safe, collection: JobSalary.by_branch(resource.signup_branch), placeholder: "Elige una opción" %>
             <div class="subtitulo mb-35 pt-70 mt-21">
               <%= image_tag "admission/familia.png", alt: "Contexto Familiar" %>
               <h2 class="text-uppercase">Contexto Familiar</h2>
             </div>
-            <%= p.association :family_income, collection: FamilyIncome.by_branch(resource.signup_branch), label:"11. ¿Cuál es el ingreso mensual de tu familia?<br/><p>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, incluye el tuyo. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá.</p>".html_safe %>
+            <%= p.association :family_income, collection: FamilyIncome.by_branch(resource.signup_branch), label:"11. ¿Cuál es el ingreso mensual de tu familia?<br/><p>Este ingreso es la suma de todas las contribuciones de los miembros de tu hogar. Si contribuyes, incluye tu salario. Ejemplo: si vives con tu mamá y tu hermano, y sólo tu mamá y tú trabajan, el ingreso familiar es la suma de tu ingreso mensual con el ingreso mensual de tu mamá.</p>".html_safe %>
             <%= p.input :relatives, label: "12. ¿Cuántas personas más viven en tu casa (sin contarte)?", placeholder: "ej: 5", :input_html => { min: 0 } %>
             <%= p.input :childs, label: "13. ¿Tienes hijos?", as: :radio_buttons %>
             <div class="subtitulo mb-35 pt-70 mt-21">
