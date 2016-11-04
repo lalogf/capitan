@@ -53,11 +53,11 @@
               <h2 class="text-uppercase">Intereses</h2>
             </div>
             <%= p.input :tech_savy, label: "14. ¿Con qué puntaje calificarías tu interés por la tecnología?",collection:[["",1],["",2],["",3],["",4],["",5]], as: :radio_buttons,:item_wrapper_class => 'checkbox-inline' %>
-            <%= p.input :computer_at_home, label: "16. ¿Tienes una computadora/un computador funcional en casa?", as: :radio_buttons %>
-            <%= p.input :internet_access, label: "17. ¿Tienes una conexión a internet en casa?", as: :radio_buttons %>
-            <%= p.input :smartphone, label: "18. ¿Tienes un smartphone?", as: :radio_buttons %>
-            <%= p.input :computer_use ,label: "19. ¿Con qué frecuencia usas computadoras/el computador?", collection: Profile.enum_labels(Profile.computer_uses,"computer_use"), as: :radio_buttons %>
-            <%= p.association :tech_related_activities,collection: TechRelatedActivity.all, as: :check_boxes, label: "15. ¿Qué tipo de actividades relacionadas a la tecnología sueles hacer?" %>
+            <%= p.input :computer_at_home, label: "15. ¿Tienes una computadora/un computador funcional en casa?", as: :radio_buttons %>
+            <%= p.input :internet_access, label: "16. ¿Tienes una conexión a internet en casa?", as: :radio_buttons %>
+            <%= p.input :smartphone, label: "17. ¿Tienes un smartphone?", as: :radio_buttons %>
+            <%= p.input :computer_use ,label: "18. ¿Con qué frecuencia usas computadoras/el computador?", collection: Profile.enum_labels(Profile.computer_uses,"computer_use"), as: :radio_buttons %>
+            <%= p.association :tech_related_activities, collection: TechRelatedActivity.all, as: :check_boxes, label: "19. ¿Qué tipo de actividades relacionadas a la tecnología sueles hacer? <br /><p>Puedes marcar todas las opciones con las que te identifiques.</p>".html_safe %>
             <%= p.input :other_tech_related_activities, label: "Especifica  las actividades que realizas" %>
             <%= p.input :biography, label: "20. Descríbete a ti misma en 100 palabras como máximo",as: :text %>
             <%= p.input :reasons_to_enter, label: "21. ¿Por qué quieres ingresar a Laboratoria?", as: :text %>
