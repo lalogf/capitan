@@ -39,6 +39,7 @@
 #  reasons_to_enter              :string(255)
 #  how_you_find_out              :string(255)
 #  what_is_laboratoria           :string(255)
+#  student_lifespan              :text(65535)
 #
 
 class Profile < ActiveRecord::Base
