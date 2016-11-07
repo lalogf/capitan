@@ -1,6 +1,6 @@
 # Capitán: Agile education LMS ([Agile in the classroom](https://medium.com/laboratoria/the-agile-classroom-embracing-an-agile-mindset-in-education-ae0f19e801f3#.a4ii4k31d))
 
-This project implements the main feature needed to support an [Agile classroom](https://medium.com/laboratoria/the-agile-classroom-embracing-an-agile-mindset-in-education-ae0f19e801f3#.a4ii4k31d)). It is meant to be a shell around for our curricula and to include tools that help students learn more effectively along their learning journeys.
+This project implements the main feature needed to support an [Agile classroom](https://medium.com/laboratoria/the-agile-classroom-embracing-an-agile-mindset-in-education-ae0f19e801f3#.a4ii4k31d). It is meant to be a shell around for our curricula and to include tools that help students learn more effectively along their learning journeys.
 
 The project has been open-sourced so many others can benefit from a Learning Management System that supports agile from day one. Also it is a resource for students who want to see how the tools they are using are built and to give students the opportunity to contribute to a real open-source project.
 
