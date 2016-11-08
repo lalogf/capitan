@@ -11,7 +11,8 @@ class MandrillDeviseMailer < Devise::Mailer
     merge_vars = {
       FNAME: user.profile.name || user.email,
       CPOSTULANTE: user.code,
-      TEXAMEN: user.profile.spot.name
+      TEXAMEN: user.profile.spot.name,
+      BRANCH_ADDRESS: user.branch.address
     }
 
     body = mandrill_template("admission-success-template",merge_vars)

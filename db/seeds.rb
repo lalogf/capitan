@@ -1,8 +1,8 @@
 #branches
-lima     = Branch.find_or_create_by(name: "Lima", code:"LIM20161")
-mexico   = Branch.find_or_create_by(name: "México", code: "MEX20161")
-santiago = Branch.find_or_create_by(name: "Chile", code: "CHI20161")
-arequipa = Branch.find_or_create_by(name: "Arequipa", code: "AQP20161")
+lima     = Branch.find_or_create_by(name: "Lima", code:"LIM20161", address: "Av. José Pardo 601, piso 11 oficina 1104, Miraflores")
+mexico   = Branch.find_or_create_by(name: "México", code: "MEX20161", address: "Calle Campeche 280, Int. 303, Hipódromo Condesa")
+santiago = Branch.find_or_create_by(name: "Chile", code: "CHI20161", address: "Av. Puma 1180, Recoleta (IF Blanco)")
+arequipa = Branch.find_or_create_by(name: "Arequipa", code: "AQP20161", address: "Av. salaverry S/N, Lara - Socabaya (Ref. a una cuadra del club el golf y al costado del colegio Santisimo Salvador)")
 
 #groups
 Group.find_or_create_by(name: "LIM20141", description: "Promoción LIM20141", branch: lima)

@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  code       :string(255)
+#  address    :string(255)
 #
 
 class Branch < ActiveRecord::Base
