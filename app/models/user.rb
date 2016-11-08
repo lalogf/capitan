@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, on: :create
   validates :group_id, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
   validates_format_of :email,:with => Devise::email_regexp
 
   has_attached_file :avatar,
