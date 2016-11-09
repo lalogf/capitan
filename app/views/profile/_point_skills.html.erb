@@ -3,7 +3,7 @@
   <div class="row mt-49 center-block">
     <% @data.each_with_index do |skill_point, index| %>
       <% if skill_point[:name] != "badges" and skill_point[:y] > 0 %>
-        <div class="col-md-2 col-xs-6 col-sm-4 <%= "col-md-offset-#{(12 - 2*@data.length)/2}" if index == 0 and (12 - 2*@data.length)/2 > 0%>">
+        <div class="col-md-2 col-xs-6 col-sm-4 <%= "col-md-offset-#{(12 - 2*(@data.select {|sp| sp[:name] != "badges"}).length)/2}" if index == 0 and (12 - 2*(@data.select {|sp| sp[:name] != "badges"}).length)/2 > 0%>">
           <% points = percent(skill_point[:student_marks], skill_point[:y]).round %>
             <div class="c100 center <%= "p#{points}" %> small gray">
               <span><%= points %>%

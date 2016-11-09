@@ -57,7 +57,7 @@
     </div>
   <% end %>
 
-  <% if @soft_skills_points %>
+  <% unless @soft_skills_points.empty? %>
     <div id="soft-skills-points">
      <%= render 'point_soft_skills' %>
     </div>
