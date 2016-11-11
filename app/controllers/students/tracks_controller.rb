@@ -6,6 +6,7 @@ class Students::TracksController < ApplicationController
   end
 
   def tracks
+    @user = current_user
     @tracks = Track.all
   end
 
