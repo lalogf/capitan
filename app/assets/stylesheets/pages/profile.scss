@@ -135,9 +135,14 @@
   }
 }
 
+.full-width {
+  width: 100%;
+}
+
 #content {
   margin-top: 90px;
   p {
+    font-size: 20px;
     margin-top: 21px;
   }
   .links-postula {
@@ -145,6 +150,7 @@
     li {
       margin-top: 14px;
       a {
+        font-size: 20px;
         &:hover {
           color: #F7B617;
           transition: all 0.3s ease;
@@ -165,6 +171,20 @@
     margin-bottom: 140px;
     font-size: 21px;
     box-shadow: none;
+  }
+}
+
+#final-prueba {
+  h3 {
+    font-size: 40px;
+    margin-top: 70px;
+  }
+  p {
+    margin: 44px 0;
+    font-size: 20px;
+  }
+  .text-final {
+    margin: 77px 0;
   }
 }
 

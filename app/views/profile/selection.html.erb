@@ -31,7 +31,7 @@
     <p>
       Si tienes alguna duda, puedes pedir ayuda a quien esté encargada de la sesión de pruebas.
     </p>
-    </p>
+    <p>
       Que la fuerza esté contigo.
     </p>
   </div>
@@ -56,9 +56,9 @@
         </ul>
       </div>
     </div>
-    <a href="#" class="btn light h3 btn-prueba text-uppercase text-center">
-      finalizar pruebas
-      <span>&#8594;</span>
-    </a>
+    <%= link_to selection_success_path, :class => "btn light h3 btn-prueba text-uppercase text-center" do %>
+      finalizar pruebas <span>&#8594;</span>
+    <%end%>
+
   </div>
 </section>
