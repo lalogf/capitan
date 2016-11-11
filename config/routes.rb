@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   authenticate :user do
 
     namespace :students do
-      get 'tracks/home', as: :student_tracks_home
-      get 'tracks/performance', as: :student_tracks_home
-      get 'tracks/tracks', as: :student_tracks_home
-      get 'tracks/resources', as: :student_tracks_home
+      get 'tracks/home'
+      get 'tracks/performance'
+      get 'tracks/tracks'
+      get 'tracks/resources'
     end
 
     get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
