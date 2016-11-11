@@ -116,3 +116,78 @@
 .lessons-panel .lesson-checkbox label {
   font-weight: normal;
 }
+
+.bg-selection {
+  background-image: image-url('hero_bienvenida.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 400px;
+  h1 {
+    color: white;
+    font-size: 40px;
+  }
+  img {
+    position: absolute;
+    width: 35px;
+    bottom: 40px;
+  }
+}
+
+#content {
+  margin-top: 90px;
+  p {
+    margin-top: 21px;
+  }
+  .links-postula {
+    margin-top: 56px;
+    li {
+      margin-top: 14px;
+      a {
+        &:hover {
+          color: #F7B617;
+          transition: all 0.3s ease;
+          border-bottom: 1px solid #f7b617;
+        }
+      }
+    }
+    ul {
+      list-style: none;
+    }
+  }
+  .btn-prueba {
+    width: 100%;
+    background-color: #F7B617;
+    padding: 14px 7px;
+    color: white;
+    margin-top: 70px;
+    margin-bottom: 140px;
+    font-size: 21px;
+    box-shadow: none;
+  }
+}
+
+.border-bottom {
+  border-bottom: 1px solid #555555;
+}
+
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
