@@ -68,6 +68,14 @@ class ProfileController < ApplicationController
     render :layout => "devise"
   end
 
+  def selection
+    render :layout => "devise"
+  end
+
+  def selection_success
+    render :layout => "devise"
+  end
+
   private
 
   def capitalize_page_type points
