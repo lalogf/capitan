@@ -12,6 +12,14 @@
 
 class Track < ActiveRecord::Base
   has_many :courses
+  has_many :enrollments, :dependent => :destroy
+  has_many :users, through: :enrollments
+
+  accepts_nested_attributes_for :enrollments
+
+  def self.available_tracks(user)
+    Track.joins(:enrollments).where(" enrollments.user_id = ? and enrollments.status = 1", user.id)
+  end
 
   def duration
     query = "select sum(duration) from units u join courses c on u.course_id = c.id join tracks t on c.track_id = t.id where t.id = #{self.id}"
@@ -35,5 +43,5 @@ class Track < ActiveRecord::Base
       when "AREQUIPA"
         teachers = [ {name: "Gerson Aduviri", image: "teachers/arequipa/gerson.jpg", title: "Full Stack Developer", mail: "gerson@laboratoria.la"} ]
     end
-  end  
+  end
 end

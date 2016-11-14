@@ -1,0 +1,12 @@
+<%= render 'shared/students/header/frame' %>
+<% @tracks.each do |track| %>
+  <div class="track">
+    <h2><%= track.name %></h2>
+    <p><%= track.description %></p>
+    <% if track.name != "Selección" %>
+      <%= link_to "Link to track", show_track_path(track.id) %>
+    <% else %>
+      <%= link_to "Link to track", selection_path %>
+    <% end %>
+  </div>
+<% end %>

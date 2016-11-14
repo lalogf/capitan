@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   authenticate :user do
 
     namespace :students do
-      get 'tracks/home'
-      get 'tracks/performance'
-      get 'tracks/tracks'
-      get 'tracks/resources'
+      get 'dashboard/home'
+      get 'dashboard/performance'
+      get 'dashboard/tracks'
+      get 'dashboard/resources'
     end
 
     get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     get 'selection' => 'profile#selection', :as => :selection
     get 'selection_success' => 'profile#selection_success', :as => :selection_success
 
-    root :to => 'tracks#show_user_track'
+    root :to => 'students/dashboard#tracks'
   end
 
   get 'admission' => 'profile#admission', :as => :admission

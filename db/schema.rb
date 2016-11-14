@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111045058) do
+ActiveRecord::Schema.define(version: 20161112163826) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -122,13 +122,13 @@ ActiveRecord::Schema.define(version: 20161111045058) do
 
   create_table "enrollments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
-    t.integer  "course_id",  limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.boolean  "status",     limit: 1
+    t.integer  "track_id",   limit: 4
   end
 
-  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id", using: :btree
+  add_index "enrollments", ["track_id"], name: "index_enrollments_on_track_id", using: :btree
   add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
 
   create_table "family_incomes", force: :cascade do |t|
@@ -491,7 +491,7 @@ ActiveRecord::Schema.define(version: 20161111045058) do
   add_foreign_key "courses", "tracks"
   add_foreign_key "districts", "branches"
   add_foreign_key "educations", "branches"
-  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "tracks"
   add_foreign_key "enrollments", "users"
   add_foreign_key "family_incomes", "branches"
   add_foreign_key "groups", "branches"

@@ -41,10 +41,6 @@ class Course < ActiveRecord::Base
 
     belongs_to :track
     has_many :units, :dependent => :destroy
-    has_many :enrollments, :dependent => :destroy
-    has_many :users, through: :enrollments
-
-    accepts_nested_attributes_for :enrollments
 
     def get_course_sum_points
       points = 0
@@ -55,10 +51,6 @@ class Course < ActiveRecord::Base
            points += page.question_points * page.question_groups.count if page.question_points != nil
       end
       points
-    end
-
-    def self.available_courses(user)
-      Course.joins(:enrollments).where(" enrollments.user_id = ? and enrollments.status = 1", user.id)
     end
 
     def has_pages(branch_id)
