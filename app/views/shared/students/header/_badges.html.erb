@@ -3,13 +3,14 @@
   <div class="hidden-xs mb-7 separator separator-primary separator-left"></div>
   <div class="mt-21">
     <% if !@sprint_badges.empty? %>
-      <% @sprint_badges.each do |key, count| %>
-        <% if key != nil %>
+      <% @sprint_badges.each do |sp| %>
           <div class="col-sm-2 minh-70 ph-7 badge">
-              <%= image_tag key.image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "70" %>
-              <div class="badge-count"><p><%= "x#{count}" %></p></div>
+              <%= image_tag sp[0].image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "70" %>
+              <div class="badge-count"><p><%= "x#{sp[1]}" %></p></div>
           </div>
-        <% else %>
+      <% end %>
+      <% if @sprint_badges.size < 5 %>
+        <% (5 - @sprint_badges.size).times do %>
           <div class="empty-badge"></div>
         <% end %>
       <% end %>

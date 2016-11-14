@@ -5,7 +5,7 @@
 #  id                            :integer          not null, primary key
 #  user_id                       :integer
 #  name                          :string(255)
-#  biography                     :string(255)
+#  biography                     :text(65535)
 #  dni                           :string(255)
 #  district_id                   :integer
 #  phone1                        :string(255)
@@ -36,9 +36,9 @@
 #  education_id                  :integer
 #  semesters_left_id             :integer
 #  spot_id                       :integer
-#  reasons_to_enter              :string(255)
-#  how_you_find_out              :string(255)
-#  what_is_laboratoria           :string(255)
+#  reasons_to_enter              :text(65535)
+#  how_you_find_out              :text(65535)
+#  what_is_laboratoria           :text(65535)
 #  student_lifespan              :text(65535)
 #
 

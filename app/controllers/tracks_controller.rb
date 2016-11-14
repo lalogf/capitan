@@ -2,6 +2,7 @@ class TracksController < ApplicationController
 
   before_action :set_track, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, except: [:show_user_track, :course_details]
+  before_action :no_applicant_allowed
 
   layout "admin", except: [:show_user_track, :course_details]
 

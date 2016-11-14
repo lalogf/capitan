@@ -2,12 +2,17 @@
 #
 # Table name: tracks
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  description :string(255)
-#  syllabus    :string(255)
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  description       :string(255)
+#  syllabus          :string(255)
+#  color             :string(255)
+#  icon_file_name    :string(255)
+#  icon_content_type :string(255)
+#  icon_file_size    :integer
+#  icon_updated_at   :datetime
 #
 
 class Track < ActiveRecord::Base
@@ -16,6 +21,13 @@ class Track < ActiveRecord::Base
   has_many :users, through: :enrollments
 
   accepts_nested_attributes_for :enrollments
+
+  has_attached_file :icon,
+                    :styles => { :normal => "94x94", :responsive => "56x56" },
+                    :url => "/system/:class/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension"
+
+  validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
 
   def self.available_tracks(user)
     Track.joins(:enrollments).where(" enrollments.user_id = ? and enrollments.status = 1", user.id)

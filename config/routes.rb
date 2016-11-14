@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get 'dashboard/performance'
       get 'dashboard/tracks'
       get 'dashboard/resources'
+      get 'tracks/:id' => 'tracks#show', as: :tracks
+#      get 'tracks/:track_id/courses/:id' => 'courses/show', as: :courses
     end
 
     get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
@@ -63,7 +65,7 @@ Rails.application.routes.draw do
     get 'selection' => 'profile#selection', :as => :selection
     get 'selection_success' => 'profile#selection_success', :as => :selection_success
 
-    root :to => 'students/dashboard#tracks'
+    root :to => 'tracks#show_user_track'
   end
 
   get 'admission' => 'profile#admission', :as => :admission

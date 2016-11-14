@@ -89,7 +89,8 @@ class User < ActiveRecord::Base
   end
 
   def active_for_authentication?
-    super && !applicant?
+    #super && !applicant?
+    true
   end
 
   def inactive_message

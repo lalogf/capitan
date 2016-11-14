@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112163826) do
+ActiveRecord::Schema.define(version: 20161114191103) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -81,23 +81,16 @@ ActiveRecord::Schema.define(version: 20161112163826) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string   "name",                          limit: 255
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.text     "description",                   limit: 65535
-    t.string   "avatar_file_name",              limit: 255
-    t.string   "avatar_content_type",           limit: 255
-    t.integer  "avatar_file_size",              limit: 4
-    t.datetime "avatar_updated_at"
-    t.string   "color",                         limit: 255
-    t.string   "background_image_file_name",    limit: 255
-    t.string   "background_image_content_type", limit: 255
-    t.integer  "background_image_file_size",    limit: 4
-    t.datetime "background_image_updated_at"
-    t.string   "code",                          limit: 255
-    t.integer  "points",                        limit: 4
-    t.integer  "track_id",                      limit: 4
-    t.string   "course_plan",                   limit: 255
+    t.string   "name",        limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "description", limit: 65535
+    t.string   "color",       limit: 255
+    t.string   "code",        limit: 255
+    t.integer  "points",      limit: 4
+    t.integer  "track_id",    limit: 4
+    t.string   "course_plan", limit: 255
+    t.integer  "level",       limit: 4
   end
 
   add_index "courses", ["track_id"], name: "index_courses_on_track_id", using: :btree
@@ -423,11 +416,16 @@ ActiveRecord::Schema.define(version: 20161112163826) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "description", limit: 255
-    t.string   "syllabus",    limit: 255
+    t.string   "name",              limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "description",       limit: 255
+    t.string   "syllabus",          limit: 255
+    t.string   "color",             limit: 255
+    t.string   "icon_file_name",    limit: 255
+    t.string   "icon_content_type", limit: 255
+    t.integer  "icon_file_size",    limit: 4
+    t.datetime "icon_updated_at"
   end
 
   create_table "units", force: :cascade do |t|

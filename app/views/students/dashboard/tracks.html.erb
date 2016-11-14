@@ -4,7 +4,7 @@
     <h2><%= track.name %></h2>
     <p><%= track.description %></p>
     <% if track.name != "Selección" %>
-      <%= link_to "Link to track", show_track_path(track.id) %>
+      <%= link_to "Link to track", students_tracks_path(track.id) %>
     <% else %>
       <%= link_to "Link to track", selection_path %>
     <% end %>
