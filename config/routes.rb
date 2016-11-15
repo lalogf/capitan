@@ -54,6 +54,8 @@ Rails.application.routes.draw do
     post 'saveQuestion' => 'pages#saveQuestion'
 
     post 'changeUserStatus' => 'users#change_user_status'
+    get 'selection' => 'profile#selection', :as => :selection
+    get 'selection_success' => 'profile#selection_success', :as => :selection_success
 
     root :to => 'tracks#show_user_track'
   end
