@@ -1,15 +1,69 @@
-<section>
-  <div class="container-md pv-56">
-    <div class="row">
-      <div class="col-sm-3 col-sm-offset-1">
+
+<% content_for :scripts do %>
+<script type="text/javascript">
+  $('.arrows-xs').on("click", function() {
+    $('.arrow-down').toggleClass('arrow-show');
+    $('.arrow-up').toggleClass('arrow-show');
+  })
+</script>
+<% end %>
+
+<section id="profile-coder">
+  <div class="container pv-35 ph-7">
+    <div class="row m-0">
+      <div class="col-sm-3 col-xs-12 flex-center-row photo-profile pl-21-xs">
         <%= render 'shared/students/header/profile' %>
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-5 col-xs-12 mt-42 hidden-xs">
         <%= render 'shared/students/header/badges' %>
         <%= render 'shared/students/header/skills' %>
       </div>
-      <div class="col-sm-4">
-        <%= render 'shared/students/header/grades' %>
+      <div class="col-sm-2 col-xs-12 hidden-xs">
+        <%= render 'shared/students/header/tecnico' %>
+      </div>
+      <div class="col-sm-2 col-xs-12 hidden-xs">
+        <%= render 'shared/students/header/hse' %>
+      </div>
+      <div class="hidden-lg hidden-md text-center">
+        <a class="arrows-xs" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <%= image_tag 'arrow-down.png', class: "icon-arrow arrow-down text-center mt-21 arrow-show", width: "24" %>
+          <%= image_tag 'arrow-up.png', class: "icon-arrow arrow-up text-center mt-21", width: "24" %>
+        </a>
+        <div class="collapse" id="collapseExample">
+          <div class="">
+            <div class="col-sm-5 col-xs-12 mt-42 mt-14-xs">
+              <%= render 'shared/students/header/badges' %>
+              <%= render 'shared/students/header/skills' %>
+            </div>
+            <div class="col-sm-2 col-xs-12 mv-42">
+              <%= render 'shared/students/header/tecnico' %>
+            </div>
+            <div class="col-sm-2 col-xs-12 mv-42">
+              <%= render 'shared/students/header/hse' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="menu-tabs">
+  <div class="container-sm text-center">
+    <div class="row">
+      <div class="col-md-2 col-md-offset-1">
+        <a href="#" class="fs-14 inline-block pv-21">home</a>
+      </div>
+      <div class="col-md-2">
+        <a href="#" class="fs-14 inline-block pv-21">desempeño</a>
+      </div>
+      <div class="col-md-2 active">
+        <a href="#" class="fs-14 inline-block pv-21">tracks</a>
+      </div>
+      <div class="col-md-2">
+        <a href="#" class="fs-14 inline-block pv-21">badges & skills</a>
+      </div>
+      <div class="col-md-2">
+        <a href="#" class="fs-14 inline-block pv-21">recursos</a>
       </div>
     </div>
   </div>

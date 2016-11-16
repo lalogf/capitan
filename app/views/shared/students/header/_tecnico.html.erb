@@ -1,0 +1,43 @@
+<% if @user.student? %>
+  <div class="text-center hidden-xs">
+    <h6>TÉCNICO</h6>
+    <div class="c100 p86 small orange p0">
+      <span>
+        <%= "#{ percentage(@student_technical_points) }%" %>
+      </span>
+      <div class="slice">
+        <div class="bar"></div>
+        <div class="fill"></div>
+      </div>
+    </div>
+    <div class="col-sm-12 text-center">
+      <p class="score mb-0">
+        <span class="book"><%= @student_technical_points[:points] %></span>
+        <span class="slash">/</span>
+        <span class="thin gray-29 h4"><%= @student_technical_points[:max] %></span>
+      </p>
+      <p class="light fs-13">puntos</p>
+    </div>
+  </div>
+
+  <div class="text-center hidden-lg hidden-sm hidden-md relative">
+    <div class="absolute c100 p86 small orange p0">
+      <span>
+        <%= "#{ percentage(@student_technical_points) }%" %>
+      </span>
+      <div class="slice">
+        <div class="bar"></div>
+        <div class="fill"></div>
+      </div>
+    </div>
+    <div class="col-xs-8 text-center col-xs-offset-4 mt-21">
+      <h6>TÉCNICO</h6>
+      <span class="score mb-0">
+        <span class="book"><%= @student_technical_points[:points] %></span>
+        <span class="slash">/</span>
+        <span class="thin gray-29 h4"><%= @student_technical_points[:max] %></span>
+      </span>
+      <span class="light fs-13">puntos</span>
+    </div>
+  </div>
+<% end %>

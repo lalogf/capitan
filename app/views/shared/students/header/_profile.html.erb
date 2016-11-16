@@ -1,12 +1,14 @@
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-5 col-xs-4">
     <div class="inhabilitado">
-      <%= image_tag @user.avatar.url(:menu),
-      alt: "coder", class: "img-circle img-responsive", width: "130" %>
+      <!-- <%= image_tag @user.avatar.url(:menu),
+      alt: "coder", class: "img-circle img-responsive", width: "130" %> -->
+      <%= image_tag 'caballero.jpg',
+      alt: "coder", class: "img-circle img-responsive border-good", width: "94" %>
     </div>
   </div>
-  <div class="col-sm-7">
-    <h3 class="mv-7 light name">
+  <div class="col-sm-7 col-xs-8 pl-7">
+    <h3 class="mv-0 book name">
       <%= @user.full_name %>
     </h3>
     <p><%= age(@user.profile.birth_date) if @user.profile.birth_date %></p>

@@ -1,0 +1,43 @@
+<% if @user.student? %>
+  <div class="text-center hidden-xs">
+    <h6>HSE</h6>
+    <div class="c100 p82 small gray p0">
+      <span>
+        <%= "#{ percentage(@student_hse_points) }%" %>
+      </span>
+      <div class="slice">
+        <div class="bar"></div>
+        <div class="fill"></div>
+      </div>
+    </div>
+    <div class="col-sm-12 text-center">
+      <p class="score mb-0">
+        <span class="book"><%= @student_hse_points[:points] %></span>
+        <span class="slash">/</span>
+        <span class="thin gray-29 h4"><%= @student_hse_points[:max] %></span>
+      </p>
+      <p class="fs-13 light">puntos</p>
+    </div>
+  </div>
+
+  <div class="text-center hidden-lg hidden-sm hidden-md">
+    <div class="absolute c100 p82 small gray p0">
+      <span>
+        <%= "#{ percentage(@student_hse_points) }%" %>
+      </span>
+      <div class="slice">
+        <div class="bar"></div>
+        <div class="fill"></div>
+      </div>
+    </div>
+    <div class="col-xs-8 col-xs-offset-4 mt-21 text-center">
+      <h6>HSE</h6>
+      <span class="score mb-0">
+        <span class="book"><%= @student_hse_points[:points] %></span>
+        <span class="slash">/</span>
+        <span class="thin gray-29 h4"><%= @student_hse_points[:max] %></span>
+      </span>
+      <span class="fs-13 light">puntos</span>
+    </div>
+  </div>
+<% end %>

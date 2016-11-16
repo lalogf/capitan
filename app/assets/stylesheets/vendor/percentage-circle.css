@@ -45,7 +45,7 @@
   -o-border-radius: 50%;
   border-radius: 50%;
   margin: 0 0.1em 0.1em 0;
-  background-color: #cccccc;
+  background-color: #4D4E4E;
   margin-left: auto;
   margin-right: auto;
 }
@@ -62,7 +62,7 @@
   font-size: 175px;
 }
 .c100.small {
-  font-size: 80px;
+  font-size: 96px;
 }
 .c100 > span {
   position: absolute;
@@ -101,7 +101,7 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
-  background-color: whitesmoke;
+  background-color: #3d3d3d;
   width: 0.84em;
   height: 0.84em;
   -webkit-transition-property: all;
@@ -869,4 +869,22 @@
 }
 .c100.orange.dark:hover > span {
   color: #e08833;
+}
+
+/*GRAY*/
+
+.c100.gray .bar, .c100.gray .fill {
+  border-color: #e9e9e9 !important;
+}
+.c100.gray:hover > span {
+  color: #e9e9e9;
+}
+.c100.small.gray:hover > span {
+  color: #e9e9e9;
+}
+.c100.gray.dark .bar, .c100.gray.dark .fill {
+  border-color: #4D4E4E !important;
+}
+.c100.gray.dark:hover > span {
+  color: #4D4E4E;
 }
