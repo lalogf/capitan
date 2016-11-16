@@ -1,13 +1,17 @@
 <section id="final-prueba">
   <div class="container-sm text-center">
-    <h3 class="text-center light">¡Bravo, finalizaste las pruebas!</h3>
+    <h3 class="text-center light">Y el último paso... ¡mira este video!</h3>
     <%= image_tag 'raya.png' %>
     <p>
-      A continuación te presentamos un video que te cuenta mucho más sobre Laboratoria, ¡dale una chequeada!
+      A continuación te presentamos un video que te cuenta mucho más sobre Laboratoria,
+      y va a responder a muchas de las preguntas que seguramente tienes con respecto a nuestro programa. ¡Chequéalo!
     </p>
     <iframe class="full-width" height="387" src="https://www.youtube.com/embed/_QTag-SbZ0o" frameborder="0" allowfullscreen></iframe>
     <p class="text-final">
       Te comunicaremos los resultados de las pruebas por correo electrónico, así que estate atenta. De nuevo gracias por venir y ¡que te haya ido genial!
     </p>
+    <%= link_to destroy_user_session_path, :method => :delete, :class => "btn light h3 btn-finish text-uppercase text-center" do %>
+      Finalizar pruebas
+    <%end%>
   </div>
 </section>

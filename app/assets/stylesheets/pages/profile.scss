@@ -14,12 +14,12 @@
 }
 .name {
   font-size: 23px;
-  color: #0f0f0f;
+  color: #fff;
 }
 
 .description {
   font-size: 18px;
-  color: #525252;
+  color: #fff;
 }
 
 .codigo {
@@ -27,7 +27,7 @@
   opacity: 0.83;
   font-size: 16px;
   font-weight: bold;
-  color: #4a4a4a;
+  color: #fff;
 }
 
 .badge {
@@ -35,11 +35,22 @@
   background-color: transparent;
 }
 
+.lh-profile {
+  line-height: 1;
+}
+
+.empty-badge {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px dashed #fff;
+}
+
 
 .badge-count {
   width: 25px;
   height: 25px;
-  background-color: #4a4a4a;
+  background-color: #f7b617;
   border-radius: 50%;
   position: absolute;
   bottom: 0px;
@@ -52,7 +63,7 @@
   font-size: 10px;
   font-weight: 500;
   text-align: left;
-  color: #ffffff;
+  color: #4a4a4a;
   position: relative;
   top: 26%;
   left: 27%;
@@ -73,7 +84,19 @@
 }
 
 .gray-29 {
-  color: #4a4a4a;
+  color: #949494;
+}
+
+.fill-gray {
+  border-color: #e9e9e9 !important;
+}
+
+.slash {
+  color: #f7b617;
+}
+
+.fs-13 {
+  font-size: 13px;
 }
 
 .sprint-name {
@@ -89,11 +112,19 @@
 }
 
 .c100 > span {
-  color: #4a4a4a;
+  color: #fff;
 }
 
 .score {
   font-size: 18px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .book.gray-29 {
@@ -190,6 +221,16 @@
   .text-final {
     margin: 77px 0;
   }
+
+  .btn-finish {
+    width: 100%;
+    background-color: #F7B617;
+    padding: 14px 7px;
+    color: white;
+    margin-bottom: 140px;
+    font-size: 21px;
+    box-shadow: none;
+  }
 }
 
 .border-bottom {
@@ -214,4 +255,11 @@
     align-content: center;
     display: flex;
     flex-direction: column;
+}
+
+.flex-center-row {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
 }

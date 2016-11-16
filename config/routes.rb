@@ -2,6 +2,15 @@ Rails.application.routes.draw do
 
   authenticate :user do
 
+    namespace :students do
+      get 'dashboard/home'
+      get 'dashboard/performance'
+      get 'dashboard/tracks'
+      get 'dashboard/resources'
+      get 'tracks/:id' => 'tracks#show', as: :tracks
+#      get 'tracks/:track_id/courses/:id' => 'courses/show', as: :courses
+    end
+
     get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
     get 'tracks/:track_id/courses/:id' => 'courses#show_details', :as => :course_details
     get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:id/' => "lessons#show", :as => :lesson_details
@@ -14,7 +23,21 @@ Rails.application.routes.draw do
     get 'myprofile(/:sprint_id)' => 'profile#myprofile', :as => :myprofile
     get 'codereview' => 'profile#codereview', :as => :code_review
 
+    namespace :teacher do
+      get 'dashboard/class_stats'
+      get 'dashboard/students'
+      get 'dashboard/teacher_stats'
+      match 'dashboard/grades', via: [:get, :post]
+      get 'dashboard/grades_filter'
+      get 'dashboard/assistance'
+      get 'dashboard/sprints'
+      get 'dashboard/recomendations'
+    end
+
     scope "/admin" do
+
+      get 'dashboard' => 'dashboard#index', :as => :dashboard
+
       resources :questions
       resources :groups
       resources :users, except: [:index]
@@ -36,7 +59,7 @@ Rails.application.routes.draw do
         end
       end
 
-      get 'dashboard' => 'dashboard#index', :as => :dashboard
+
       get 'grades(/branch/:branch_id)' => 'dashboard#grades', :as => :grades
       get 'grades/user/:user_id/course/:course_id' => 'dashboard#grade_details', :as => :grade_details
       get 'grades/activities' => 'dashboard#list_activities_scorables', :as => :activities

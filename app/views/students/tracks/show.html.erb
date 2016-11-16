@@ -1,0 +1,33 @@
+<section id="principal-hero" class="bg-tracks bg-gray-dark">
+  <div class="text-left text-white">
+    <div class="container-md container-sm">
+      <%= link_to "< tracks", students_dashboard_tracks_path %>
+      <p class="small pb-0 mb-0 pt-35"><%= "#{@track.courses.count} cursos" %></p>
+  		<h1 class="thin fz-44 mb-0"><%= @track.name %></h1>
+  		<%= image_tag "linea-amarilla.png",alt: "Línea divisora", class: "ho linea-divisora hidden-xs" %>
+  		<p class="light pt-14 hidden-xs"><%= @track.description %></p>
+  		<a href="<%= @track.syllabus %>" target="_blank" class="text-white">
+        <%= image_tag "bullet-down.png",alt: "Syllabus" %>
+        <span class="thin">Syllabus</span>
+      </a>
+    </div>
+  </div>
+</section>
+<section class="pt-35 pb-56">
+  <div class="container-md">
+    <div class="row mt-42">
+      <% @levels.map do |level,courses| %>
+        <h2><%= "Nivel #{level}" %></h2>
+        <% courses.each do |course| %>
+          <div class="course">
+            <div class="" style="background-color: <%= course.color %>"></div>
+            <h5><%= course.name %></h5>
+            <p><%= course.description %></p>
+            <p><%= pluralize course.duration, "semana" %></p>
+            <%= link_to "Continuar", course_details_path(@track,course) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

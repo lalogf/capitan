@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111045058) do
+ActiveRecord::Schema.define(version: 20161114191103) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -81,23 +81,16 @@ ActiveRecord::Schema.define(version: 20161111045058) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string   "name",                          limit: 255
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.text     "description",                   limit: 65535
-    t.string   "avatar_file_name",              limit: 255
-    t.string   "avatar_content_type",           limit: 255
-    t.integer  "avatar_file_size",              limit: 4
-    t.datetime "avatar_updated_at"
-    t.string   "color",                         limit: 255
-    t.string   "background_image_file_name",    limit: 255
-    t.string   "background_image_content_type", limit: 255
-    t.integer  "background_image_file_size",    limit: 4
-    t.datetime "background_image_updated_at"
-    t.string   "code",                          limit: 255
-    t.integer  "points",                        limit: 4
-    t.integer  "track_id",                      limit: 4
-    t.string   "course_plan",                   limit: 255
+    t.string   "name",        limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "description", limit: 65535
+    t.string   "color",       limit: 255
+    t.string   "code",        limit: 255
+    t.integer  "points",      limit: 4
+    t.integer  "track_id",    limit: 4
+    t.string   "course_plan", limit: 255
+    t.integer  "level",       limit: 4
   end
 
   add_index "courses", ["track_id"], name: "index_courses_on_track_id", using: :btree
@@ -122,13 +115,13 @@ ActiveRecord::Schema.define(version: 20161111045058) do
 
   create_table "enrollments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
-    t.integer  "course_id",  limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.boolean  "status",     limit: 1
+    t.integer  "track_id",   limit: 4
   end
 
-  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id", using: :btree
+  add_index "enrollments", ["track_id"], name: "index_enrollments_on_track_id", using: :btree
   add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
 
   create_table "family_incomes", force: :cascade do |t|
@@ -423,11 +416,16 @@ ActiveRecord::Schema.define(version: 20161111045058) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "description", limit: 255
-    t.string   "syllabus",    limit: 255
+    t.string   "name",              limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "description",       limit: 255
+    t.string   "syllabus",          limit: 255
+    t.string   "color",             limit: 255
+    t.string   "icon_file_name",    limit: 255
+    t.string   "icon_content_type", limit: 255
+    t.integer  "icon_file_size",    limit: 4
+    t.datetime "icon_updated_at"
   end
 
   create_table "units", force: :cascade do |t|
@@ -491,7 +489,7 @@ ActiveRecord::Schema.define(version: 20161111045058) do
   add_foreign_key "courses", "tracks"
   add_foreign_key "districts", "branches"
   add_foreign_key "educations", "branches"
-  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "tracks"
   add_foreign_key "enrollments", "users"
   add_foreign_key "family_incomes", "branches"
   add_foreign_key "groups", "branches"

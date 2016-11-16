@@ -1,0 +1,98 @@
+// Place all the styles related to the students/tracks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#profile-coder {
+  color: #fff;
+  background-color: #3d3d3d;
+  .photo-profile {
+    height: 200px;
+  }
+}
+
+.full-h {
+  height: 100%;
+}
+
+.border-good {
+  border: 2px solid #2ecc71;
+  padding: 3px;
+}
+
+.border-danger {
+  border: 2px solid #e74c3c;
+  padding: 3px;
+}
+
+.border-warning {
+  border: 2px solid #f7b617;
+  padding: 3px;
+}
+
+.border-desable {
+  border: 2px solid #9b9b9b;
+  padding: 3px;
+}
+
+#menu-tabs {
+  border-bottom: 1px solid #ddd;
+  a {
+    color: #4a4a4a;
+  }
+}
+
+.col-md-2 {
+  &.active {
+    border-bottom: 2px solid #f7b617;
+    a {
+      font-weight: 600;
+    }
+  }
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.icon-arrow {
+  display:none;
+}
+.arrow-show {
+    display: inline;
+}
+
+@media only screen and (max-width: 480px) {
+  #profile-coder {
+    .photo-profile {
+      height: auto;
+    }
+  }
+  .name {
+    font-size: 18px;
+  }
+  .description {
+    font-size: 13px;
+  }
+  .codigo {
+    font-size: 13px;
+  }
+  .empty-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px dashed #fff;
+  }
+  .badge-count {
+    width: 20px;
+    height: 20px;
+    background-color: #f7b617;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+}

@@ -70,7 +70,7 @@ class DashboardController < ApplicationController
 
     @branch = Branch.find(@branch_id)
     @students = @branch.students_and_admins
-    @courses = Course.all
+    @tracks = Track.available_tracks(current_user)
   end
 
   def save_enrollments
@@ -82,7 +82,7 @@ class DashboardController < ApplicationController
       enrollments = JSON.parse(params[:enrollments])
 
       enrollments.each do |enroll|
-        e = Enrollment.find_or_create_by(course_id: enroll["course_id"],user_id: enroll["student_id"])
+        e = Enrollment.find_or_create_by(track_id: enroll["track_id"],user_id: enroll["student_id"])
         e.status = enroll["status"]
         e.save
       end

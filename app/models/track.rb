@@ -2,16 +2,36 @@
 #
 # Table name: tracks
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  description :string(255)
-#  syllabus    :string(255)
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  description       :string(255)
+#  syllabus          :string(255)
+#  color             :string(255)
+#  icon_file_name    :string(255)
+#  icon_content_type :string(255)
+#  icon_file_size    :integer
+#  icon_updated_at   :datetime
 #
 
 class Track < ActiveRecord::Base
   has_many :courses
+  has_many :enrollments, :dependent => :destroy
+  has_many :users, through: :enrollments
+
+  accepts_nested_attributes_for :enrollments
+
+  has_attached_file :icon,
+                    :styles => { :normal => "94x94", :responsive => "56x56" },
+                    :url => "/system/:class/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension"
+
+  validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
+
+  def self.available_tracks(user)
+    Track.joins(:enrollments).where(" enrollments.user_id = ? and enrollments.status = 1", user.id)
+  end
 
   def duration
     query = "select sum(duration) from units u join courses c on u.course_id = c.id join tracks t on c.track_id = t.id where t.id = #{self.id}"
@@ -35,5 +55,5 @@ class Track < ActiveRecord::Base
       when "AREQUIPA"
         teachers = [ {name: "Gerson Aduviri", image: "teachers/arequipa/gerson.jpg", title: "Full Stack Developer", mail: "gerson@laboratoria.la"} ]
     end
-  end  
+  end
 end
