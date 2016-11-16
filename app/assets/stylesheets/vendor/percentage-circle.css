@@ -64,6 +64,13 @@
 .c100.small {
   font-size: 96px;
 }
+
+@media only screen and (max-width: 480px) {
+  .c100.small {
+    font-size: 75px;
+  }
+}
+
 .c100 > span {
   position: absolute;
   width: 100%;
