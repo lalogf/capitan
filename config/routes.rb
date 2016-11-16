@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   authenticate :user do
 
     namespace :students do
@@ -22,7 +23,20 @@ Rails.application.routes.draw do
     get 'myprofile(/:sprint_id)' => 'profile#myprofile', :as => :myprofile
     get 'codereview' => 'profile#codereview', :as => :code_review
 
+    namespace :teacher do
+      get 'dashboard/class_stats'
+      get 'dashboard/students'
+      get 'dashboard/teacher_stats'
+      get 'dashboard/grades'
+      get 'dashboard/assistance'
+      get 'dashboard/sprints'
+      get 'dashboard/recomendations'
+    end
+    
     scope "/admin" do
+
+      get 'dashboard' => 'dashboard#index', :as => :dashboard
+
       resources :questions
       resources :groups
       resources :users, except: [:index]
@@ -44,7 +58,7 @@ Rails.application.routes.draw do
         end
       end
 
-      get 'dashboard' => 'dashboard#index', :as => :dashboard
+
       get 'grades(/branch/:branch_id)' => 'dashboard#grades', :as => :grades
       get 'grades/user/:user_id/course/:course_id' => 'dashboard#grade_details', :as => :grade_details
       get 'grades/activities' => 'dashboard#list_activities_scorables', :as => :activities
