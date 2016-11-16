@@ -27,12 +27,13 @@ Rails.application.routes.draw do
       get 'dashboard/class_stats'
       get 'dashboard/students'
       get 'dashboard/teacher_stats'
-      get 'dashboard/grades'
+      match 'dashboard/grades', via: [:get, :post]
+      get 'dashboard/grades_filter'
       get 'dashboard/assistance'
       get 'dashboard/sprints'
       get 'dashboard/recomendations'
     end
-    
+
     scope "/admin" do
 
       get 'dashboard' => 'dashboard#index', :as => :dashboard
