@@ -9,5 +9,8 @@
     <p class="text-final">
       Te comunicaremos los resultados de las pruebas por correo electrónico, así que estate atenta. De nuevo gracias por venir y ¡que te haya ido genial!
     </p>
+    <%= link_to destroy_user_session_path, :method => :delete, :class => "btn light h3 btn-finish text-uppercase text-center" do %>
+      Finalizar pruebas
+    <%end%>
   </div>
 </section>
