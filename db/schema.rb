@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114191103) do
+ActiveRecord::Schema.define(version: 20161116225808) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -234,7 +234,7 @@ ActiveRecord::Schema.define(version: 20161114191103) do
     t.integer  "district_id",                   limit: 4
     t.string   "phone1",                        limit: 255
     t.string   "phone2",                        limit: 255
-    t.string   "facebook_link",                 limit: 255
+    t.text     "facebook_link",                 limit: 65535
     t.string   "major",                         limit: 255
     t.string   "school",                        limit: 255
     t.integer  "reasons_school_not_done",       limit: 4
