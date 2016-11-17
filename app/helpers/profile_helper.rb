@@ -16,7 +16,7 @@ module ProfileHelper
   end
 
   def percent(scored, total)
-    (scored.zero? or total.zero?) ? 0 : percentage(scored, total)
+    (scored.zero? or total.zero?) ? 0 : ProfileHelper::percentage(scored, total)
   end
 
   def zero_or_number(points)
