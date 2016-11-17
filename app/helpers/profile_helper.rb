@@ -11,12 +11,8 @@ module ProfileHelper
     user.profile.biography.blank? ? 'Soy un estudiante en Laboratoria' : user.profile.biography
   end
 
-  def percentage(scored, total)
-    (scored / total.to_f) * 100
-  end
-
   def percent(scored, total)
-    (scored.zero? or total.zero?) ? 0 : percentage(scored, total)
+    (scored.zero? or total.zero?) ? 0 : (scored / total.to_f) * 100
   end
 
   def zero_or_number(points)
