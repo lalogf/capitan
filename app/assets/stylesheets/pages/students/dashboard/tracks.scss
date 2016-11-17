@@ -1,0 +1,61 @@
+#tracks {
+  padding-bottom: 50px;
+  .track {
+    .color {
+      height: 166px;
+      border-radius: 2px 2px 0px 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon {
+        width: 94px;
+        height: 94px;
+        opacity: 0.4;
+        background-color: #f0f0f0;
+        border-radius: 50%;
+      }
+    }
+
+    .content {
+      border-radius: 0px 0px 2px 2px;
+      border-left: solid 1px #979797;
+      border-bottom: solid 1px #979797;
+      border-right: solid 1px #979797;
+      color: #4a4a4a;
+      font-weight: 300;
+      padding-top: 19px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin: 0 17.5px 14px 16px;
+    }
+
+    p {
+      font-size: 13px;
+      line-height: 1.23;
+      margin: 0px 17.5px 16.8px 16px;
+    }
+
+    hr {
+      margin: 0px 17.5px 5.7px 16px;
+      background-color: #979797;
+      height: 1px;
+    }
+
+    .link {
+      text-align: right;
+      padding-right: 17.5px;
+      padding-bottom: 13.5px;
+
+      a {
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.38;
+        color: #2ecc71;
+      }
+    }
+  }
+}

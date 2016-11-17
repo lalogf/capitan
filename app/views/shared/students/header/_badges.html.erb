@@ -12,10 +12,12 @@
       <% end %>
       <% if @sprint_badges.size < 5 %>
         <% (5 - @sprint_badges.size).times do %>
-          <div class="col-sm-2 col-xs-2 empty-badge mh-7">
-
-          </div>
+          <div class="col-sm-2 col-xs-2 empty-badge mh-7"></div>
         <% end %>
+      <% end %>
+    <% else %>
+      <% 5.times do %>
+        <div class="col-sm-2 col-xs-2 empty-badge mh-7"></div>
       <% end %>
     <% end %>
   </div>

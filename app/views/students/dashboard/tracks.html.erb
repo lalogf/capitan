@@ -1,12 +1,30 @@
 <%= render 'shared/students/header/frame' %>
-<% @tracks.each do |track| %>
-  <div class="track">
-    <h2><%= track.name %></h2>
-    <p><%= track.description %></p>
-    <% if track.name != "Selección" %>
-      <%= link_to "Link to track", students_tracks_path(track.id) %>
-    <% else %>
-      <%= link_to "Link to track", selection_path %>
+<section id="tracks">
+  <div class="container pv-49 ph-7">
+    <% @tracks.each_slice(4) do |row| %>
+      <div class="row m-0">
+        <% row.each do |track| %>
+          <div class="col-sm-3 col-xs-12">
+            <div class="track">
+              <div class="color" style="background-color:<%= track.color %>">
+                <div class="icon"></div>
+              </div>
+              <div class="content">
+                <h2><%= track.name %></h2>
+                <p><%= track.description %></p>
+                <hr />
+                <div class="link">
+                  <% if track.name != "Selección" %>
+                  <%= link_to "empezar &rarr;".html_safe, students_tracks_path(track.id) %>
+                  <% else %>
+                  <%= link_to "empezar &rarr;".html_safe, selection_path %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
+</section>
