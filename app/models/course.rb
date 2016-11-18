@@ -13,11 +13,14 @@
 #  track_id    :integer
 #  course_plan :string(255)
 #  level       :integer
+#  audience    :integer
 #
 
 class Course < ActiveRecord::Base
 
     validates :name, presence: true
+
+    enum audience: [:beginner, :intermediate, :advance]
 
     belongs_to :track
     has_many :units, :dependent => :destroy

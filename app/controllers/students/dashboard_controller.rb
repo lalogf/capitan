@@ -12,7 +12,7 @@ class Students::DashboardController < ApplicationController
     @student_technical_points = { points: 1068, max: 1200 }
     @student_hse_points = { points: 984, max: 1200}
 
-    @tracks = Track.all
+    @tracks = Track.all.order(:sequence)
   end
 
   def resources

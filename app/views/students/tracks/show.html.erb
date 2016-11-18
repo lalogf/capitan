@@ -1,33 +1,38 @@
-<section id="principal-hero" class="bg-tracks bg-gray-dark">
-  <div class="text-left text-white">
-    <div class="container-md container-sm">
-      <%= link_to "< tracks", students_dashboard_tracks_path %>
-      <p class="small pb-0 mb-0 pt-35"><%= "#{@track.courses.count} cursos" %></p>
-  		<h1 class="thin fz-44 mb-0"><%= @track.name %></h1>
-  		<%= image_tag "linea-amarilla.png",alt: "Línea divisora", class: "ho linea-divisora hidden-xs" %>
-  		<p class="light pt-14 hidden-xs"><%= @track.description %></p>
-  		<a href="<%= @track.syllabus %>" target="_blank" class="text-white">
-        <%= image_tag "bullet-down.png",alt: "Syllabus" %>
-        <span class="thin">Syllabus</span>
+<section id="principal-hero" class="bg-track-fullstack-js">
+  <div class="track-detail">
+      <p class="cursos"><%= "#{@track.courses.count} cursos" %></p>
+  		<h1 class="thin fz-40 mb-0"><%= @track.name %></h1>
+  		<hr/>
+  		<p class="light description"><%= @track.description %></p>
+  		<a href="<%= @track.syllabus %>" target="_blank">
+        <span>Descargar syllabus</span>
       </a>
     </div>
-  </div>
 </section>
-<section class="pt-35 pb-56">
-  <div class="container-md">
-    <div class="row mt-42">
-      <% @levels.map do |level,courses| %>
+<section id="courses">
+  <% @levels.map do |level,courses| %>
+    <div class="level">
+      <div class="container">
         <h2><%= "Nivel #{level}" %></h2>
-        <% courses.each do |course| %>
-          <div class="course">
-            <div class="" style="background-color: <%= course.color %>"></div>
+        <% courses.each_slice(4) do |row| %>
+        <div class="flex-center">
+          <% row.each do |course| %>
+          <div class="col-sm-3 col-xs-12">
+            <%= link_to course_details_path(@track,course), class: "course " do %>
+            <div class="color" style="background-color: <%= course.color %>"></div>
             <h5><%= course.name %></h5>
             <p><%= course.description %></p>
-            <p><%= pluralize course.duration, "semana" %></p>
-            <%= link_to "Continuar", course_details_path(@track,course) %>
+            <hr>
+            <div class="info">
+              <div>22 lecciones</div>
+              <div><%= t("activerecord.attributes.course.audience.#{course.audience}") %></div>
+            </div>
+            <% end %>
           </div>
+          <% end %>
+        </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </section>

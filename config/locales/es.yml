@@ -28,6 +28,12 @@ es:
           few_month: "Unas veces al mes"
           almost_never: "Casi nunca"
           one: "Uno"
+      course:
+        audience:
+          beginner: "principiante"
+          intermediate: "intermedio"
+          advance: "avanzado"
+          one: "Audience"
     errors:
       models:
         user:

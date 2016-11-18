@@ -5,23 +5,19 @@
       <div class="row m-0">
         <% row.each do |track| %>
           <div class="col-sm-3 col-xs-12">
-            <div class="track">
+            <%= link_to students_tracks_path(track.id), class: "track" do %>
               <div class="color" style="background-color:<%= track.color %>">
                 <div class="icon"></div>
               </div>
               <div class="content">
                 <h2><%= track.name %></h2>
                 <p><%= track.description %></p>
-                <hr />
+                <hr>
                 <div class="link">
-                  <% if track.name != "Selección" %>
-                  <%= link_to "empezar &rarr;".html_safe, students_tracks_path(track.id) %>
-                  <% else %>
-                  <%= link_to "empezar &rarr;".html_safe, selection_path %>
-                  <% end %>
+                   empezar &rarr;
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       </div>

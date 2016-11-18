@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117005535) do
+ActiveRecord::Schema.define(version: 20161118075041) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20161117005535) do
     t.integer  "track_id",    limit: 4
     t.string   "course_plan", limit: 255
     t.integer  "level",       limit: 4
+    t.integer  "audience",    limit: 4
   end
 
   add_index "courses", ["track_id"], name: "index_courses_on_track_id", using: :btree
@@ -426,6 +427,7 @@ ActiveRecord::Schema.define(version: 20161117005535) do
     t.string   "icon_content_type", limit: 255
     t.integer  "icon_file_size",    limit: 4
     t.datetime "icon_updated_at"
+    t.integer  "sequence",          limit: 4
   end
 
   create_table "units", force: :cascade do |t|

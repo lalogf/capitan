@@ -8,21 +8,23 @@
   <table class="table table-striped table-hover">
     <thead>
       <tr>
+        <th>Nivel</th>
         <th>Nombre</th>
         <th>Descripción</th>
-        <th>Duración</th>
+        <th>color</th>
         <th></th>
       </tr>
     </thead>
-  
+
     <tbody>
       <% @courses.each do |course| %>
         <tr>
+          <td><%= course.level %></td>
           <td><%= link_to course.name, course %></td>
           <td><%= course.description %></td>
-          <td><%= course.duration %></td>
+          <td><%= course.color %></td>
           <td>
-            <%= link_to 'Editar', edit_track_course_path(@track,course) %>  |  
+            <%= link_to 'Editar', edit_track_course_path(@track,course) %>  |
             <%= link_to 'Eliminar', course, method: :delete, data: { confirm: '¿Está seguro?' } %>
           </td>
         </tr>

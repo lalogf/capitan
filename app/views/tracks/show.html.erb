@@ -1,8 +1,8 @@
 <div class="container-fluid p-20">
   <div class="breadcrumb">
-    <%= link_to "Volver a la lista", tracks_path %> / 
+    <%= link_to "Volver a la lista", tracks_path %> /
     <span><%= @track.name %></span>
-  </div>  
+  </div>
   <div class="page-header clearfix">
     <h1>Detalle del track</h1>
   </div>
@@ -15,7 +15,7 @@
       <strong>Descripción:</strong>
       <%= @track.description %>
     </p>
-    
+
     <p>
       <strong>Duration:</strong>
       <%= @track.duration %>
@@ -30,20 +30,30 @@
     <table class="table table-striped table-hover">
     <thead>
       <tr>
+        <th>Nivel</th>
         <th>Nombre</th>
         <th>Descripción</th>
+        <th>Audiencia</th>
+        <th>Color</th>
         <th></th>
       </tr>
     </thead>
-    
+
     <tbody>
       <% @track.courses.each do |course| %>
         <tr>
+          <td><%= course.level %></td>
           <td><%= link_to course.name, track_course_path(@track,course)  %></td>
           <td><%= course.description %></td>
-          <td> 
-            <%= link_to 'Editar', edit_track_course_path(@track,course) %>  |  
-            <%= link_to 'Eliminar', [@track,course], method: :delete, data: { confirm: '¿Está seguro?' } %>
+          <td><%= course.audience %></td>
+          <td><%= course.color %></td>
+          <td>
+            <%= link_to edit_track_course_path(@track,course) do %>
+              <button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Editar</button>
+            <% end %>
+            <%= link_to [@track,course], method: :delete, data: { confirm: '¿Está seguro?' } do  %>
+              <button class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Eliminar</button>
+            <% end %>
           </td>
         </tr>
       <% end %>

@@ -7,7 +7,7 @@ class TracksController < ApplicationController
   layout "admin", except: [:show_user_track, :course_details]
 
   def index
-    @tracks = Track.all
+    @tracks = Track.all.order(:sequence)
   end
 
   def show
@@ -64,6 +64,6 @@ class TracksController < ApplicationController
     end
 
     def track_params
-      params.require(:track).permit(:name, :duration, :description, :syllabus, :color, :icon)
+      params.require(:track).permit(:name, :duration, :description, :syllabus, :color, :icon, :sequence)
     end
 end

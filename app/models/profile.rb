@@ -10,7 +10,7 @@
 #  district_id                   :integer
 #  phone1                        :string(255)
 #  phone2                        :string(255)
-#  facebook_link                 :string(255)
+#  facebook_link                 :text(65535)
 #  major                         :string(255)
 #  school                        :string(255)
 #  reasons_school_not_done       :integer
@@ -25,7 +25,7 @@
 #  relatives                     :integer
 #  childs                        :boolean
 #  tech_savy                     :integer
-#  other_tech_related_activities :string(255)
+#  other_tech_related_activities :text(65535)
 #  computer_at_home              :boolean
 #  internet_access               :boolean
 #  smartphone                    :boolean
