@@ -23,7 +23,7 @@ var jobStatus = null;
   familyIncome.push([<%= income.branch_id %>,"<%= income.name %>",<%= income.id %>]);
 <% end %>
 
-<% Spot.all.each do |spot| %>
+<% Spot.all.where(status:true).each do |spot| %>
   spots.push([<%= spot.branch_id %>,"<%= spot.name %>",<%= spot.id %>]);
 <% end %>
 

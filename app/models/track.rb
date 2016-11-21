@@ -13,6 +13,7 @@
 #  icon_content_type :string(255)
 #  icon_file_size    :integer
 #  icon_updated_at   :datetime
+#  sequence          :integer
 #
 
 class Track < ActiveRecord::Base

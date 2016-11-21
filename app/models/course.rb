@@ -13,6 +13,7 @@
 #  track_id    :integer
 #  course_plan :string(255)
 #  level       :integer
+#  audience    :integer
 #
 
 class Course < ActiveRecord::Base
