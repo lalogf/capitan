@@ -22,19 +22,21 @@
           </div>
           <div class="collapse navbar-collapse" id="menu-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-              <li>
-                <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
-              </li>
-              <% unless current_page?(codereview_path) %>
+              <% if current_user.student? || current_user.assistant? || current_user.teacher? || current_user.admin? %>
                 <li>
-                  <%= link_to('Code Review', codereview_path, :method => :get) %>
+                  <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
                 </li>
-              <% else %>
-                <li>
-                  <%= link_to('Mis Cursos', root_path, :method => :get) %>
-                </li>
+                <% unless current_page?(codereview_path) %>
+                  <li>
+                    <%= link_to('Code Review', codereview_path, :method => :get) %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to('Mis Cursos', root_path, :method => :get) %>
+                  </li>
+                <% end %>
               <% end %>
-              <% unless current_user.student? %>
+              <% if current_user.assistant? || current_user.teacher? || current_user.admin? %>
                 <li>
                   <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
                 </li>
@@ -58,19 +60,21 @@
                   <%= image_tag "arrow-down.png",alt: "Arrow down", class: "minh-icon-arrow arrow down", data: { el: "up" } %>
                 </a>
                 <ul class="dropdown-menu">
-                  <li>
-                    <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
-                  </li>
-                  <% unless current_page?(codereview_path) %>
+                  <% if current_user.student? || current_user.assistant? || current_user.teacher? || current_user.admin? %>
                     <li>
-                      <%= link_to('Code Review', codereview_path, :method => :get) %>
+                      <%= link_to('Mi Perfil', myprofile_path, :method => :get) %>
                     </li>
-                  <% else %>
-                    <li>
-                      <%= link_to('Mis Cursos', root_path, :method => :get) %>
-                    </li>
+                    <% unless current_page?(codereview_path) %>
+                      <li>
+                        <%= link_to('Code Review', codereview_path, :method => :get) %>
+                      </li>
+                    <% else %>
+                      <li>
+                        <%= link_to('Mis Cursos', root_path, :method => :get) %>
+                      </li>
+                    <% end %>
                   <% end %>
-                  <% unless current_user.student? %>
+                  <% if current_user.assistant? || current_user.teacher? || current_user.admin? %>
                     <li>
                       <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
                     </li>

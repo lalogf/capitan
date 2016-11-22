@@ -8,6 +8,12 @@ class PagesController < ApplicationController
   before_action :set_unit, except: [:saveAnswer,:saveQuestion, :saveAnswers]
   before_action :set_lesson, except: [:saveAnswer,:saveQuestion, :saveAnswers]
 
+  before_action only: [:show] do
+    check_allowed_roles(current_user, ["student","assistant","teacher","admin"])
+  end
+  before_action except: [:show] do
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
+  end
   def index
     @pages = @lesson.pages.all
   end

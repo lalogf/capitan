@@ -1,5 +1,15 @@
 ---
-:Course:
+:User:
   :avatar:
-  - :medium
-  - :thumb
+  - :large
+  - :menu
+  - :navbar
+  - :profile
+  - :student_dashboard
+:Badge:
+  :image:
+  - :normal
+:Track:
+  :icon:
+  - :normal
+  - :responsive

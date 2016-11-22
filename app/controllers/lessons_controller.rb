@@ -1,10 +1,12 @@
 class LessonsController < ApplicationController
-  
-  before_action :require_admin
+
+  before_action do
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
+  end
   before_action :set_track
-  before_action :set_course 
+  before_action :set_course
   before_action :set_unit
-  
+
   layout "admin"
 
   # GET /lessons
@@ -72,15 +74,15 @@ class LessonsController < ApplicationController
   end
 
   private
-  
+
     def set_track
       @track = Track.find(params[:track_id])
     end
-  
+
     def set_course
       @course = Course.find(params[:course_id])
     end
-    
+
     def set_unit
       @unit = @course.units.find(params[:unit_id])
     end

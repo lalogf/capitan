@@ -1,6 +1,8 @@
 class Teacher::DashboardController < ApplicationController
 
-  before_action :require_admin
+  before_action do
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
+  end
 
   layout "teacher"
 

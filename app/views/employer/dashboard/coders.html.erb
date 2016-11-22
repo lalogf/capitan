@@ -1,0 +1,21 @@
+<section id="coders">
+  <div class="container pv-70 bg-white text-center">
+    <h3 class="lh-21 medium text-center mt-56 text-uppercase">Nuestras coders</h3>
+    <p class="light text-center mb-42">desarrolladoras web front end listas para empezar su carrera en el sector tech</p>
+    <% @students.each_slice(4) do |row| %>
+    <div class="row mb-21">
+      <% row.each do |user| %>
+        <div class="col-sm-3 p-0">
+          <%= link_to employer_student_profile_path(user) do %>
+            <%= image_tag user.avatar.url(:large), :alt => user.full_name %>
+            <div class="pv-14">
+              <h4><%= user.full_name %></h4>
+              <p><%= user.code %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</section>

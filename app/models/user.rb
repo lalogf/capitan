@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   before_validation :generate_code
   before_validation :generate_password
 
-  enum role: [:applicant, :student, :assistant, :teacher, :admin]
+  enum role: [:applicant, :student, :assistant, :teacher, :admin, :employer]
 
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :group
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   validates_format_of :email,:with => Devise::email_regexp
 
   has_attached_file :avatar,
-                    :styles => { :profile => "128x128", :menu => "80x80", :navbar => "35x35" },
+                    :styles => { :large => "200x200", :profile => "128x128", :menu => "80x80", :student_dashboard => "94x94", :navbar => "35x35" },
                     :url => "/system/:class/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/:class/:id/:style/:basename.:extension",
                     :default_url => (self.student ? "/alumna.png" : "profesor.png")
@@ -86,15 +86,6 @@ class User < ActiveRecord::Base
   #Devise custom methods
   def email_required?
     false
-  end
-
-  def active_for_authentication?
-    #super && !applicant?
-    true
-  end
-
-  def inactive_message
-    applicant? ? :not_approved : super
   end
 
   def branch

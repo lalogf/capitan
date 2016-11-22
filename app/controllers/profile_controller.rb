@@ -1,10 +1,18 @@
 class ProfileController < ApplicationController
 
-  def myprofile
+  before_action only: [:myprofile, :codereview] do
+    check_allowed_roles(current_user, ["student","assistant","teacher","admin"])
+  end
 
+  before_action only: [:selection, :selection_success] do
+    check_allowed_roles(current_user, ["applicant"])
+  end
+
+  def myprofile
     @max_total_points, @max_student_points = 0, 0
     @data = []
     @sprint_index = 0
+
     @user = current_user
 
     @sprints = @user.group.sprints.joins(:pages).where("pages.points > 0 or sprint_pages.points > 0").order(:sequence).distinct

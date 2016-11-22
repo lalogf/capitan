@@ -1,7 +1,8 @@
 class DashboardController < ApplicationController
 
-  before_action :require_admin, except: [:show_user_track, :course_details]
-
+  before_action do
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
+  end
   layout "admin"
 
   def index
