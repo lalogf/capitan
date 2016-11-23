@@ -7,9 +7,9 @@ class CoursesController < ApplicationController
     check_allowed_roles(current_user, ["student","assistant","teacher","admin"])
   end
   before_action except: [:show_details] do
-    check_allowed_roles(current_user, ["admin"])
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
   end
-  
+
   layout "admin", except: [:show_details]
 
   def index

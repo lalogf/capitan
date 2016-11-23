@@ -2,15 +2,15 @@
   <div class="container pv-70 bg-white text-center">
     <h3 class="lh-21 medium text-center mt-56 text-uppercase">Nuestras coders</h3>
     <p class="light text-center mb-42">desarrolladoras web front end listas para empezar su carrera en el sector tech</p>
-    <% @students.each_slice(4) do |row| %>
+    <% @students_ordered.each_slice(4) do |rows| %>
     <div class="row mb-21">
-      <% row.each do |user| %>
+      <% rows.each do |row| %>
         <div class="col-sm-3 p-0">
-          <%= link_to employer_student_profile_path(user) do %>
-            <%= image_tag user.avatar.url(:large), :alt => user.full_name %>
+          <%= link_to employer_student_profile_path(row[0]) do %>
+            <%= image_tag row[0].avatar.url(:large), :alt => row[0].full_name %>
             <div class="pv-14">
-              <h4><%= user.full_name %></h4>
-              <p><%= user.code %></p>
+              <h4><%= row[0].full_name %></h4>
+              <p><%= row[0].code %></p>
             </div>
           <% end %>
         </div>

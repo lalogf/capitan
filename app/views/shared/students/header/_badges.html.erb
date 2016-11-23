@@ -3,19 +3,19 @@
   <div class="">
     <% if !@sprint_badges.empty? %>
       <% @sprint_badges.each do |sp| %>
-          <div class="col-sm-2 col-xs-2 ph-7 mh-7 badge">
-              <!-- <%= image_tag sp[0].image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "70" %> -->
-              <%= image_tag 'squad.png', alt: "coder", class: "img-circle img-responsive", width: "70" %>
-              <div class="badge-count"><p><%= "x#{sp[1]}" %></p></div>
-          </div>
-
+        <div class="col-sm-2 col-xs-2 ph-7 mh-7 badge">
+            <%= image_tag sp[0].image.url(:normal), alt: sp[0].name, class: "img-circle img-responsive", width: "70" %>
+            <div class="badge-count"><p><%= "x#{sp[1]}" %></p></div>
+        </div>
       <% end %>
       <% if @sprint_badges.size < 5 %>
         <% (5 - @sprint_badges.size).times do %>
-          <div class="col-sm-2 col-xs-2 empty-badge mh-7">
-
-          </div>
+          <div class="col-sm-2 col-xs-2 empty-badge mh-7"></div>
         <% end %>
+      <% end %>
+    <% else %>
+      <% 5.times do %>
+        <div class="col-sm-2 col-xs-2 empty-badge mh-7"></div>
       <% end %>
     <% end %>
   </div>
