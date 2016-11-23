@@ -3,7 +3,9 @@ require 'wannabe_bool'
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin
+  before_action do
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
+  end
 
   layout "admin"
 

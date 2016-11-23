@@ -1,7 +1,9 @@
 class SprintsController < ApplicationController
-  before_action :require_admin
   before_action :set_sprint, only: [:show, :edit, :update, :destroy]
-
+  before_action do
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
+  end
+  
   layout 'admin'
 
   def index

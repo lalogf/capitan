@@ -16,10 +16,28 @@ class SoftSkillSubmission < ActiveRecord::Base
   belongs_to :user
   belongs_to :sprint
 
-  scope :for_user, -> (user) { 
+  scope :for_user, -> (user) {
   		where(user_id: user.id).
   		joins(:soft_skill).
   		group(:name).
   		pluck_to_hash(:name,'sum(points) as points','sum(max_points) as max_points')
+  }
+
+  scope :avg_classroom_points, -> (user) {
+      joins(:soft_skill,:user).
+      where("users.group_id",user.group_id).
+      group(:user_id,:name).
+      pluck(:user_id,:name,'sum(points)').
+      group_by { |e| e[1] }.
+      map { |k,v| [k,v.length,v.map{|f| f[2]}.reduce(&:+)]}.
+      map { |e| [e[0],(e[2]*1.0/e[1]).round(2)]}
+  }
+
+  scope :students_technical_points, -> (group_id) {
+    joins(:user => :profile).
+    where("users.group_id = ? and users.role = 1 and users.disable = 0",group_id).
+    group("users.id","users.code","profiles.name").
+    order("points desc").
+    pluck("users.id","users.code","profiles.name","CAST(sum(points) as UNSIGNED)")
   }
 end

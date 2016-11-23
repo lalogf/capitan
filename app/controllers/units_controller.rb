@@ -1,8 +1,12 @@
 class UnitsController < ApplicationController
-  
+
   before_action :set_track
-  before_action :set_course 
-  
+  before_action :set_course
+
+  before_action do
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
+  end  
+
   layout "admin"
 
   # GET /units
@@ -70,11 +74,11 @@ class UnitsController < ApplicationController
   end
 
   private
-  
+
     def set_track
       @track = Track.find(params[:track_id])
     end
-  
+
     def set_course
       @course = Course.find(params[:course_id])
     end
