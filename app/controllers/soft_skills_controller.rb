@@ -1,8 +1,10 @@
 class SoftSkillsController < ApplicationController
 
   before_action :set_soft_skill, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin
-  
+  before_action do
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
+  end
+
   layout "admin"
 
   # GET /soft_skills

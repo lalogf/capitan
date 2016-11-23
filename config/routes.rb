@@ -2,26 +2,18 @@ Rails.application.routes.draw do
 
   authenticate :user do
 
+    namespace :employer do
+      get 'dashboard/coders'
+      get 'dashboard/profile/:user_id' => 'dashboard#profile', as: :student_profile
+    end
+
     namespace :students do
       get 'dashboard/home'
       get 'dashboard/performance'
       get 'dashboard/tracks'
       get 'dashboard/resources'
       get 'tracks/:id' => 'tracks#show', as: :tracks
-#      get 'tracks/:track_id/courses/:id' => 'courses/show', as: :courses
     end
-
-    get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
-    get 'tracks/:track_id/courses/:id' => 'courses#show_details', :as => :course_details
-    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:id/' => "lessons#show", :as => :lesson_details
-    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:lesson_id/pages/:id' => "pages#show", :as => :lesson_page_details
-
-
-    get 'mycourses/:course_id/u/:unit_id/l/:id' => 'lessons#show', :as => :mycourse_unit_lesson
-    get 'mycourses/:course_id/u/:unit_id/l/:lesson_id/p/:id' => 'pages#show', :as => :mycourse_unit_lesson_page
-    get 'codereview' => 'profile#codereview', :as => :codereview
-    get 'myprofile(/:sprint_id)' => 'profile#myprofile', :as => :myprofile
-    get 'codereview' => 'profile#codereview', :as => :code_review
 
     namespace :teacher do
       get 'dashboard/class_stats'
@@ -33,6 +25,19 @@ Rails.application.routes.draw do
       get 'dashboard/sprints'
       get 'dashboard/recomendations'
     end
+
+    get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
+    get 'tracks/:track_id/courses/:id' => 'courses#show_details', :as => :course_details
+    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:id/' => "lessons#show", :as => :lesson_details
+    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:lesson_id/pages/:id' => "pages#show", :as => :lesson_page_details
+
+
+    get 'mycourses/:course_id/u/:unit_id/l/:id' => 'lessons#show', :as => :mycourse_unit_lesson
+    get 'mycourses/:course_id/u/:unit_id/l/:lesson_id/p/:id' => 'pages#show', :as => :mycourse_unit_lesson_page
+    get 'codereview' => 'profile#codereview', :as => :codereview
+    get 'myprofile(/:user_id)(/:sprint_id)' => 'profile#myprofile', :as => :myprofile
+    get 'codereview' => 'profile#codereview', :as => :code_review
+    get 'coders' => 'profile#coders', :as => :coders
 
     scope "/admin" do
 

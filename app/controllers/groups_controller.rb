@@ -1,6 +1,9 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-
+  before_action do
+    check_allowed_roles(current_user, ["assistant","teacher","admin"])
+  end
+  
   layout "admin"
 
   # GET /groups

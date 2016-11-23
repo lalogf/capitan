@@ -39,4 +39,12 @@ class Submission < ActiveRecord::Base
                pluck("round(sum(submissions.points))").
                reduce [ 0.0, 0 ] do |(s, c), e| [ s + e, c + 1 ] end.reduce(&:/).round
   end
+
+  def self.students_technical_points group_id
+    Submission.joins(:user => :profile).
+    where("users.group_id = ? and users.role = 1 and users.disable = 0",group_id).
+    group("users.id","users.code","profiles.name").
+    order("submissions.points desc").
+    pluck("users.id","users.code","profiles.name","CAST(sum(points) as UNSIGNED)")
+  end
 end
