@@ -1,6 +1,6 @@
 <% if @user.student? %>
   <div class="text-center hidden-xs">
-    <h6>TÉCNICO</h6>
+    <h6>TECH</h6>
     <div class="c100 p86 small orange p0">
       <span>
         <%= "#{ percentage(@student_technical_points) }%" %>
@@ -16,7 +16,7 @@
         <span class="slash">/</span>
         <span class="thin gray-29 h4"><%= @student_technical_points[:max] %></span>
       </p>
-      <p class="light fs-13">puntos</p>
+      <p class="light fs-13">points</p>
     </div>
   </div>
 
@@ -31,13 +31,13 @@
       </div>
     </div>
     <div class="col-xs-8 text-center col-xs-offset-4 mt-7">
-      <h6 class="text-left pl-7">TÉCNICO</h6>
+      <h6 class="text-left pl-7">TECH</h6>
       <span class="score mb-0">
         <span class="book"><%= @student_technical_points[:points] %></span>
         <span class="slash">/</span>
         <span class="thin gray-29 h4"><%= @student_technical_points[:max] %></span>
       </span>
-      <span class="light fs-13">puntos</span>
+      <span class="light fs-13">points</span>
     </div>
   </div>
 <% end %>
