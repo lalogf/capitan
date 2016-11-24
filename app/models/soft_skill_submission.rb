@@ -25,7 +25,7 @@ class SoftSkillSubmission < ActiveRecord::Base
 
   scope :avg_classroom_points, -> (user) {
       joins(:soft_skill,:user).
-      where("users.group_id",user.group_id).
+      where("users.group_id = ?",user.group_id).
       group(:user_id,:name).
       pluck(:user_id,:name,'sum(points)').
       group_by { |e| e[1] }.
