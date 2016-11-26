@@ -1,7 +1,6 @@
 .skills {
 
   h2 {
-    margin-top: 84px;
     margin-bottom: 0px;
     font-size: 19px;
     font-weight: bold;
@@ -97,5 +96,26 @@
 
   .progress.yellow {
     border: solid 0.3px #f7b617;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    img {
+      float: left;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 50px;
+    }
+
+    .progress {
+      margin-bottom: 45px;
+      .avg div {
+        top: 39px;
+      }
+    }
+
   }
 }

@@ -1,14 +1,14 @@
 <%= render 'shared/students/header/frame', :bar => false %>
 <section class="skills">
   <div class="container">
-    <h2>TECH SKILLS</h2>
+    <h2 class="mt-84-sm mt-35-xs">TECH SKILLS</h2>
     <hr class="title-separator" />
     <div class="row">
       <div class="col-sm-3">
         <%= image_tag "employers/coders/laptop.png" %>
         <p>These are the technical skills students have been learning throughout the program</p>
       </div>
-      <div class="col-sm-9 ph-49">
+      <div class="col-sm-9 ph-49-sm">
         <h3 class="title">TOTAL TECH SKILLS</h3>
         <div class="progress yellow">
           <div class="progress-bar yellow" role="progressbar" aria-valuenow="<%= "#{ percentage(@student_technical_points) }%" %>"
