@@ -1,21 +1,21 @@
 <% if @user.student? %>
-  <h4 class="bold mt-7 mb-7 mb-14-xs text-left fs-13 text-uppercase pl-7">Badges</h4>
-  <div class="">
+  <h4 class="bold mt-0 mb-7 mb-14-xs text-left fs-12 text-uppercase pl-7">Badges</h4>
+  <div class="badges">
     <% if !@sprint_badges.empty? %>
       <% @sprint_badges.each do |sp| %>
-        <div class="col-sm-2 col-xs-2 ph-7 mh-7 badge">
+        <div class="badge">
             <%= image_tag sp[0].image.url(:normal), alt: sp[0].name, class: "img-circle img-responsive", width: "70" %>
             <div class="badge-count"><p><%= "x#{sp[1]}" %></p></div>
         </div>
       <% end %>
       <% if @sprint_badges.size < 5 %>
         <% (5 - @sprint_badges.size).times do %>
-          <div class="col-sm-2 col-xs-2 empty-badge mh-7"></div>
+          <div class="empty-badge"></div>
         <% end %>
       <% end %>
     <% else %>
       <% 5.times do %>
-        <div class="col-sm-2 col-xs-2 empty-badge mh-7"></div>
+        <div class="empty-badge"></div>
       <% end %>
     <% end %>
   </div>
