@@ -1,9 +1,7 @@
 <div class="row">
   <div class="col-sm-5 col-xs-4">
-    <div class="inhabilitado">
-      <%= image_tag @user.avatar.url(:student_dashboard),
-      alt: "coder", class: "img-circle img-responsive border-good" %>
-    </div>
+    <%= image_tag @user.avatar.url(:student_dashboard),
+    alt: "coder", class: "img-circle img-responsive student-status-good" %>
   </div>
   <div class="col-sm-7 col-xs-8 pl-7">
     <h3 class="mv-0 book name">

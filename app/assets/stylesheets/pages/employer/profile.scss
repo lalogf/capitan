@@ -99,10 +99,27 @@
   }
 }
 
+@media (max-width: 768px) {
+  .skills {
+    p {
+      font-size: 18px;
+    }
+
+    h3 {
+      font-size: 17px;
+    }
+
+    h3.secondary-title {
+      font-size: 16px;
+    }
+  }
+}
+
 @media (max-width: 480px) {
   .skills {
     img {
       float: left;
+      margin-right: 10px;
     }
 
     p {

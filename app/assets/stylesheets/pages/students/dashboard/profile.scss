@@ -1,12 +1,29 @@
-// Place all the styles related to the students/tracks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-#profile-coder {
+#coder-profile {
   color: #fff;
   background-color: #3d3d3d;
+
   .photo-profile {
     height: 200px;
+  }
+
+  .badges {
+    display: flex;
+    .badge {
+      img {
+        background-color: #fff;
+      }
+    }
+  }
+  .empty-badge {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px dashed #fff;
+    margin: 3px 7px;
+  }
+  .grades-summary {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
@@ -14,22 +31,22 @@
   height: 100%;
 }
 
-.border-good {
+.student-status-good {
   border: 2px solid #2ecc71;
   padding: 3px;
 }
 
-.border-danger {
+.student-status-danger {
   border: 2px solid #e74c3c;
   padding: 3px;
 }
 
-.border-warning {
+.student-status-warning {
   border: 2px solid #f7b617;
   padding: 3px;
 }
 
-.border-desable {
+.student-status-disable {
   border: 2px solid #9b9b9b;
   padding: 3px;
 }
@@ -50,6 +67,10 @@
   }
 }
 
+.flex {
+  display: flex;
+}
+
 .absolute {
   position: absolute;
 }
@@ -65,10 +86,49 @@
     display: inline;
 }
 
-@media only screen and (max-width: 480px) {
-  #profile-coder {
+@media only screen and (max-width: 768px) {
+  .name {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+  .codigo {
+    font-size: 13px;
+  }
+
+  .c100.small {
+    font-size: 68px;
+  }
+
+  .score {
+    font-size: 12px;
+  }
+
+  #coder-profile {
     .photo-profile {
-      height: auto;
+      height: 154px;
+    }
+    .badge {
+      width: 60px;
+    }
+
+    .empty-badge {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+
+  .navbar-right {
+    text-align: right;
+  }
+
+  #coder-profile {
+    .photo-profile {
+      height: 110px;
     }
   }
   .name {
@@ -80,12 +140,7 @@
   .codigo {
     font-size: 13px;
   }
-  .empty-badge {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px dashed #fff;
-  }
+
   .badge-count {
     width: 20px;
     height: 20px;
@@ -94,5 +149,18 @@
     position: absolute;
     bottom: 0px;
     right: 0px;
+  }
+
+  .c100.small {
+    margin-left: 0px;
+    margin-right: inherit;
+    font-size: 95px;
+  }
+
+  .fs-15-xs {
+    font-size: 15px;
+  }
+  .score {
+    font-size: 17px;
   }
 }

@@ -35,21 +35,9 @@
   background-color: transparent;
 }
 
-.badge img {
-  background-color: #fff;
-}
-
 .lh-profile {
   line-height: 1;
 }
-
-.empty-badge {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 1px dashed #fff;
-}
-
 
 .badge-count {
   width: 25px;
@@ -101,6 +89,10 @@
 
 .fs-13 {
   font-size: 13px;
+}
+
+.fs-12 {
+  font-size: 12px;
 }
 
 .sprint-name {

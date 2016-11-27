@@ -8,26 +8,26 @@
 </script>
 <% end %>
 
-<section id="profile-coder">
-  <div class="container pv-35 ph-7">
+<section id="coder-profile">
+  <div class="container pv-35-md pv-7-sm ph-7 pb-7-xs">
     <div class="row m-0">
-      <div class="col-sm-3 col-xs-12 flex-center-row photo-profile pl-21-xs">
+      <div class="col-sm-4 col-xs-12 flex-center-row photo-profile pl-21-xs">
         <%= render 'shared/students/header/profile' %>
       </div>
-      <div class="col-sm-5 col-xs-12 mt-42 hidden-xs">
+      <div class="col-sm-5 col-xs-12 mt-42-md mt-35-sm hidden-xs">
         <%= render 'shared/students/header/badges' %>
         <%= render 'shared/students/header/skills' %>
       </div>
-      <div class="col-sm-2 col-xs-12 hidden-xs">
-        <%= render 'shared/students/header/tecnico' %>
+      <div class="col-sm-3 col-xs-12 hidden-xs">
+        <div class="grades-summary">
+          <%= render 'shared/students/header/tecnico' %>
+          <%= render 'shared/students/header/hse' %>
+        </div>
       </div>
-      <div class="col-sm-2 col-xs-12 hidden-xs">
-        <%= render 'shared/students/header/hse' %>
-      </div>
-      <div class="hidden-lg hidden-md text-center">
+      <div class="hidden-lg hidden-sm hidden-md text-center">
         <a class="arrows-xs" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          <%= image_tag 'arrow-down.png', class: "icon-arrow arrow-down text-center mt-21 arrow-show", width: "24" %>
-          <%= image_tag 'arrow-up.png', class: "icon-arrow arrow-up text-center mt-21", width: "24" %>
+          <%= image_tag 'arrow-down.png', class: "icon-arrow arrow-down text-center arrow-show", width: "24" %>
+          <%= image_tag 'arrow-up.png', class: "icon-arrow arrow-up text-center", width: "24" %>
         </a>
         <div class="collapse" id="collapseExample">
           <div class="">
@@ -35,10 +35,10 @@
               <%= render 'shared/students/header/badges' %>
               <%= render 'shared/students/header/skills' %>
             </div>
-            <div class="col-sm-2 col-xs-12 mv-42">
+            <div class="col-sm-2 col-xs-12 mt-42 mb-0">
               <%= render 'shared/students/header/tecnico' %>
             </div>
-            <div class="col-sm-2 col-xs-12 mv-42">
+            <div class="col-sm-2 col-xs-12 mt-21 mb-0">
               <%= render 'shared/students/header/hse' %>
             </div>
           </div>
