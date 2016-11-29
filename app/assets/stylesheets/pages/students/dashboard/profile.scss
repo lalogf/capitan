@@ -15,8 +15,8 @@
     }
   }
   .empty-badge {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     border: 1px dashed #fff;
     margin: 3px 7px;
@@ -122,8 +122,22 @@
 
 @media only screen and (max-width: 480px) {
 
+  #coder-profile {
+    .badges {
+      display: inline-block;
+    }
+  }
+
   .navbar-right {
     text-align: right;
+  }
+
+  .mr-0-xs {
+    margin-right: 0;
+  }
+
+  .text-center-xs {
+    text-align: center;
   }
 
   #coder-profile {
@@ -152,8 +166,7 @@
   }
 
   .c100.small {
-    margin-left: 0px;
-    margin-right: inherit;
+    margin: 14px auto;
     font-size: 95px;
   }
 

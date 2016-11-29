@@ -161,6 +161,50 @@
     bottom: 40px;
   }
 }
+.github {
+  background-image: image-url('octocat.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 14px;
+  width: 21px;
+  height: 21px;
+  display: inline-block;
+  &:hover {
+    background-image: image-url('hover_octo.png');
+    transition: 0.5s;
+  }
+}
+
+.linkedin {
+  background-image: image-url('linkedit.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 14px;
+  width: 21px;
+  height: 21px;
+  display: inline-block;
+  &:hover {
+    background-image: image-url('linked_in_amarillo.png');
+    transition: 0.5s;
+  }
+}
+
+.portafolio {
+  background-image: image-url('folio.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 14px;
+  width: 21px;
+  height: 21px;
+  display: inline-block;
+  &:hover {
+    background-image: image-url('portafolio_amarillo.png');
+    transition: 0.5s;
+  }
+}
 
 .full-width {
   width: 100%;

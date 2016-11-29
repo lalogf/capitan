@@ -100,6 +100,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:code, :email, :group_id,:password, :avatar, :role, sprint_badge_ids: [],
-      profile_attributes: [:name, :lastname])
+      profile_attributes: [:name, :lastname, :github, :linkedin, :portafolio])
     end
 end

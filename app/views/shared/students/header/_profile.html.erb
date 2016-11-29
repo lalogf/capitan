@@ -8,11 +8,28 @@
       <%= @user.full_name %>
     </h3>
     <p><%= age(@user.profile.birth_date) if @user.profile.birth_date %></p>
-    <p class="light lh-profile description">
-      <%= @user.branch.name %>
-    </p>
     <p class="mb-0 lh-profile codigo">
       <%= @user.code %>
     </p>
+    <p class="light lh-profile description mt-7">
+      <%= @user.branch.name %>
+    </p>
+    <%= link_to @user.profile.github, :target => '_blank'  do %>
+      <!-- <%= image_tag 'github.svg', :class => 'mr-14' %> -->
+      <div class="github">
+      </div>
+    <%end%>
+    <%= link_to @user.profile.linkedin, :target => '_blank'  do %>
+      <!-- <%= image_tag 'linked.svg', :class => 'mr-14' %> -->
+      <div class="linkedin">
+
+      </div>
+    <%end%>
+    <%= link_to @user.profile.portafolio, :target => '_blank'  do %>
+      <!-- <%= image_tag 'portafolio.svg', :class => 'mr-14' %> -->
+      <div class="portafolio">
+
+      </div>
+    <%end%>
   </div>
 </div>

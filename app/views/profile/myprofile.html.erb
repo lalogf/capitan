@@ -10,14 +10,15 @@
             <h3 class="mv-7 light name">
               <%= @user.full_name %>
             </h3>
-            <p class="light lh-profile description">
-              <%= @user.branch.name %>
-            </p>
             <p class="mb-0 lh-profile codigo">
               <%= @user.code %>
             </p>
+            <p class="light lh-profile description">
+              <%= @user.branch.name %>
+            </p>
           </div>
         </div>
+        <%= link_to @user.profile.github %>
         <!-- We are hidding the biography until job placement -->
         <!--div class="mt-56 pr-42-md">
           <h4 class="bold mb-7">sobre mi</h4>
@@ -34,7 +35,7 @@
           <% if @sprint_badges.each do |sprint_badge| %>
             <% sprint_badge.each do |key,count| %>
               <div class="col-sm-2 minh-70 ph-7 badge">
-                  <%= image_tag key.image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "70" %>
+                  <%= image_tag key.image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "80" %>
                   <div class="badge-count"><p><%= "x#{count}" %></p></div>
               </div>
             <% end %>
