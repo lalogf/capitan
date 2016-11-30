@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-sm-5 col-xs-4">
+  <div class="col-sm-5 col-xs-4 mlp-33-xs">
     <%= image_tag @user.avatar.url(:student_dashboard),
     alt: "coder", class: "img-circle img-responsive student-status-good" %>
   </div>
-  <div class="col-sm-7 col-xs-8 pl-7">
+  <div class="col-sm-7 col-xs-12 pl-7 text-center-xs mt-7-xs">
     <h3 class="mv-0 book name">
       <%= @user.full_name %>
     </h3>
@@ -14,8 +14,8 @@
     <p class="light lh-profile description mt-7">
       <%= @user.branch.name %>
     </p>
-    <%= link_to "", @user.profile.github, :class => 'github', :target => '_blank' %>
-    <%= link_to "", @user.profile.linkedin, :class => "linkedin", :target => '_blank' %>
-    <%= link_to "", @user.profile.portafolio, :class => "portafolio", :target => '_blank' %>
+    <%= link_to "", @user.profile.github, :class => 'github mh-21-xs mr-14', :target => '_blank' %>
+    <%= link_to "", @user.profile.linkedin, :class => 'linkedin mh-21-xs mr-14', :target => '_blank' %>
+    <%= link_to "", @user.profile.portafolio, :class => 'portafolio mh-21-xs mr-14', :target => '_blank' %>
   </div>
 </div>

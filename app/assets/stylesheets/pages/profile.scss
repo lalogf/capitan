@@ -166,13 +166,12 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-right: 14px;
-  width: 21px;
-  height: 21px;
+  width: 30px;
+  height: 30px;
   display: inline-block;
   &:hover {
     background-image: image-url('hover_octo.png');
-    transition: 0.5s;
+    transition: 0.3s;
   }
 }
 
@@ -181,13 +180,12 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-right: 14px;
-  width: 21px;
-  height: 21px;
+  width: 30px;
+  height: 30px;
   display: inline-block;
   &:hover {
     background-image: image-url('linked_in_amarillo.png');
-    transition: 0.5s;
+    transition: 0.3s;
   }
 }
 
@@ -196,13 +194,12 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-right: 14px;
-  width: 21px;
-  height: 21px;
+  width: 30px;
+  height: 30px;
   display: inline-block;
   &:hover {
     background-image: image-url('portafolio_amarillo.png');
-    transition: 0.5s;
+    transition: 0.3s;
   }
 }
 
