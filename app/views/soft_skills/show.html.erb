@@ -15,10 +15,14 @@
 			  <strong>Max points:</strong>
 			  <%= @soft_skill.max_points %>
 			</p>
+      <p>
+        <strong>Descripción:</strong>
+        <%= @soft_skill.description %>
+      </p>
 		</div>
 	</div>
 	<div class="form-actions">
 		<%= link_to 'Editar', edit_soft_skill_path(@soft_skill), class: "btn btn-primary" %>
 		<%= link_to 'Atrás', soft_skills_path, class:"btn btn-danger" %>
-	</div>  
+	</div>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128202411) do
+ActiveRecord::Schema.define(version: 20161202181315) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -336,10 +336,11 @@ ActiveRecord::Schema.define(version: 20161128202411) do
   add_index "soft_skill_submissions", ["user_id"], name: "index_soft_skill_submissions_on_user_id", using: :btree
 
   create_table "soft_skills", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "max_points", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",        limit: 255
+    t.integer  "max_points",  limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "description", limit: 255
   end
 
   create_table "spots", force: :cascade do |t|
