@@ -25,7 +25,7 @@
         <hr class="progress-separator"/>
         <% @sprint_points.each do |sprint| %>
           <h3 class="secondary-title"><%= sprint[:name] %></h3>
-          <span class="lh-xs text-gray-light"><%= sprint[:description] %></span>
+          <span class="lh-xs text-gray-ligth"><%= sprint[:description] %></span>
           <div class="progress">
             <div class="progress-bar gray" role="progressbar" aria-valuenow="<%= "#{ percentage({points:sprint[:points],max:sprint[:max]}) }%" %>"
               aria-valuemin="0" aria-valuemax="100" style="width:<%= "#{ percentage({points:sprint[:points],max:sprint[:max]}) }" %>%">
