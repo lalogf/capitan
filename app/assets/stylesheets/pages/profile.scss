@@ -296,6 +296,11 @@
     align-content: center;
     display: flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-justify-content: flex-center;
+    display: -webkit-flex;
+    -webkit-align-content: center;
+    -webkit-align-items: center;
 }
 
 .flex-center-row {
@@ -303,4 +308,9 @@
     align-items: center;
     align-content: center;
     display: flex;
+    -webkit-justify-content: center;
+    display: -webkit-flex;
+    -webkit-align-self: center;
+    -webkit-align-content: center;
+    -webkit-align-items: center;
 }
