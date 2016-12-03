@@ -36,6 +36,7 @@ class Employer::DashboardController < ApplicationController
     @sprints.each do |sprint|
       @sprint_points << {
         name: sprint.name,
+        description: sprint.description,
         max: sprint.total_points.map { |e| e[1] }.reduce(&:+),
         points: sprint.student_points(@user).map { |e| e[1] }.reduce(&:+),
         average: Submission.avg_classroom_points(current_user.group_id,sprint.id)

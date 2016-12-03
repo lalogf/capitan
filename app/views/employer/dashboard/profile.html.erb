@@ -18,10 +18,14 @@
           <div class="avg gray" style="left: <%="#{percentage({points:@avg_students_points,max:@maximum_points})}%" %>;">
             <div><%= "avg: #{percentage({points:@avg_students_points,max:@maximum_points})}%" %></div>
           </div>
+          <div class="avg green" style="left: 70%;">
+            <div>Empleable: 70%</div>
+          </div>
         </div>
         <hr class="progress-separator"/>
         <% @sprint_points.each do |sprint| %>
           <h3 class="secondary-title"><%= sprint[:name] %></h3>
+          <span class="lh-xs text-gray-ligth"><%= sprint[:description] %></span>
           <div class="progress">
             <div class="progress-bar gray" role="progressbar" aria-valuenow="<%= "#{ percentage({points:sprint[:points],max:sprint[:max]}) }%" %>"
               aria-valuemin="0" aria-valuemax="100" style="width:<%= "#{ percentage({points:sprint[:points],max:sprint[:max]}) }" %>%">
@@ -51,10 +55,14 @@
           <div class="avg gray" style="left: <%= "#{percentage({points:@avg_soft_skills_points.map { |e| e[1]}.reduce(&:+), max: @student_hse_points[:max]})}%" %>;">
             <div><%= "avg: #{percentage({points:@avg_soft_skills_points.map { |e| e[1]}.reduce(&:+),max:@student_hse_points[:max]})}%" %></div>
           </div>
+          <div class="avg green" style="left: 70%;">
+            <div>Empleable: 70%</div>
+          </div>
         </div>
         <hr class="progress-separator"/>
         <% @soft_skills_points.each do |soft| %>
           <h3 class="secondary-title"><%= soft["name"] %></h3>
+          <span class="lh-xs text-gray-ligth"><%= soft[:description] %></span>
           <div class="progress">
             <div class="progress-bar gray" role="progressbar" aria-valuenow="<%= "#{ percentage({points:soft["points"],max:soft["max_points"]}) }%" %>"
               aria-valuemin="0" aria-valuemax="100" style="width:<%= "#{ percentage({points:soft["points"],max:soft["max_points"]}) }" %>%">
