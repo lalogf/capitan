@@ -18,6 +18,9 @@
           <div class="avg gray" style="left: <%="#{percentage({points:@avg_students_points,max:@maximum_points})}%" %>;">
             <div><%= "avg: #{percentage({points:@avg_students_points,max:@maximum_points})}%" %></div>
           </div>
+          <div class="avg green" style="left: 70%;">
+            <div>Empleable: 70%</div>
+          </div>
         </div>
         <hr class="progress-separator"/>
         <% @sprint_points.each do |sprint| %>
@@ -51,6 +54,9 @@
           </div>
           <div class="avg gray" style="left: <%= "#{percentage({points:@avg_soft_skills_points.map { |e| e[1]}.reduce(&:+), max: @student_hse_points[:max]})}%" %>;">
             <div><%= "avg: #{percentage({points:@avg_soft_skills_points.map { |e| e[1]}.reduce(&:+),max:@student_hse_points[:max]})}%" %></div>
+          </div>
+          <div class="avg green" style="left: 70%;">
+            <div>Empleable: 70%</div>
           </div>
         </div>
         <hr class="progress-separator"/>
