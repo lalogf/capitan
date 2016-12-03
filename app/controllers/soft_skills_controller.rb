@@ -46,7 +46,6 @@ class SoftSkillsController < ApplicationController
   # PATCH/PUT /soft_skills/1
   # PATCH/PUT /soft_skills/1.json
   def update
-    puts soft_skill_params
     respond_to do |format|
       if @soft_skill.update(soft_skill_params)
         format.html { redirect_to soft_skills_path, notice: 'Soft skill was successfully updated.' }
