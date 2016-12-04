@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202181315) do
+ActiveRecord::Schema.define(version: 20161204024247) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 20161202181315) do
     t.integer  "track_id",    limit: 4
     t.string   "course_plan", limit: 255
     t.integer  "level",       limit: 4
-    t.integer  "audience",    limit: 4
   end
 
   add_index "courses", ["track_id"], name: "index_courses_on_track_id", using: :btree
@@ -135,11 +134,13 @@ ActiveRecord::Schema.define(version: 20161202181315) do
   add_index "family_incomes", ["branch_id"], name: "index_family_incomes_on_branch_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.integer  "branch_id",   limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",                   limit: 255
+    t.string   "description",            limit: 255
+    t.integer  "branch_id",              limit: 4
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.integer  "sequence",               limit: 4,   default: 0
+    t.boolean  "accepting_latest_users", limit: 1,   default: false
   end
 
   add_index "groups", ["branch_id"], name: "index_groups_on_branch_id", using: :btree
@@ -407,9 +408,9 @@ ActiveRecord::Schema.define(version: 20161202181315) do
     t.integer  "page_id",    limit: 4
     t.integer  "user_id",    limit: 4
     t.string   "link",       limit: 255
-    t.decimal  "points",                 precision: 5, scale: 2
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.decimal  "points",                 precision: 11, scale: 2
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   add_index "submissions", ["page_id"], name: "index_submissions_on_page_id", using: :btree
@@ -432,7 +433,6 @@ ActiveRecord::Schema.define(version: 20161202181315) do
     t.string   "icon_content_type", limit: 255
     t.integer  "icon_file_size",    limit: 4
     t.datetime "icon_updated_at"
-    t.integer  "sequence",          limit: 4
   end
 
   create_table "units", force: :cascade do |t|
