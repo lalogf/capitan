@@ -8,8 +8,8 @@
         <div class="col-sm-3 col-xs-10 col-xs-offset-1 col-sm-offset-0 ph-70-md">
           <%= link_to employer_student_profile_path(row[0]), :class => "thumbnail" do %>
             <%= image_tag row[0].avatar.url(:large), :alt => row[0].full_name, :class => "img-responsive" %>
-            <div class="pv-14">
-              <h4><%= row[0].full_name %></h4>
+            <div class="pv-14 box-name">
+              <h4 class="lh-md"><%= row[0].full_name %></h4>
               <p><%= row[0].code %></p>
             </div>
           <% end %>
