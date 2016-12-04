@@ -24,6 +24,8 @@
   .grades-summary {
     display: flex;
     justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    display: -webkit-flex;
   }
 }
 
@@ -107,9 +109,6 @@
   }
 
   #coder-profile {
-    .photo-profile {
-      height: 154px;
-    }
     .badge {
       width: 70px;
     }
@@ -140,11 +139,6 @@
     text-align: center;
   }
 
-  #coder-profile {
-    .photo-profile {
-      height: 110px;
-    }
-  }
   .name {
     font-size: 18px;
   }
