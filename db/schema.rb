@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20161204024247) do
     t.integer  "track_id",    limit: 4
     t.string   "course_plan", limit: 255
     t.integer  "level",       limit: 4
+    t.integer  "audience",    limit: 4
   end
 
   add_index "courses", ["track_id"], name: "index_courses_on_track_id", using: :btree
@@ -231,12 +232,12 @@ ActiveRecord::Schema.define(version: 20161204024247) do
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",                       limit: 4
     t.string   "name",                          limit: 255
-    t.text     "biography",                     limit: 16777215
+    t.text     "biography",                     limit: 65535
     t.string   "dni",                           limit: 255
     t.integer  "district_id",                   limit: 4
     t.string   "phone1",                        limit: 255
     t.string   "phone2",                        limit: 255
-    t.text     "facebook_link",                 limit: 16777215
+    t.text     "facebook_link",                 limit: 65535
     t.string   "major",                         limit: 255
     t.string   "school",                        limit: 255
     t.integer  "reasons_school_not_done",       limit: 4
@@ -256,16 +257,16 @@ ActiveRecord::Schema.define(version: 20161204024247) do
     t.boolean  "internet_access",               limit: 1
     t.boolean  "smartphone",                    limit: 1
     t.integer  "computer_use",                  limit: 4
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.date     "birth_date"
     t.integer  "education_id",                  limit: 4
     t.integer  "semesters_left_id",             limit: 4
     t.integer  "spot_id",                       limit: 4
-    t.text     "reasons_to_enter",              limit: 16777215
-    t.text     "how_you_find_out",              limit: 16777215
-    t.text     "what_is_laboratoria",           limit: 16777215
-    t.text     "student_lifespan",              limit: 16777215
+    t.text     "reasons_to_enter",              limit: 65535
+    t.text     "how_you_find_out",              limit: 65535
+    t.text     "what_is_laboratoria",           limit: 65535
+    t.text     "student_lifespan",              limit: 65535
     t.string   "github",                        limit: 255
     t.string   "linkedin",                      limit: 255
     t.string   "portafolio",                    limit: 255
@@ -408,9 +409,9 @@ ActiveRecord::Schema.define(version: 20161204024247) do
     t.integer  "page_id",    limit: 4
     t.integer  "user_id",    limit: 4
     t.string   "link",       limit: 255
-    t.decimal  "points",                 precision: 11, scale: 2
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.decimal  "points",                 precision: 5, scale: 2
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   add_index "submissions", ["page_id"], name: "index_submissions_on_page_id", using: :btree
@@ -433,6 +434,7 @@ ActiveRecord::Schema.define(version: 20161204024247) do
     t.string   "icon_content_type", limit: 255
     t.integer  "icon_file_size",    limit: 4
     t.datetime "icon_updated_at"
+    t.integer  "sequence",          limit: 4
   end
 
   create_table "units", force: :cascade do |t|
