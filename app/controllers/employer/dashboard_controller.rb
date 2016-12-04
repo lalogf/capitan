@@ -13,8 +13,12 @@ class Employer::DashboardController < ApplicationController
     @student_hse_points = SoftSkillSubmission.students_technical_points(5) +
                           SoftSkillSubmission.students_technical_points(21)
 
+    @badges_points = User.where(group_id:5).joins(:sprint_badges => :badge).group(:id).pluck(:id,"sum(points)") +
+                     User.where(group_id:21).joins(:sprint_badges => :badge).group(:id).pluck(:id,"sum(points)")
+
     @students_ordered = @students.map { |e| [e,(@student_technical_points.select { |s| s[0] == e.id }.first)[3] +
-                                          (@student_hse_points.select { |s| s[0] == e.id}.first)[3] ]}.sort_by  { |k| k[1]*-1 }
+                                               (@student_hse_points.select { |s| s[0] == e.id}.first)[3] +
+                                               (@badges_points.select{ |s| s[0] == e.id}.first != nil ? (@badges_points.select{ |s| s[0] == e.id}.first)[1] : 0) ]}.sort_by  { |k| k[1]*-1 }
   end
 
   def profile
