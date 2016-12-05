@@ -5,6 +5,7 @@
     var group_id = "";
     var sprint_id = "";
     var lesson_id = "";
+    var area_id = "";
 
     $(document).ready(function () {
         $("#filter_branch_id").change(function() {
@@ -37,7 +38,7 @@
             changeFilter({ filter: "page", options: { sprint_id: sprint_id, lesson_id: lesson_id } },"#filter_page_id");
         });
         $("#filter_area_id").change(function() {
-            var area_id = parseInt($(this).val());
+            area_id = parseInt($(this).val());
             switch (area_id) {
               case 1:
                 $("#filter_soft_skill_id").hide();
@@ -49,6 +50,20 @@
                 $("#filter_lesson_id").hide();
                 $("#filter_page_id").hide();
                 break;
+            }
+        });
+
+        $("form input[type='submit']").click(function(e) {
+            var page_id = $("#filter_page_id").val();
+            var soft_skill_id = $("#filter_soft_skill_id").val();
+
+            if (branch_id == "" || group_id == "" || sprint_id == "" || area_id == "") {
+                alert("Seleccione una sede, grupo, sprint o área de trabajo");
+            }
+            if (area_id == 1 && (lesson_id == "" || page_id == "")) {
+                alert("Seleccione una lección o página");
+            } else (area_id == 2 && (soft_skill_id == "")) {
+                alert("Seleccione un soft skill");
             }
         });
     });
