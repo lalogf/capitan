@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121153021) do
+ActiveRecord::Schema.define(version: 20161204024247) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -135,11 +135,13 @@ ActiveRecord::Schema.define(version: 20161121153021) do
   add_index "family_incomes", ["branch_id"], name: "index_family_incomes_on_branch_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.integer  "branch_id",   limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",                   limit: 255
+    t.string   "description",            limit: 255
+    t.integer  "branch_id",              limit: 4
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.integer  "sequence",               limit: 4,   default: 0
+    t.boolean  "accepting_latest_users", limit: 1,   default: false
   end
 
   add_index "groups", ["branch_id"], name: "index_groups_on_branch_id", using: :btree
@@ -265,6 +267,9 @@ ActiveRecord::Schema.define(version: 20161121153021) do
     t.text     "how_you_find_out",              limit: 65535
     t.text     "what_is_laboratoria",           limit: 65535
     t.text     "student_lifespan",              limit: 65535
+    t.string   "github",                        limit: 255
+    t.string   "linkedin",                      limit: 255
+    t.string   "portafolio",                    limit: 255
   end
 
   add_index "profiles", ["district_id"], name: "index_profiles_on_district_id", using: :btree
@@ -333,10 +338,11 @@ ActiveRecord::Schema.define(version: 20161121153021) do
   add_index "soft_skill_submissions", ["user_id"], name: "index_soft_skill_submissions_on_user_id", using: :btree
 
   create_table "soft_skills", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "max_points", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",        limit: 255
+    t.integer  "max_points",  limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "description", limit: 255
   end
 
   create_table "spots", force: :cascade do |t|

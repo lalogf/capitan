@@ -20,6 +20,9 @@ class Teacher::DashboardController < ApplicationController
     @soft_skills = SoftSkill.all
   end
 
+  def grades_details
+  end
+
   def grades_filter
     status, message = "ok", "success"
     begin
