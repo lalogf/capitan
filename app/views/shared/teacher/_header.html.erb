@@ -5,8 +5,10 @@
 <% end %>
 <header class="navbar" id="header-navbar">
   <div class="container">
-    <%= link_to "Panel de admintración", root_path, class: "navbar-brand", id: "logo" %>
     <div class="clearfix">
+      <%= link_to root_path, :class => "", :id => "logo" do %>
+        <%= image_tag 'l-laboratori.png', width: "35" %>
+      <% end %>
       <div class="nav-no-collapse pull-right" id="header-nav">
         <ul class="nav navbar-nav pull-right">
           <li>

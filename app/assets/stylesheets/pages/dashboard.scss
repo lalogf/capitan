@@ -24,7 +24,7 @@
   }
 
   #header-navbar {
-      background-color: #3498db;
+      background-color: #4a4a4a;
       border: 0 none;
       border-radius: 0;
       background-clip: padding-box;
@@ -118,21 +118,19 @@
       color: #fff;
       outline: none;
   }
-  #header-navbar .nav>li>a:hover, 
-  #header-navbar .nav>li>a:focus, 
-  #header-navbar .nav .open>a, 
-  #header-navbar .nav .open>a:hover, 
-  #header-navbar .nav .open>a:focus, 
-  .navbar-toggle:hover, 
-  .navbar-toggle:focus, 
+  #header-navbar .nav>li>a:hover,
+  #header-navbar .nav>li>a:focus,
+  #header-navbar .nav .open>a,
+  #header-navbar .nav .open>a:hover,
+  #header-navbar .nav .open>a:focus,
+  .navbar-toggle:hover,
+  .navbar-toggle:focus,
   .mobile-search.active>.btn {
       background: #3498db;
       color: #fff;
   }
 
-  #header-navbar .nav>li>a:hover, #header-navbar .nav>li>a:focus, #header-navbar .nav .open>a, #header-navbar .nav .open>a:hover, #header-navbar .nav .open>a:focus {
-      background-color: #3498db;
-  }
+
   .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus, #sidebar-nav .nav-pills>li.active>a, #sidebar-nav .nav-pills>li.active>a:hover, #sidebar-nav .nav-pills>li.active>a:focus, .nav-small #nav-col #sidebar-nav .nav-pills>li.open>a {
       background-color: #1a1d22;
       color: #fff;
@@ -167,6 +165,10 @@
       font-size: 1em;
       font-weight: 100;
       line-height: 1.2;
+      color: #4a4a4a;
+  }
+  #user-left-box .user-box>.roles {
+      color: #f7b617;
   }
   #user-left-box .user-box>.status {
       display: block;
@@ -227,7 +229,7 @@
   }
 
   .navigation ul > li > a:hover {
-    background-color: #3498db;
+   border-right: 7px solid #f7b617;
   }
 
   .navigation ul > li > a {
@@ -235,7 +237,7 @@
       height: 50px;
       line-height: 50px;
       padding: 0 16px 0 7px;
-      background-color: #e8ebf2;
+      background-color: white;
       color: #16191c;
       text-shadow: none !important;
       font-size: 1em;
@@ -264,6 +266,14 @@
     width: 75px;
   }
 
+}
+
+
+.clearfix {
+  #logo {
+    padding: 18px;
+    display: inline-block;
+  }
 }
 
 /* styles for admin panel user tabs */

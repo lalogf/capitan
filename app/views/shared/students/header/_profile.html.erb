@@ -11,8 +11,12 @@
     <p class="light lh-profile description">
       <%= @user.branch.name %>
     </p>
-    <p class="mb-0 lh-profile codigo">
+    <p class="mb-14-xs mb-0 lh-profile codigo">
       <%= @user.code %>
     </p>
+    <a class="arrows-xs hidden-lg hidden-md hidden-sm" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <%= image_tag 'arrow-down.png', class: "icon-arrow arrow-down text-center arrow-show", width: "24" %>
+      <%= image_tag 'arrow-up.png', class: "icon-arrow arrow-up text-center", width: "24" %>
+    </a>
   </div>
 </div>

@@ -1,38 +1,52 @@
+<div id="user-left-box" class="clearfix hidden-sm hidden-xs">
+	<%= image_tag current_user.avatar.url(:menu) %>
+	<div class="user-box">
+		<span class="name"><%= current_user.full_name %></span>
+		<span class="roles"><%= current_user.role.capitalize %></span>
+	</div>
+</div>
 <div class="navigation">
   <ul>
       <li>
         <%= link_to teacher_dashboard_class_stats_path do %>
-          <i class="fa fa-tachometer"></i>Class stats
+        <%= image_tag 'class.png', width: "14" %>
+          Class stats
         <% end %>
       </li>
       <li>
         <%= link_to teacher_dashboard_students_path do %>
-          <i class="fa fa-book"></i>Students
+        <%= image_tag 'grades.png', width: "14" %>
+          Students
         <% end %>
       </li>
 			<li>
 				<%= link_to teacher_dashboard_teacher_stats_path do %>
-					<i class="fa fa-tasks"></i>Teacher stats
+        <%= image_tag 'teacher.png', width: "14" %>
+          Teacher stats
 				<% end %>
 			</li>
       <li>
         <%= link_to teacher_dashboard_grades_path do %>
-          <i class="fa fa-certificate"></i>Grades
+        <%= image_tag 'grades.png', width: "14" %>
+          Grades
         <% end %>
       </li>
       <li>
         <%= link_to teacher_dashboard_assistance_path do %>
-          <i class="fa fa-heart"></i>Assistance
+        <%= image_tag 'attendance.png', width: "14" %>
+          Assistance
         <% end %>
       </li>
       <li>
         <%= link_to teacher_dashboard_sprints_path do %>
-          <i class="fa fa-envelope"></i>Sprints
+        <%= image_tag 'class.png', width: "14" %>
+          Sprints
         <% end %>
       </li>
       <li>
         <%= link_to teacher_dashboard_recomendations_path do %>
-          <i class="fa fa-binoculars"></i>Recomndations
+        <%= image_tag 'student_status.png', width: "14" %>
+          Recomndations
         <% end %>
       </li>
   </ul>

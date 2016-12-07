@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-<%= render 'shared/students/header/frame' %>
+<%= render 'shared/students/header/frame', :bar => true %>
 <section id="tracks">
   <div class="container pv-49 ph-7">
     <% @tracks.each_slice(4) do |row| %>
       <div class="row m-0">
         <% row.each do |track| %>
-          <div class="col-sm-3 col-xs-12">
+          <div class="col-sm-4 col-xs-12 col-md-3 mb-35-xs mb-35-sm">
             <%= link_to students_tracks_path(track.id), class: "track" do %>
               <div class="color" style="background-color:<%= track.color %>">
                 <div class="icon"></div>
@@ -13,26 +12,15 @@
               <div class="content">
                 <h2><%= track.name %></h2>
                 <p><%= track.description %></p>
-                <hr>
                 <div class="link">
-                   empezar &rarr;
+                  <hr>
+                  empezar &rarr;
                 </div>
               </div>
             <% end %>
           </div>
         <% end %>
       </div>
-=======
-<%= render 'shared/students/header/frame', :bar => true %>
-<% @tracks.each do |track| %>
-  <div class="track">
-    <h2><%= track.name %></h2>
-    <p><%= track.description %></p>
-    <% if track.name != "Selección" %>
-      <%= link_to "Link to track", students_tracks_path(track.id) %>
-    <% else %>
-      <%= link_to "Link to track", selection_path %>
->>>>>>> develop
     <% end %>
   </div>
 </section>
