@@ -19,7 +19,8 @@ Rails.application.routes.draw do
       get 'dashboard/class_stats'
       get 'dashboard/students'
       get 'dashboard/teacher_stats'
-      match 'dashboard/grades', via: [:get, :post]
+      get 'dashboard/grades/filters' => 'dashboard#grades_filters'
+      match 'dashboard/grades/tech/input(/branch/:branch_id/group/:group_id/sprint/:sprint_id/lesson/:lesson_id/page/:page_id)' => "dashboard#grades_input", via: [:get, :post], as: :grades_tech_input
       get 'dashboard/grades_filter'
       get 'dashboard/assistance'
       get 'dashboard/sprints'

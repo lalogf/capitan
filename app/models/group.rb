@@ -2,12 +2,14 @@
 #
 # Table name: groups
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  description :string(255)
-#  branch_id   :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                     :integer          not null, primary key
+#  name                   :string(255)
+#  description            :string(255)
+#  branch_id              :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  sequence               :integer          default(0)
+#  accepting_latest_users :boolean          default(FALSE)
 #
 
 class Group < ActiveRecord::Base

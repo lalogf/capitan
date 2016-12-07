@@ -5,12 +5,12 @@
 #  id                            :integer          not null, primary key
 #  user_id                       :integer
 #  name                          :string(255)
-#  biography                     :text(65535)
+#  biography                     :text(16777215)
 #  dni                           :string(255)
 #  district_id                   :integer
 #  phone1                        :string(255)
 #  phone2                        :string(255)
-#  facebook_link                 :text(65535)
+#  facebook_link                 :text(16777215)
 #  major                         :string(255)
 #  school                        :string(255)
 #  reasons_school_not_done       :integer
@@ -36,10 +36,13 @@
 #  education_id                  :integer
 #  semesters_left_id             :integer
 #  spot_id                       :integer
-#  reasons_to_enter              :text(65535)
-#  how_you_find_out              :text(65535)
-#  what_is_laboratoria           :text(65535)
-#  student_lifespan              :text(65535)
+#  reasons_to_enter              :text(16777215)
+#  how_you_find_out              :text(16777215)
+#  what_is_laboratoria           :text(16777215)
+#  student_lifespan              :text(16777215)
+#  github                        :string(255)
+#  linkedin                      :string(255)
+#  portafolio                    :string(255)
 #
 
 class Profile < ActiveRecord::Base

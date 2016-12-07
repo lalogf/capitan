@@ -31,6 +31,9 @@
                           { filter: "#filter_lesson_id",blank: "Seleccione una lección"},
                           { filter: "#filter_page_id",  blank: "Seleccione un elemento"}]);
             changeFilter({ filter: "lesson", options: { sprint_id: sprint_id } },"#filter_lesson_id");
+            $("#filter_soft_skill_id").hide();
+            $("#filter_lesson_id").hide();
+            $("#filter_page_id").hide();            
         });
         $("#filter_lesson_id").change(function() {
             lesson_id = $(this).val();
@@ -54,22 +57,30 @@
         });
 
         $("form input[type='submit']").click(function(e) {
+            e.preventDefault();
             var page_id = $("#filter_page_id").val();
             var soft_skill_id = $("#filter_soft_skill_id").val();
 
             if (branch_id == "" || group_id == "" || sprint_id == "" || area_id == "") {
                 alert("Seleccione una sede, grupo, sprint o área de trabajo");
+
             }
             if (area_id == 1 && (lesson_id == "" || page_id == "")) {
                 alert("Seleccione una lección o página");
-            } else (area_id == 2 && (soft_skill_id == "")) {
+            } else if (area_id == 2 && (soft_skill_id == "")) {
                 alert("Seleccione un soft skill");
             }
+            document.location = "<%= teacher_grades_tech_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/lesson/[lesson_id]/page/[page_id]"
+                                .replace("[branch_id]",branch_id)
+                                .replace("[group_id]",group_id)
+                                .replace("[sprint_id]",sprint_id)
+                                .replace("[lesson_id]",lesson_id)
+                                .replace("[page_id]",page_id);
         });
     });
 
     function changeFilter(send_data,filter_to_update) {
-        $.get("/teacher/dashboard/grades_filter",send_data,function(result) {
+        $.get("<%= teacher_dashboard_grades_filter_path %>",send_data,function(result) {
             result.status == "ok" ? addRemoteOptions(filter_to_update,result.data) : alert(result.message);
         });
     }
@@ -107,7 +118,7 @@
       <h1 class="pull-left">Notas</h1>
     </div>
     <section>
-      <%= simple_form_for :filter, url: teacher_dashboard_grades_path do |f| %>
+      <%= simple_form_for :filter, url: teacher_grades_tech_input_path do |f| %>
         <%= f.input :branch_id, collection: @branches, label:false, include_blank: "Seleccione una sede" %>
         <%= f.input :group_id, collection: [], label: false, include_blank: "Seleccione una promoción" %>
         <%= f.input :sprint_id, collection: [], label: false, include_blank: "Seleccione un sprint" %>

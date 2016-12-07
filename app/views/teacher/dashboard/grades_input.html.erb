@@ -1,0 +1,45 @@
+<div class="container-fluid p-20">
+    <ol class="breadcrumb">
+      <li><%= link_to "Regresar",teacher_dashboard_grades_filters_path, :class => "active" %></li>
+    </ol>
+    <section class="grades-input">
+      <div class="header">
+        <h3><%= @page.title %></h3>
+        <h4><%= @lesson.title %></h4>
+        <h4><%= @sprint.name %></h4>
+        <h4><%= @group.name %></h4>
+      </div>
+      <%= simple_form_for :input, url: teacher_grades_tech_input_path do |f| %>
+        <%= f.input :page_id,as: :hidden, :input_html => {:value => @page.id} %>
+        <%= f.input :sprint_id,as: :hidden, :input_html => {:value => params[:sprint_id]} %>
+        <%= f.input :lesson_id,as: :hidden, :input_html => {:value => params[:lesson_id]} %>
+        <%= f.input :group_id,as: :hidden, :input_html => {:value => params[:group_id]} %>
+        <table class="table table-bordered table-condensed">
+        <tr>
+          <th>Estudiante</th>
+          <th style="width:10%">Ingresar puntaje <br />(Nota máx. <%= select_points(@sprintPage,@page).round(2) %>)</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= image_tag user.avatar(:student_dashboard), :class => "user-image" %>
+              <h4 class="mt-0"><%= user.profile.name %></h4>
+              <p><%= user.code %></p>
+              <%= f.input :users,as: :hidden, :input_html => {:name => "input[users][]", :value => user.id} %>
+            </td>
+            <td style="vertical-align:middle;">
+              <% user_points = find_submission_points(user.id,@submissions) %>
+              <%= f.input :grades, label:false, :input_html => {:type => "number",:name => "input[grades][]", :step => "0.1", :value => (!user_points.nil? ? user_points.round(2) : nil)} %>
+            </td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td>
+            <%= f.submit "Guardar Cambios", class: "btn btn-primary" %>
+          </td>
+        </tr>
+        </table>
+      <% end %>
+    </section>
+</div>
