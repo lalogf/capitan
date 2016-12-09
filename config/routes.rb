@@ -17,13 +17,12 @@ Rails.application.routes.draw do
 
     namespace :teacher do
       get 'dashboard/class_stats'
-      get 'dashboard/students'
+      get 'dashboard/student_status'
       get 'dashboard/teacher_stats'
       match 'dashboard/grades', via: [:get, :post]
       get 'dashboard/grades_filter'
-      get 'dashboard/assistance'
-      get 'dashboard/sprints'
-      get 'dashboard/recomendations'
+      get 'dashboard/attendance'
+      get 'dashboard/student_ranking'
     end
 
     get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track

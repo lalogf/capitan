@@ -2,51 +2,49 @@
 	<%= image_tag current_user.avatar.url(:menu) %>
 	<div class="user-box">
 		<span class="name"><%= current_user.full_name %></span>
-		<span class="roles"><%= current_user.role.capitalize %></span>
+		<h5 class="roles text-uppercase bold mt-7"><%= current_user.role.capitalize %></h5>
 	</div>
 </div>
 <div class="navigation">
   <ul>
       <li>
         <%= link_to teacher_dashboard_class_stats_path do %>
-        <%= image_tag 'class.png', width: "14" %>
+        <%= image_tag 'class.png', width: "16", class: "mr-14" %>
           Class stats
         <% end %>
       </li>
       <li>
-        <%= link_to teacher_dashboard_students_path do %>
-        <%= image_tag 'grades.png', width: "14" %>
-          Students
-        <% end %>
-      </li>
-			<li>
-				<%= link_to teacher_dashboard_teacher_stats_path do %>
-        <%= image_tag 'teacher.png', width: "14" %>
-          Teacher stats
-				<% end %>
-			</li>
-      <li>
         <%= link_to teacher_dashboard_grades_path do %>
-        <%= image_tag 'grades.png', width: "14" %>
+        <%= image_tag 'grades.png', width: "14", class: "mr-14" %>
           Grades
         <% end %>
       </li>
+
       <li>
-        <%= link_to teacher_dashboard_assistance_path do %>
-        <%= image_tag 'attendance.png', width: "14" %>
-          Assistance
+				<%= link_to teacher_dashboard_teacher_stats_path do %>
+        <%= image_tag 'teacher.png', width: "16", class: "mr-14" %>
+          Teacher stats
+				<% end %>
+			</li>
+
+      <li>
+        <%= link_to teacher_dashboard_student_ranking_path do %>
+        <%= image_tag 'student.png', width: "19", class: "mr-14" %>
+          Student Ranking
         <% end %>
       </li>
+
       <li>
-        <%= link_to teacher_dashboard_sprints_path do %>
-        <%= image_tag 'class.png', width: "14" %>
-          Sprints
+        <%= link_to teacher_dashboard_attendance_path do %>
+        <%= image_tag 'attendance.png', width: "14", class: "mr-14" %>
+          Attendance
         <% end %>
       </li>
+
       <li>
-        <%= link_to teacher_dashboard_recomendations_path do %>
-        <%= image_tag 'student_status.png', width: "14" %>
-          Recomndations
+        <%= link_to teacher_dashboard_student_status_path do %>
+        <%= image_tag 'student_status.png', width: "17", class: "mr-14" %>
+          Student Status
         <% end %>
       </li>
   </ul>
