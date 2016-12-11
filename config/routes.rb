@@ -19,8 +19,9 @@ Rails.application.routes.draw do
       get 'dashboard/class_stats'
       get 'dashboard/students'
       get 'dashboard/teacher_stats'
-      get 'dashboard/grades/filters' => 'dashboard#grades_filters'
+      get 'dashboard/grades/filters(/branch/:branch_id/group/:group_id/sprint/:sprint_id/lesson/:lesson_id/page/:page_id)' => 'dashboard#grades_filters', as: :dashboard_grades_filters
       match 'dashboard/grades/tech/input(/branch/:branch_id/group/:group_id/sprint/:sprint_id/lesson/:lesson_id/page/:page_id)' => "dashboard#grades_input", via: [:get, :post], as: :grades_tech_input
+      match 'dashboard/grades/softskill/input(/branch/:branch_id/group/:group_id/sprint/:sprint_id/softskill/:softskill)' => "dashboard#grades_softskill", via: [:get,:post], as: :grades_softskill_input
       get 'dashboard/grades_filter'
       get 'dashboard/assistance'
       get 'dashboard/sprints'

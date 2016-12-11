@@ -8,6 +8,9 @@
     var area_id = "";
 
     $(document).ready(function () {
+
+        initFilters();
+
         $("#filter_branch_id").change(function() {
             branch_id = $(this).val();
             clearFilters([{ filter: "#filter_group_id", blank: "Seleccione una promoción"},
@@ -33,7 +36,7 @@
             changeFilter({ filter: "lesson", options: { sprint_id: sprint_id } },"#filter_lesson_id");
             $("#filter_soft_skill_id").hide();
             $("#filter_lesson_id").hide();
-            $("#filter_page_id").hide();            
+            $("#filter_page_id").hide();
         });
         $("#filter_lesson_id").change(function() {
             lesson_id = $(this).val();
@@ -70,14 +73,27 @@
             } else if (area_id == 2 && (soft_skill_id == "")) {
                 alert("Seleccione un soft skill");
             }
-            document.location = "<%= teacher_grades_tech_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/lesson/[lesson_id]/page/[page_id]"
-                                .replace("[branch_id]",branch_id)
-                                .replace("[group_id]",group_id)
-                                .replace("[sprint_id]",sprint_id)
-                                .replace("[lesson_id]",lesson_id)
-                                .replace("[page_id]",page_id);
+
+            if (area_id == 1) {
+                document.location = "<%= teacher_grades_tech_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/lesson/[lesson_id]/page/[page_id]"
+                .replace("[branch_id]",branch_id)
+                .replace("[group_id]",group_id)
+                .replace("[sprint_id]",sprint_id)
+                .replace("[lesson_id]",lesson_id)
+                .replace("[page_id]",page_id);
+            } else if (area_id == 2) {
+                document.location = "<%= teacher_grades_softskill_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/softskill/[softskill_id]"
+                .replace("[branch_id]",branch_id)
+                .replace("[group_id]",group_id)
+                .replace("[sprint_id]",sprint_id)
+                .replace("[softskill_id]",soft_skill_id);
+            }
         });
     });
+
+    function initFilters() {
+
+    }
 
     function changeFilter(send_data,filter_to_update) {
         $.get("<%= teacher_dashboard_grades_filter_path %>",send_data,function(result) {
@@ -119,7 +135,7 @@
     </div>
     <section>
       <%= simple_form_for :filter, url: teacher_grades_tech_input_path do |f| %>
-        <%= f.input :branch_id, collection: @branches, label:false, include_blank: "Seleccione una sede" %>
+        <%= f.input :branch_id, collection: @branches, label:false, include_blank: "Seleccione una sede",selected: params[:branch_id] %>
         <%= f.input :group_id, collection: [], label: false, include_blank: "Seleccione una promoción" %>
         <%= f.input :sprint_id, collection: [], label: false, include_blank: "Seleccione un sprint" %>
         <%= f.input :area_id, collection: [["Técnico",1],["HSE",2]], label: false, include_blank: "Seleccione un área" %>

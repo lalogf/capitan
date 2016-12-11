@@ -13,8 +13,10 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Puntaje total</th>
-        <th></th>
+        <th>Descripción</th>
+        <th>Puntos</th>
+        <th>Tipo</th>
+        <th style="width: 15%">Acciones</th>
       </tr>
     </thead>
 
@@ -22,14 +24,16 @@
       <% @soft_skills.each do |soft_skill| %>
         <tr>
           <td><%= soft_skill.name %></td>
+          <td><%= soft_skill.description %></td>
           <td><%= soft_skill.max_points %></td>
+          <td><%= soft_skill.stype %></td>
           <td>
-            <%= link_to edit_soft_skill_path(soft_skill) do %>
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <%= link_to edit_soft_skill_path(soft_skill), class: "btn btn-primary" do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i> Editar
             <% end %>&nbsp;
-            <%= link_to soft_skill, method: :delete, data: { confirm: '¿Está seguro?' } do %>
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            <% end %>    
+            <%= link_to soft_skill, method: :delete, data: { confirm: '¿Está seguro?' }, class: "btn btn-primary" do %>
+              <i class="fa fa-trash" aria-hidden="true"></i> Eliminar
+            <% end %>
           </td>
         </tr>
       <% end %>

@@ -41,7 +41,17 @@ class Teacher::DashboardController < ApplicationController
     @sprintPage = SprintPage.where(sprint_id:params[:sprint_id],page_id:params[:page_id]).first
     @users  = User.includes(:profile).where(group_id: params[:group_id], role: 1, disable:false)
     @submissions = Submission.where(page_id: params[:page_id],user_id: @users.map { |u| u.id }).map { |s| [s.user_id,s.points]}
-    render 'grades_input'
+  end
+
+  def grades_softskill
+    if request.post?
+    end
+
+    @sprint = Sprint.find(params[:sprint_id])
+    @group  = Group.find(params[:group_id])
+    @softskill = SoftSkill.find(params[:softskill])
+    @users  = User.includes(:profile).where(group_id: params[:group_id], role: 1, disable:false)
+    @submissions = SoftSkillSubmission.where(sprint_id:params[:sprint_id])
 
   end
 

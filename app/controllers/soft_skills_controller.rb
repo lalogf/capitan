@@ -10,7 +10,7 @@ class SoftSkillsController < ApplicationController
   # GET /soft_skills
   # GET /soft_skills.json
   def index
-    @soft_skills = SoftSkill.all
+    @soft_skills = SoftSkill.all.order(:stype)
   end
 
   # GET /soft_skills/1
@@ -75,6 +75,6 @@ class SoftSkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def soft_skill_params
-      params.require(:soft_skill).permit(:name, :max_points)
+      params.require(:soft_skill).permit(:name, :max_points, :description, :stype)
     end
 end

@@ -3,7 +3,7 @@ class SprintsController < ApplicationController
   before_action do
     check_allowed_roles(current_user, ["assistant","teacher","admin"])
   end
-  
+
   layout 'admin'
 
   def index
@@ -27,12 +27,14 @@ class SprintsController < ApplicationController
 
   def new
     @sprint = Sprint.new
-    @lessons = Lesson.all
+    @lessons = Lesson.all.includes(:pages)
+    @soft_skills = SoftSkill.all.group_by(&:stype)
   end
 
   def edit
     @sprint_pages_ids = @sprint.sprint_pages.pluck(:page_id,:points)
-    @lessons = Lesson.all
+    @lessons = Lesson.all.includes(:pages)
+    @soft_skills = SoftSkill.all.group_by(&:stype)
   end
 
   def create

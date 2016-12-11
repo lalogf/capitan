@@ -4,15 +4,12 @@
     </ol>
     <section class="grades-input">
       <div class="header">
-        <h3><%= @page.title %></h3>
-        <h4><%= @lesson.title %></h4>
         <h4><%= @sprint.name %></h4>
+        <h4><%= @softskill.name %></h4>
         <h4><%= @group.name %></h4>
       </div>
-      <%= simple_form_for :input, url: teacher_grades_tech_input_path do |f| %>
-        <%= f.input :page_id,as: :hidden, :input_html => {:value => @page.id} %>
+      <%= simple_form_for :input, url: teacher_grades_softskill_input_path do |f| %>
         <%= f.input :sprint_id,as: :hidden, :input_html => {:value => params[:sprint_id]} %>
-        <%= f.input :lesson_id,as: :hidden, :input_html => {:value => params[:lesson_id]} %>
         <%= f.input :group_id,as: :hidden, :input_html => {:value => params[:group_id]} %>
         <table class="table table-bordered table-condensed">
         <tr>
@@ -28,8 +25,7 @@
               <%= f.input :users,as: :hidden, :input_html => {:name => "input[users][]", :value => user.id} %>
             </td>
             <td style="vertical-align:middle;">
-              <% user_points = find_submission_points(user.id,@submissions) %>
-              <%= f.input :grades, label:false, :input_html => {:type => "number",:name => "input[grades][]", :step => "0.1", :value => (!user_points.nil? ? user_points.round(2) : nil)} %>
+              <%= f.input :grades, label:false, :input_html => {:type => "number",:name => "input[grades][]", :step => "0.1", :value => ""} %>
             </td>
           </tr>
         <% end %>

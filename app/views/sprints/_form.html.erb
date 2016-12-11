@@ -75,31 +75,58 @@
         </span>
         <div style="margin-left: 30px;" class="lesson-<%= lesson.id %>-pages">
           <% lesson.pages.each do |page| %>
-            <span class="checkbox">
-              <label for="sprint_page_ids_<%= page.id %>">
-                <input lesson-id="<%= lesson.id %>"
-                       class="check_boxes optional"
-                       type="checkbox"
-                       value="<%= page.id %>"
-                       <%= @sprint.page_ids.include?(page.id) ? "checked" : "" %>
-                       name="sprint_pages[<%= page.id %>[page_id]]"
-                       id="sprint_page_ids_<%= page.id %>">
-                       <%= page.title %>
-                       <% if page.page_type != "material" %>
-                         <input type="number"
-                                min="0"
-                                style="width:60px;"
-                                name="sprint_pages[<%= page.id %>[points]]"
-                                value="<%= select_sprint_page(@sprint_pages_ids, page.id) %>"/>
-                         <%= "Default: #{page.points} puntos" %>
-                       <% end %>
-                </label>
-              </span>
+            <% if page.page_type != "material" and page.page_type != "score" %>
+              <span class="checkbox">
+                <label for="sprint_page_ids_<%= page.id %>">
+                  <input lesson-id="<%= lesson.id %>"
+                         class="check_boxes optional"
+                         type="checkbox"
+                         value="<%= page.id %>"
+                         <%= @sprint.page_ids.include?(page.id) ? "checked" : "" %>
+                         name="sprint_pages[<%= page.id %>[page_id]]"
+                         id="sprint_page_ids_<%= page.id %>">
+                         <%= page.title %>
+                           <input type="number"
+                                  min="0"
+                                  style="width:60px;"
+                                  name="sprint_pages[<%= page.id %>[points]]"
+                                  value="<%= select_sprint_page(@sprint_pages_ids, page.id) %>"/>
+                           <%= "Default: #{page.points} puntos" %>
+                  </label>
+                </span>
+              <% end %>
           <% end %>
         </div>
       <% end %>
-
     </fieldset><br>
+    <fieldset class="soft-skill-panel">
+      <legend>Soft skill asociados</legend>
+      <% @soft_skills.map do |key,value| %>
+        <h4><%= key.capitalize %></h4>
+        <div style="margin-left: 30px;">
+          <% value.each do |sk| %>
+            <span class="checkbox">
+              <label for="sprint_soft_skill_ids_<%= sk.id %>">
+                <input softskill-id="<%= sk.id %>"
+                class="check_boxes optional"
+                type="checkbox"
+                value="<%= sk.id %>"
+                <%= @sprint.soft_skill_ids.include?(sk.id) ? "checked" : "" %>
+                name="sprint_soft_skills[<%= sk.id %>[soft_skill_id]]"
+                id="sprint_soft_skills_ids_<%= sk.id %>">
+                <%= sk.name %>
+                <input type="number"
+                min="0"
+                style="width:60px;"
+                name="sprint_soft_skills[<%= sk.id %>[points]]"
+                value="<%= select_sprint_page(@sprint_soft_skills_ids, sk.id) %>"/>
+                <%= "Default: #{sk.max_points} puntos" %>
+              </label>
+            </span>
+          <% end %>
+        </div>
+      <% end %>
+    </fieldset><br/>
     <fieldset>
       <legend>Badges para este sprint</legend>
       <%= f.association :badges,

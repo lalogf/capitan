@@ -18,11 +18,14 @@ class Sprint < ActiveRecord::Base
   belongs_to :group
   has_many :submissions, through: :pages
   has_many :soft_skill_submissions
-  has_many :sprint_pages, dependent: :destroy 
+  has_many :sprint_pages, dependent: :destroy
+  has_many :sprint_soft_skills, dependent: :destroy
   has_many :pages, through: :sprint_pages
   has_many :lessons, -> { distinct }, through: :pages
+  has_many :soft_skills, through: :sprint_soft_skills
 
   accepts_nested_attributes_for :sprint_pages
+  accepts_nested_attributes_for :soft_skills
 
   validates :group_id, presence: true
 

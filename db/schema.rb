@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204024247) do
+ActiveRecord::Schema.define(version: 20161209202627) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -340,9 +340,10 @@ ActiveRecord::Schema.define(version: 20161204024247) do
   create_table "soft_skills", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.integer  "max_points",  limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "description", limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "description", limit: 65535
+    t.integer  "stype",       limit: 4
   end
 
   create_table "spots", force: :cascade do |t|
@@ -381,18 +382,13 @@ ActiveRecord::Schema.define(version: 20161204024247) do
   add_index "sprint_pages", ["page_id"], name: "fk_rails_8890087a83", using: :btree
   add_index "sprint_pages", ["sprint_id"], name: "fk_rails_c85ff44138", using: :btree
 
-  create_table "sprint_summaries", force: :cascade do |t|
-    t.integer  "user_id",                limit: 4
-    t.integer  "sprint_id",              limit: 4
-    t.float    "total_technical_skills", limit: 24
-    t.float    "total_soft_skills",      limit: 24
-    t.float    "max_technical_skills",   limit: 24
-    t.float    "max_soft_skills",        limit: 24
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+  create_table "sprint_soft_skills", force: :cascade do |t|
+    t.integer  "sprint_id",     limit: 4
+    t.integer  "soft_skill_id", limit: 4
+    t.decimal  "points",                  precision: 11, scale: 2
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
-
-  add_index "sprint_summaries", ["user_id"], name: "index_sprint_summaries_on_user_id", using: :btree
 
   create_table "sprints", force: :cascade do |t|
     t.string   "name",        limit: 255
