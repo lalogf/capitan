@@ -17,7 +17,7 @@ class Teacher::DashboardController < ApplicationController
 
   def grades_filters
       @branches = Branch.all
-      @soft_skills = SoftSkill.all
+      @soft_skills = SoftSkill.stypes
       render 'grades_filter'
   end
 
@@ -49,7 +49,8 @@ class Teacher::DashboardController < ApplicationController
 
     @sprint = Sprint.find(params[:sprint_id])
     @group  = Group.find(params[:group_id])
-    @softskill = SoftSkill.find(params[:softskill])
+    @softskill = SoftSkill.stypes.keys[0].capitalize
+    @soft_skills = SoftSkill.find_by_stype(params[:stype])
     @users  = User.includes(:profile).where(group_id: params[:group_id], role: 1, disable:false)
     @submissions = SoftSkillSubmission.where(sprint_id:params[:sprint_id])
 

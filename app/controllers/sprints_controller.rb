@@ -17,6 +17,7 @@ class SprintsController < ApplicationController
 
   def show
     @lessons = @sprint.lessons
+    @soft_skills = @sprint.soft_skills.all.group_by(&:stype)
   end
 
   def group_sprints
@@ -48,6 +49,7 @@ class SprintsController < ApplicationController
 
     respond_to do |format|
       update_sprint_pages
+      update_sprint_soft_skills
       if @sprint.save
         format.html { redirect_to @sprint, notice: 'Sprint was successfully created.' }
         format.json { render :show, status: :created, location: @sprint }
@@ -59,8 +61,10 @@ class SprintsController < ApplicationController
   end
 
   def update
+    p params
     respond_to do |format|
       update_sprint_pages
+      update_sprint_soft_skills
       if @sprint.update(sprint_params)
         format.html { redirect_to @sprint, notice: 'Sprint was successfully updated.' }
         format.json { render :show, status: :ok, location: @sprint }
@@ -82,6 +86,17 @@ class SprintsController < ApplicationController
     params[:sprint].delete(:sprint_pages)
   end
 
+  def update_sprint_soft_skills
+    @sprint.soft_skills.destroy_all
+    @sprint.save
+    params[:sprint_soft_skills].map do |k,sp|
+      if sp[:soft_skill_id] != nil
+        SprintSoftSkill.create(sprint:@sprint,soft_skill_id: sp[:soft_skill_id],points: sp[:points])
+      end
+    end
+    params[:sprint].delete(:sprint_soft_skills)
+  end
+
   def destroy
     @sprint.destroy
     respond_to do |format|
@@ -98,6 +113,6 @@ class SprintsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sprint_params
-      params.require(:sprint).permit(:name, :description, :sequence, :group_id, page_ids: [], badge_ids: [])
+      params.require(:sprint).permit(:name, :description, :sequence, :group_id, page_ids: [], badge_ids: [], soft_skill_ids: [])
     end
 end

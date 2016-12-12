@@ -15,7 +15,7 @@
         <th>Image</th>
         <th>Nombre</th>
         <th>Puntos</th>
-        <th></th>
+        <th style="width:15%">Acciones</th>
       </tr>
     </thead>
 
@@ -26,11 +26,11 @@
           <td><%= badge.name %></td>
           <td><%= badge.points %></td>
           <td>
-            <%= link_to edit_badge_path(badge) do %>
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <%= link_to edit_badge_path(badge),class: "btn btn-primary" do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i> Editar
             <% end %>
-            <%= link_to badge, method: :delete, data: { confirm: '¿Está seguro?' } do %>
-              <i class="fa fa-trash" aria-hidden="true"></i>
+            <%= link_to badge, method: :delete, data: { confirm: '¿Está seguro?' },class: "btn btn-primary" do %>
+              <i class="fa fa-trash" aria-hidden="true"></i> Eliminar
             <% end %>
           </td>
         </tr>

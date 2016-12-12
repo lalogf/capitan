@@ -5,7 +5,7 @@
     <section class="grades-input">
       <div class="header">
         <h4><%= @sprint.name %></h4>
-        <h4><%= @softskill.name %></h4>
+        <h4><%= @softskill %></h4>
         <h4><%= @group.name %></h4>
       </div>
       <%= simple_form_for :input, url: teacher_grades_softskill_input_path do |f| %>

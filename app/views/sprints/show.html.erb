@@ -18,7 +18,7 @@
       <p>
         <strong>Grupo:</strong>
         <%= @sprint.group.name %>
-      </p>      
+      </p>
     </div>
   </div>
   <div class="panel panel-default">
@@ -34,6 +34,21 @@
         </div>
       <% end.empty? %>
         <p> No hay lecciones asociadas a este sprint </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">HSE</div>
+    <div class="panel-body">
+      <% if @soft_skills.each do |group| %>
+        <div class="col-sm-3">
+          <h4><%= group[0].capitalize %></h4>
+          <% group[1].each do |soft_skill| %>
+          <p><%= soft_skill.name %></p>
+          <% end %>
+        </div>
+      <% end.empty? %>
+        <p>No hay soft skills asociados a este sprint</p>
       <% end %>
     </div>
   </div>
