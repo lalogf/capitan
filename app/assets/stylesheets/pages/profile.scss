@@ -7,6 +7,17 @@
     }
   }
 }
+.intro-perfil {
+  .name,.description, .codigo {
+    color: #4a4a4a;
+  }
+}
+
+.box-badge-coder {
+  position: relative;
+  display: inline;
+}
+
 #point-summary {
   .font-big {
 
@@ -31,7 +42,6 @@
 }
 
 .badge {
-  position:relative;
   background-color: transparent;
 }
 
