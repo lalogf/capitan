@@ -14,7 +14,9 @@
         <table class="table table-bordered table-condensed">
         <tr>
           <th>Estudiante</th>
-          <th style="width:10%">Ingresar puntaje <br />(Nota máx. <%= select_points(@sprintPage,@page).round(2) %>)</th>
+          <% @soft_skills.each do |sk| %>
+            <th><%= sk.name %><br />(Nota máx. )</th>
+          <% end %>
         </tr>
         <% @users.each do |user| %>
           <tr>

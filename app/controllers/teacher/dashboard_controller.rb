@@ -50,7 +50,8 @@ class Teacher::DashboardController < ApplicationController
     @sprint = Sprint.find(params[:sprint_id])
     @group  = Group.find(params[:group_id])
     @softskill = SoftSkill.stypes.keys[0].capitalize
-    @soft_skills = SoftSkill.find_by_stype(params[:stype])
+    @soft_skills = SprintSoftSkill.where(sprint_id:params[:sprint_id]).joins(:soft_skill).
+                    where("soft_skills.stype":params[:stype]).pluck("soft_skills.name","coalesce(sprint_soft_skills.points,soft_skills.max_points)")
     @users  = User.includes(:profile).where(group_id: params[:group_id], role: 1, disable:false)
     @submissions = SoftSkillSubmission.where(sprint_id:params[:sprint_id])
 
