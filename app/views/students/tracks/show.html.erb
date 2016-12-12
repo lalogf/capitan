@@ -15,10 +15,10 @@
       <div class="container">
         <h2><%= "Nivel #{level}" %></h2>
         <% courses.each_slice(4) do |row| %>
-        <div class="flex-center">
+        <div class="box-center">
           <% row.each do |course| %>
           <div class="col-sm-3 col-xs-12">
-            <%= link_to course_details_path(@track,course), class: "course " do %>
+            <%= link_to course_details_path(@track,course), class: "course mb-21-xs" do %>
             <div class="color" style="background-color: <%= course.color %>"></div>
             <h5><%= course.name %></h5>
             <p><%= course.description %></p>

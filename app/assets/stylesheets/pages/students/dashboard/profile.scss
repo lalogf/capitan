@@ -69,6 +69,7 @@
 
 .flex {
   display: flex;
+  display: -webkit-flex;
 }
 
 .absolute {
@@ -122,13 +123,17 @@
 
 @media only screen and (max-width: 480px) {
 
+
   .navbar-right {
     text-align: right;
   }
 
   #coder-profile {
     .photo-profile {
-      height: 110px;
+      height: auto;
+    }
+    .badges {
+      display: inline-block;
     }
   }
   .name {
@@ -152,8 +157,7 @@
   }
 
   .c100.small {
-    margin-left: 0px;
-    margin-right: inherit;
+    margin: 14px auto;
     font-size: 95px;
   }
 

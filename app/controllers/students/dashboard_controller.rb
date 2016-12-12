@@ -19,7 +19,7 @@ class Students::DashboardController < ApplicationController
     @badge_points = @user.sprint_badges.joins(:badge).pluck('badges.points').reduce(&:+)
     @soft_skills_points = SoftSkillSubmission.for_user(@user)
 
-    @student_technical_points = { points: @student_points + (@badge_points != nil ? @badge_points : 0),
+    @student_technical_points = { points: (@student_points != nil ? @student_points : 0) + (@badge_points != nil ? @badge_points : 0),
                                   max: @maximum_points }
     @student_hse_points = { points: @soft_skills_points.map { |e| e["points"]}.reduce(&:+),
                             max: @soft_skills_points.map { |e| e["max_points"]}.reduce(&:+) }

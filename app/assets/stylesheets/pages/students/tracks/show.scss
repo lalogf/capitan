@@ -4,6 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
 
   .track-detail {
     text-align: center;
@@ -43,10 +46,13 @@
 }
 
 #courses {
-  .flex-center {
+  .box-center {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: center;
   }
 
   .level {
@@ -91,7 +97,9 @@
     .info {
       margin: 8px 8px 8px 16px;
       display: flex;
+      display: -webkit-flex;
       justify-content: space-between;
+      -webkit-justify-content: space-between;
       font-size: 13px;
       font-weight: 500;
       color: #2767b2;
@@ -102,4 +110,12 @@
 .bg-track-fullstack-js {
   background-image: image-url('students/tracks/bg-track-fullstack');
   background-repeat: repeat-x;
+}
+
+@media only screen and (max-width: 480px) {
+  #courses {
+    .box-center {
+      display: inline-block;
+    }
+  }
 }

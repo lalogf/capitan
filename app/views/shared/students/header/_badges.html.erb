@@ -1,9 +1,9 @@
 <% if @user.student? %>
-  <h4 class="bold mt-0 mb-7 mb-14-xs text-left fs-12 text-uppercase pl-7">Badges</h4>
+  <h4 class="bold mt-0 mb-7 mb-14-xs text-center-xs fs-12 text-uppercase pl-7">Badges</h4>
   <div class="badges">
     <% if !@sprint_badges.empty? %>
       <% @sprint_badges.each do |sp| %>
-        <div class="badge">
+        <div class="badge text-center">
             <%= image_tag sp[0].image.url(:normal), alt: sp[0].name, class: "img-circle img-responsive", width: "70" %>
             <div class="badge-count"><p><%= "x#{sp[1]}" %></p></div>
         </div>
