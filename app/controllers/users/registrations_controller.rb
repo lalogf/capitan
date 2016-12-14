@@ -42,8 +42,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
          :school,:semesters_left_id,:reasons_school_not_done,:job_status,:work_for,
          :job_title,:job_payroll,:job_type,:job_salary_id,:family_income_id,:relatives,
          :childs, :tech_savy, {:tech_related_activity_ids => []}, :other_tech_related_activities,
-         :computer_at_home,:internet_access,:smartphone,:computer_use,:biography,
-         :spot_id])
+         :computer_at_home,:internet_access,:smartphone,:computer_use,:biography,:reasons_to_enter,
+         :how_you_find_out, :what_is_laboratoria, :student_lifespan, :spot_id])
     end
     devise_parameter_sanitizer.permit(:account_update) do |u|
       u.permit(
@@ -54,8 +54,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
          :school,:semesters_left_id,:reasons_school_not_done,:job_status,:work_for,
          :job_title,:job_payroll,:job_type,:job_salary_id,:family_income_id,:relatives,
          :childs, :tech_savy, {:tech_related_activity_ids => []}, :other_tech_related_activities,
-         :computer_at_home,:internet_access,:smartphone,:computer_use,:biography,
-         :spot_id])
+         :computer_at_home,:internet_access,:smartphone,:computer_use,:biography,:reasons_to_enter,
+         :how_you_find_out, :what_is_laboratoria, :student_lifespan, :spot_id])
     end
   end
 
