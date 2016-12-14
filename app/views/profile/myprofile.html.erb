@@ -7,18 +7,17 @@
             <%= image_tag @user.avatar.url(:menu), alt: "coder", class: "img-circle img-responsive", width: "130" %>
           </div>
           <div class="col-sm-7">
-            <h3 class="mv-7 light name">
+            <h3 class="mv-7 light">
               <%= @user.full_name %>
             </h3>
-            <p class="mb-0 lh-profile codigo">
+            <p class="mb-0 lh-profile">
               <%= @user.code %>
             </p>
-            <p class="light lh-profile description">
+            <p class="light lh-profile">
               <%= @user.branch.name %>
             </p>
           </div>
         </div>
-        <%= link_to @user.profile.github %>
         <!-- We are hidding the biography until job placement -->
         <!--div class="mt-56 pr-42-md">
           <h4 class="bold mb-7">sobre mi</h4>
