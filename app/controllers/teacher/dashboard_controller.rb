@@ -45,15 +45,26 @@ class Teacher::DashboardController < ApplicationController
 
   def grades_softskill
     if request.post?
+      for i in 0..params[:input][:users].size
+        params[:input][:grades].each { |k,v|
+          submission = SoftSkillSubmission.find_or_initialize_by(user_id: params[:input][:users][i],soft_skill_id:k)
+          submission.points = v[i]
+          submission.save
+        }
+      end
+      params[:sprint_id] = params[:input][:sprint_id]
+      params[:group_id] = params[:input][:group_id]
+      params[:stype] = params[:input][:stype]
     end
 
     @sprint = Sprint.find(params[:sprint_id])
     @group  = Group.find(params[:group_id])
     @softskill = SoftSkill.stypes.keys[0].capitalize
     @soft_skills = SprintSoftSkill.where(sprint_id:params[:sprint_id]).joins(:soft_skill).
-                    where("soft_skills.stype":params[:stype]).pluck("soft_skills.name","coalesce(sprint_soft_skills.points,soft_skills.max_points)")
+                   where("soft_skills.stype":params[:stype]).
+                   pluck_to_hash("soft_skills.id as id","soft_skills.name as name","coalesce(sprint_soft_skills.points,soft_skills.max_points) as points")
     @users  = User.includes(:profile).where(group_id: params[:group_id], role: 1, disable:false)
-    @submissions = SoftSkillSubmission.where(sprint_id:params[:sprint_id])
+    @submissions = SoftSkillSubmission.where(sprint_id:params[:sprint_id],user_id: @users.map { |u| u.id }).map { |s| [s.user_id,s.soft_skill_id,s.points]}
 
   end
 

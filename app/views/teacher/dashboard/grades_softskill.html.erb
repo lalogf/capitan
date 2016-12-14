@@ -11,11 +11,12 @@
       <%= simple_form_for :input, url: teacher_grades_softskill_input_path do |f| %>
         <%= f.input :sprint_id,as: :hidden, :input_html => {:value => params[:sprint_id]} %>
         <%= f.input :group_id,as: :hidden, :input_html => {:value => params[:group_id]} %>
+        <%= f.input :stype,as: :hidden, :input_html => {:value => params[:stype]} %>
         <table class="table table-bordered table-condensed">
         <tr>
           <th>Estudiante</th>
           <% @soft_skills.each do |sk| %>
-            <th><%= sk.name %><br />(Nota máx. )</th>
+            <th><%= sk["name"] %><br />(Nota máx. <%= sk["points"] %>)</th>
           <% end %>
         </tr>
         <% @users.each do |user| %>
@@ -26,14 +27,19 @@
               <p><%= user.code %></p>
               <%= f.input :users,as: :hidden, :input_html => {:name => "input[users][]", :value => user.id} %>
             </td>
-            <td style="vertical-align:middle;">
-              <%= f.input :grades, label:false, :input_html => {:type => "number",:name => "input[grades][]", :step => "0.1", :value => ""} %>
-            </td>
+            <% @soft_skills.each do |sk| %>
+              <% user_points = find_soft_skills_submissions_points(user.id,sk["id"],@submissions) %>
+              <td style="vertical-align:middle;">
+                <%= f.input :grades, label:false,
+                            :input_html => {:type => "number",:name => "input[grades][#{sk["id"]}][]",
+                                            :step => "0.1", :value => (!user_points.nil? ? user_points.round(2) : nil)} %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
         <tr>
           <td></td>
-          <td>
+          <td colspan="<%= @soft_skills.size %>" style="text-align:right;">
             <%= f.submit "Guardar Cambios", class: "btn btn-primary" %>
           </td>
         </tr>

@@ -82,11 +82,11 @@
                 .replace("[lesson_id]",lesson_id)
                 .replace("[page_id]",page_id);
             } else if (area_id == 2) {
-                document.location = "<%= teacher_grades_softskill_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/softskill/[softskill_id]"
+                document.location = "<%= teacher_grades_softskill_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/stype/[stype]"
                 .replace("[branch_id]",branch_id)
                 .replace("[group_id]",group_id)
                 .replace("[sprint_id]",sprint_id)
-                .replace("[softskill_id]",soft_skill_id);
+                .replace("[stype]",soft_skill_id);
             }
         });
     });

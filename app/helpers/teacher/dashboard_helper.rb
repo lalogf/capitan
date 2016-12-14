@@ -5,7 +5,13 @@ module Teacher::DashboardHelper
   end
 
   def find_submission_points(user_id,submissions)
-    submissions.select { |s| s[0] == user_id } != nil ? submissions.select { |s| s[0] == user_id }.first[1] : nil
+    s = submissions.select { |s| s[0] == user_id }
+    return s != nil ? submissions.select { |s| s[0] == user_id }.first[1] : nil
+  end
+
+  def find_soft_skills_submissions_points(user_id,soft_skill_id,submissions)
+    s = submissions.select { |s| s[0] == user_id and s[1] == soft_skill_id }
+    return s != nil ? s.first[2] : nil
   end
 
 end

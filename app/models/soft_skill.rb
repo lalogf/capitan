@@ -13,7 +13,9 @@
 
 class SoftSkill < ActiveRecord::Base
 
-	has_many :soft_skills_submissions
+	has_many :sprint_soft_skills, dependent: :destroy
+	has_many :sprints, through: :sprint_soft_skills
+	has_many :soft_skill_submissions, :dependent => :destroy
 	enum stype: [:communication,:teamwork,:adaptability,:attendance]
 
 	validates :name, presence: true
