@@ -16,72 +16,66 @@
             clearFilters([{ filter: "#filter_group_id", blank: "Seleccione una promoción"},
                           { filter: "#filter_sprint_id",blank: "Seleccione un sprint"},
                           { filter: "#filter_area_id",  blank: "Seleccione un área", options: [[1,"Técnico"],[2,"HSE"]] },
-                          { filter: "#filter_lesson_id",blank: "Seleccione una lección"},
-                          { filter: "#filter_page_id",  blank: "Seleccione un elemento"}]);
+                          { filter: "#filter_lesson_id",blank: "Seleccione una lección"}]);
             changeFilter({ filter: "group", options: { branch_id: branch_id } },"#filter_group_id");
         });
         $("#filter_group_id").change(function() {
             group_id = $(this).val();
             clearFilters([{ filter: "#filter_sprint_id",blank: "Seleccione un sprint"},
                           { filter: "#filter_area_id",  blank: "Seleccione un área", options: [[1,"Técnico"],[2,"HSE"]]},
-                          { filter: "#filter_lesson_id",blank: "Seleccione una lección"},
-                          { filter: "#filter_page_id",  blank: "Seleccione un elemento"}]);
+                          { filter: "#filter_lesson_id",blank: "Seleccione una lección"}]);
             changeFilter({ filter: "sprint", options: { group_id: group_id } },"#filter_sprint_id");
         });
         $("#filter_sprint_id").change(function() {
             sprint_id = $(this).val();
             clearFilters([{ filter: "#filter_area_id",  blank: "Seleccione un área", options: [[1,"Técnico"],[2,"HSE"]]},
-                          { filter: "#filter_lesson_id",blank: "Seleccione una lección"},
-                          { filter: "#filter_page_id",  blank: "Seleccione un elemento"}]);
+                          { filter: "#filter_lesson_id",blank: "Seleccione una lección"}]);
             changeFilter({ filter: "lesson", options: { sprint_id: sprint_id } },"#filter_lesson_id");
             $("#filter_soft_skill_id").hide();
             $("#filter_lesson_id").hide();
-            $("#filter_page_id").hide();
         });
         $("#filter_lesson_id").change(function() {
             lesson_id = $(this).val();
-            clearFilters([{ filter: "#filter_page_id",  blank: "Seleccione un elemento"}]);
-            changeFilter({ filter: "page", options: { sprint_id: sprint_id, lesson_id: lesson_id } },"#filter_page_id");
         });
+
         $("#filter_area_id").change(function() {
             area_id = parseInt($(this).val());
             switch (area_id) {
               case 1:
                 $("#filter_soft_skill_id").hide();
                 $("#filter_lesson_id").show();
-                $("#filter_page_id").show();
                 break;
               case 2:
                 $("#filter_soft_skill_id").show();
                 $("#filter_lesson_id").hide();
-                $("#filter_page_id").hide();
                 break;
             }
         });
 
         $("form input[type='submit']").click(function(e) {
             e.preventDefault();
-            var page_id = $("#filter_page_id").val();
+            var proceed = true;
             var soft_skill_id = $("#filter_soft_skill_id").val();
 
             if (branch_id == "" || group_id == "" || sprint_id == "" || area_id == "") {
                 alert("Seleccione una sede, grupo, sprint o área de trabajo");
-
+                proceed = false;
             }
-            if (area_id == 1 && (lesson_id == "" || page_id == "")) {
-                alert("Seleccione una lección o página");
-            } else if (area_id == 2 && (soft_skill_id == "")) {
+            if (area_id == 1 && lesson_id == "") {
+                alert("Seleccione una lección");
+                proceed = false;
+            } else if (area_id == 2 && soft_skill_id == "") {
                 alert("Seleccione un soft skill");
+                proceed = false;
             }
 
-            if (area_id == 1) {
-                document.location = "<%= teacher_grades_tech_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/lesson/[lesson_id]/page/[page_id]"
+            if (proceed && area_id == 1) {
+                document.location = "<%= teacher_grades_tech_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/lesson/[lesson_id]"
                 .replace("[branch_id]",branch_id)
                 .replace("[group_id]",group_id)
                 .replace("[sprint_id]",sprint_id)
-                .replace("[lesson_id]",lesson_id)
-                .replace("[page_id]",page_id);
-            } else if (area_id == 2) {
+                .replace("[lesson_id]",lesson_id);
+            } else if (proceed &&  area_id == 2) {
                 document.location = "<%= teacher_grades_softskill_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/stype/[stype]"
                 .replace("[branch_id]",branch_id)
                 .replace("[group_id]",group_id)
@@ -142,7 +136,6 @@
           <%= f.input :sprint_id, collection: [], label: false, include_blank: "Seleccione un sprint" %>
           <%= f.input :area_id, collection: [["Técnico",1],["HSE",2]], label: false, include_blank: "Seleccione un área" %>
           <%= f.input :lesson_id, collection: [], label: false, include_blank: "Seleccione una lección", input_html: {style: "display:none;"} %>
-          <%= f.input :page_id, collection: [], label: false, include_blank: "Seleccione un elemento", input_html: {style: "display:none;"} %>
           <%= f.input :soft_skill_id, collection: @soft_skills, label: false, include_blank: "Seleccione un softskill", input_html: {style: "display:none;"} %>
           <%= f.submit "Buscar", class: "btn btn-primary" %>
         <% end %>

@@ -23,11 +23,15 @@ class Teacher::DashboardController < ApplicationController
 
   def grades_input
     if request.post?
-      for i in 0..params[:input][:users].size
-        submission = Submission.find_or_initialize_by(user_id: params[:input][:users][i],page_id:params[:input][:page_id])
-        submission.points = params[:input][:grades][i]
-        submission.save
-      end
+      p params
+      params[:input][:grades].each { |user_id,grades|
+      grades.each { |page_id,grade|
+          submission = Submission.find_or_initialize_by(user_id: user_id,page_id:page_id)
+          submission.points = grade.first
+          submission.save
+        }
+      }
+
       params[:page_id] = params[:input][:page_id]
       params[:sprint_id] = params[:input][:sprint_id]
       params[:lesson_id] = params[:input][:lesson_id]
@@ -35,12 +39,15 @@ class Teacher::DashboardController < ApplicationController
     end
 
     @sprint = Sprint.find(params[:sprint_id])
-    @lesson = Lesson.find(params[:lesson_id])
-    @page   = Page.find(params[:page_id])
     @group  = Group.find(params[:group_id])
-    @sprintPage = SprintPage.where(sprint_id:params[:sprint_id],page_id:params[:page_id]).first
+    @lesson = SprintPage.
+               joins(:page => :lesson).
+               where("sprint_id = ? and coalesce(sprint_pages.points,pages.points) > 1 and lessons.id = ?",params[:sprint_id],params[:lesson_id]).
+               pluck("pages.id","coalesce(sprint_pages.points,pages.points) as points","pages.title","lessons.title","pages.page_type").
+               group_by { |e| e[3] }.first
+
     @users  = User.includes(:profile).where(group_id: params[:group_id], role: 1, disable:false)
-    @submissions = Submission.where(page_id: params[:page_id],user_id: @users.map { |u| u.id }).map { |s| [s.user_id,s.points]}
+    @submissions = Submission.where(user_id: @users.map { |u| u.id }).map { |s| [s.page_id,s.user_id,s.points]}
   end
 
   def grades_softskill
@@ -78,12 +85,6 @@ class Teacher::DashboardController < ApplicationController
         result = Sprint.where(group_id: params[:options][:group_id]).pluck(:id,:name)
       when "lesson"
         result = Sprint.find(params[:options][:sprint_id]).lessons.pluck(:id,:title)
-      when "page"
-        result = SprintPage.
-                 where("sprint_id = ? and pages.lesson_id = ?",params[:options][:sprint_id],params[:options][:lesson_id]).
-                 where("sprint_pages.points > ? or pages.points > ?",0,0).
-                 where.not("pages.page_type": %w[material score]).
-                 joins(:page).pluck("pages.id","concat(pages.title,' (',pages.page_type,')')")
       end
     rescue => error
       error.backtrace
