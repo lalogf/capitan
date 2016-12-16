@@ -14,7 +14,7 @@ class SprintPage < ActiveRecord::Base
   belongs_to :sprint
   belongs_to :page
 
-  scope :with_points, -> { where("sprint_pages.points > ? or pages.points > ?",0,0).where("pages.page_type not in (?)",%w[material score]) }
+  scope :with_points, -> { where("coalesce(sprint_pages.points,pages.points) > 0").where("pages.page_type not in (?)",%w[material score]) }
 
   def self.total_points group_id
     SprintPage.with_points.

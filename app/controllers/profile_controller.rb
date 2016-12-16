@@ -42,6 +42,7 @@ class ProfileController < ApplicationController
       @student_points << ["badges", @badge_points != nil ? @badge_points : 0]
       @student_points = capitalize_page_type(@student_points) # can be an empty array
       @max_total_points = @maximum_points.map {|e| e[0] != "badges" ? e[1] : 0}.sum
+
       if !@maximum_points.empty? and @maximum_points.length == @student_points.length
         @data = @maximum_points.zip(@student_points).map { |arr|
           { name: arr.first.first,
@@ -56,7 +57,6 @@ class ProfileController < ApplicationController
 
       end
     end
-
     respond_to do |format|
       format.html
       format.js
