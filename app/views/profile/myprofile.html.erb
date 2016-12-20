@@ -51,13 +51,13 @@
     <%= render 'point_summary' %>
   </div>
 
-  <% unless @data.empty? %>
+  <% if @data != nil and !@data.empty? %>
     <div id="skills-points">
       <%= render 'point_skills' %>
     </div>
   <% end %>
 
-  <% unless @soft_skills_points.empty? %>
+  <% if @soft_skills_points != nil and !@soft_skills_points.empty? %>
     <div id="soft-skills-points">
      <%= render 'point_soft_skills' %>
     </div>
