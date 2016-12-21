@@ -19,15 +19,15 @@ class SoftSkillSubmission < ActiveRecord::Base
   scope :for_user, -> (user) {
   		where(user_id: user.id).
   		joins(:soft_skill).
-  		group(:name).
-  		pluck_to_hash(:name,'sum(points) as points','sum(max_points) as max_points')
+  		group(:stype).
+  		pluck_to_hash(:stype,'sum(points) as points','sum(max_points) as max_points')
   }
 
   scope :avg_classroom_points, -> (user) {
       joins(:soft_skill,:user).
       where("users.group_id = ?",user.group_id).
-      group(:user_id,:name).
-      pluck(:user_id,:name,'sum(points)').
+      group(:user_id,:stype).
+      pluck(:user_id,:stype,'sum(points)').
       group_by { |e| e[1] }.
       map { |k,v| [k,v.length,v.map{|f| f[2]}.reduce(&:+)]}.
       map { |e| [e[0],(e[2]*1.0/e[1]).round(2)]}

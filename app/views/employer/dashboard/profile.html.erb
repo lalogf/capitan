@@ -54,14 +54,14 @@
         </div>
         <hr class="progress-separator"/>
         <% @soft_skills_points.each do |soft| %>
-          <h3 class="secondary-title"><%= soft["name"] %></h3>
+          <h3 class="secondary-title"><%= SoftSkill.stypes.key(soft["stype"]) %></h3>
           <div class="progress">
             <div class="progress-bar gray" role="progressbar" aria-valuenow="<%= "#{ percentage({points:soft["points"],max:soft["max_points"]}) }%" %>"
               aria-valuemin="0" aria-valuemax="100" style="width:<%= "#{ percentage({points:soft["points"],max:soft["max_points"]}) }" %>%">
               <%= "#{ percentage({points:soft["points"],max:soft["max_points"]}) }%" %>
             </div>
-            <div class="avg yellow" style="left: <%= "#{percentage({points:(@avg_soft_skills_points.select { |e| e[0] == soft["name"]}.first)[1], max: soft["max_points"]})}%" %>;">
-              <div><%= "avg: #{percentage({points:(@avg_soft_skills_points.select { |e| e[0] == soft["name"]}.first)[1],max:soft["max_points"]})}%" %></div>
+            <div class="avg yellow" style="left: <%= "#{percentage({points:(@avg_soft_skills_points.select { |e| e[0] == soft["stype"]}.first)[1], max: soft["max_points"]})}%" %>;">
+              <div><%= "avg: #{percentage({points:(@avg_soft_skills_points.select { |e| e[0] == soft["stype"]}.first)[1],max:soft["max_points"]})}%" %></div>
             </div>
           </div>
         <% end %>
