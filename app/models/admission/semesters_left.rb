@@ -14,5 +14,5 @@ class SemestersLeft < ActiveRecord::Base
 
   def self.by_branch branch_id
     !branch_id.nil? ? self.where(branch_id: branch_id) : []
-  end  
+  end
 end
