@@ -1,0 +1,32 @@
+<% content_for :scripts do %>
+  <script>
+    $(document).ready(function() {
+      CAPITAN.page.form.init();
+    });
+  </script>
+<% end %>
+
+<%= simple_nested_form_for([:admin,@track,@course,@unit,@lesson,@page]) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :sequence %><br/>
+    <%= f.input :title %>
+    <%= f.input :show_title %><br/>
+    <%= f.input :code %><br/>
+    <%= f.input :points, label: "Points" %>
+    <%= f.input :page_type,
+      :collection => [['Material','material'],['Pre-work','prework'],['Quiz','quiz'],
+      ['Exercise','exercise'],['Solution','solution'],['Retrospective','retrospective'],
+      ['Code Review', 'codereview'], ['Notas', 'score']] %><br>
+    <%= render :partial=> 'admin/pages/form/material_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'admin/pages/form/quiz_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'admin/pages/form/exercise_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'admin/pages/form/solution_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'admin/pages/form/peerreview_fields', :locals => {:f => f} %>
+    <%= render :partial=> 'admin/pages/form/html_fields', :locals => {:f => f} %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn btn-primary page-submit-form" %>
+    <%= link_to 'Cancelar', [:admin,@track,@course,@unit,@lesson],:class => "btn btn-danger" %>
+  </div>
+<% end %>

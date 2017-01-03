@@ -1,0 +1,84 @@
+<% content_for :scripts do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#user_avatar').on('change', function(event) {
+        var files = event.target.files;
+        var image = files[0]
+        var reader = new FileReader();
+        reader.onload = function(file) {
+          var img = new Image();
+          console.log(file);
+          img.src = file.target.result;
+          $('#target').html(img);
+        }
+        reader.readAsDataURL(image);
+        console.log(files);
+      });
+    });
+  </script>
+<% end %>
+
+<%= simple_form_for [:admin,@user] do |f| %>
+  <%= f.simple_fields_for :profile do |p| %>
+    <%= f.error_notification %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Información básica del usuario</div>
+      <div class="panel-body">
+        <%= f.input :code, label: false, required: true, autofocus: true, placeholder: "Código laboratoria" %>
+        <%= p.input :name, label: false, required: true, placeholder: "Nombre y apellidos" %>
+        <%= f.input :email,label: false, required: true, placeholder: "Correo electrónico" %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Imagen del usuario</div>
+      <div class="panel-body">
+        <%= f.input :avatar, as: :file, label: false %>
+        <div id="target">
+          <%= image_tag @user.avatar.url(:profile) if @user.avatar.exists? %>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Roles</div>
+      <div class="panel-body">
+        <%= f.input :role, label: false, collection: User.roles.keys, label_method: lambda {|k| k.capitalize} %>
+      </div>
+    </div>
+    <!-- TODO: Make this panel role dependent -->
+    <div class="panel panel-default">
+      <div class="panel-heading">Sede y grupo</div>
+      <div class="panel-body">
+        <%= f.association :group, label: false, collection: Branch.all, as: :grouped_select, group_method: :groups, :include_blank => "Seleccione un grupo" %>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Cambiar contraseña</div>
+      <div class="panel-body">
+        <%= f.input :password,label: false, required: true, placeholder: "Nueva contraseña" %>
+      </div>
+    </div>
+    <% if @user.sprints != nil %>
+      <div class="panel panel-default">
+        <div class="panel-heading">Badges</div>
+        <div class="panel-body">
+          <% if @user.sprints.each_with_index do |sprint,index| %>
+            <label><%= "#{sprint.name} - #{sprint.description}" %></label>
+            <div style="margin-left:20px">
+              <%= f.association :sprint_badges, collection: sprint.sprint_badges,
+                                as: :check_boxes, label: false, label_method: :badge_name %>
+            </div>
+            <hr>
+          <% end.empty? %>
+            <p>El grupo del usuario no tiene ningún sprint</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-actions">
+      <%= f.button :submit, :class => "btn btn-primary" %>
+      <%= link_to 'Cancelar', admin_users_path, :class => "btn btn-danger" %>
+    </div>
+  <% end %>
+<% end %>

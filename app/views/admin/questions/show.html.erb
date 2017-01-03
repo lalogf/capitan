@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <p id="notice"><%= notice %></p>
+
+    <h2>Descripción de la pregunta</h2>
+    <p><%= @question.description %></p>
+    <h3>Opciones</h3>
+    <ol>
+        <% @question.options.each do |option| %>
+        <li style="<%= option.correct ? "font-weight:bold": "" %>">
+            <%= option.description %>
+        </li>
+        <% end %>
+    </ol>
+
+    <%= link_to 'Edit', edit_admin_question_path(@question) %> |
+    <%= link_to 'Back', admin_questions_path %>
+</div>
