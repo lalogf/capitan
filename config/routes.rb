@@ -56,26 +56,26 @@ Rails.application.routes.draw do
       post 'change_user_status' => 'users#change_user_status', :as => :change_user_status
     end
 
-    get 'tracks/:id' => 'tracks#show_user_track', :as => :show_track
-    get 'tracks/:track_id/courses/:id' => 'courses#show_details', :as => :course_details
-    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:id/' => "lessons#show", :as => :lesson_details
-    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:lesson_id/pages/:id' => "pages#show", :as => :lesson_page_details
+    get 'tracks/:id' => 'admin/tracks#show_user_track', :as => :show_track
+    get 'tracks/:track_id/courses/:id' => 'admin/courses#show_details', :as => :course_details
+    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:id/' => "admin/lessons#show", :as => :lesson_details
+    get 'tracks/:track_id/courses/:course_id/units/:unit_id/lessons/:lesson_id/pages/:id' => "admin/pages#show", :as => :lesson_page_details
 
 
-    get 'mycourses/:course_id/u/:unit_id/l/:id' => 'lessons#show', :as => :mycourse_unit_lesson
-    get 'mycourses/:course_id/u/:unit_id/l/:lesson_id/p/:id' => 'pages#show', :as => :mycourse_unit_lesson_page
+    get 'mycourses/:course_id/u/:unit_id/l/:id' => 'admin/lessons#show', :as => :mycourse_unit_lesson
+    get 'mycourses/:course_id/u/:unit_id/l/:lesson_id/p/:id' => 'admin/pages#show', :as => :mycourse_unit_lesson_page
     get 'codereview' => 'profile#codereview', :as => :codereview
     get 'myprofile(/:sprint_id)' => 'profile#myprofile', :as => :myprofile
     get 'codereview' => 'profile#codereview', :as => :code_review
 
-    post 'saveAnswer' => 'pages#saveAnswer'
-    post 'saveAnswers' => 'pages#saveAnswers'
-    post 'saveQuestion' => 'pages#saveQuestion'
+    post 'saveAnswer' => 'admin/pages#saveAnswer'
+    post 'saveAnswers' => 'admin/pages#saveAnswers'
+    post 'saveQuestion' => 'admin/pages#saveQuestion'
 
     get 'selection' => 'profile#selection', :as => :selection
     get 'selection_success' => 'profile#selection_success', :as => :selection_success
 
-    root :to => 'tracks#show_user_track'
+    root :to => 'admin/tracks#show_user_track'
   end
 
   get 'admission' => 'profile#admission', :as => :admission

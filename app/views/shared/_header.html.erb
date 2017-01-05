@@ -38,7 +38,7 @@
               <% end %>
               <% if current_user.assistant? || current_user.teacher? || current_user.admin? %>
                 <li>
-                  <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
+                  <%= link_to("Panel de administración", admin_dashboard_path, :method => :get) %>
                 </li>
               <% end %>
               <li>
@@ -94,7 +94,7 @@
                   <% end %>
                   <% if current_user.assistant? || current_user.teacher? || current_user.admin? %>
                     <li>
-                      <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
+                      <%= link_to("Panel de administración", admin_dashboard_path, :method => :get) %>
                     </li>
                   <% end %>
                   <li>
