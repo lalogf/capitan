@@ -25,7 +25,7 @@ class Submission < ActiveRecord::Base
                   where("users.group_id = ?",group_id).
                   group("users.id").
                   pluck("round(sum(submissions.points))")
-    return if submissions != nil and !submissions.empty? ? (submissions.inject(0.0) { |sum,el| sum + el }.to_f / submissions.size).round : 0
+    return (submissions != nil and !submissions.empty?) ? (submissions.inject(0.0) { |sum,el| sum + el }.to_f / submissions.size).round : 0
   end
 
   def self.avg_all_classroom_points group_id
@@ -37,7 +37,7 @@ class Submission < ActiveRecord::Base
                   where("groups.id = ?",group_id).
                   group("users.id").
                   pluck("round(sum(submissions.points))")
-      return if submissions != nil and !submissions.empty? ? (submissions.inject(0.0) { |sum,el| sum + el }.to_f / submissions.size).round : 0
+      return (submissions != nil and !submissions.empty?) ? (submissions.inject(0.0) { |sum,el| sum + el }.to_f / submissions.size).round : 0
   end
 
   def self.students_technical_points group_id

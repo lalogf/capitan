@@ -5,7 +5,8 @@ module Students::DashboardHelper
   end
 
   def percentage grades
-    round(grades[:points] * 100.0 / grades[:max])
+    points = grades[:points] != nil ? grades[:points] : 0
+    return grades[:max] != nil ? round(points * 100.0 / grades[:max]) : 0
   end
 
   def round num

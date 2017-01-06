@@ -31,6 +31,7 @@ class Employer::DashboardController < ApplicationController
     @soft_skills_points = SoftSkillSubmission.for_user(@user)
     @avg_soft_skills_points = SoftSkillSubmission.avg_classroom_points(@user)
     @avg_students_points = Submission.avg_all_classroom_points(@user.group_id)
+    p "AG+VG-------------------->#{@avg_students_points}"
 
     @student_technical_points = { points: @student_points + + (@badge_points != nil ? @badge_points : 0),
                                   max: @maximum_points }
