@@ -19,7 +19,7 @@ class TracksController < ApplicationController
   end
 
   def show_user_track
-    @track = Track.find(params[:id] || 1)
+    @track = Track.find(params[:id] || (current_user.group_id == 15 ? 2 : 1))
   end
 
   def new
