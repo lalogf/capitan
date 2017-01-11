@@ -11,10 +11,10 @@
             <div class="pv-14">
               <h4><%= row[0].full_name %></h4>
               <p class="light lh-profile mt-7 mb-0">
-                <%= row[0].recomended_as %>
+                <%= I18n.t("activerecord.attributes.user.recomended_as.#{row[0].recomended_as}") %>
               </p>
               <p><%= row[0].branch.name %></p>
-              <h4 class="text-primary text-uppercase"><%= row[0].hire %></h4>
+              <h4 class="text-primary text-uppercase"><%= row[0].hire ? "CONTRATADA" : "DISPONIBLE"%></h4>
             </div>
           <% end %>
         </div>

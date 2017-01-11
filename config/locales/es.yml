@@ -28,6 +28,11 @@ es:
           few_month: "Unas veces al mes"
           almost_never: "Casi nunca"
           one: "Uno"
+      user:
+        recomended_as:
+          frontend: "Frontend Developer JS "
+          prototype: "Prototyper"
+
     errors:
       models:
         user:
