@@ -7,7 +7,11 @@ class Employer::DashboardController < ApplicationController
   layout 'employer'
 
   def coders
-    @students = User.includes(:profile).where(role: 1, disable: 0, group_id: [5,21])
+    if current_user.branch.id == 1
+      @students = User.includes(:profile).where(role: 1, disable: 0, group_id: [5,21])
+    elsif current_user.branch.id == 3
+      @students = User.includes(:profile).where(role: 1, disable: 0, group_id: [8,22])
+    end
     @student_technical_points = Submission.students_technical_points(5) +
                                 Submission.students_technical_points(21)
     @student_hse_points = SoftSkillSubmission.students_technical_points(5) +
