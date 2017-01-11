@@ -40,6 +40,9 @@
 #  how_you_find_out              :text(65535)
 #  what_is_laboratoria           :text(65535)
 #  student_lifespan              :text(65535)
+#  github                        :string(255)
+#  linkedin                      :string(255)
+#  portafolio                    :string(255)
 #
 
 class Profile < ActiveRecord::Base

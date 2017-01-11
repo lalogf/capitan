@@ -87,9 +87,11 @@
 
 </script>
 <% end %>
-<div class="container-fluid p-20">
-    <div class="page-header clearfix">
-      <h1 class="pull-left">Notas</h1>
+
+<div class="p-42" id="grade">
+    <div class="mb-42 clearfix flex-title-start">
+      <%= image_tag 'grades.png', width: "16", class: "mr-14" %>
+      <span class="title-grade">Grades</span>
     </div>
     <section>
       <%= simple_form_for :filter, url: teacher_dashboard_grades_path do |f| %>

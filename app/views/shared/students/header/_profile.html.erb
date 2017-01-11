@@ -7,13 +7,21 @@
     <h3 class="mv-0 book name">
       <%= @user.full_name %>
     </h3>
-    <p><%= age(@user.profile.birth_date) if @user.profile.birth_date %></p>
-    <p class="mb-0 lh-profile codigo">
+    <!-- <p><%= age(@user.profile.birth_date) if @user.profile.birth_date %></p> -->
+    <p class="mb-14-xs mv-7 lh-profile codigo">
       <%= @user.code %>
     </p>
-    <p class="light lh-profile description mt-7">
+    <p class="light lh-profile description">
       <%= @user.branch.name %>
     </p>
+
+    <p class="mb-14-xs mb-0 mt-14 lh-profile title-recomended">
+      RECOMMENDED AS:
+    </p>
+    <p class="light lh-profile recomended mt-7">
+      <%= @user.recomended_as %>
+    </p>
+    
     <%= link_to "", @user.profile.github, :class => 'github mh-21-xs mr-7', :target => '_blank' %>
     <%= link_to "", @user.profile.linkedin, :class => 'linkedin mh-21-xs mr-7', :target => '_blank' %>
     <%= link_to "", @user.profile.portafolio, :class => 'portafolio mh-21-xs mr-7', :target => '_blank' %>

@@ -26,6 +26,8 @@ require 'roo'
 #  avatar_updated_at      :datetime
 #  role                   :integer          default(0)
 #  group_id               :integer
+#  recomended_as          :integer          default(0)
+#  hire                   :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -35,6 +37,7 @@ class User < ActiveRecord::Base
   before_validation :generate_password
 
   enum role: [:applicant, :student, :assistant, :teacher, :admin, :employer]
+  enum recomended_as: [:frontend, :prototype]
 
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   belongs_to :group

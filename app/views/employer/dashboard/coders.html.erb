@@ -1,16 +1,20 @@
 <section id="coders">
   <div class="container pv-70-md pv-xs-0 bg-white text-center">
-    <h3 class="lh-21 medium text-center mt-56-md text-uppercase">The coders</h3>
-    <p class="light text-center mb-42">Junior Front End Developers ready to start their career in the tech sector</p>
+    <h3 class="lh-21 medium text-center mt-56-md text-uppercase">Our coders</h3>
+    <p class="light text-center mb-42">Junior frontend developer ready to start their career in the tech sector</p>
     <% @students_ordered.each_slice(4) do |rows| %>
     <div class="row mb-21">
       <% rows.each do |row| %>
         <div class="col-sm-3 col-xs-10 col-xs-offset-1 col-sm-offset-0 ph-70-md">
           <%= link_to employer_student_profile_path(row[0]), :class => "thumbnail" do %>
             <%= image_tag row[0].avatar.url(:large), :alt => row[0].full_name, :class => "img-responsive" %>
-            <div class="pv-14 box-name">
-              <h4 class="lh-md"><%= row[0].full_name %></h4>
-              <p><%= row[0].code %></p>
+            <div class="pv-14">
+              <h4><%= row[0].full_name %></h4>
+              <p class="light lh-profile mt-7 mb-0">
+                <%= row[0].recomended_as %>
+              </p>
+              <p><%= row[0].branch.name %></p>
+              <h4 class="text-primary text-uppercase"><%= row[0].hire %></h4>
             </div>
           <% end %>
         </div>

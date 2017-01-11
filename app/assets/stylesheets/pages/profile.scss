@@ -7,18 +7,32 @@
     }
   }
 }
+<<<<<<< Updated upstream
+=======
+.intro-perfil {
+  .name,.description, .codigo, .recomended {
+    color: #4a4a4a;
+  }
+}
+
+.box-badge-coder {
+  position: relative;
+  display: inline;
+}
+
+>>>>>>> Stashed changes
 #point-summary {
   .font-big {
 
   }
 }
 .name {
-  font-size: 23px;
+  font-size: 18px;
   color: #fff;
 }
 
 .description {
-  font-size: 18px;
+  font-size: 14px;
   color: #fff;
 }
 
@@ -33,10 +47,21 @@
 }
 
 .codigo {
+  opacity: 0.83;
+  font-size: 14px;
+  color: #fff;
+}
+
+.title-recomended {
   font-weight: 700;
   opacity: 0.83;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
+  color: #fff;
+}
+
+.recomended {
+  font-size: 14px;
   color: #fff;
 }
 

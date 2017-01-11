@@ -4,7 +4,7 @@
       $("#branches").change(function() {
         document.location = '<%= grades_url %>/branch/' + this.value;
       });
-      
+
       /*
       $(".course-score").click(function(e) {
         e.preventDefault();
@@ -17,11 +17,11 @@
             var activity = $("<li></li>").html(value.title);
             activities.append(activity);
           });
-          
+
           swal({
             title: "Detalle de notas - " + data.user.name + " " + data.user.lastname1 + " " + data.user.lastname2,
             text: activities[0].outerHTML,
-            confirmButtonText: "Ok",   
+            confirmButtonText: "Ok",
             closeOnConfirm: true,
             html: true
           });
