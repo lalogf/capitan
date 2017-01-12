@@ -9,11 +9,11 @@
           <%= link_to employer_student_profile_path(row[0]), :class => "thumbnail" do %>
             <%= image_tag row[0].avatar.url(:large), :alt => row[0].full_name, :class => "img-responsive" %>
             <div class="p-7">
-              <h4><%= row[0].full_name %></h4>
-              <p class="light lh-profile mt-7 mb-0 fs-14">
+              <h4 class="fs-14"><%= row[0].full_name %></h4>
+              <p class="light lh-profile mt-7 mb-0 fs-12">
                 <%= I18n.t("activerecord.attributes.user.recomended_as.#{row[0].recomended_as}") %>
               </p>
-              <p class="fs-14"><%= row[0].branch.name %></p>
+              <p class="fs-12"><%= row[0].branch.name %></p>
               <h4 class="text-primary text-uppercase fs-14"><%= row[0].hire ? "CONTRATADA" : "DISPONIBLE"%></h4>
             </div>
           <% end %>
