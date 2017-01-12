@@ -43,6 +43,18 @@
       </div>
     </div>
     <div class="panel panel-default">
+      <div class="panel-heading">Recommended as:</div>
+      <div class="panel-body">
+        <%= f.input :recomended_as, label: false, collection: User.recomended_as.keys, label_method: lambda {|k| k.capitalize} %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">¿Fue contratada?</div>
+      <div class="panel-body">
+        <%= f.input :hire, as: 'check_boxes', label: false %>
+      </div>
+    </div>
+    <div class="panel panel-default">
       <div class="panel-heading">Roles</div>
       <div class="panel-body">
         <%= f.input :role, label: false, collection: User.roles.keys, label_method: lambda {|k| k.capitalize} %>
