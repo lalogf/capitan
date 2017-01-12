@@ -1,7 +1,8 @@
 <div class="row">
-  <div class="col-sm-5 col-xs-4 mlp-33-xs">
+  <div class="col-sm-5 col-xs-4 mlp-33-xs text-center">
     <%= image_tag @user.avatar.url(:student_dashboard),
     alt: "coder", class: "img-circle img-responsive student-status-good" %>
+    <h4 class="text-primary text-uppercase fs-14 bold"><%= @user.hire ? "CONTRATADA" : "DISPONIBLE"%></h4>
   </div>
   <div class="col-sm-7 col-xs-12 pl-7 text-center-xs mt-7-xs">
     <h3 class="mv-0 book name">
@@ -19,9 +20,9 @@
       RECOMMENDED AS:
     </p>
     <p class="light lh-profile recomended mt-7">
-      <%= @user.recomended_as %>
+      <%= I18n.t("activerecord.attributes.user.recomended_as.#{@user.recomended_as}") %>
     </p>
-    
+
     <%= link_to "", @user.profile.github, :class => 'github mh-21-xs mr-7', :target => '_blank' %>
     <%= link_to "", @user.profile.linkedin, :class => 'linkedin mh-21-xs mr-7', :target => '_blank' %>
     <%= link_to "", @user.profile.portafolio, :class => 'portafolio mh-21-xs mr-7', :target => '_blank' %>
