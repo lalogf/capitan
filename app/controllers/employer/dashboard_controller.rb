@@ -9,19 +9,26 @@ class Employer::DashboardController < ApplicationController
   def coders
     if current_user.branch.id == 1
       @students = User.includes(:profile).where(role: 1, disable: 0, group_id: [5,21])
+      @student_technical_points = Submission.students_technical_points(5) +
+                                  Submission.students_technical_points(21)
+      @student_hse_points = SoftSkillSubmission.students_technical_points(5) +
+                            SoftSkillSubmission.students_technical_points(21)
+
+      @badges_points = User.where(group_id:5).joins(:sprint_badges => :badge).group(:id).pluck(:id,"sum(points)") +
+                       User.where(group_id:21).joins(:sprint_badges => :badge).group(:id).pluck(:id,"sum(points)")
     elsif current_user.branch.id == 3
       @students = User.includes(:profile).where(role: 1, disable: 0, group_id: [8,22])
+      @student_technical_points = Submission.students_technical_points(8) +
+                                  Submission.students_technical_points(22)
+      @student_hse_points = SoftSkillSubmission.students_technical_points(8) +
+                            SoftSkillSubmission.students_technical_points(22)
+
+      @badges_points = User.where(group_id:8).joins(:sprint_badges => :badge).group(:id).pluck(:id,"sum(points)") +
+                       User.where(group_id:22).joins(:sprint_badges => :badge).group(:id).pluck(:id,"sum(points)")
     end
-    @student_technical_points = Submission.students_technical_points(5) +
-                                Submission.students_technical_points(21)
-    @student_hse_points = SoftSkillSubmission.students_technical_points(5) +
-                          SoftSkillSubmission.students_technical_points(21)
 
-    @badges_points = User.where(group_id:5).joins(:sprint_badges => :badge).group(:id).pluck(:id,"sum(points)") +
-                     User.where(group_id:21).joins(:sprint_badges => :badge).group(:id).pluck(:id,"sum(points)")
-
-    @students_ordered = @students.map { |e| [e,(@student_technical_points.select { |s| s[0] == e.id }.first)[3] +
-                                               (@student_hse_points.select { |s| s[0] == e.id}.first)[3] +
+    @students_ordered = @students.map { |e| [e,(@student_technical_points.select { |s| s[0] == e.id }.first != nil ? (@student_technical_points.select { |s| s[0] == e.id }.first)[3] : 0) +
+                                               (@student_hse_points.select { |s| s[0] == e.id}.first != nil ? (@student_hse_points.select { |s| s[0] == e.id}.first)[3] : 0) +
                                                (@badges_points.select{ |s| s[0] == e.id}.first != nil ? (@badges_points.select{ |s| s[0] == e.id}.first)[1] : 0) ]}.sort_by  { |k| k[1]*-1 }
   end
 
@@ -35,7 +42,6 @@ class Employer::DashboardController < ApplicationController
     @soft_skills_points = SoftSkillSubmission.for_user(@user)
     @avg_soft_skills_points = SoftSkillSubmission.avg_classroom_points(@user)
     @avg_students_points = Submission.avg_all_classroom_points(@user.group_id)
-    p "AG+VG-------------------->#{@avg_students_points}"
 
     @student_technical_points = { points: @student_points + + (@badge_points != nil ? @badge_points : 0),
                                   max: @maximum_points }
