@@ -1,29 +1,27 @@
 <div class="row">
-  <div class="col-sm-5 col-xs-4 mlp-33-xs">
+  <div class="col-sm-5 col-xs-4 mlp-33-xs text-center">
     <%= image_tag @user.avatar.url(:student_dashboard),
     alt: "coder", class: "img-circle img-responsive student-status-good" %>
+    <h4 class="text-primary text-uppercase fs-14 bold"><%= @user.hire ? "CONTRATADA" : "DISPONIBLE"%></h4>
   </div>
   <div class="col-sm-7 col-xs-12 pl-7 text-center-xs mt-7-xs">
     <h3 class="mv-0 book name">
       <%= @user.full_name %>
     </h3>
     <!-- <p><%= age(@user.profile.birth_date) if @user.profile.birth_date %></p> -->
-    <p class="mb-14-xs mv-7 lh-profile codigo">
-      <%= @user.code %>
-    </p>
-    <p class="light lh-profile description">
+    <p class="light lh-profile description mt-7">
       <%= @user.branch.name %>
     </p>
 
-    <p class="mb-14-xs mb-0 mt-14 lh-profile title-recomended">
+    <p class="mb-7-xs mb-0 mt-14 lh-profile title-recomended">
       RECOMMENDED AS:
     </p>
-    <p class="light lh-profile recomended mt-7">
-      <%= @user.recomended_as %>
+    <p class="light lh-profile recomended mt-7 mb-14-xs">
+      <%= I18n.t("activerecord.attributes.user.recomended_as.#{@user.recomended_as}") %>
     </p>
-    
-    <%= link_to "", @user.profile.github, :class => 'github mh-21-xs mr-7', :target => '_blank' %>
-    <%= link_to "", @user.profile.linkedin, :class => 'linkedin mh-21-xs mr-7', :target => '_blank' %>
-    <%= link_to "", @user.profile.portafolio, :class => 'portafolio mh-21-xs mr-7', :target => '_blank' %>
+
+    <%= link_to "", @user.profile.github, :class => 'github mh-21-xs mr-7 mb-14-xs', :target => '_blank' %>
+    <%= link_to "", @user.profile.linkedin, :class => 'linkedin mh-21-xs mr-7 mb-14-xs', :target => '_blank' %>
+    <%= link_to "", @user.profile.portafolio, :class => 'portafolio mh-21-xs mr-7 mb-14-xs', :target => '_blank' %>
   </div>
 </div>
