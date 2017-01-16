@@ -13,7 +13,7 @@
 
 class Sprint < ActiveRecord::Base
   has_many :badges, through: :sprint_badges
-  has_many :sprint_badges
+  has_many :sprint_badges, dependent: :destroy
   belongs_to :group
   has_many :submissions, through: :pages
   has_many :soft_skill_submissions
