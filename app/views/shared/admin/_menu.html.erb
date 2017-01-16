@@ -1,5 +1,5 @@
 <div id="user-left-box" class="clearfix hidden-sm hidden-xs">
-	<%= image_tag current_user.avatar.url(:menu) %>
+	<%= image_tag current_user.avatar.url(:menu) if current_user.avatar.exists? %>
 	<div class="user-box">
 		<span class="name"><%= current_user.full_name %></span>
 		<span class="roles"><%= current_user.role.capitalize %></span>

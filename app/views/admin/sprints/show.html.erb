@@ -57,7 +57,11 @@
     <div class="panel-heading">Badges disponibles en este sprint</div>
     <div class="panel-body">
       <% if @sprint.badges.each do |badge| %>
-        <%= image_tag badge.image.url(:normal) %>
+        <% if badge.image.exists? %>
+          <%= image_tag badge.image.url(:normal) %>
+        <% else %>
+          <%= "#{badge.name} | " %>
+        <% end %>
       <% end.empty? %>
         <p> No hay badges asociados a este sprint </p>
       <% end %>
@@ -67,6 +71,6 @@
 
 
   <div class="form-actions">
-    <%= link_to 'Editar', edit_sprint_path(@sprint), class: 'btn btn-primary' %>
-    <%= link_to 'Atrás', sprints_path, class: 'btn btn-danger' %>
+    <%= link_to 'Editar', edit_admin_sprint_path(@sprint), class: 'btn btn-primary' %>
+    <%= link_to 'Atrás', admin_sprints_path, class: 'btn btn-danger' %>
   </div>

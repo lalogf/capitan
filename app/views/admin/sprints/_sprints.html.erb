@@ -4,19 +4,19 @@
       <%= sprint.sequence %>
     </td>
     <td>
-        <%= link_to sprint.name, sprint %>
+        <%= link_to sprint.name, [:admin,sprint] %>
     </td>
     <td><%= sprint.description %></td>
     <td>
-        <%= link_to sprint do %>
+        <%= link_to [:admin,sprint] do %>
           <button class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Detalle</button>
         <% end %>
 
-        <%= link_to edit_sprint_path(sprint) do %>
+        <%= link_to edit_admin_sprint_path(sprint) do %>
           <button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Editar</button>
         <% end %>
 
-        <%= link_to sprint, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+        <%= link_to [:admin,sprint], method: :delete, data: { confirm: '¿Estas seguro?' } do %>
           <button class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Eliminar</button>
 
         <% end %>

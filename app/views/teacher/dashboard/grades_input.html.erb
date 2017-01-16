@@ -27,7 +27,7 @@
         <% @users.each do |user| %>
           <tr>
             <td>
-              <%= image_tag user.avatar(:student_dashboard), :class => "user-image" %>
+              <%= image_tag user.avatar(:student_dashboard), :class => "user-image" if user.avatar.exists? %>
               <h4 class="mt-0"><%= user.profile.name %></h4>
               <p><%= user.code %></p>
             </td>

@@ -1,4 +1,4 @@
-class SprintsController < ApplicationController
+class Admin::SprintsController < ApplicationController
   before_action :set_sprint, only: [:show, :edit, :update, :destroy]
   before_action do
     check_allowed_roles(current_user, ["assistant","teacher","admin"])
@@ -51,7 +51,7 @@ class SprintsController < ApplicationController
       update_sprint_pages
       update_sprint_soft_skills
       if @sprint.save
-        format.html { redirect_to @sprint, notice: 'Sprint was successfully created.' }
+        format.html { redirect_to [:admin,@sprint], notice: 'Sprint was successfully created.' }
         format.json { render :show, status: :created, location: @sprint }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ class SprintsController < ApplicationController
       update_sprint_pages
       update_sprint_soft_skills
       if @sprint.update(sprint_params)
-        format.html { redirect_to @sprint, notice: 'Sprint was successfully updated.' }
+        format.html { redirect_to [:admin,@sprint], notice: 'Sprint was successfully updated.' }
         format.json { render :show, status: :ok, location: @sprint }
       else
         format.html { render :edit }

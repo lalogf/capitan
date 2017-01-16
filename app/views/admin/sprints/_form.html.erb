@@ -38,7 +38,7 @@
 
   </script>
 <% end %>
-<%= simple_form_for(@sprint) do |f| %>
+<%= simple_form_for [:admin,@sprint] do |f| %>
   <%= f.error_notification %>
   <% if @sprint.errors.any? %>
     <div id="error_explanation">
@@ -139,6 +139,6 @@
   </div>
   <div class="form-actions">
     <%= f.button :submit,"Crear sprint", class: 'btn btn-primary' %>
-    <%= link_to 'Cancelar', sprints_path, class: 'btn btn-danger' %>
+    <%= link_to 'Cancelar', admin_sprints_path, class: 'btn btn-danger' %>
   </div>
 <% end %>

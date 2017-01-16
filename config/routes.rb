@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get 'dashboard/profile/:user_id' => 'dashboard#profile', as: :student_profile
     end
 
-    namespace :students do
+    namespace :student do
       get 'dashboard/home'
       get 'dashboard/performance'
       get 'dashboard/tracks'
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
 
     namespace :teacher do
+      get 'dashboard' => redirect('teacher/dashboard/grades/filters')
+      get 'dashboard/grades' => redirect('teacher/dashboard/grades/filters')
       get 'dashboard/class_stats'
       get 'dashboard/student_status'
       get 'dashboard/teacher_stats'

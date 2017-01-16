@@ -1,4 +1,4 @@
-class Students::DashboardController < ApplicationController
+class Student::DashboardController < ApplicationController
 
   before_action do
     check_allowed_roles(current_user, ["student","assistant","teacher","admin"])

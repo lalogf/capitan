@@ -1,4 +1,4 @@
-class Students::TracksController < ApplicationController
+class Student::TracksController < ApplicationController
 
   before_action do
     check_allowed_roles(current_user, ["student","assistant","teacher","admin"])

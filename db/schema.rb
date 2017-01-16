@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209195629) do
+ActiveRecord::Schema.define(version: 20170111172256) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "page_id",    limit: 4
@@ -421,9 +421,9 @@ ActiveRecord::Schema.define(version: 20161209195629) do
 
   create_table "tracks", force: :cascade do |t|
     t.string   "name",              limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "description",       limit: 255
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.text     "description",       limit: 65535
     t.string   "syllabus",          limit: 255
     t.string   "color",             limit: 255
     t.string   "icon_file_name",    limit: 255
@@ -483,6 +483,8 @@ ActiveRecord::Schema.define(version: 20161209195629) do
     t.datetime "avatar_updated_at"
     t.integer  "role",                   limit: 4,   default: 0
     t.integer  "group_id",               limit: 4
+    t.integer  "recomended_as",          limit: 4,   default: 0
+    t.boolean  "hire",                   limit: 1,   default: false
   end
 
   add_index "users", ["code"], name: "index_users_on_code", unique: true, using: :btree
