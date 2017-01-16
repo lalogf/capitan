@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   has_many :primary_reviews, :class_name => "Review", :foreign_key => "user_id"
   has_many :secondary_reviews, :class_name => "Review", :foreign_key => "reviewer_id"
   has_and_belongs_to_many :sprint_badges, :dependent => :destroy
-  has_one :profile, :dependent => :destroy
+  has_one :profile, :dependent => :destroy 
 
   accepts_nested_attributes_for :profile
 
