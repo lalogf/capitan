@@ -99,7 +99,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:code, :email, :group_id,:password, :avatar, :role, sprint_badge_ids: [],
-      profile_attributes: [:name, :lastname, :github, :linkedin, :portafolio], :recomended_as, :hire)
+      params.require(:user).permit(:code, :email, :group_id,:password, :avatar, :role, :recomended_as, :hire, sprint_badge_ids: [],
+      profile_attributes: [:name, :lastname, :github, :linkedin, :portafolio])
     end
 end
