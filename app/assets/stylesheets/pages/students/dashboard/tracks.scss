@@ -1,0 +1,65 @@
+#tracks {
+  padding-bottom: 50px;
+  .track {
+    display: block;
+    .color {
+      height: 166px;
+      border-radius: 2px 2px 0px 0px;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+
+      .icon {
+        width: 94px;
+        height: 94px;
+        opacity: 0.4;
+        background-color: #f0f0f0;
+        border-radius: 50%;
+      }
+    }
+
+    .content {
+      border-radius: 0px 0px 2px 2px;
+      border-left: solid 1px #979797;
+      border-bottom: solid 1px #979797;
+      border-right: solid 1px #979797;
+      color: #4a4a4a;
+      font-weight: 300;
+      padding: 14px;
+      height: 190px;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 13px;
+      line-height: 1.23;
+    }
+
+    hr {
+      margin: 7px auto;
+      background-color: #979797;
+      height: 1px;
+    }
+
+    .link {
+      text-align: right;
+      padding: 14px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.38;
+      color: #2ecc71;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+    }
+  }
+}

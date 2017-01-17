@@ -1,0 +1,66 @@
+<div class="container-fluid p-20">
+  <div class="breadcrumb">
+    <%= link_to @track.name, admin_tracks_path %> > Detalle del track
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Información básica del track</div>
+    <div class="panel-body">
+      <p>
+        <strong>Nombre:</strong>
+        <%= @track.name %>
+      </p>
+      <p>
+        <strong>Descripción:</strong>
+        <%= @track.description %>
+      </p>
+
+      <p>
+        <strong>Duration:</strong>
+        <%= @track.duration %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container-fluid p-20">
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix">
+      <div class="pull-left" style="margin-top:5px;">Cursos del track</div>
+      <%= link_to "Nuevo curso", new_admin_track_course_path(@track), :class => "btn btn-primary pull-right " %>
+    </div>
+    <div class="panel-body">
+
+      <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Nivel</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Audiencia</th>
+          <th>Color</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @track.courses.each do |course| %>
+          <tr>
+            <td><%= course.level %></td>
+            <td><%= link_to course.name, [:admin,@track,course]  %></td>
+            <td><%= course.description %></td>
+            <td style="width: 8%"><%= course.audience %></td>
+            <td style="width: 8%"><%= course.color %></td>
+            <td style="width: 12%">
+              <%= link_to edit_admin_track_course_path(@track,course) do %>
+                <button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Editar</button>
+              <% end %>
+              <%= link_to [:admin,@track,course], method: :delete, data: { confirm: '¿Está seguro?' } do  %>
+                <button class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Eliminar</button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,38 +1,49 @@
+<div id="user-left-box" class="clearfix hidden-sm hidden-xs">
+	<%= image_tag current_user.avatar.url(:menu) if current_user.avatar.exists? %>
+	<div class="user-box">
+		<span class="name"><%= current_user.full_name %></span>
+		<h5 class="roles text-uppercase bold mt-7"><%= current_user.role.capitalize %></h5>
+	</div>
+</div>
 <div class="navigation">
   <ul>
       <li>
         <%= link_to teacher_dashboard_class_stats_path do %>
-          <i class="fa fa-tachometer"></i>Class stats
+        <%= image_tag 'class.png', width: "16", class: "mr-14" %>
+          Class stats
         <% end %>
       </li>
       <li>
-        <%= link_to teacher_dashboard_students_path do %>
-          <i class="fa fa-book"></i>Students
+        <%= link_to teacher_dashboard_grades_filters_path do %>
+        <%= image_tag 'grades.png', width: "14", class: "mr-14" %>
+          Grades
         <% end %>
       </li>
-			<li>
+
+      <li>
 				<%= link_to teacher_dashboard_teacher_stats_path do %>
-					<i class="fa fa-tasks"></i>Teacher stats
+        <%= image_tag 'teacher.png', width: "16", class: "mr-14" %>
+          Teacher stats
 				<% end %>
 			</li>
       <li>
-        <%= link_to teacher_dashboard_grades_path do %>
-          <i class="fa fa-certificate"></i>Grades
+        <%= link_to teacher_dashboard_student_ranking_path do %>
+          <%= image_tag 'student.png', width: "19", class: "mr-14" %>
+          Student Ranking
         <% end %>
       </li>
+
       <li>
-        <%= link_to teacher_dashboard_assistance_path do %>
-          <i class="fa fa-heart"></i>Assistance
+        <%= link_to teacher_dashboard_attendance_path do %>
+        <%= image_tag 'attendance.png', width: "14", class: "mr-14" %>
+          Attendance
         <% end %>
       </li>
+
       <li>
-        <%= link_to teacher_dashboard_sprints_path do %>
-          <i class="fa fa-envelope"></i>Sprints
-        <% end %>
-      </li>
-      <li>
-        <%= link_to teacher_dashboard_recomendations_path do %>
-          <i class="fa fa-binoculars"></i>Recomndations
+        <%= link_to teacher_dashboard_student_status_path do %>
+        <%= image_tag 'student_status.png', width: "17", class: "mr-14" %>
+          Student Status
         <% end %>
       </li>
   </ul>

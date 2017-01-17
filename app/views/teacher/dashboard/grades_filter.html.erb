@@ -1,0 +1,144 @@
+<% content_for :scripts do %>
+<script type="text/javascript">
+
+    var branch_id = "";
+    var group_id = "";
+    var sprint_id = "";
+    var lesson_id = "";
+    var area_id = "";
+
+    $(document).ready(function () {
+
+        initFilters();
+
+        $("#filter_branch_id").change(function() {
+            branch_id = $(this).val();
+            clearFilters([{ filter: "#filter_group_id", blank: "Seleccione una promoción"},
+                          { filter: "#filter_sprint_id",blank: "Seleccione un sprint"},
+                          { filter: "#filter_area_id",  blank: "Seleccione un área", options: [[1,"Técnico"],[2,"HSE"]] },
+                          { filter: "#filter_lesson_id",blank: "Seleccione una lección"}]);
+            changeFilter({ filter: "group", options: { branch_id: branch_id } },"#filter_group_id");
+        });
+        $("#filter_group_id").change(function() {
+            group_id = $(this).val();
+            clearFilters([{ filter: "#filter_sprint_id",blank: "Seleccione un sprint"},
+                          { filter: "#filter_area_id",  blank: "Seleccione un área", options: [[1,"Técnico"],[2,"HSE"]]},
+                          { filter: "#filter_lesson_id",blank: "Seleccione una lección"}]);
+            changeFilter({ filter: "sprint", options: { group_id: group_id } },"#filter_sprint_id");
+        });
+        $("#filter_sprint_id").change(function() {
+            sprint_id = $(this).val();
+            clearFilters([{ filter: "#filter_area_id",  blank: "Seleccione un área", options: [[1,"Técnico"],[2,"HSE"]]},
+                          { filter: "#filter_lesson_id",blank: "Seleccione una lección"}]);
+            changeFilter({ filter: "lesson", options: { sprint_id: sprint_id } },"#filter_lesson_id");
+            $("#filter_soft_skill_id").hide();
+            $("#filter_lesson_id").hide();
+        });
+        $("#filter_lesson_id").change(function() {
+            lesson_id = $(this).val();
+        });
+
+        $("#filter_area_id").change(function() {
+            area_id = parseInt($(this).val());
+            switch (area_id) {
+              case 1:
+                $("#filter_soft_skill_id").hide();
+                $("#filter_lesson_id").show();
+                break;
+              case 2:
+                $("#filter_soft_skill_id").show();
+                $("#filter_lesson_id").hide();
+                break;
+            }
+        });
+
+        $("form input[type='submit']").click(function(e) {
+            e.preventDefault();
+            var proceed = true;
+            var soft_skill_id = $("#filter_soft_skill_id").val();
+
+            if (branch_id == "" || group_id == "" || sprint_id == "" || area_id == "") {
+                alert("Seleccione una sede, grupo, sprint o área de trabajo");
+                proceed = false;
+            }
+            if (area_id == 1 && lesson_id == "") {
+                alert("Seleccione una lección");
+                proceed = false;
+            } else if (area_id == 2 && soft_skill_id == "") {
+                alert("Seleccione un soft skill");
+                proceed = false;
+            }
+
+            if (proceed && area_id == 1) {
+                document.location = "<%= teacher_grades_tech_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/lesson/[lesson_id]"
+                .replace("[branch_id]",branch_id)
+                .replace("[group_id]",group_id)
+                .replace("[sprint_id]",sprint_id)
+                .replace("[lesson_id]",lesson_id);
+            } else if (proceed &&  area_id == 2) {
+                document.location = "<%= teacher_grades_softskill_input_path %>/branch/[branch_id]/group/[group_id]/sprint/[sprint_id]/stype/[stype]"
+                .replace("[branch_id]",branch_id)
+                .replace("[group_id]",group_id)
+                .replace("[sprint_id]",sprint_id)
+                .replace("[stype]",soft_skill_id);
+            }
+        });
+    });
+
+    function initFilters() {
+
+    }
+
+    function changeFilter(send_data,filter_to_update) {
+        $.get("<%= teacher_dashboard_grades_filter_path %>",send_data,function(result) {
+            result.status == "ok" ? addRemoteOptions(filter_to_update,result.data) : alert(result.message);
+        });
+    }
+
+    function clearFilters(elements) {
+        elements.forEach(function (element) {
+            clearFilter(element.filter,element.blank, element.options);
+        });
+    }
+
+    function clearFilter(element, blank, options) {
+        var select = $(element);
+        select.empty();
+        select.append('<option value="">'+blank+'</option>');
+        if (options != null) {
+          options.forEach(function(option) {
+              select.append('<option value="'+option[0]+'">'+option[1]+'</option>');
+          });
+        }
+    }
+
+    function addRemoteOptions(element, options) {
+        var select = $(element);
+        if (options != null) {
+            options.forEach(function(option) {
+                select.append('<option value="'+option[0]+'">'+option[1]+'</option>');
+            });
+        }
+    }
+
+</script>
+<% end %>
+<div class="p-42" id="grade">
+    <div class="page-header clearfix flex-title-start">
+      <%= image_tag 'grades.png', width: "16", class: "mr-14" %>
+      <span class="title-grade">Grades</span>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <%= simple_form_for :filter, url: teacher_grades_tech_input_path do |f| %>
+          <%= f.input :branch_id, collection: @branches, label:false, include_blank: "Seleccione una sede",selected: params[:branch_id] %>
+          <%= f.input :group_id, collection: [], label: false, include_blank: "Seleccione una promoción" %>
+          <%= f.input :sprint_id, collection: [], label: false, include_blank: "Seleccione un sprint" %>
+          <%= f.input :area_id, collection: [["Técnico",1],["HSE",2]], label: false, include_blank: "Seleccione un área" %>
+          <%= f.input :lesson_id, collection: [], label: false, include_blank: "Seleccione una lección", input_html: {style: "display:none;"} %>
+          <%= f.input :soft_skill_id, collection: @soft_skills, label: false, include_blank: "Seleccione un softskill", input_html: {style: "display:none;"} %>
+          <%= f.submit "Buscar", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<%= simple_form_for [:admin,@track,@course] do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name, :class => "short" %><br>
+    <%= f.input :description %>
+    <%= f.input :course_plan %>
+    <%= f.input :color %>
+    <%= f.input :level %>
+    <%= f.input :audience, collection: Course.audiences.keys,
+                :selected => Course.audiences.keys[@course[:audience].to_i],
+                input_html: { autocomplete: 'off' }  %>
+  </div><br>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+    <%= link_to 'Cancelar', admin_track_courses_path, :class => 'btn btn-danger' %>
+  </div>
+<% end %>

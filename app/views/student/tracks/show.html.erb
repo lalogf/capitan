@@ -1,0 +1,38 @@
+<section id="principal-hero" class="bg-track-fullstack-js">
+  <div class="track-detail">
+      <p class="cursos"><%= "#{@track.courses.count} cursos" %></p>
+  		<h1 class="thin fz-40 mb-0"><%= @track.name %></h1>
+  		<hr/>
+  		<p class="light description"><%= @track.description %></p>
+  		<a href="<%= @track.syllabus %>" target="_blank">
+        <span>Descargar syllabus</span>
+      </a>
+    </div>
+</section>
+<section id="courses">
+  <% @levels.map do |level,courses| %>
+    <div class="level">
+      <div class="container">
+        <h2><%= "Nivel #{level}" %></h2>
+        <% courses.each_slice(4) do |row| %>
+        <div class="box-center">
+          <% row.each do |course| %>
+          <div class="col-sm-3 col-xs-12">
+            <%= link_to course_details_path(@track,course), class: "course mb-21-xs" do %>
+            <div class="color" style="background-color: <%= course.color %>"></div>
+            <h5><%= course.name %></h5>
+            <p><%= course.description %></p>
+            <hr>
+            <div class="info">
+              <div>22 lecciones</div>
+              <div><%= t("activerecord.attributes.course.audience.#{course.audience}") %></div>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</section>

@@ -32,7 +32,12 @@ es:
         recomended_as:
           frontend: "Frontend Developer JS "
           prototype: "Prototyper"
-
+      course:
+        audience:
+          beginner: "principiante"
+          intermediate: "intermedio"
+          advance: "avanzado"
+          one: "Audience"
     errors:
       models:
         user:

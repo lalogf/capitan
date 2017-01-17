@@ -4,17 +4,24 @@
   </script>
 <% end %>
 <header class="navbar" id="header-navbar">
-  <div class="container">
-    <%= link_to "Panel de admintración", root_path, class: "navbar-brand", id: "logo" %>
-    <div class="clearfix">
-      <div class="nav-no-collapse pull-right" id="header-nav">
-        <ul class="nav navbar-nav pull-right">
-          <li>
-            <%= link_to destroy_user_session_path, :method => :delete do %>
-              <i class="fa fa-power-off"></i>
-            <% end %>
-          </li>
-        </ul>
+  <div class="container-fluid">
+    <div class="clearfix row">
+      <div class="col-md-4 col-md-offset-4 text-center">
+        <%= link_to root_path, :class => "", :id => "logo" do %>
+          <%= image_tag 'l-laboratori.png', width: "30" %>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+        <div class="nav-no-collapse pull-right" id="header-nav">
+          <ul class="nav navbar-nav pull-right">
+            <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+                <%= current_user.full_name %>
+                <%= image_tag 'exit.png', width: "21" %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

@@ -38,9 +38,27 @@
               <% end %>
               <% if current_user.assistant? || current_user.teacher? || current_user.admin? %>
                 <li>
-                  <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
+                  <%= link_to("Panel de administración", admin_dashboard_path, :method => :get) %>
                 </li>
               <% end %>
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="#">Desempeño</a>
+              </li>
+              <li>
+                <a href="#">Tracks</a>
+              </li>
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="#">Badges & Skills</a>
+              </li>
+              <li>
+                <a href="#">Recursos</a>
+              </li>
               <li>
                 <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
               </li>
@@ -76,7 +94,7 @@
                   <% end %>
                   <% if current_user.assistant? || current_user.teacher? || current_user.admin? %>
                     <li>
-                      <%= link_to("Panel de administración", dashboard_path, :method => :get) %>
+                      <%= link_to("Panel de administración", admin_dashboard_path, :method => :get) %>
                     </li>
                   <% end %>
                   <li>
