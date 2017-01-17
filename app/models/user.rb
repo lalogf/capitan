@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   has_many :primary_reviews, :class_name => "Review", :foreign_key => "user_id"
   has_many :secondary_reviews, :class_name => "Review", :foreign_key => "reviewer_id"
   has_and_belongs_to_many :sprint_badges, :dependent => :destroy
-  has_one :profile, :dependent => :destroy 
+  has_one :profile
 
   accepts_nested_attributes_for :profile
 
@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
   end
 
   def signup_branch=(branch_id)
-    self.group = Group.where(branch_id: branch_id,accepting_latest_users:true).order("name desc").first
+    self.group = Group.where(branch_id: branch_id).order("name desc").first
   end
 
   def sprints
