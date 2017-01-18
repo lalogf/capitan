@@ -1,17 +1,17 @@
 <div class="page pb-0">
-  <%= render 'pages/show/navigation' %>
+  <%= render 'admin/pages/show/navigation' %>
   <div class="content">
     <% if @page.show_title %>
       <h3 class="page-title text-center"><%= @page.title %></h3>
       <div class="breakline"></div>
     <% end %>
-    <%= render 'pages/show/material' if @page.page_type == 'material' %>
-    <%= render 'pages/show/html' if @page.page_type == 'prework' %>
-    <%= render 'pages/show/quiz' if ['quiz','retrospective','codereview'].include?(@page.page_type) %>
-    <%= render 'pages/show/editor' if @page.page_type == 'editor' %>
-    <%= render 'pages/show/questions' if @page.page_type == 'questions' %>
-    <%= render 'pages/show/exercise' if @page.page_type == 'exercise' %>
-    <%= render 'pages/show/solution' if @page.page_type == 'solution' %>
-    <%= render 'pages/show/score' if @page.page_type == 'score' %>
+    <%= render 'admin/pages/show/material' if @page.page_type == 'material' %>
+    <%= render 'admin/pages/show/html' if @page.page_type == 'prework' %>
+    <%= render 'admin/pages/show/quiz' if ['quiz','retrospective','codereview'].include?(@page.page_type) %>
+    <%= render 'admin/pages/show/editor' if @page.page_type == 'editor' %>
+    <%= render 'admin/pages/show/questions' if @page.page_type == 'questions' %>
+    <%= render 'admin/pages/show/exercise' if @page.page_type == 'exercise' %>
+    <%= render 'admin/pages/show/solution' if @page.page_type == 'solution' %>
+    <%= render 'admin/pages/show/score' if @page.page_type == 'score' %>
   </div>
 </div>
