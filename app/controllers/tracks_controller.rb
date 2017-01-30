@@ -20,7 +20,7 @@ class TracksController < ApplicationController
 
   def show_user_track
     new_groups = [15, 16]
-    @track = Track.find(params[:id] || new_groups.include?(current_user.group_id) ? 2 : 1))
+    @track = Track.find(params[:id] || (new_groups.include?(current_user.group_id) ? 2 : 1))
   end
 
   def new
