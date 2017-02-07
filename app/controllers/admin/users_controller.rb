@@ -56,6 +56,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
+    p params
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to [:admin,@user], notice: 'User was successfully updated.' }
@@ -104,7 +105,7 @@ class Admin::UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:code, :email, :group_id,:password, :avatar, :role, :recomended_as, :hire, sprint_badge_ids: [],
+      params.require(:user).permit(:id, :code, :email, :group_id, :password, :avatar, :role, :hire, :recomended_as, sprint_badge_ids: [],
       profile_attributes: [:name, :lastname, :github, :linkedin, :portafolio])
     end
 end

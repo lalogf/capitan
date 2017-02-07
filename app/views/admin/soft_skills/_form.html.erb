@@ -6,11 +6,7 @@
     <div class="panel-body">
       <%= f.input :stype, label: false, :include_blank => "Elige el tipo de soft skill", collection: SoftSkill.stypes.keys, label_method: lambda {|k| k.capitalize} %>
     	<%= f.input :name, label: false, placeholder: "Ingresa el nombre del skill" %>
-<<<<<<< HEAD:app/views/soft_skills/_form.html.erb
-      <%= f.input :description, placeholder: "Ingresa la descripción", label: false %>
-=======
       <%= f.input :description, label: false, placeholder: "Ingresa una descripción de tu soft kill" %>
->>>>>>> develop:app/views/admin/soft_skills/_form.html.erb
     	<div class="row">
         <div class="col-sm-2">
           <%= f.input :max_points,label: false, placeholder: "Puntaje total", input_html: { min: '0', step: 'any' } %>
