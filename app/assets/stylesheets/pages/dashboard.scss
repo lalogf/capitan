@@ -24,7 +24,7 @@
   }
 
   #header-navbar {
-      background-color: #3498db;
+      background-color: #4a4a4a;
       border: 0 none;
       border-radius: 0;
       background-clip: padding-box;
@@ -118,21 +118,19 @@
       color: #fff;
       outline: none;
   }
-  #header-navbar .nav>li>a:hover, 
-  #header-navbar .nav>li>a:focus, 
-  #header-navbar .nav .open>a, 
-  #header-navbar .nav .open>a:hover, 
-  #header-navbar .nav .open>a:focus, 
-  .navbar-toggle:hover, 
-  .navbar-toggle:focus, 
-  .mobile-search.active>.btn {
-      background: #3498db;
-      color: #fff;
-  }
+  // #header-navbar .nav>li>a:hover,
+  // #header-navbar .nav>li>a:focus,
+  // #header-navbar .nav .open>a,
+  // #header-navbar .nav .open>a:hover,
+  // #header-navbar .nav .open>a:focus,
+  // .navbar-toggle:hover,
+  // .navbar-toggle:focus,
+  // .mobile-search.active>.btn {
+  //     background: #3498db;
+  //     color: #fff;
+  // }
 
-  #header-navbar .nav>li>a:hover, #header-navbar .nav>li>a:focus, #header-navbar .nav .open>a, #header-navbar .nav .open>a:hover, #header-navbar .nav .open>a:focus {
-      background-color: #3498db;
-  }
+
   .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus, #sidebar-nav .nav-pills>li.active>a, #sidebar-nav .nav-pills>li.active>a:hover, #sidebar-nav .nav-pills>li.active>a:focus, .nav-small #nav-col #sidebar-nav .nav-pills>li.open>a {
       background-color: #1a1d22;
       color: #fff;
@@ -167,6 +165,12 @@
       font-size: 1em;
       font-weight: 100;
       line-height: 1.2;
+      color: #4a4a4a;
+  }
+  #user-left-box .user-box>.roles {
+      color: #f7b617;
+      letter-spacing: 0.4px;
+      margin-top: 4px;
   }
   #user-left-box .user-box>.status {
       display: block;
@@ -187,7 +191,7 @@
     border-right: 1px solid #ccc;
     vertical-align: top;
     z-index: 10;
-    background-color: #E8EBF2;
+    background-color: #fff;
   }
 
   .navigation:before {
@@ -227,15 +231,15 @@
   }
 
   .navigation ul > li > a:hover {
-    background-color: #3498db;
+   border-right: 7px solid #f7b617;
   }
 
   .navigation ul > li > a {
       display: block;
       height: 50px;
       line-height: 50px;
-      padding: 0 16px 0 7px;
-      background-color: #e8ebf2;
+      padding: 0 21px;
+      background-color: white;
       color: #16191c;
       text-shadow: none !important;
       font-size: 1em;
@@ -264,6 +268,52 @@
     width: 75px;
   }
 
+}
+
+
+.clearfix {
+  #logo {
+    padding: 14px;
+    display: inline-block;
+  }
+}
+
+// page grades
+
+.flex-title-start {
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  display: flex;
+  -webkit-align-content: center;
+  display: -webkit-flex;
+  -webkit-justify-content: flex-start;
+  -webkit-align-items: center;
+}
+
+.title-grade {
+  font-size: 28px;
+  font-weight: 100;
+}
+
+#grade {
+  select {
+    -webkit-appearance: none;
+    border: 1px solid #979797;
+    height: 50px;
+    background-image: image-url('flecha-activa.png');
+    background-position-x: 97%;
+    background-repeat: no-repeat;
+    margin-bottom: 28px;
+    background-position-y: 50%;
+  }
+  input[type="submit"] {
+    background: #f7b617;
+    border: 0;
+    -webkit-appearance: none;
+    box-shadow: none;
+    padding: 9px 28px;
+  }
 }
 
 /* styles for admin panel user tabs */

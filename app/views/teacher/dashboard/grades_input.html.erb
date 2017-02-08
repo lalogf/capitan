@@ -1,0 +1,55 @@
+<div class="container-fluid p-20">
+    <ol class="breadcrumb">
+      <li><%= link_to "Regresar",teacher_dashboard_grades_filters_path(params[:branch_id],params[:group_id],params[:sprint_id],params[:lesson_id],params[:page_id]), :class => "active" %></li>
+    </ol>
+    <section class="grades-input">
+      <div class="header">
+        <h3><%= @lesson[0] %></h3>
+        <h4><%= @sprint.name %></h4>
+        <h4><%= @group.name %></h4>
+      </div>
+      <%= simple_form_for :input, url: teacher_grades_tech_input_path do |f| %>
+        <%= f.input :sprint_id,as: :hidden, :input_html => {:value => params[:sprint_id]} %>
+        <%= f.input :lesson_id,as: :hidden, :input_html => {:value => params[:lesson_id]} %>
+        <%= f.input :group_id,as: :hidden, :input_html => {:value => params[:group_id]} %>
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th rowspan="2">Estudiante</th>
+                    <th colspan="<%= @lesson[1].size %>"><%= @lesson[0] %></th>
+                </tr>
+                <tr>
+                    <% @lesson[1].each do |page| %>
+                        <th><%= page[2] %><br />Nota máxima: <%= page[1] %> puntos</th>
+                    <% end %>
+                </tr>
+            </thead>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= image_tag user.avatar(:student_dashboard), :class => "user-image" if user.avatar.exists? %>
+              <h4 class="mt-0"><%= user.profile.name %></h4>
+              <p><%= user.code %></p>
+            </td>
+            <% @lesson[1].each do |page| %>
+                <td style="vertical-align:middle;">
+                    <% user_points = find_submission_points(page[0],user.id,@submissions) %>
+                    <%= f.input :grades, label:false,
+                        :input_html => {:type => "number",
+                                        :name => "input[grades][#{user.id}][#{page[0]}][]",
+                                        :step => "0.1",
+                                        :value => (!user_points.nil? ? user_points.round(2) : nil)} %>
+                </td>
+            <% end %>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td colspan="<%= @lesson[1].size %>" style="text-align:right">
+            <%= f.submit "Guardar Cambios", class: "btn btn-primary" %>
+          </td>
+        </tr>
+        </table>
+      <% end %>
+    </section>
+</div>

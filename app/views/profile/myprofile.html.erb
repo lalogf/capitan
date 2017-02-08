@@ -33,9 +33,11 @@
         <div class="mt-21">
           <% if @sprint_badges.each do |sprint_badge| %>
             <% sprint_badge.each do |key,count| %>
-              <div class="col-sm-2 minh-70 ph-7 badge">
-                  <%= image_tag key.image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "80" %>
-                  <div class="badge-count"><p><%= "x#{count}" %></p></div>
+              <div class="col-sm-4 minh-70 ph-7 badge">
+                  <div class="box-badge-coder">
+                    <%= image_tag key.image.url(:normal) ,alt: "coder", class: "img-circle img-responsive", width: "70" %>
+                    <div class="badge-count"><p><%= "x#{count}" %></p></div>
+                  </div>
               </div>
             <% end %>
           <% end.empty? %>

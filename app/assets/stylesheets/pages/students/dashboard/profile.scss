@@ -71,6 +71,7 @@
 
 .flex {
   display: flex;
+  display: -webkit-flex;
 }
 
 .absolute {
@@ -121,18 +122,21 @@
 
 @media only screen and (max-width: 480px) {
 
-  #coder-profile {
-    .badges {
-      display: inline-block;
-    }
-  }
-
   .navbar-right {
     text-align: right;
   }
 
   .mr-0-xs {
     margin-right: 0;
+  }
+  
+  #coder-profile {
+    .photo-profile {
+      height: auto;
+    }
+    .badges {
+      display: inline-block;
+    }
   }
 
   .text-center-xs {

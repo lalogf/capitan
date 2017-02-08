@@ -1,0 +1,26 @@
+<%= render 'shared/student/header/frame', :bar => true %>
+<section id="tracks">
+  <div class="container pv-49 ph-7">
+    <% @tracks.each_slice(4) do |row| %>
+      <div class="row m-0">
+        <% row.each do |track| %>
+          <div class="col-sm-4 col-xs-12 col-md-3 mb-35-xs mb-35-sm">
+            <%= link_to student_tracks_path(track.id), class: "track" do %>
+              <div class="color" style="background-color:<%= track.color %>">
+                <div class="icon"></div>
+              </div>
+              <div class="content">
+                <h2><%= track.name %></h2>
+                <p><%= track.description %></p>
+                <div class="link">
+                  <hr>
+                  empezar &rarr;
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>

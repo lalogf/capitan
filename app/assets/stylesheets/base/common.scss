@@ -23,7 +23,7 @@ body {
 }
 
 .wrapper {
-	min-height:100%;
+	min-height:100vh;
 	position:relative;
 	padding-bottom: 4%;
 }
@@ -111,6 +111,10 @@ label {
 
 .bg-gray-lighter {
     background-color: #f7f7f7;
+}
+
+.fz-40 {
+  font-size: 40px;
 }
 
 .fz-44 {
