@@ -71,7 +71,7 @@
           <% @courses.each do |course| %>
             <tr>
               <td>
-                <%= course.name %>
+                <strong><%= course.name %></strong>
               </td>
               <% @branches.each do |branch| %>
                 <td class="text-center">
@@ -88,7 +88,7 @@
             <% course.units.each do |unit| %>
               <tr>
                 <td colspan="<%= @branches.to_a.size + 1%>">
-                  <%= unit.title %><br>
+                  <em><%= unit.title %></em><br>
                   <%= unit.description %>
                 </td>
               </tr>

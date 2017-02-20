@@ -60,13 +60,13 @@ html, body {
     &:before {
       content: "";
       display: block;
-      width: 300px;
+      width: 348px;
       position: fixed;
       bottom: 0px;
       top: 0px;
       left: 0px;
       z-index: -1;
-      background-color: #EEEEEE;
+      background-color: #3E3F40;
       @media (max-width: 680px) {
         background-color: #3E3F40;
         min-width: 100%;
