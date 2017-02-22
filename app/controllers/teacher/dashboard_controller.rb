@@ -42,7 +42,7 @@ class Teacher::DashboardController < ApplicationController
     @group  = Group.find(params[:group_id])
     @lesson = SprintPage.
                joins(:page => :lesson).
-               where("sprint_id = ? and coalesce(sprint_pages.points,pages.points) > 1 and lessons.id = ?",params[:sprint_id],params[:lesson_id]).
+               where("sprint_id = ? and coalesce(sprint_pages.points,pages.points) > 0 and lessons.id = ?",params[:sprint_id],params[:lesson_id]).
                pluck("pages.id","coalesce(sprint_pages.points,pages.points) as points","pages.title","lessons.title","pages.page_type").
                group_by { |e| e[3] }.first
 
@@ -84,10 +84,16 @@ class Teacher::DashboardController < ApplicationController
       when "sprint"
         result = Sprint.where(group_id: params[:options][:group_id]).pluck(:id,:name)
       when "lesson"
-        result = Sprint.find(params[:options][:sprint_id]).lessons.pluck(:id,:title)
+        lesson_points = SprintPage.joins(:page => :lesson).
+                                   joins(:sprint).
+                                   where("sprints.id = ?",params[:options][:sprint_id]).
+                                   group("lessons.id, lessons.title").
+                                   pluck("lessons.id","lessons.title","coalesce(sum(coalesce(sprint_pages.points,pages.points)),0)")
+
+        result = lesson_points.select { |l| l[2] > 0 }
       end
     rescue => error
-      error.backtrace
+      p error
       status = "fail"
       message = "No pudimos obtener el filtro solicitado"
     end
