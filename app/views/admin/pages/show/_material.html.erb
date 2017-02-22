@@ -25,11 +25,11 @@
         <div id="blog-container" class="<%="hidden" if @page.material_type != "blog" %>">
           <%= raw @page.html %>
         </div>
-        <div class="text-center mt-20">
+        <!-- <div class="text-center mt-20">
             <% if @course != nil and @unit != nil and @next_lesson != nil and @next_page != nil %>
                 <%= link_to 'Continuar', lesson_page_details_path(@track,@course,@unit,@next_lesson,@next_page),:class => "btn btn-lg btn-warning" %>
             <% end %>
-        </div>
+        </div> -->
     </div>
 </div>
 

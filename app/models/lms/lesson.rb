@@ -21,6 +21,10 @@ class Lesson < ActiveRecord::Base
     self.visible_pages_by_type(branch_id, page_type).count > 0
   end
 
+  def has_visible_pages(branch_id)
+    self.visible_pages(branch_id).count > 0
+  end
+
   def visible_pages_by_type(branch_id,page_type)
     self.visible_pages(branch_id).where(page_type: page_type).order(:sequence)
   end

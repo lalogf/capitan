@@ -7,8 +7,8 @@
   <div class="container-xs ph-56 pt-21">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
-        <%= f.input :code, label: false, required: false, autofocus: true, placeholder: "Código Laboratoria" %>
-        <%= f.input :password, label: false, required: false, :class => "thin", placeholder: "Contraseña" %>
+        <%= f.input :code, label: "Usuario", helper: "Ingresa tu usuario" ,required: false, autofocus: true, placeholder: "Código Laboratoria" %>
+        <%= f.input :password, label: "Contraseña", required: false, :class => "thin", placeholder: "Contraseña" %>
       </div>
       <div class="form-actions mb-20">
         <%= f.button :submit, "Ingresar", :class => "btn btn-amarillo-lab btn-block btn-lg" %>

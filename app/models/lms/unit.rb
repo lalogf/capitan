@@ -21,10 +21,11 @@ class Unit < ActiveRecord::Base
   def has_pages(branch_id)
     query = "select count(p.id)
              from pages p
-             join units u on p.unit_id = u.id
+             join lessons l on p.lesson_id = l.id
+             join units u on l.unit_id = u.id
              join page_visibilities pv on p.id = pv.page_id
              where u.id = #{self.id} and branch_id = #{branch_id} and pv.status = 1"
-    true
+    ActiveRecord::Base.connection.execute(query).first[0] > 0
   end
 
   # def visible_pages(branch_id)
