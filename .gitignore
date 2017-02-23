@@ -2,6 +2,8 @@
 *.rbc
 capybara-*.html
 .rspec
+.DS_Store
+
 /log/development.log
 /log/production.log
 /tmp
