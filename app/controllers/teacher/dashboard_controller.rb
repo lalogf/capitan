@@ -23,7 +23,6 @@ class Teacher::DashboardController < ApplicationController
 
   def grades_input
     if request.post?
-      p params
       params[:input][:grades].each { |user_id,grades|
       grades.each { |page_id,grade|
           submission = Submission.find_or_initialize_by(user_id: user_id,page_id:page_id)
@@ -36,6 +35,8 @@ class Teacher::DashboardController < ApplicationController
       params[:sprint_id] = params[:input][:sprint_id]
       params[:lesson_id] = params[:input][:lesson_id]
       params[:group_id] = params[:input][:group_id]
+
+      flash[:success] = "Notas grabadas exitosamente"
     end
 
     @sprint = Sprint.find(params[:sprint_id])
