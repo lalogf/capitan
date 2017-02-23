@@ -30,4 +30,8 @@ class Student::DashboardController < ApplicationController
   def resources
   end
 
+  def surveys
+    @tracks = Track.all.order(:sequence)
+  end
+
 end

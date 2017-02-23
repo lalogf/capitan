@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'dashboard/performance'
       get 'dashboard/tracks'
       get 'dashboard/resources'
+      get 'dashboard/surveys'
       get 'tracks/:id' => 'tracks#show', as: :tracks
     end
 
@@ -82,6 +83,7 @@ Rails.application.routes.draw do
 
   get 'admission' => 'profile#admission', :as => :admission
   get 'admission_success' => 'profile#admission_success', :as => :admission_success
+
 
   devise_for :users,
    path: "",

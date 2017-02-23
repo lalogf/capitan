@@ -1,0 +1,6 @@
+<h1>Encuesta</h1>
+
+<%= form_tag do %>
+	<%= radio_button_tag(:age, "child") %>
+	<%= select_tag(:city_id, options_for_select([['Lalo',"1"],["Jordi","2"]])) %>
+<% end %>

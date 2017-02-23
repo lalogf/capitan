@@ -2,16 +2,20 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  host: <%= Figaro.env.host %>
-  database: <%= Figaro.env.database %>
-  username: <%= Figaro.env.database_username %>
-  password: <%= Figaro.env.database_password %>
+  host: localhost
+  username: root
+  password: password
 
 development:
   <<: *default
+  database: el_capitan_development
 
 test:
   <<: *default
+  database: el_capitan_test
 
 production:
   <<: *default
+  database: el_capitan_production
+
+
