@@ -1,6 +1,5 @@
 class Admin::PagesController < ApplicationController
 
-  layout "pages", only: [:show]
   layout "admin", except: [:show]
 
   before_action :set_track, except: [:saveAnswer,:saveQuestion, :saveAnswers]
@@ -14,21 +13,13 @@ class Admin::PagesController < ApplicationController
   before_action except: [:show] do
     check_allowed_roles(current_user, ["assistant","teacher","admin"])
   end
+
   def index
     @pages = @lesson.pages.all
   end
 
   def show
     @page = @lesson.pages.find(params[:id])
-    @previous_page = @lesson.pages.find_by_sequence(@page.sequence-1)
-    @next_page = @lesson.pages.find_by_sequence(@page.sequence+1)
-    @next_lesson = @lesson
-    if @next_page == nil
-      @next_lesson = Lesson.where("unit_id = ? and sequence = ?",@unit.id, @lesson.sequence+1).first
-      if @next_lesson != nil
-        @next_page = @next_lesson.pages.first
-      end
-    end
     @page.answers.find_or_create_by(page_id: @page.id,user_id: current_user.id)
     if @page.load_from_previous
       @page.initial_state = @previous_page.answers.where(user_id: current_user.id).first.result
@@ -55,6 +46,7 @@ class Admin::PagesController < ApplicationController
       @total_page_points = @pages_points.map { |p| p[:page_points] }.reduce(:+)
       @total_average_points = @pages_points.map { |p| p[:average_points] }.reduce(:+)
     end
+    render layout: 'pages'
   end
 
   def new

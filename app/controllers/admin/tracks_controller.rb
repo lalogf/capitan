@@ -19,7 +19,10 @@ class Admin::TracksController < ApplicationController
   end
 
   def show_user_track
-    @track = Track.find(params[:id] || (current_user.group_id == 15 ? 2 : 1))
+    new_groups = [15, 16]
+    ec_groups = [24]
+    @track = Track.find(params[:id] || (new_groups.include?(current_user.group_id) ? 2 :
+                                        ec_groups.include?(current_user.group_id) ? 7 : 1))
   end
 
   def new

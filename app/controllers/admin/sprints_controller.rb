@@ -28,7 +28,7 @@ class Admin::SprintsController < ApplicationController
 
   def new
     @sprint = Sprint.new
-    @lessons = Lesson.all.includes(:pages)
+    @tracks = Track.all.includes(:courses => {:units => {:lessons => :pages}})
     @soft_skills = SoftSkill.all.group_by(&:stype)
   end
 
@@ -100,7 +100,7 @@ class Admin::SprintsController < ApplicationController
   def destroy
     @sprint.destroy
     respond_to do |format|
-      format.html { redirect_to sprints_url, notice: 'Sprint was successfully destroyed.' }
+      format.html { redirect_to admin_sprints_url, notice: 'Sprint was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
