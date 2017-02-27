@@ -21,7 +21,10 @@ body {
   line-height: 1.5;
   position: relative;
 }
-
+.row{
+  margin-left: 0px;
+  margin-right: 0px;
+}
 .wrapper {
 	min-height:100vh;
 	position:relative;
@@ -59,10 +62,14 @@ a, a:hover, a:focus {
 }
 
 .btn {
-  border-radius: 2px;
-  -webkit-box-shadow: 6px 9px 18px -4px rgba(205,204,204,1);
-  -moz-box-shadow: 6px 9px 18px -4px rgba(205,204,204,1);
-  box-shadow: 6px 9px 18px -4px rgba(205,204,204,1);
+  background-color: #f7b617;
+  border-radius: 0px;
+  transition: 0.5s;
+  border:none;
+  &:hover{
+    transition: 0.5s;
+    background-color: #eca800;
+  }
 }
 
 label {

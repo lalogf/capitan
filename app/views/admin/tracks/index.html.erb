@@ -25,10 +25,10 @@
           <td style="width:8%;"><%= track.color %></td>
           <td style="width:15%;">
             <%= link_to edit_admin_track_path(track) do %>
-              <button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Editar</button>
+              <button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;</button>
             <% end %>
             <%= link_to admin_track_path(track), method: :delete, data: { confirm: '¿Estás seguro?' } do %>
-              <button class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Eliminar</button>
+              <button class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;</button>
             <% end %>
           </td>
         </tr>
