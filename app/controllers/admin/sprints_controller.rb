@@ -34,7 +34,7 @@ class Admin::SprintsController < ApplicationController
 
   def edit
     @sprint_pages_ids = @sprint.sprint_pages.pluck(:page_id,:points)
-    @lessons = Lesson.all.includes(:pages)
+    @tracks = Track.all.includes(:courses => {:units => {:lessons => :pages}})
     @soft_skills = SoftSkill.all.group_by(&:stype)
   end
 
