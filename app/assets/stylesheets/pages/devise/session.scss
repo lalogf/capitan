@@ -22,6 +22,7 @@
     /* color: #fff; */
     background-color: #F9A91A;
     border-color: #f39e06;
+    width: 30%;
   }
 
 
@@ -51,21 +52,54 @@
   .form-control:focus {
     box-shadow: none;
   }
-
+  .radio label, .checkbox label{
+    font-size: 14px;
+  }
   .checkbox input {
-    top:3px;
+    top: 0px;
+    width: 15px;
+    height: 15px;
+    font-size: 14px;
+    outline: transparent;
+    -webkit-appearance: none;
+    border: 1px solid #F9A91A;
+    &:checked:after{
+      outline: transparent;
+      -webkit-transform-origin: left top;
+      -moz-transform-origin: left top;
+      -ms-transform-origin: left top;
+      -webkit-transform: rotate(7deg);
+      border-left: 2px solid #F9A91A;
+      border-top: 2px solid #F9A91A;
+      -ms-transform: rotate(7deg);
+      transform: rotateZ(219deg);
+      transition: 0.5s;
+      transform-origin: left top;
+      position: absolute;
+      display: block;
+      height: 15px;
+      width: 10px;
+      content: '';
+      left: 6px;
+      top: 10px;
+    }
   }
 }
 
 @media only screen and (max-width: 480px) {
-
-  .login {
-    padding-top: 20% !important;
-    padding-right: 28px !important;
-    padding-left: 28px !important;
-  }
-
-  .login .container-xs {
-      padding: 0px !important;
+    .login {
+      padding-top: 20% !important;
+      padding-right: 28px !important;
+      padding-left: 28px !important;
+      &.container-xs {
+        padding: 0px !important;
+      }
+      .row{
+        margin-right: 0px;
+        margin-left: 0px;
+      }
+      .btn-amarillo-lab {
+      width: 100%;
+      }
   }
 }

@@ -45,4 +45,7 @@ $(document).ready(function() {
       $(".switch").toggleClass("on");
       $(".navigation").toggleClass("active");
     });
+    $(".navigation ul > li > a").on("click", function(e){
+      $(this).toggleClass(".navigation-border");
+    });
 });
