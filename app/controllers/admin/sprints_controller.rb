@@ -87,7 +87,7 @@ class Admin::SprintsController < ApplicationController
   end
 
   def update_sprint_soft_skills
-    @sprint.soft_skills.destroy_all
+    @sprint.sprint_soft_skills.destroy_all
     @sprint.save
     params[:sprint_soft_skills].map do |k,sp|
       if sp[:soft_skill_id] != nil

@@ -11,7 +11,7 @@ module Teacher::DashboardHelper
 
   def find_soft_skills_submissions_points(user_id,soft_skill_id,submissions)
     s = submissions.select { |s| s[0] == user_id and s[1] == soft_skill_id }
-    return s != nil ? s.first[2] : nil
+    return s != nil && !s.empty? ? s.first[2] : nil
   end
 
 end
