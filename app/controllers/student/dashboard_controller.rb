@@ -32,6 +32,11 @@ class Student::DashboardController < ApplicationController
 
   def surveys
     @tracks = Track.all.order(:sequence)
+    @branchs = Branch.all
+    @groups = Group.all
+    @teachers = ["Lead Teacher","Lead Teacher","Teacher Assistant 1","Teacher Assistant 2", "Teacher Assistant 3"]
+    @jedis = ["Ale", "Andrea Lamas","Arabela","Elizabeth","Lalo","Mafe","Malu","Meche","Michelle","Papu"]
+    @temas = ['Introducción al desarrollo web', 'HTML/ HTML5 y JavaScript en el navegador','Manejo de comandos básicos de git en la terminal','Pruebas unitarias','Git/ Resolución de conflictos/ Branching model','DOM 101']
   end
 
 end
